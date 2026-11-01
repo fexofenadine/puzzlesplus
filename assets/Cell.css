@@ -1,8 +1,10 @@
+/*as wide as its cells and centred, the window face takes any room left over*/
 .Game_field {
   position: relative;
   display: grid;
   grid-template-columns: repeat(var(--n), 24px);
-  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
   border-width: 2px 3px 3px 2px;
   border-style: solid;
   border-color: var(--shadow) var(--light) var(--light) var(--shadow);

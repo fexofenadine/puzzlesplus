@@ -21,8 +21,11 @@
   gap: 4px;
 }
 
+/*as wide as its cells and centred, when the menu bar makes the window wider*/
 .Game_field {
   position: relative;
+  width: fit-content;
+  margin: 0 auto;
   white-space: nowrap;
   border-width: 2px 3px 3px 2px;
   border-style: solid;
