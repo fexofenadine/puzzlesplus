@@ -1324,7 +1324,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/Overlay.jsx": () => __vitePreload(() => import("./Overlay-7Yez4d9U.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Play.jsx": () => __vitePreload(() => import("./Play-DPV83WcB.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Winner.jsx": () => __vitePreload(() => import("./Winner-BcLjHZfV.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/app.jsx": () => __vitePreload(() => import("./app-DZ5WccHq.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/app.jsx": () => __vitePreload(() => import("./app-C9TOigz1.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/Guide.jsx": () => __vitePreload(() => import("./Guide-CQVnT3KO.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/MinesExample.jsx": () => __vitePreload(() => import("./MinesExample-D0bFGvQS.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/NonogramsExample.jsx": () => __vitePreload(() => import("./NonogramsExample-BdMf_KSB.js").then((m) => m["default"]), [], import.meta.url),
@@ -1370,7 +1370,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/ThemeMenu.jsx": () => __vitePreload(() => import("./ThemeMenu-CjGFC0cl.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/ViewMenu.jsx": () => __vitePreload(() => import("./ViewMenu-h4XuwPLe.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/WindowControls.jsx": () => __vitePreload(() => import("./WindowControls-a3R3DjjO.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-BWlqOhBl.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-B67urJQP.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/hill.js": () => __vitePreload(() => import("./hill-C0RBa6DT.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/index.js": () => __vitePreload(() => import("./backgrounds-DqF45KDc.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/matrix.js": () => __vitePreload(() => import("./matrix-BPjC-X-W.js").then((m) => m["default"]), [], import.meta.url),
@@ -1386,7 +1386,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/storage.js": () => __vitePreload(() => import("./storage-Cj0EFyod.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/themes.js": () => __vitePreload(() => import("./themes-DFrkB3pZ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/worker.js": () => __vitePreload(() => import("./worker-D6fmPkLz.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/zoom.js": () => __vitePreload(() => import("./zoom-BG2TwlJy.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/zoom.js": () => __vitePreload(() => import("./zoom-Bt9shQOi.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/About.jsx": () => __vitePreload(() => import("./About-ym12u20l.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/Cell.jsx": () => __vitePreload(() => import("./Cell-B28BFMy2.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/Game.jsx": () => __vitePreload(() => import("./Game-Fa3_jLVk.js").then((m) => m["default"]), [], import.meta.url),
@@ -2185,9 +2185,8 @@ var applyZoom = (scale) => root$5.style.setProperty("--scale", scale);
 var saveZoom = (scale) => save("scale", scale);
 var gameWindow = null;
 var hanging = 0;
-var measureFit = (scale) => {
-	const rect = gameWindow && gameWindow.getBoundingClientRect();
-	if (!rect || !rect.width || !rect.height) return {
+var measureFit = () => {
+	if (!gameWindow || !gameWindow.offsetWidth || !gameWindow.offsetHeight) return {
 		fit: Infinity,
 		size: null
 	};
@@ -2196,8 +2195,8 @@ var measureFit = (scale) => {
 	const bar = parseFloat(getComputedStyle(gameWindow.closest("main")).paddingBottom) || 0;
 	const height = innerHeight - parseFloat(frame.marginTop) - parseFloat(frame.marginBottom) - bar;
 	const size = {
-		width: rect.width / scale,
-		height: (rect.height - hanging) / scale,
+		width: gameWindow.offsetWidth,
+		height: gameWindow.offsetHeight - hanging,
 		room: `${width}x${height}`
 	};
 	return {
@@ -2206,11 +2205,12 @@ var measureFit = (scale) => {
 	};
 };
 var sameSize = (a, b) => Boolean(a && b) && a.room === b.room && Math.abs(a.width / b.width - 1) < .03 && Math.abs(a.height / b.height - 1) < .03;
+var bottom = (el) => el.offsetTop + el.offsetHeight;
 var hang = (panel) => {
-	const height = panel ? panel.getBoundingClientRect().bottom - panel.previousElementSibling.getBoundingClientRect().bottom : 0;
+	const height = panel ? bottom(panel) - bottom(panel.previousElementSibling) : 0;
 	if (!gameWindow || Math.abs(height - hanging) < .5) return;
 	hanging = height;
-	gameWindow.parentElement.style.marginBottom = height ? `calc(env(safe-area-inset-bottom) - ${height}px)` : "";
+	gameWindow.parentElement.style.marginBottom = height ? `calc(env(safe-area-inset-bottom) - ${height}px * var(--scale, 1))` : "";
 };
 var hangBelow = {
 	oncreate: (panel) => hang(panel),
@@ -2912,7 +2912,7 @@ var shellActions = {
 		};
 	},
 	fit: () => ({ zoom }) => {
-		const { fit, size } = measureFit(zoom.scale);
+		const { fit, size } = measureFit();
 		if (!size || sameSize(size, zoom.seen)) return null;
 		const scale = zoom.maximised ? maxZoom(fit) : fitZoom(zoom.chosen, fit);
 		applyZoom(scale);
@@ -2924,7 +2924,7 @@ var shellActions = {
 	},
 	maximise: () => ({ zoom }) => {
 		const maximised = !zoom.maximised;
-		const { fit, size } = measureFit(zoom.scale);
+		const { fit, size } = measureFit();
 		const scale = maximised ? maxZoom(fit) : fitZoom(zoom.chosen, fit);
 		if (!Number.isFinite(scale)) return { menu: null };
 		saveMaximised(maximised);
@@ -2940,7 +2940,7 @@ var shellActions = {
 		};
 	},
 	zoom: (direction) => ({ zoom }) => {
-		const { fit, size } = measureFit(zoom.scale);
+		const { fit, size } = measureFit();
 		const chosen = direction ? stepZoom(zoom.scale, direction) : 1;
 		const scale = direction ? chosen : fitZoom(chosen, fit);
 		saveZoom(chosen);

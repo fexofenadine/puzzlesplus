@@ -1,4 +1,4 @@
-import { F as Button, L as h, P as Dialog, h as Overlay, p as About_module_default, s as icons, x as games } from "./actions-CNd4PGRw.js";
+import { F as Button, L as h, P as Dialog, h as Overlay, p as About_module_default, s as icons, x as games } from "./actions-MCtSOqJL.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",

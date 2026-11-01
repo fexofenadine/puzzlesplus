@@ -1,4 +1,4 @@
-import { L as h } from "./actions-CNd4PGRw.js";
+import { L as h } from "./actions-MCtSOqJL.js";
 //#region src/guide/desktop.jsx
 var desktopSection = {
 	id: "window",

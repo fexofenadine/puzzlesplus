@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Button, I as app, L as h, M as save, P as Dialog, d as About, f as Link, g as Menu, h as Overlay, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, w as watchWindow } from "./actions-CNd4PGRw.js";
+import { A as load, E as startBackgrounds, F as Button, I as app, L as h, M as save, P as Dialog, d as About, f as Link, g as Menu, h as Overlay, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, w as watchWindow } from "./actions-MCtSOqJL.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as WindowControls, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-Dg2YGkYl.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-C7YmNAz8.js";
-import { a as Winner, i as BestTime_module_default, n as OpenGames, o as Input, r as Tabs, t as registerWorker } from "./worker-Ky577CmL.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-BMkyedvO.js";
+import { a as WindowControls, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-BVFs9Bkm.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-BASlAhcR.js";
+import { a as Winner, i as BestTime_module_default, n as OpenGames, o as Input, r as Tabs, t as registerWorker } from "./worker-CRuNqEn9.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-GcfcmNCb.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -363,10 +363,11 @@ var actions = {
 	},
 	touch: ({ event, x, y }) => ({ game }, actions) => {
 		if (game.win || game.lose || game.paused) return null;
-		const rect = event.currentTarget.getBoundingClientRect();
+		const cell = event.currentTarget;
+		const on = ({ clientX, clientY }) => cell.contains(document.elementFromPoint(clientX, clientY));
 		const timer = setTimeout(actions.flag, 600);
 		const move = ({ touches }) => {
-			if (!touches || touches.length !== 1 || touches[0].clientX < rect.left || touches[0].clientX > rect.right || touches[0].clientY < rect.top || touches[0].clientY > rect.bottom) {
+			if (!touches || touches.length !== 1 || !on(touches[0])) {
 				clearTimeout(timer);
 				actions.move({
 					x: -1,

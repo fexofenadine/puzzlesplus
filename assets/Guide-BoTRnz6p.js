@@ -1,4 +1,4 @@
-import { E as startBackgrounds, I as app, L as h, N as Menu_module_default, P as Dialog, T as ThemeMenu, i as shortcut, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen } from "./actions-CNd4PGRw.js";
+import { E as startBackgrounds, I as app, L as h, N as Menu_module_default, P as Dialog, T as ThemeMenu, i as shortcut, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen } from "./actions-MCtSOqJL.js";
 var Guide_module_default = {
 	page: "Guide_page",
 	body: "Guide_body",
