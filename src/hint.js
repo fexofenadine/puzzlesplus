@@ -28,7 +28,18 @@ const hint = (
   return { kind, cells, sources, marks, text }
 }
 
-export const noHint = (text) => hint('none', [], [], text)
+export const noHint = (text, kind = 'none') => hint(kind, [], [], text)
+
+//the guide section a hint or chord explanation is about, told apart by what it reasons from
+export const guideTopic = ({ kind, sources }) => {
+  if (kind === 'conflict') return 'wrong-flags'
+  if (kind === 'chord') return 'chording'
+  if (kind === 'none') return 'guessing'
+  if (kind === 'start') return 'first-click'
+  if (!sources.length) return 'mine-counter'
+  if (sources.length > 1) return 'shared-cells'
+  return kind === 'clear' ? 'safe-cells' : 'all-mines'
+}
 
 //why a chord on the number at x, y opens nothing, or null when it is fine
 export const explainChord = ({ field, width, height }, x, y) => {

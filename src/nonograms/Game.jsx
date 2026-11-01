@@ -7,20 +7,24 @@ import Play from '../Play'
 import SideButton, { CrossIcon, FillIcon, HintIcon, UndoIcon } from '../shell/SideButton'
 import WindowControls, { windowProps } from '../shell/WindowControls'
 import { PausedCover, HintPanel } from '../shell/Board'
+import { guideTopic } from './hint'
 import { watchWindow } from '../shell/zoom'
 import { clockDigits } from '../shell/clock'
 import Menu from './Menu'
 import Cell from './Cell'
 import { EMPTY, FILL, CROSS, breaks, cellsOf, fillsLeft, lineDone } from './rules'
 
+//the guide's section on a hint, none for a solved board
+const more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`
+
 export const running = ({ start, win, dealing }) => start >= 0 && !win && !dealing
 
 //cells in blocks of five with a thin gap between, the same tracks for clues and cells
-const tracks = (n) =>
+export const tracks = (n) =>
   Array.from({ length: n }, (_, k) => (k && k % 5 === 0 ? '2px var(--size)' : 'var(--size)')).join(
     ' ',
   )
-const place = (k) => k + Math.floor(k / 5) + 1
+export const place = (k) => k + Math.floor(k / 5) + 1
 
 const Clue = ({ clue, done, error, hinted, hidden, style }) => (
   <div
@@ -116,7 +120,7 @@ const Game = ({ key, state, actions }) => {
             {paused && <PausedCover onResume={() => actions.pause(false)} />}
           </div>
         </div>
-        {hint && !paused && <HintPanel text={hint.text} />}
+        {hint && !paused && <HintPanel text={hint.text} more={more(hint)} />}
       </div>
     </Dialog>
   )

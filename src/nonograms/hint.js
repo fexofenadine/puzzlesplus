@@ -6,6 +6,10 @@ export const completeWithErrors =
 
 const marked = (entries) => Object.fromEntries(entries)
 
+//the guide section a hint is about, techniques have their own, mistakes share one
+export const guideTopic = ({ kind }) =>
+  ({ break: 'mistakes', wrong: 'mistakes', reveal: 'mistakes', solved: null })[kind] ?? kind
+
 //a cell that can't be right: filled where the picture is empty, or crossed out where it is filled
 const misfit = (board, solution, i) =>
   (board[i] === FILL && !solution[i]) || (board[i] === CROSS && solution[i] === 1)

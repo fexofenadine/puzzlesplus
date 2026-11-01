@@ -15,8 +15,14 @@ export const PausedCover = ({ onResume }) => (
 )
 
 //the explanation under the board, hanging below the window's place so the board never moves
-export const HintPanel = ({ text }) => (
+//more links to the guide's section on it, in a new tab so the game stays
+export const HintPanel = ({ text, more }) => (
   <p class={s.hint} role="status" {...hangBelow}>
+    {more && (
+      <a class={s.more} href={more} target="_blank" rel="noopener" title="Read more in the guide">
+        More
+      </a>
+    )}
     {text}
   </p>
 )

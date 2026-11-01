@@ -229,7 +229,7 @@ export const actions = {
     const { game } = state
     if (game.win || game.lose || game.paused) return { menu: null }
     if (game.start < 0) {
-      return { menu: null, hint: noHint('Open a cell first, then ask for a hint.') }
+      return { menu: null, hint: noHint('Open a cell first, then ask for a hint.', 'start') }
     }
     const { field, width, height, flags } = game
     return {

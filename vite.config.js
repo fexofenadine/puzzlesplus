@@ -51,12 +51,16 @@ export default defineConfig({
     cssMinify: false,
     modulePreload: { polyfill: false },
     rolldownOptions: {
-      //the root page only redirects, each game is its own page
+      //the root page only redirects, each game and guide is its own page
       input: {
         index: 'index.html',
         minesweeper: 'minesweeper/index.html',
         takuzu: 'takuzu/index.html',
         nonograms: 'nonograms/index.html',
+        'minesweeper-guide': 'minesweeper/guide/index.html',
+        'takuzu-guide': 'takuzu/guide/index.html',
+        'nonograms-guide': 'nonograms/guide/index.html',
+        'how-to-play': 'how-to-play/index.html',
       },
       output: {
         entryFileNames: 'assets/[name].js',

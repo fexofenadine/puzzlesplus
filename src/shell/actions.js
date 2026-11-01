@@ -23,9 +23,10 @@ const loadTheme = () => {
   return themes.some(([id]) => id === theme) ? theme : 'classic'
 }
 
-//page is the game's folder name
-export const shellState = (page) => ({
+//page is the game's folder name, root the way from this page back to the site's top
+export const shellState = (page, root = '../') => ({
   page,
+  root,
   menu: null,
   //open, minimised or closed
   windowState: 'open',
@@ -93,7 +94,7 @@ export const shellActions = {
   //another game is another page, this one comes back with a fresh game
   openGame: (id) => (state) => {
     if (id !== state.page) {
-      location.assign(`../${id}/`)
+      location.assign(`${state.root}${id}/`)
       return { menu: null }
     }
     return { menu: null, openGames: null, windowState: 'open' }

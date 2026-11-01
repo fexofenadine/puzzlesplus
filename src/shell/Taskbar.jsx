@@ -5,8 +5,11 @@ import avatar from './avatar.png'
 import minesweeper from './icons/minesweeper.png'
 import takuzu from './icons/takuzu.png'
 import nonograms from './icons/nonograms.png'
+import help from './icons/help.svg'
+import book from './icons/book.svg'
 
 export const icons = { minesweeper, takuzu, nonograms }
+export { book, help }
 
 const REPO = 'https://github.com/fexofenadine/puzzlesplus'
 
@@ -33,9 +36,17 @@ const StartItem = ({ icon, onClick }, children) => (
   </li>
 )
 
+//a page of the site, the start menu closing behind it
+const go = (actions, href) => () => {
+  actions.closeMenu()
+  location.assign(href)
+}
+
 //a windows 95 taskbar: start menu, a button per game and a tray with the boss key and clock
-const Taskbar = ({ key, name, state, actions }) => {
+//name is for the about item, own is a page's window that is not a game, { title, icon }
+const Taskbar = ({ key, name, own, state, actions }) => {
   const open = state.menu && state.menu.start
+  const { root } = state
   return (
     <footer key={key} class={s.root}>
       <div class={s.start} tabindex={-1} onfocusout={leave(actions)}>
@@ -61,8 +72,16 @@ const Taskbar = ({ key, name, state, actions }) => {
                 </StartItem>
               ))}
               <li class={s.separator} />
-              <StartItem onClick={() => actions.toggleHowTo()}>How to Play...</StartItem>
-              <StartItem onClick={() => actions.toggleAbout()}>About {name}...</StartItem>
+              <StartItem icon={help} onClick={go(actions, `${root}how-to-play/`)}>
+                How to Play
+              </StartItem>
+              {games.map(([id, title]) => (
+                <StartItem icon={book} onClick={go(actions, `${root}${id}/guide/`)}>
+                  {title} Guide
+                </StartItem>
+              ))}
+              <li class={s.separator} />
+              {name && <StartItem onClick={() => actions.toggleAbout()}>About {name}...</StartItem>}
               <StartItem
                 icon={avatar}
                 onClick={() => {
@@ -89,6 +108,18 @@ const Taskbar = ({ key, name, state, actions }) => {
             <span class={s.name}>{title}</span>
           </button>
         ))}
+        {own && (
+          <button
+            type="button"
+            class={state.windowState === 'open' ? s.taskPressed : s.task}
+            tabindex={-1}
+            title={own.title}
+            onclick={() => actions.taskbarGame(state.page)}
+          >
+            <img src={own.icon} alt="" width="16" height="16" />
+            <span class={s.name}>{own.title}</span>
+          </button>
+        )}
       </div>
       <div class={s.tray}>
         <button

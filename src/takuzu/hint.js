@@ -7,6 +7,10 @@ export const completeWithErrors =
 
 const marked = (entries) => Object.fromEntries(entries)
 
+//the guide section a hint is about, techniques have their own, mistakes share one
+export const guideTopic = ({ kind }) =>
+  ({ break: 'mistakes', wrong: 'mistakes', reveal: 'mistakes', solved: null })[kind] ?? kind
+
 //the next thing to do: a broken rule first, then a cell that can't be right, then the easiest step
 //returns { kind, text, marks, place? }, marks maps a cell to source, zero, one or wrong
 export const findHint = ({ board, solution, n }) => {

@@ -31,6 +31,23 @@
   border-color: var(--shadow) var(--light) var(--light) var(--shadow);
 }
 
+/*a small raised button floated into the hint's first line*/
+.more {
+  float: right;
+  margin: 0 0 2px 6px;
+  padding: 0 4px 1px;
+  color: var(--text);
+  font-family: var(--ui-font);
+  text-decoration: none;
+  background: var(--face);
+  border: 1px solid;
+  border-color: var(--light) var(--dark-shadow) var(--dark-shadow) var(--light);
+}
+
+.more:active {
+  border-color: var(--dark-shadow) var(--light) var(--light) var(--dark-shadow);
+}
+
 /*a hint's outline on a board cell, dark edged to show on every theme*/
 .outline::after {
   position: absolute;

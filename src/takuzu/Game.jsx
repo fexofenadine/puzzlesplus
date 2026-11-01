@@ -7,11 +7,15 @@ import Play from '../Play'
 import SideButton, { HintIcon, UndoIcon } from '../shell/SideButton'
 import WindowControls, { windowProps } from '../shell/WindowControls'
 import { PausedCover, HintPanel } from '../shell/Board'
+import { guideTopic } from './hint'
 import { watchWindow } from '../shell/zoom'
 import { clockDigits } from '../shell/clock'
 import Menu from './Menu'
 import Cell from './Cell'
 import { EMPTY, violations } from './rules'
+
+//the guide's section on a hint, none for a solved board
+const more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`
 
 export const running = ({ start, win, dealing }) => start >= 0 && !win && !dealing
 
@@ -71,7 +75,7 @@ const Game = ({ key, state, actions }) => {
           ))}
           {paused && <PausedCover onResume={() => actions.pause(false)} />}
         </div>
-        {hint && !paused && <HintPanel text={hint.text} />}
+        {hint && !paused && <HintPanel text={hint.text} more={more(hint)} />}
       </div>
     </Dialog>
   )

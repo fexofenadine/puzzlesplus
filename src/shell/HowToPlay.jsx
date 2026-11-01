@@ -3,6 +3,7 @@ import s from './About.module.css'
 import Overlay from '../Overlay'
 import Dialog from '../Dialog'
 import Button from '../Button'
+import { Link } from './About'
 
 //a short rules summary in the about box's style, each game gives its own paragraphs
 const HowToPlay = ({ key, name, actions }, children) => (
@@ -10,6 +11,10 @@ const HowToPlay = ({ key, name, actions }, children) => (
     <Dialog title={`How to Play ${name}`} onClose={actions.toggleHowTo}>
       <div class={s.wide}>
         {children}
+        <p>
+          The <Link href="guide/">{name} guide</Link> explains every solving technique with
+          examples.
+        </p>
         <p>
           Every game: F2 or N starts a new game, H gives a hint, P pauses, + and - zoom, and Esc
           hides the game behind a spreadsheet.

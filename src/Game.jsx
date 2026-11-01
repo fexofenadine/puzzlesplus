@@ -8,8 +8,12 @@ import Cell from './Cell'
 import SideButton, { HintIcon } from './shell/SideButton'
 import WindowControls, { windowProps } from './shell/WindowControls'
 import { PausedCover, HintPanel } from './shell/Board'
+import { guideTopic } from './hint'
 import { watchWindow } from './shell/zoom'
 import { clockDigits } from './shell/clock'
+
+//the guide's section on a hint, none for a solved board
+const more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`
 
 export const running = ({ start, win, lose }) => start >= 0 && !win && !lose
 
@@ -98,7 +102,9 @@ const Game = ({ key, state, actions }) => (
         ))}
         {state.game.paused && <PausedCover onResume={() => actions.pause(false)} />}
       </div>
-      {state.hint && !state.game.paused && <HintPanel text={state.hint.text} />}
+      {state.hint && !state.game.paused && (
+        <HintPanel text={state.hint.text} more={more(state.hint)} />
+      )}
     </div>
   </Dialog>
 )
