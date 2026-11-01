@@ -1,122 +1,67 @@
 # Puzzles Plus
 
-Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone, zoom and animated themes ported from xscreensaver. All three games share the window, the six themes and their backgrounds, pause and the boss key, and your theme and zoom carry over between them. The Game menu switches between them, and Help → How to Play sums up each game's rules.
+Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All three games share the window, the six themes and their backgrounds, pause and the boss key, and your theme and zoom carry over between them.
 
 | [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    |
 | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) |
 
-## Themes
+Each game has a guide, from the rules to every solving technique with worked examples: the [Minesweeper](https://fexofenadine.github.io/puzzlesplus/minesweeper/guide/), [Takuzu](https://fexofenadine.github.io/puzzlesplus/takuzu/guide/) and [Nonograms](https://fexofenadine.github.io/puzzlesplus/nonograms/guide/) guides. [How to Play](https://fexofenadine.github.io/puzzlesplus/how-to-play/) has all three games' rules in short.
 
-Pick a theme from the **Theme** menu. Your choice is remembered.
+## In pictures
 
-| Classic with its animated hill                       | Synthwave (expert, game over)                        |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| ![Classic](docs/screenshots/classic-hill.jpg)        | ![Synthwave](docs/screenshots/synthwave.jpg)         |
-| **Matrix**                                           | **Nord**                                             |
-| ![Matrix](docs/screenshots/matrix.jpg)               | ![Nord](docs/screenshots/nord.jpg)                   |
-| **Solarized Truchet**                                | **Solarized Phosphor**                               |
-| ![Solarized Truchet](docs/screenshots/solarized.jpg) | ![Solarized Phosphor](docs/screenshots/phosphor.jpg) |
+| Classic: a hint with its More button, and the Start menu                       | Classic's animated hill: Takuzu with Show Errors                            |
+| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| ![Minesweeper on Classic](docs/screenshots/classic-minesweeper.jpg)            | ![Takuzu over the animated hill](docs/screenshots/classic-hill-takuzu.webp) |
+| **Synthwave: a lost Expert game glitching, and best times**                    | **Matrix: Nonograms with rain glyphs and a hint**                           |
+| ![Minesweeper on Synthwave](docs/screenshots/synthwave-minesweeper.webp)       | ![Nonograms on Matrix](docs/screenshots/matrix-nonograms.webp)              |
+| **Nord: 25 × 25 Expert maximised over Substrate, with the View menu**          | **Solarized Truchet, still: a full Takuzu board with a mistake**            |
+| ![Nonograms on Nord](docs/screenshots/nord-nonograms.webp)                     | ![Takuzu on Solarized Truchet](docs/screenshots/solarized-takuzu.jpg)       |
+| **Solarized Phosphor: Open Games after closing a window**                      | **A guide page, its example drawn by the game's own code**                  |
+| ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                             |
 
-## Takuzu Plus
-
-Binary puzzles: fill the grid with 0s and 1s so that no row or column has three alike in a row, every row and column holds as many 0s as 1s, and no two rows or two columns are the same.
-
-| Classic, with a hint                                        | Synthwave, with Show Errors                                   |
-| ----------------------------------------------------------- | ------------------------------------------------------------- |
-| ![Takuzu on Classic](docs/screenshots/takuzu-classic.jpg)   | ![Takuzu on Synthwave](docs/screenshots/takuzu-synthwave.jpg) |
-| **Matrix, with rain glyphs**                                | **Nord, 14 × 14 expert**                                      |
-| ![Takuzu on Matrix](docs/screenshots/takuzu-matrix.jpg)     | ![Takuzu on Nord](docs/screenshots/takuzu-nord.jpg)           |
-| **A full board with a mistake**                             | **Best times**                                                |
-| ![Full board prompt](docs/screenshots/takuzu-solarized.jpg) | ![Takuzu best times](docs/screenshots/takuzu-phosphor.jpg)    |
-
-- **Every board has exactly one solution** and can be solved by logic alone. Boards are made fresh each game: a random full grid, then clues taken away for as long as the chosen level can still finish it.
-- **Five levels** (Game menu), each needing its own reasoning: **Easy** uses pairs (two alike side by side) and gaps (a cell between two alike); **Medium** adds full counts (a line with all its 0s or all its 1s); **Tricky** adds one left (a line needing just one more of a value, which can't go where it would leave three alike) and twins (a line two cells short of matching a full one finishes the other way round); **Hard** adds balance (every way to finish a line agrees on a cell) and no repeated lines in general; **Expert** adds a short what-if (a value that soon breaks a rule must be the other one). A board is only dealt at a level if it needs that level's reasoning, as puzzle collections such as Simon Tatham's Unruly grade them.
-- **Five sizes** (Size menu), 6 × 6 to 14 × 14. 6 × 6 has no Expert.
-- **Playing**: click a cell to step it through 0, 1 and empty, right-click to step back, or tap on a touch screen. Clues are framed and can't be changed. **Undo** (Ctrl+Z, the Game menu or the arrow button) takes back one change at a time.
-- **Hint** (`H`, the Game menu or the ? button): points out a broken rule first, then a cell that can't fit the only solution, and otherwise the easiest next step with the cells it reasons from outlined in blue, the cell it fills in green and the reason under the board.
-- **Show Errors** (Game menu, off by default) stripes cells that break a rule as you go. When every cell is filled but the board isn't solved, the game asks whether you want a hint, or lets you find the mistake yourself. It asks straight away when the last click left a cell on its final value, and otherwise waits a moment, so stepping the last cell through 0 on the way to 1 never sets it off.
-- **Colours**: the two values are tiles in near complementary colours from each theme, blue and orange on Classic, cyan and magenta on the Solarized themes, cyan and pink on Synthwave, frost and aurora on Nord, and green on black against black on green on Matrix. **Rain Glyphs** (Theme menu, on Matrix) draws them as two glyphs from the digital rain instead.
-- **Best times** for every size and level, with and without hints, the window title (Takuzu on Classic, Takuzu Plus elsewhere), zoom and fit, pause, the boss key and the shortcuts work as in Minesweeper Plus. Big expert boards are dealt in the background, so the window never stalls.
-
-## Nonograms Plus
-
-Picture logic puzzles: the numbers beside each row and above each column give the lengths of its runs of filled cells, in order, with at least one empty cell between runs. Fill the cells that match every clue and a picture appears.
-
-| Classic, with a hint                                            | Synthwave, with Show Errors                                         |
-| --------------------------------------------------------------- | ------------------------------------------------------------------- |
-| ![Nonograms on Classic](docs/screenshots/nonograms-classic.jpg) | ![Nonograms on Synthwave](docs/screenshots/nonograms-synthwave.jpg) |
-| **Matrix, with rain glyphs**                                    | **Nord, 25 × 25 expert**                                            |
-| ![Nonograms on Matrix](docs/screenshots/nonograms-matrix.jpg)   | ![Nonograms on Nord](docs/screenshots/nonograms-nord.jpg)           |
-| **Every fill placed, with a mistake**                           | **Best times**                                                      |
-| ![Full board prompt](docs/screenshots/nonograms-solarized.jpg)  | ![Nonograms best times](docs/screenshots/nonograms-phosphor.jpg)    |
-
-- **Every board has exactly one solution** and can be solved by logic alone. Pictures are random blobs made fresh each game, sometimes mirrored, and a picture that logic can't finish is touched up cell by cell until it can.
-- **Four levels** (Game menu), each needing its own reasoning: **Easy** uses lines a clue settles alone, overlaps (cells a run covers wherever it sits) and gaps no run can reach, counting only crossed out cells; **Medium** uses the same overlaps and reach with the filled cells too, so a filled cell can pin a run in place; **Hard** uses everything one line proves when every way of fitting its clue is tried; **Expert** adds a what-if (a cell that would leave another line unable to match its clue must be the other way). A board is only dealt at a level if it needs that level's reasoning.
-- **Five sizes** (Size menu), 5 × 5 to 25 × 25, with a thicker line every five cells. 5 × 5 has no Expert, since boards that small never need it.
-- **Playing**: click a cell to fill it, again to cross it out and again to clear it, right-click to step back. Crosses are notes for yourself and the win never needs them. Drag to paint along a row or column, one undo step per drag. On a touch screen a button beside the face picks whether taps fill or cross, and dragging paints instead of scrolling. Clues dim once their line matches, and the left counter shows the cells still to fill.
-- **Hint** (`H`, the Game menu or the ? button): points out a clue that can't be matched any more first, then a cell that can't fit the only solution, and otherwise the easiest next step, with its clue and the cells it reasons from outlined in blue, the cells it settles shown faintly in green and the reason under the board.
-- **Show Errors** (Game menu, off by default) turns a clue red once its line can't match. When every fill is placed but the picture is wrong, the game asks whether you want a hint, straight away after a drag, or after a moment when a single click may be on its way to a cross.
-- **Rain Glyphs** (Theme menu, on Matrix) draws filled cells as a glyph from the digital rain.
-- **Best times** for every size and level, with and without hints, the window title (Nonograms on Classic, Nonograms Plus elsewhere), zoom and fit, pause, the boss key and the shortcuts work as in the other games. Past 999 seconds the clock grows a fourth digit on every theme but Classic. Boards are dealt in the background, so the window never stalls.
-
-## Minesweeper Plus
-
-On top of the [original game](https://github.com/frenzzy/minesweeper), which has the classic look, the beginner, intermediate, expert and custom levels, marks, best times and touch support, this fork adds:
-
-### Six themes
-
-- **Classic** keeps the Windows look, with a freely licensed background colour matched to the Windows XP wallpaper and a Windows 95 pixel font for the menus and title bar. It can also show an animated Bliss-style scene, off by default: a green hill colour matched to Bliss under a live sky with drifting cumulus and cirrus clouds and their shadows.
-- **Synthwave** uses the SynthWave '84 palette over a neon wireframe landscape, with VHS scanlines, film grain, a rolling tracking band and tape wobble, glitching counters, a pulsing neon window glow and the Orbitron font.
-- **Matrix** is soft phosphor green on black over falling code rain ported from xscreensaver's GLMatrix, with glowing glyphs, CRT scanlines, glitching counters, a pulsing green haze around the window and the Courier Prime typewriter font.
-- **Nord** uses the Nord Dark palette over xscreensaver's Substrate, which grows straight and curved cracks across the screen and shades the gaps between them with sand in Nord's frost and aurora colours.
-- **Solarized Truchet** uses the Solarized palette and JetBrains Mono over xscreensaver's Truchet, slowly panning across winding tiles of arcs and lines in a Solarized accent colour.
-- **Solarized Phosphor** has the same colours over xscreensaver's Phosphor, a glass terminal with long-sustain phosphor that types out this game's own source code.
-- In Synthwave and Matrix, hitting a mine makes the minefield glitch out until the next game.
-
-### Gameplay
-
-- **Extreme level**: 39 × 21 with 169 mines, Expert grown by 30% each way at the same mine density. It has its own best time.
-- **Safe First Click** (on by default): mines are only placed once the first cell is opened, never under it. Flagging or chording first does not start the game.
-- **No Guessing**: the first click opens an empty area and every board can be solved with logic alone. A solver checks each board and redeals until it finds one, within a few milliseconds even on Expert and Extreme.
-- **Hint** (Game menu, `H`, or the ? button beside the face on every theme but Classic): highlights a move that follows with certainty and explains the reasoning under the board. Blue marks the numbers it reasons from, green cells are safe, red cells are mines and amber marks flags that contradict a number. It only uses the visible numbers and your flags, and says so when only a guess is left.
-- **Double-click chording**: double-click (or tap) a revealed number whose mines are all flagged to open every unflagged neighbour. If the flags don't match the number, the reason is shown under the board: extra flags are outlined in amber, and the cells where the missing flags belong in dashed violet. Explanations stay until the board changes, so clicking never shifts the board under the pointer.
-- **Pause** (title bar button or `P`): stops the clock and hides the board behind plain tiles until you press play. The game also pauses when the tab is hidden or the window loses focus, and waits for play when you come back.
-- **Boss key** (`Esc` or the button in the bottom right corner): covers the screen with a spreadsheet of fresh made up figures, renames the tab and swaps its icon, and pauses the game. Press it again, or click the 100% in the status bar, to go back.
-- **Best times** are kept in two tabs, one for games played without hints and one for games where a hint was used.
-- **Shortcuts**: F2 or N starts a new game, H asks for a hint, P pauses and Esc is the boss key (Esc closes an open menu first). They are ignored while typing in a dialog or with Ctrl, Alt or Cmd held.
-
-### Window and display
-
-- **Title and About**: the window is titled Minesweeper Plus on every theme except Classic, which keeps the original's title. Help → About Minesweeper Plus describes the game, credits the original author and links to this repository and its licences, and Help → How to Play sums up the rules.
-- **Zoom**: the − and + buttons in the title bar scale the whole window in steps from 50% to 400%, and double-clicking the title bar goes back to 100%. The zoom is remembered.
-- **Fits the screen**: when a level, custom grid, theme or browser size would make the window too big, it shrinks to fit, but never below 62.5% (about 10 pixel cells), where the page scrolls instead. Zooming in past the fitted size is allowed and scrolls too. On small screens the margin around the window shrinks as well.
-- **Portrait screens**: on a screen taller than it is wide, a board that is wider than tall (Expert, Extreme or a wide custom grid) is shown turned on its side, columns as rows, so it fills the screen instead of shrinking. Numbers stay upright, and it switches back when the screen turns to landscape.
-- **Full-screen backgrounds**: wallpapers always cover the browser window, whatever its size, zoom or orientation, and the animated ones draw at the screen's own resolution so they stay sharp on high density displays.
-- **Background settings** (Theme menu, every theme except Synthwave): each animated background has the options of the xscreensaver original, such as density, speed, glyph set, fog and waves for GLMatrix, growth delay, crack counts, sand grains, circular cracks, wireframe and detail for Substrate, tile and line sizes, curves, angles, scrolling and line strength for Truchet, and scale, fade, typing speed, colour and brightness for Phosphor. Classic's hill has wind speed, cloud cover and cloud shadows.
-- **Static backgrounds**: every animated background can be switched off. The Solarized themes then show their code photo, Matrix a digital rain photo, Nord a finished still picture, and Classic, where animation is off by default, its usual photo.
-- Settings preview live, Cancel puts them back and Defaults restores the original look. Settings for every background are saved together.
-
-### Features in pictures
-
-| A hint                                         | A chord that cannot open yet                          |
-| ---------------------------------------------- | ----------------------------------------------------- |
-| ![Hint](docs/screenshots/hint.jpg)             | ![Chord explanation](docs/screenshots/chord.jpg)      |
-| **Best times with and without hints**          | **Background settings**                               |
-| ![Best times](docs/screenshots/best-times.jpg) | ![Background settings](docs/screenshots/settings.jpg) |
-| **Paused**                                     | **The boss key**                                      |
-| ![Paused](docs/screenshots/paused.jpg)         | ![Boss key spreadsheet](docs/screenshots/boss.jpg)    |
-
-**Expert turned on its side on a phone**
+**Expert turned on its side on a phone, over Matrix's still wallpaper**
 
 <img src="docs/screenshots/portrait.jpg" alt="Expert turned on its side on a phone" width="260">
 
-### Under the hood
+## Minesweeper Plus
+
+A fork of [frenzzy/minesweeper](https://github.com/frenzzy/minesweeper), whose Classic theme still looks and plays like the original, plus:
+
+- An **Extreme** level (39 × 21, 169 mines) beside Beginner, Intermediate, Expert and Custom.
+- **Safe First Click** and **No Guessing**, which deals only boards logic alone can clear.
+- **Hints** from the numbers you can see and your flags, explained under the board, and **chording** that explains itself when it can't open.
+- Best times with and without hints, and wide boards turned on their side on portrait screens.
+
+## Takuzu Plus
+
+Fill the grid with 0s and 1s: no three alike in a row, as many 0s as 1s in every line, and no two rows or columns the same.
+
+- Five levels from Easy to Expert and five sizes from 6 × 6 to 14 × 14, every board with one solution and graded by the reasoning it really needs.
+- Hints that find broken rules and wrong cells before the next step, Show Errors, undo and a question when a full board is wrong.
+
+## Nonograms Plus
+
+Fill the cells whose runs match the clues beside each row and above each column, and a picture appears.
+
+- Four levels and five sizes from 5 × 5 to 25 × 25, random pictures touched up until logic alone can finish them.
+- Drag to paint along a line, crosses as notes, a fill or cross mode for touch screens, hints, Show Errors and undo.
+
+## Every game
+
+- **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the View menu or with + and -.
+- **Six themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet and Solarized Phosphor, most over an xscreensaver port with its original options, any of which can be switched to a still picture.
+- **Hints with a More button** that opens their technique in the game's guide.
+- **Pause**, automatic when you switch away, and a **boss key** (Esc) that hides everything behind a spreadsheet.
+- Best times per level, with and without hints, and an offline-capable service worker.
+
+## Under the hood
 
 - Rebuilt on [Vite](https://vite.dev) with Vitest, ESLint and Prettier, replacing the abandoned hyperapp-tools webpack 4 setup.
 - A plain static build with readable asset names, versioned links so browsers never mix old and new files, and a simple offline-capable service worker.
 - Settings survive browsers that block site storage, falling back to the defaults.
-- The games are pages of one build. Code they share (themes, backgrounds, zoom, pause, the boss key, best times, settings storage, dealing in a worker) lives in `src/shell`, Minesweeper keeps the original's file layout in `src`, and Takuzu and Nonograms have `src/takuzu` and `src/nonograms`.
+- The games and their guides are pages of one build. Code the games share (the taskbar and window, themes, backgrounds, zoom, pause, the boss key, best times, settings storage, dealing in a worker) lives in `src/shell`, Minesweeper keeps the original's file layout in `src`, Takuzu and Nonograms have `src/takuzu` and `src/nonograms`, and the guides `src/guide`.
+- The guides' examples are real positions from dealt boards, drawn with each game's own cells and captioned by its own hint code, and a test checks every one still shows its technique.
 - Takuzu's and Nonograms' rules, solvers, the technique ladders behind hints and difficulty, and the generators are plain modules with no interface code, and boards are dealt in a web worker. Nonograms solves a line by dynamic programming over every way its clue can fit.
 - Animated backgrounds are canvas ports in `src/shell/backgrounds`, one file each. A port declares its options and the settings dialog builds itself from them, so adding another xscreensaver hack needs no other code. Phosphor's source code text is only downloaded when that theme is used.
 - Google Analytics removed.
