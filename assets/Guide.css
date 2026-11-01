@@ -1,0 +1,160 @@
+/*the guide reads at its own size, whatever zoom the games use*/
+.Guide_page {
+  --scale: 1;
+  --gap: 50px;
+}
+
+@media (max-width: 600px), (max-height: 600px) {
+  .Guide_page {
+    --gap: 8px;
+  }
+}
+
+/*contents beside the article, the window filling the room above the taskbar*/
+.Guide_body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4px;
+  box-sizing: border-box;
+  width: min(1000px, calc(100vw - 2 * var(--gap) - 8px));
+  height: calc(100vh - var(--taskbar) - 2 * var(--gap) - 50px);
+  height: calc(100dvh - var(--taskbar) - 2 * var(--gap) - 50px);
+  padding: 4px;
+}
+
+.Guide_contents,
+.Guide_article {
+  overflow: auto;
+  color: var(--text);
+  background: var(--input);
+  border: 1px solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+  box-shadow: inset 1px 1px var(--dark-shadow);
+  user-select: text;
+}
+
+.Guide_contents {
+  padding: 6px 4px;
+  font-family: var(--ui-font);
+  -webkit-font-smoothing: var(--font-smoothing);
+}
+
+.Guide_part {
+  margin: 0 0 8px;
+}
+
+.Guide_partLink {
+  display: block;
+  padding: 2px 4px;
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.Guide_list {
+  margin: 0;
+  padding: 0 0 0 12px;
+  list-style: none;
+}
+
+.Guide_link {
+  display: block;
+  padding: 2px 4px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.Guide_partLink:hover,
+.Guide_link:hover,
+.Guide_partLink:focus,
+.Guide_link:focus {
+  color: var(--highlight-text);
+  background: var(--highlight);
+  outline: 0;
+}
+
+.Guide_article {
+  padding: 4px 18px 24px;
+  font:
+    13px/1.5 var(--text-font),
+    sans-serif;
+}
+
+.Guide_partTitle {
+  margin: 18px 0 6px;
+  padding: 0 0 2px;
+  font-family: var(--title-font);
+  font-size: 18px;
+  border-bottom: 2px solid var(--shadow);
+}
+
+.Guide_title {
+  margin: 14px 0 4px;
+  font-size: 14px;
+}
+
+.Guide_section {
+  scroll-margin-top: 8px;
+}
+
+.Guide_section p,
+.Guide_section ul {
+  max-width: 68ch;
+  margin: 0 0 8px;
+}
+
+.Guide_section li {
+  margin: 0 0 3px;
+}
+
+.Guide_section a,
+.Guide_inline {
+  color: var(--highlight);
+}
+
+/*the section a link or hint opened*/
+.Guide_section[data-current] .Guide_title {
+  color: var(--highlight-text);
+  background: var(--highlight);
+  padding: 0 4px;
+}
+
+.Guide_figure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: flex-start;
+  margin: 8px 0 12px;
+}
+
+/*boards sit on the window face, as they do in the game*/
+.Guide_board {
+  flex: none;
+  padding: 6px;
+  font-size: 11px;
+  line-height: 16px;
+  background: var(--face);
+  border: 1px solid;
+  border-color: var(--light) var(--shadow) var(--shadow) var(--light);
+  user-select: none;
+}
+
+.Guide_caption {
+  flex: 1 1 220px;
+  max-width: 46ch;
+  padding: 4px 6px;
+  font-style: italic;
+  border-left: 3px solid var(--hint-color, #2e8bff);
+}
+
+/*narrow screens put the contents above the article*/
+@media (max-width: 700px) {
+  .Guide_body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .Guide_contents {
+    max-height: 22vh;
+  }
+}

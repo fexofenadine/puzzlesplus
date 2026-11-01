@@ -1,0 +1,269 @@
+.Digit_root {
+  position: relative;
+  background: var(--lcd);
+  border: 1px solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+}
+
+.Digit_digit {
+  display: inline-block;
+  vertical-align: top;
+  fill: var(--lcd-on);
+}
+
+.Digit_digit[data-n='-'] .Digit_t,
+.Digit_digit[data-n='-'] .Digit_rt,
+.Digit_digit[data-n='-'] .Digit_rb,
+.Digit_digit[data-n='-'] .Digit_b,
+.Digit_digit[data-n='-'] .Digit_lb,
+.Digit_digit[data-n='-'] .Digit_lt,
+.Digit_digit[data-n='0'] .Digit_m,
+.Digit_digit[data-n='1'] .Digit_t,
+.Digit_digit[data-n='1'] .Digit_b,
+.Digit_digit[data-n='1'] .Digit_lb,
+.Digit_digit[data-n='1'] .Digit_lt,
+.Digit_digit[data-n='1'] .Digit_m,
+.Digit_digit[data-n='2'] .Digit_rb,
+.Digit_digit[data-n='2'] .Digit_lt,
+.Digit_digit[data-n='3'] .Digit_lb,
+.Digit_digit[data-n='3'] .Digit_lt,
+.Digit_digit[data-n='4'] .Digit_t,
+.Digit_digit[data-n='4'] .Digit_b,
+.Digit_digit[data-n='4'] .Digit_lb,
+.Digit_digit[data-n='5'] .Digit_rt,
+.Digit_digit[data-n='5'] .Digit_lb,
+.Digit_digit[data-n='6'] .Digit_rt,
+.Digit_digit[data-n='7'] .Digit_b,
+.Digit_digit[data-n='7'] .Digit_lb,
+.Digit_digit[data-n='7'] .Digit_lt,
+.Digit_digit[data-n='7'] .Digit_m,
+.Digit_digit[data-n='9'] .Digit_lb {
+  fill: var(--lcd-off);
+}
+
+/*neon theme counter glitch and scanlines*/
+:root:is([data-theme='synthwave'], [data-theme='matrix']) .Digit_root {
+  animation: Digit_lcdGlitch 5.3s steps(1, end) infinite;
+}
+
+:root:is([data-theme='synthwave'], [data-theme='matrix']) .Digit_root::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background:
+    linear-gradient(
+        transparent,
+        color-mix(in srgb, var(--fringe-b) 35%, transparent) 50%,
+        transparent
+      )
+      0 -40% / 100% 35% no-repeat,
+    repeating-linear-gradient(transparent 0 1px, rgba(0, 0, 0, 0.45) 1px 2px);
+  pointer-events: none;
+  content: '';
+  animation:
+    Digit_lcdBand 2.2s linear infinite,
+    Digit_lcdFlicker 0.12s steps(2) infinite;
+}
+
+@keyframes Digit_lcdGlitch {
+  0% {
+    transform: none;
+    filter: drop-shadow(1px 0 var(--fringe-a)) drop-shadow(-1px 0 var(--fringe-b));
+  }
+  18% {
+    transform: translateX(-2px);
+    filter: drop-shadow(3px 0 var(--fringe-a)) drop-shadow(-3px 0 var(--fringe-b));
+  }
+  20% {
+    transform: translate(2px, 1px) skewX(-6deg);
+    clip-path: inset(0 0 55% 0);
+  }
+  22% {
+    transform: none;
+    clip-path: none;
+    filter: drop-shadow(1px 0 var(--fringe-a)) drop-shadow(-1px 0 var(--fringe-b));
+  }
+  57% {
+    transform: translateY(-1px);
+    clip-path: inset(40% 0 20% 0);
+    filter: drop-shadow(-3px 0 var(--fringe-a)) drop-shadow(3px 0 var(--fringe-b)) hue-rotate(60deg);
+  }
+  59% {
+    transform: none;
+    clip-path: none;
+    filter: drop-shadow(1px 0 var(--fringe-a)) drop-shadow(-1px 0 var(--fringe-b));
+  }
+  84% {
+    transform: translateX(3px) scaleX(1.04);
+  }
+  86% {
+    transform: none;
+  }
+}
+
+@keyframes Digit_lcdBand {
+  to {
+    background-position: 0 140%;
+  }
+}
+
+@keyframes Digit_lcdFlicker {
+  50% {
+    opacity: 0.6;
+  }
+}
+.Play_root {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 3px 3px 2px 2px;
+  background: var(--cell);
+  border: 1px solid var(--cell-shadow);
+  outline: 0;
+  cursor: pointer;
+}
+
+.Play_root::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid;
+  border-color: var(--cell-light) var(--cell-shadow) var(--cell-shadow) var(--cell-light);
+  content: '';
+}
+
+.Play_root:active {
+  padding: 4px 1px 1px 4px;
+}
+
+.Play_root:active::before {
+  border-width: 1px 0 0 1px;
+  border-color: var(--cell-shadow);
+}
+
+.Play_down,
+.Play_root:active .Play_up {
+  display: none;
+}
+
+.Play_face,
+.Play_root:active .Play_down {
+  display: block;
+}
+
+.Play_face {
+  fill: var(--smiley-line);
+}
+
+.Play_skin {
+  fill: var(--smiley);
+}
+.SideButton_root {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 3px 3px 2px 2px;
+  color: var(--glyph);
+  background: var(--cell);
+  border: 1px solid var(--cell-shadow);
+  outline: 0;
+  cursor: pointer;
+}
+
+.SideButton_root::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid;
+  border-color: var(--cell-light) var(--cell-shadow) var(--cell-shadow) var(--cell-light);
+  content: '';
+}
+
+.SideButton_root:active:not(:disabled) {
+  padding: 4px 1px 1px 4px;
+}
+
+.SideButton_root:active:not(:disabled)::before {
+  border-width: 1px 0 0 1px;
+  border-color: var(--cell-shadow);
+}
+
+.SideButton_root:disabled {
+  color: var(--cell-shadow);
+  cursor: default;
+}
+
+.SideButton_root svg {
+  display: block;
+  fill: currentColor;
+}
+/*play button over the hidden board*/
+.Board_paused {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Board_paused svg {
+  display: block;
+  margin: 2px;
+  fill: currentColor;
+}
+
+/*explanation under the field, never wider than it*/
+.Board_hint {
+  box-sizing: border-box;
+  width: 0;
+  min-width: 100%;
+  margin: 6px 0 0;
+  padding: 3px 4px 4px;
+  color: var(--text);
+  line-height: 1.3;
+  background: var(--input);
+  border: 2px solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+}
+
+/*a small raised button floated into the hint's first line*/
+.Board_more {
+  float: right;
+  margin: 0 0 2px 6px;
+  padding: 0 4px 1px;
+  color: var(--text);
+  font-family: var(--ui-font);
+  text-decoration: none;
+  background: var(--face);
+  border: 1px solid;
+  border-color: var(--light) var(--dark-shadow) var(--dark-shadow) var(--light);
+}
+
+.Board_more:active {
+  border-color: var(--dark-shadow) var(--light) var(--light) var(--dark-shadow);
+}
+
+/*a hint's outline on a board cell, dark edged to show on every theme*/
+.Board_outline::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid var(--hint-color);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  content: '';
+}
