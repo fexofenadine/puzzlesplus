@@ -1,8 +1,8 @@
-import { L as h, c as help_default } from "./actions-BxKkiQNu.js";
-import { n as Rules } from "./HowToPlay-EsQ4kwQR.js";
-import { t as Rules$1 } from "./HowToPlay-BPMYRbC9.js";
-import { n as Rules$2 } from "./HowToPlay-B1V20ijH.js";
-import { n as Page, r as startGuide } from "./Guide-Dj1r1xki.js";
+import { L as h, c as help_default } from "./actions-Cxdp6jdC.js";
+import { n as Rules } from "./HowToPlay-TwUi8QRh.js";
+import { t as Rules$1 } from "./HowToPlay-DK4sYpQN.js";
+import { n as Rules$2 } from "./HowToPlay-dHnZ5qGE.js";
+import { n as Page, r as startGuide } from "./Guide-B-V0ozYZ.js";
 //#region src/guide/howToPlay.jsx
 var game = (id, title, Rules) => ({
 	id,

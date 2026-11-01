@@ -1,4 +1,4 @@
-import { L as h, u as HowToPlay } from "./actions-BxKkiQNu.js";
+import { L as h, u as HowToPlay } from "./actions-Cxdp6jdC.js";
 //#region src/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Open every square that hides no mine. Click a square to open it: a number tells how many of the eight squares around it hide mines. Open a mine and the game is lost."),
