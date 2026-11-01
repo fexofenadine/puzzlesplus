@@ -101,6 +101,7 @@
   --glow-bright: none;
   --fringe-a: rgba(255, 0, 90, 0.8);
   --fringe-b: rgba(0, 255, 255, 0.8);
+  --taskbar: calc(28px + env(safe-area-inset-bottom));
 }
 
 :root[data-theme='synthwave'] {
@@ -333,12 +334,15 @@ body {
 
 main {
   position: relative;
+  box-sizing: border-box;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-width: 100%;
   min-height: 100%;
+  /*room for the taskbar*/
+  padding-bottom: var(--taskbar);
   vertical-align: top;
   isolation: isolate;
   user-select: none;

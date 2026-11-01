@@ -1,0 +1,215 @@
+/*fixed to the bottom, main's bottom padding keeps the game window clear of it*/
+.root {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--taskbar);
+  padding: 2px calc(2px + env(safe-area-inset-right)) calc(2px + env(safe-area-inset-bottom))
+    calc(2px + env(safe-area-inset-left));
+  color: var(--text);
+  font-family: var(--ui-font);
+  -webkit-font-smoothing: var(--font-smoothing);
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: var(--text-glow);
+  background: var(--face);
+  border-top: 1px solid var(--face);
+  box-shadow:
+    inset 0 1px var(--light),
+    var(--glow-dim);
+  user-select: none;
+}
+
+.button {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 22px;
+  margin: 0;
+  padding: 0 5px 0 4px;
+  color: inherit;
+  font: inherit;
+  text-shadow: inherit;
+  background: var(--face);
+  border: 1px solid;
+  border-color: var(--light) var(--dark-shadow) var(--dark-shadow) var(--light);
+  box-shadow:
+    inset -1px -1px var(--shadow),
+    inset 1px 1px var(--face);
+  outline: 0;
+  cursor: pointer;
+}
+
+.pressed {
+  composes: button;
+}
+
+.button:active,
+.pressed {
+  border-color: var(--dark-shadow) var(--light) var(--light) var(--dark-shadow);
+  box-shadow: inset 1px 1px var(--shadow);
+}
+
+.button img {
+  flex: none;
+}
+
+.start {
+  position: relative;
+  flex: none;
+  outline: 0;
+}
+
+.startLabel {
+  font-weight: bold;
+}
+
+.avatar {
+  border-radius: 2px;
+}
+
+.tasks {
+  display: flex;
+  flex: 1;
+  gap: 3px;
+  min-width: 0;
+  padding-left: 4px;
+  border-left: 1px solid var(--shadow);
+  box-shadow: inset 1px 0 var(--light);
+}
+
+.task {
+  composes: button;
+  flex: 0 1 150px;
+}
+
+/*the open window's button stays pushed in, dithered like windows 95*/
+.taskPressed {
+  composes: pressed;
+  flex: 0 1 150px;
+  font-weight: bold;
+  background: repeating-conic-gradient(var(--light) 0 25%, var(--face) 0 50%) 0 0 / 2px 2px;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tray {
+  display: flex;
+  flex: none;
+  gap: 6px;
+  align-items: center;
+  box-sizing: border-box;
+  height: 22px;
+  padding: 0 8px 0 3px;
+  border: 1px solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+}
+
+.boss {
+  composes: button;
+  height: 16px;
+  padding: 0 4px;
+}
+
+.clock {
+  min-width: 44px;
+  text-align: right;
+}
+
+.menu {
+  position: absolute;
+  bottom: calc(100% + 3px);
+  left: 0;
+  display: flex;
+  background: var(--face);
+  border: 1px solid;
+  border-color: var(--light) var(--dark-shadow) var(--dark-shadow) var(--light);
+  box-shadow:
+    inset -1px -1px var(--shadow),
+    2px 2px 2px var(--menu-shadow);
+}
+
+/*the side banner reads upwards, in the title bar's colours*/
+.banner {
+  margin: 1px 0 1px 1px;
+  padding: 6px 3px;
+  color: var(--title-text);
+  font-family: var(--title-font);
+  font-weight: normal;
+  font-size: 14px;
+  text-shadow: var(--title-glow);
+  background: linear-gradient(to top, var(--title-start), var(--title-end));
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.banner b {
+  font-weight: var(--title-weight);
+}
+
+.list {
+  min-width: 160px;
+  margin: 0;
+  padding: 1px 2px 1px 1px;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 3px 20px 3px 4px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-shadow: inherit;
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.item:hover {
+  color: var(--highlight-text);
+  text-shadow: none;
+  background: var(--highlight);
+}
+
+.itemIcon {
+  display: block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+
+.separator {
+  margin: 3px 1px 4px;
+  border-top: 1px solid var(--shadow);
+  border-bottom: 1px solid var(--light);
+}
+
+/*small screens keep the icons and drop the words*/
+@media (max-width: 600px) {
+  .startLabel,
+  .name {
+    display: none;
+  }
+
+  .task,
+  .taskPressed {
+    flex: none;
+  }
+}

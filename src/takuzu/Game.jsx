@@ -5,7 +5,7 @@ import Dialog from '../Dialog'
 import Digit from '../Digit'
 import Play from '../Play'
 import SideButton, { HintIcon, UndoIcon } from '../shell/SideButton'
-import WindowControls from '../shell/WindowControls'
+import WindowControls, { windowProps } from '../shell/WindowControls'
 import { PausedCover, HintPanel } from '../shell/Board'
 import { watchWindow } from '../shell/zoom'
 import { clockDigits } from '../shell/clock'
@@ -24,18 +24,12 @@ const Game = ({ key, state, actions }) => {
   return (
     <Dialog
       key={key}
+      hidden={state.windowState !== 'open'}
       title={state.theme === 'classic' ? 'Takuzu' : 'Takuzu Plus'}
       titleHint="Double-click for 100% zoom"
       onTitleDoubleClick={() => actions.zoom(0)}
-      controls={
-        <WindowControls
-          scale={state.zoom.scale}
-          onZoom={actions.zoom}
-          paused={paused}
-          canPause={running(game)}
-          onPause={actions.pause}
-        />
-      }
+      controls={<WindowControls {...windowProps(state, actions, paused, running(game))} />}
+      onClose={actions.close}
       onCreate={(dialog) => {
         watchWindow(dialog, actions.fit)
         actions.fit()

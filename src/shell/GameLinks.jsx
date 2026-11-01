@@ -1,7 +1,7 @@
 import { h } from 'hyperapp'
 import { SubMenuItem } from '../Menu'
 
-const games = [
+export const games = [
   ['minesweeper', 'Minesweeper'],
   ['takuzu', 'Takuzu'],
   ['nonograms', 'Nonograms'],

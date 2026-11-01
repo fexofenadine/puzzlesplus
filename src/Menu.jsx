@@ -1,6 +1,7 @@
 import { h } from 'hyperapp'
 import s from './Menu.module.css'
 import ThemeMenu from './shell/ThemeMenu'
+import ViewMenu from './shell/ViewMenu'
 import { gameLinks } from './shell/GameLinks'
 
 export const SubMenuItem = ({ key, name, hotKey, checked, disabled, onClick }, children) => (
@@ -88,6 +89,7 @@ const Menu = ({ state, actions }) => (
       <Separator />
       {gameLinks('minesweeper')}
     </MenuItem>
+    <ViewMenu state={state} actions={actions} />
     <ThemeMenu state={state} actions={actions} />
     <MenuItem name="Help" type="help" active={state.menu} onChange={actions.toggleMenu}>
       <SubMenuItem name="How to Play..." onClick={actions.toggleHowTo} />

@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { MIN_FIT, fitZoom, loadZoom, sameSize, stepZoom } from './zoom'
+import { MIN_FIT, fitZoom, loadZoom, maxZoom, sameSize, stepZoom } from './zoom'
 
 it('steps through the zoom levels and stops at the ends', () => {
   expect(stepZoom(1, 1)).toBe(1.25)
@@ -38,4 +38,10 @@ it('loads a saved zoom within limits', () => {
   expect(loadZoom()).toBe(1)
   localStorage.removeItem('scale')
   expect(loadZoom()).toBe(1)
+})
+
+it('maximises to the room whatever the steps, never below the smallest fit', () => {
+  expect(maxZoom(2.678)).toBe(2.67)
+  expect(maxZoom(5.2)).toBe(5.2)
+  expect(maxZoom(0.3)).toBe(MIN_FIT)
 })

@@ -2,7 +2,7 @@ import { load, save } from './storage'
 
 const root = document.documentElement
 
-//zoom levels the title bar buttons step through
+//zoom levels the view menu steps through
 export const steps = [0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4]
 
 //smallest readable fit, about 10px cells; below it the page scrolls
@@ -22,6 +22,13 @@ export const stepZoom = (scale, direction) =>
 export const fitZoom = (chosen, fit) =>
   fit >= chosen ? chosen : Math.min(chosen, Math.max(MIN_FIT, Math.floor(fit * 50) / 50))
 
+//maximised fills the room whatever the steps, still never below the smallest fit
+export const maxZoom = (fit) => Math.max(MIN_FIT, Math.floor(fit * 100) / 100)
+
+export const loadMaximised = () => load('maximised') === 'yes'
+
+export const saveMaximised = (maximised) => save('maximised', maximised ? 'yes' : '')
+
 export const applyZoom = (scale) => root.style.setProperty('--scale', scale)
 
 export const saveZoom = (scale) => save('scale', scale)
@@ -37,7 +44,9 @@ export const measureFit = (scale) => {
   //the margin is outside the zoom; inner sizes ignore scrollbars
   const frame = getComputedStyle(gameWindow.parentElement.parentElement)
   const width = innerWidth - parseFloat(frame.marginLeft) - parseFloat(frame.marginRight)
-  const height = innerHeight - parseFloat(frame.marginTop) - parseFloat(frame.marginBottom)
+  //the taskbar's room is main's bottom padding
+  const bar = parseFloat(getComputedStyle(gameWindow.closest('main')).paddingBottom) || 0
+  const height = innerHeight - parseFloat(frame.marginTop) - parseFloat(frame.marginBottom) - bar
   const size = {
     width: rect.width / scale,
     height: (rect.height - hanging) / scale,

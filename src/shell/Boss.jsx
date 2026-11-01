@@ -1,6 +1,5 @@
 import { h } from 'hyperapp'
 import s from './Boss.module.css'
-import Button from '../Button'
 
 const departments = [
   'Engineering',
@@ -137,14 +136,5 @@ const Boss = ({ key, state, actions }) => {
     </section>
   )
 }
-
-//floating button for the same thing, drawn in the theme
-export const BossButton = ({ key, actions }) => (
-  <div key={key} class={s.button}>
-    <Button tabIndex={-1} title="Boss key (Esc)" onClick={() => actions.boss()}>
-      <span class={s.label}>Esc</span>
-    </Button>
-  </div>
-)
 
 export default Boss

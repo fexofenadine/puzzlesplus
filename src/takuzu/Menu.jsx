@@ -2,6 +2,7 @@ import { h } from 'hyperapp'
 import m from '../Menu.module.css'
 import { MenuItem, Separator, SubMenuItem } from '../Menu'
 import ThemeMenu from '../shell/ThemeMenu'
+import ViewMenu from '../shell/ViewMenu'
 import { gameLinks } from '../shell/GameLinks'
 import { sizes } from './rules'
 import { levels } from './techniques'
@@ -45,6 +46,7 @@ const Menu = ({ state, actions }) => (
         />
       ))}
     </MenuItem>
+    <ViewMenu state={state} actions={actions} />
     <ThemeMenu state={state} actions={actions}>
       {state.theme === 'matrix' && <Separator />}
       {state.theme === 'matrix' && (

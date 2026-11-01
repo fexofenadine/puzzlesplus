@@ -2,7 +2,9 @@ import { h } from 'hyperapp'
 import '../app.css'
 import Winner from '../Winner'
 import BackgroundSettings from '../shell/BackgroundSettings'
-import Boss, { BossButton } from '../shell/Boss'
+import Boss from '../shell/Boss'
+import Taskbar from '../shell/Taskbar'
+import OpenGames from '../shell/OpenGames'
 import { load, save } from '../shell/storage'
 import { records } from '../shell/records'
 import BestTimes from '../shell/BestTimes'
@@ -127,7 +129,7 @@ const cellAt = (event) => {
 }
 
 export const state = {
-  ...shellState(),
+  ...shellState('nonograms'),
   hint: null,
   prompt: false,
   errors: Boolean(load('nonograms.errors')),
@@ -158,7 +160,7 @@ export const actions = {
   press: (event) => (state, actions) => {
     //undo is the one shortcut with a modifier
     if ((event.ctrlKey || event.metaKey) && !event.altKey && event.keyCode === 90) {
-      if (typing(event) || state.boss) return
+      if (typing(event) || state.boss || state.windowState !== 'open') return
       event.preventDefault()
       actions.undo()
       return
@@ -304,7 +306,7 @@ export const actions = {
 export const view = (state, actions) => (
   <main oncontextmenu={prevent} ondragstart={prevent} oncreate={actions.init}>
     <Game key="a" state={state} actions={actions} />
-    <BossButton key="h" actions={actions} />
+    <Taskbar key="h" name="Nonograms Plus" state={state} actions={actions} />
     {state.winner && <Winner key="b" state={state.winner} actions={actions} />}
     {state.bestTime && (
       <BestTimes
@@ -325,6 +327,7 @@ export const view = (state, actions) => (
     )}
     {state.about && <About key="f" actions={actions} />}
     {state.howTo && <HowToPlay key="i" actions={actions} />}
+    {state.openGames && <OpenGames key="j" state={state} actions={actions} />}
     {state.boss && <Boss key="g" state={state.boss} actions={actions} />}
   </main>
 )

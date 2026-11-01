@@ -3,10 +3,10 @@ import s from './Dialog.module.css'
 import Button from './Button'
 
 const Dialog = (
-  { key, title, titleHint, onTitleDoubleClick, controls, onClose, onCreate },
+  { key, hidden, title, titleHint, onTitleDoubleClick, controls, onClose, onCreate },
   children,
 ) => (
-  <div key={key}>
+  <div key={key} hidden={hidden}>
     <div class={s.a}>
       <div class={s.b}>
         <div class={s.dialog} oncreate={onCreate}>

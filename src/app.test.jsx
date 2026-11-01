@@ -296,6 +296,50 @@ it('zooms in steps from the size shown and remembers the choice', () => {
   localStorage.clear()
 })
 
+it('steps the zoom with + and -, and leaves maximised when it does', () => {
+  localStorage.clear()
+  start({ zoom: { chosen: 1, scale: 1.4, seen: null, maximised: true } })
+  wired.press({ key: '+', keyCode: 187, target: { tagName: 'BODY' } })
+  wired.peek()
+  expect(current.zoom).toMatchObject({ chosen: 1.5, scale: 1.5, maximised: false })
+  wired.press({ key: '-', keyCode: 189, target: { tagName: 'BODY' } })
+  wired.peek()
+  expect(current.zoom.chosen).toBe(1.25)
+  localStorage.clear()
+})
+
+it('minimises to the taskbar paused, and its taskbar button brings it back still paused', () => {
+  wired.minimise()
+  wired.peek()
+  expect(current.windowState).toBe('minimised')
+  expect(current.game.paused).toBe(true)
+  //a hidden window ignores the game's shortcuts
+  wired.press({ keyCode: 78, target: { tagName: 'BODY' } })
+  expect(game().start).toBe(0)
+  wired.taskbarGame('minesweeper')
+  wired.peek()
+  expect(current.windowState).toBe('open')
+  expect(current.game.paused).toBe(true)
+  wired.taskbarGame('minesweeper')
+  wired.peek()
+  expect(current.windowState).toBe('minimised')
+})
+
+it('closing ends the game and offers every game, picking this one opens a fresh game', () => {
+  wired.close()
+  wired.peek()
+  expect(current.windowState).toBe('closed')
+  expect(current.openGames).toBe('minesweeper')
+  expect(current.game.start).toBe(-1)
+  wired.selectGame('takuzu')
+  wired.peek()
+  expect(current.openGames).toBe('takuzu')
+  wired.openGame('minesweeper')
+  wired.peek()
+  expect(current.openGames).toBe(null)
+  expect(current.windowState).toBe('open')
+})
+
 it('shows a wide board transposed on a portrait screen, keeping each cell its own place', () => {
   const container = document.createElement('div')
   const cellsOf = (portrait) =>

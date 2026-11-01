@@ -2,24 +2,41 @@ import { makeSheet } from './Boss'
 import { load, save } from './storage'
 import { themes } from './themes'
 import { backgroundFor, configure, defaults, loadSettings, saveSettings } from './backgrounds'
-import { applyZoom, fitZoom, loadZoom, measureFit, sameSize, saveZoom, stepZoom } from './zoom'
+import {
+  applyZoom,
+  fitZoom,
+  loadMaximised,
+  loadZoom,
+  maxZoom,
+  measureFit,
+  sameSize,
+  saveMaximised,
+  saveZoom,
+  stepZoom,
+} from './zoom'
 
 //state and actions every game window shares, spread into each game's own
-//games provide pause(paused) and press(event), the shell calls them
+//games provide pause(paused), press(event) and reset(), the shell calls them
 
 const loadTheme = () => {
   const theme = load('theme')
   return themes.some(([id]) => id === theme) ? theme : 'classic'
 }
 
-export const shellState = () => ({
+//page is the game's folder name
+export const shellState = (page) => ({
+  page,
   menu: null,
+  //open, minimised or closed
+  windowState: 'open',
+  //the game picked in the open games dialog, null while it is shut
+  openGames: null,
   theme: loadTheme(),
   boss: null,
   backgrounds: loadSettings(),
   backgroundSettings: null,
   howTo: false,
-  zoom: { chosen: loadZoom(), scale: loadZoom(), seen: null },
+  zoom: { chosen: loadZoom(), scale: loadZoom(), seen: null, maximised: loadMaximised() },
   portrait: Boolean(window.matchMedia && matchMedia('(orientation: portrait)').matches),
 })
 
@@ -47,12 +64,45 @@ export const shortcut = (event, state, actions) => {
     else actions.boss()
     return null
   }
-  //the spreadsheet only answers to esc
-  return state.boss ? null : event.keyCode
+  //the spreadsheet only answers to esc, and a hidden window to nothing
+  if (state.boss || state.windowState !== 'open') return null
+  const zoom = { '+': 1, '=': 1, '-': -1 }[event.key]
+  if (zoom) {
+    actions.zoom(zoom)
+    return null
+  }
+  return event.keyCode
 }
 
 export const shellActions = {
   closeMenu: () => ({ menu: null }),
+  toggleStart:
+    () =>
+    ({ menu }) => ({ menu: menu && menu.start ? null : { start: true } }),
+  //minimised keeps the game paused until its taskbar button brings it back
+  minimise: () => (state, actions) => {
+    actions.pause(true)
+    return { menu: null, windowState: 'minimised' }
+  },
+  //closing ends the game and offers every game instead
+  close: () => (state, actions) => {
+    actions.reset()
+    return { menu: null, windowState: 'closed', openGames: state.page }
+  },
+  selectGame: (openGames) => ({ openGames }),
+  //another game is another page, this one comes back with a fresh game
+  openGame: (id) => (state) => {
+    if (id !== state.page) {
+      location.assign(`../${id}/`)
+      return { menu: null }
+    }
+    return { menu: null, openGames: null, windowState: 'open' }
+  },
+  //a taskbar button minimises its window like in windows, or brings it back
+  taskbarGame: (id) => (state, actions) => {
+    if (id === state.page && state.windowState === 'open') return actions.minimise()
+    return actions.openGame(id)
+  },
   setPortrait: (portrait) => ({ portrait }),
   toggleHowTo:
     () =>
@@ -98,12 +148,25 @@ export const shellActions = {
     () =>
     ({ zoom }) => {
       const { fit, size } = measureFit(zoom.scale)
-      if (sameSize(size, zoom.seen)) return null
-      const scale = fitZoom(zoom.chosen, fit)
+      //a hidden window has no size, it fits again when shown
+      if (!size || sameSize(size, zoom.seen)) return null
+      const scale = zoom.maximised ? maxZoom(fit) : fitZoom(zoom.chosen, fit)
       applyZoom(scale)
       return { zoom: { ...zoom, scale, seen: size } }
     },
-  //step from the shown size, or back to 100%
+  //the largest size the room allows, or back to the chosen zoom
+  maximise:
+    () =>
+    ({ zoom }) => {
+      const maximised = !zoom.maximised
+      const { fit, size } = measureFit(zoom.scale)
+      const scale = maximised ? maxZoom(fit) : fitZoom(zoom.chosen, fit)
+      if (!Number.isFinite(scale)) return { menu: null }
+      saveMaximised(maximised)
+      applyZoom(scale)
+      return { menu: null, zoom: { ...zoom, maximised, scale, seen: size } }
+    },
+  //step from the shown size, or back to 100%, either way no longer maximised
   zoom:
     (direction) =>
     ({ zoom }) => {
@@ -111,8 +174,9 @@ export const shellActions = {
       const chosen = direction ? stepZoom(zoom.scale, direction) : 1
       const scale = direction ? chosen : fitZoom(chosen, fit)
       saveZoom(chosen)
+      saveMaximised(false)
       applyZoom(scale)
-      return { zoom: { chosen, scale, seen: size } }
+      return { menu: null, zoom: { chosen, scale, seen: size, maximised: false } }
     },
   setTheme: (theme) => () => {
     save('theme', theme)

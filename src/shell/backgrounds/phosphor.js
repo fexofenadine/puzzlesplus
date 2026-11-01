@@ -128,7 +128,7 @@ export default {
       min: 10,
       max: 100,
       step: 5,
-      value: 55,
+      value: 20,
       format: (v) => `${v}%`,
     },
   ],

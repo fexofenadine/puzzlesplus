@@ -6,7 +6,7 @@ import Digit from './Digit'
 import Play from './Play'
 import Cell from './Cell'
 import SideButton, { HintIcon } from './shell/SideButton'
-import WindowControls from './shell/WindowControls'
+import WindowControls, { windowProps } from './shell/WindowControls'
 import { PausedCover, HintPanel } from './shell/Board'
 import { watchWindow } from './shell/zoom'
 import { clockDigits } from './shell/clock'
@@ -34,18 +34,14 @@ const Face = ({ state, actions }) => (
 const Game = ({ key, state, actions }) => (
   <Dialog
     key={key}
+    hidden={state.windowState !== 'open'}
     title={state.theme === 'classic' ? 'Minesweeper' : 'Minesweeper Plus'}
     titleHint="Double-click for 100% zoom"
     onTitleDoubleClick={() => actions.zoom(0)}
     controls={
-      <WindowControls
-        scale={state.zoom.scale}
-        onZoom={actions.zoom}
-        paused={state.game.paused}
-        canPause={running(state.game)}
-        onPause={actions.pause}
-      />
+      <WindowControls {...windowProps(state, actions, state.game.paused, running(state.game))} />
     }
+    onClose={actions.close}
     onCreate={(dialog) => {
       watchWindow(dialog, actions.fit)
       actions.fit()

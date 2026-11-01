@@ -7,7 +7,9 @@ import CustomField from './CustomField'
 import BackgroundSettings from './shell/BackgroundSettings'
 import About from './About'
 import HowToPlay from './HowToPlay'
-import Boss, { BossButton } from './shell/Boss'
+import Boss from './shell/Boss'
+import Taskbar from './shell/Taskbar'
+import OpenGames from './shell/OpenGames'
 import { placeMines } from './mines'
 import { explainChord, findHint, noHint } from './hint'
 import { load, save, remove } from './shell/storage'
@@ -173,7 +175,7 @@ const prevent = (event) => {
 }
 
 export const state = {
-  ...shellState(),
+  ...shellState('minesweeper'),
   hint: null,
   game: createGame(loadLevel()),
   marks: Boolean(load('marks')),
@@ -553,7 +555,7 @@ export const actions = {
 export const view = (state, actions) => (
   <main oncontextmenu={prevent} ondragstart={prevent} oncreate={actions.init}>
     {state.game && <Game key="a" state={state} actions={actions} />}
-    <BossButton key="h" actions={actions} />
+    <Taskbar key="h" name="Minesweeper Plus" state={state} actions={actions} />
     {state.winner && <Winner key="b" state={state.winner} actions={actions} />}
     {state.bestTime && <BestTime key="c" state={state.bestTime} actions={actions} />}
     {state.customField && <CustomField key="d" state={state.customField} actions={actions} />}
@@ -562,6 +564,7 @@ export const view = (state, actions) => (
     )}
     {state.about && <About key="f" actions={actions} />}
     {state.howTo && <HowToPlay key="i" actions={actions} />}
+    {state.openGames && <OpenGames key="j" state={state} actions={actions} />}
     {state.boss && <Boss key="g" state={state.boss} actions={actions} />}
   </main>
 )

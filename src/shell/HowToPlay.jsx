@@ -11,8 +11,8 @@ const HowToPlay = ({ key, name, actions }, children) => (
       <div class={s.wide}>
         {children}
         <p>
-          Every game: F2 or N starts a new game, H gives a hint, P pauses, and Esc hides the game
-          behind a spreadsheet.
+          Every game: F2 or N starts a new game, H gives a hint, P pauses, + and - zoom, and Esc
+          hides the game behind a spreadsheet.
         </p>
         <div class={s.footer}>
           <Button type="button" onClick={actions.toggleHowTo} onCreate={(el) => el.focus()}>
