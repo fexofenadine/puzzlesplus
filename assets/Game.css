@@ -34,11 +34,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/*rows of cells; flex so no line of text sets their height, which grew with android's font size*/
 .Game_active {
+  display: flex;
   cursor: pointer;
 }
 
 .Game_inactive {
+  display: flex;
   cursor: default;
 }
 

@@ -1321,7 +1321,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-DIaPq_qI.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Input.jsx": () => __vitePreload(() => import("./Input-BH3afC1u.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Menu.jsx": () => __vitePreload(() => import("./Menu-Cwsrjtxf.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/Overlay.jsx": () => __vitePreload(() => import("./Overlay-7Yez4d9U.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/Overlay.jsx": () => __vitePreload(() => import("./Overlay-CwIq95vb.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Play.jsx": () => __vitePreload(() => import("./Play-DPV83WcB.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Winner.jsx": () => __vitePreload(() => import("./Winner-BcLjHZfV.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/app.jsx": () => __vitePreload(() => import("./app-C9TOigz1.js").then((m) => m["default"]), [], import.meta.url),
@@ -2381,12 +2381,27 @@ var guardClicks = (el) => {
 		event.stopPropagation();
 	}, true);
 };
+var MIN_SCALE = .8;
+var fitDialog = (el) => {
+	const dialog = el.querySelector(`.${Dialog_module_default.dialog}`);
+	if (!dialog || !dialog.offsetWidth) return;
+	const frame = getComputedStyle(dialog.parentElement.parentElement);
+	const room = el.clientWidth - parseFloat(frame.marginLeft) - parseFloat(frame.marginRight);
+	const scale = parseFloat(getComputedStyle(el).getPropertyValue("--scale")) || 1;
+	el.style.setProperty("--scale", 1);
+	const fit = Math.floor(room / dialog.offsetWidth * 100) / 100;
+	if (fit >= scale) el.style.removeProperty("--scale");
+	else el.style.setProperty("--scale", Math.max(MIN_SCALE, fit));
+};
 var Overlay = ({ key, onKeyDown }, children) => /* @__PURE__ */ h("section", {
 	key,
 	class: Overlay_module_default.root,
 	tabindex: -1,
 	onkeydown: keyDown(onKeyDown),
-	oncreate: guardClicks
+	oncreate: (el) => {
+		guardClicks(el);
+		fitDialog(el);
+	}
 }, /* @__PURE__ */ h("div", { class: Overlay_module_default.table }, /* @__PURE__ */ h("div", { class: Overlay_module_default.cell }, children)));
 var BackgroundSettings_module_default = {
 	root: "BackgroundSettings_root",
