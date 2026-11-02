@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, a as typing, d as About, f as Link, i as shortcut, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen } from "./actions-Cxdp6jdC.js";
-import { n as pauseAction } from "./clock-BsNqUIwy.js";
-import { a as Winner, n as OpenGames, t as registerWorker } from "./worker-CXk3NMNA.js";
-import { a as Prompt, i as dealer, n as random, o as BestTimes, s as records, t as showRain } from "./rain-C_nuW7v8.js";
-import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-B1Y9MNzb.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-dHnZ5qGE.js";
+import { A as load, E as startBackgrounds, I as app, L as h, M as save, a as typing, d as About, f as Link, i as shortcut, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen } from "./actions-CwmsdzSZ.js";
+import { n as pauseAction } from "./clock-9oQB1azL.js";
+import { a as Winner, n as OpenGames, t as registerWorker } from "./worker-vjvov7S-.js";
+import { a as Prompt, i as dealer, n as random, o as BestTimes, s as records, t as showRain } from "./rain-BlavWlJu.js";
+import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-CNuG2Ne6.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-wsOt1exb.js";
 //#region src/nonograms/generate.js
 var makePicture = (n, rng, dense = 0) => {
 	const density = .48 + dense + .08 * rng();

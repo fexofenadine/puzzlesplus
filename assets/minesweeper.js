@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Button, I as app, L as h, M as save, P as Dialog, d as About, f as Link, g as Menu, h as Overlay, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, w as watchWindow } from "./actions-Cxdp6jdC.js";
+import { A as load, E as startBackgrounds, F as Button, I as app, L as h, M as save, P as Dialog, d as About, f as Link, g as Menu, h as Overlay, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, w as watchWindow } from "./actions-CwmsdzSZ.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as WindowControls, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-BsNqUIwy.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-B3kkgNZW.js";
-import { a as Winner, i as BestTime_module_default, n as OpenGames, o as Input, r as Tabs, t as registerWorker } from "./worker-CXk3NMNA.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-TwUi8QRh.js";
+import { a as WindowControls, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-9oQB1azL.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-CbfVvFVU.js";
+import { a as Winner, i as BestTime_module_default, n as OpenGames, o as Input, r as Tabs, t as registerWorker } from "./worker-vjvov7S-.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-BygCInn5.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -523,6 +523,12 @@ var actions = {
 			cancelAnimationFrame(game.raf);
 			if (!lose) actions.win();
 		}
+		if (win && !lose) field.forEach((row) => row.forEach((c) => {
+			if (c.mined) Object.assign(c, {
+				flag: true,
+				mark: false
+			});
+		}));
 		const changed = left !== game.left || lose || begin;
 		return {
 			...(chordHint || changed) && { hint: chordHint },
@@ -530,6 +536,7 @@ var actions = {
 				...game,
 				left,
 				field,
+				flags: win && !lose ? 0 : game.flags,
 				openedAt: !wasOpened && cell.opened ? {
 					x: pressedX,
 					y: pressedY,

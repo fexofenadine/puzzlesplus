@@ -1,10 +1,10 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, N as Menu_module_default, P as Dialog, S as ViewMenu, T as ThemeMenu, _ as MenuItem, a as typing, b as gameLinks, d as About, f as Link, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, v as Separator, w as watchWindow, y as SubMenuItem } from "./actions-Cxdp6jdC.js";
+import { A as load, E as startBackgrounds, I as app, L as h, M as save, N as Menu_module_default, P as Dialog, S as ViewMenu, T as ThemeMenu, _ as MenuItem, a as typing, b as gameLinks, d as About, f as Link, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, v as Separator, w as watchWindow, y as SubMenuItem } from "./actions-CwmsdzSZ.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as WindowControls, d as UndoIcon, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-BsNqUIwy.js";
-import { a as Winner, n as OpenGames, t as registerWorker } from "./worker-CXk3NMNA.js";
-import { a as Prompt, i as dealer, n as random, o as BestTimes, r as shuffled, s as records, t as showRain } from "./rain-C_nuW7v8.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-DNxLy4lN.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-DK4sYpQN.js";
+import { a as WindowControls, d as UndoIcon, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-9oQB1azL.js";
+import { a as Winner, n as OpenGames, t as registerWorker } from "./worker-vjvov7S-.js";
+import { a as Prompt, i as dealer, n as random, o as BestTimes, r as shuffled, s as records, t as showRain } from "./rain-BlavWlJu.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-rw3_cTGq.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-DxmTU6yz.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",

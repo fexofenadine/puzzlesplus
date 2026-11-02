@@ -1324,7 +1324,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/Overlay.jsx": () => __vitePreload(() => import("./Overlay-CwIq95vb.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Play.jsx": () => __vitePreload(() => import("./Play-DPV83WcB.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Winner.jsx": () => __vitePreload(() => import("./Winner-BcLjHZfV.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/app.jsx": () => __vitePreload(() => import("./app-DGHdJuBo.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/app.jsx": () => __vitePreload(() => import("./app-rmBcfGNd.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/Guide.jsx": () => __vitePreload(() => import("./Guide-CQVnT3KO.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/MinesExample.jsx": () => __vitePreload(() => import("./MinesExample-D0bFGvQS.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/NonogramsExample.jsx": () => __vitePreload(() => import("./NonogramsExample-BdMf_KSB.js").then((m) => m["default"]), [], import.meta.url),
