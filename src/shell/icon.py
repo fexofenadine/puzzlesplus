@@ -209,8 +209,8 @@ def site(root, icon):
     font = ImageFont.truetype('arialbd.ttf', 96)
     small = ImageFont.truetype('arial.ttf', 40)
     d.text((560, 190), 'Puzzles Plus', fill=LIGHT, font=font)
-    d.text((564, 320), 'Minesweeper, Takuzu, Nonograms', fill=FROST, font=small)
-    d.text((564, 375), 'and Sudoku, Windows style,', fill=FROST, font=small)
+    d.text((564, 320), 'Minesweeper, Takuzu, Nonograms,', fill=FROST, font=small)
+    d.text((564, 375), 'Sudoku and 2048, Windows style,', fill=FROST, font=small)
     d.text((564, 430), 'with hints that explain', fill=FROST, font=small)
     preview.save(root / 'docs' / 'social-preview.png')
 

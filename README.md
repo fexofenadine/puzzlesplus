@@ -1,14 +1,14 @@
-<p align="center"><img src="docs/social-preview.png" alt="Puzzles Plus: Minesweeper, Takuzu, Nonograms and Sudoku" width="640"></p>
+<p align="center"><img src="docs/social-preview.png" alt="Puzzles Plus: Minesweeper, Takuzu, Nonograms, Sudoku and 2048" width="640"></p>
 
 # Puzzles Plus
 
-Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All four games share the window, the six themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
+Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All five games share the window, the six themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
-| [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              |
-| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) | [![Play Sudoku Plus](public/sudoku/sudoku.jpg)](https://fexofenadine.github.io/puzzlesplus/sudoku/) |
+| [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              | [Play 2048 Plus](https://fexofenadine.github.io/puzzlesplus/2048/)                          |
+| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) | [![Play Sudoku Plus](public/sudoku/sudoku.jpg)](https://fexofenadine.github.io/puzzlesplus/sudoku/) | [![Play 2048 Plus](public/2048/2048.jpg)](https://fexofenadine.github.io/puzzlesplus/2048/) |
 
-Each game has a guide, from the rules to every solving technique with worked examples: the [Minesweeper](https://fexofenadine.github.io/puzzlesplus/minesweeper/guide/), [Takuzu](https://fexofenadine.github.io/puzzlesplus/takuzu/guide/), [Nonograms](https://fexofenadine.github.io/puzzlesplus/nonograms/guide/) and [Sudoku](https://fexofenadine.github.io/puzzlesplus/sudoku/guide/) guides. [How to Play](https://fexofenadine.github.io/puzzlesplus/how-to-play/) has every game's rules in short.
+Each game has a guide, from the rules to every solving technique (or, for 2048, strategy) with worked examples: the [Minesweeper](https://fexofenadine.github.io/puzzlesplus/minesweeper/guide/), [Takuzu](https://fexofenadine.github.io/puzzlesplus/takuzu/guide/), [Nonograms](https://fexofenadine.github.io/puzzlesplus/nonograms/guide/), [Sudoku](https://fexofenadine.github.io/puzzlesplus/sudoku/guide/) and [2048](https://fexofenadine.github.io/puzzlesplus/2048/guide/) guides. [How to Play](https://fexofenadine.github.io/puzzlesplus/how-to-play/) has every game's rules in short.
 
 ## In pictures
 
@@ -21,8 +21,8 @@ Each game has a guide, from the rules to every solving technique with worked exa
 | ![Nonograms on Nord](docs/screenshots/nord-nonograms.webp)                     | ![Takuzu on Solarized Truchet](docs/screenshots/solarized-takuzu.jpg)       |
 | **Solarized Phosphor: Open Games after closing a window**                      | **A guide page, its example drawn by the game's own code**                  |
 | ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                             |
-| **Matrix: Sudoku with notes, a hint taking candidates away first**             |                                                                             |
-| ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        |                                                                             |
+| **Matrix: Sudoku with notes, a hint taking candidates away first**             | **Solarized Phosphor: 2048 with the hint's advice**                         |
+| ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)           |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
 
@@ -59,6 +59,14 @@ Fill the grid so every row, column and box holds 1 to 9 once each.
 - A number pad under the board for touch screens and mice, the keyboard for everything, notes (with Auto Notes and notes that tidy themselves as digits go in), and a pick-a-digit-then-tap-cells mode.
 - Hints that find repeats, wrong digits and notes that leave out the answer before the next step, and explain any candidate they take away to get there.
 
+## 2048 Plus
+
+Slide the tiles so equal ones merge, and make a 2048.
+
+- Four board sizes from 3 × 3 to 6 × 6, best scores with the highest tile per size, kept apart for games that used help.
+- Arrow keys or WASD, or swipe and drag on the board, with tiles that slide, merge and pop.
+- Unlimited undo, and a hint that looks two moves ahead over the tiles that might appear and says why it picks its move.
+
 ## Every game
 
 - **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the View menu or with + and -.
@@ -73,9 +81,9 @@ Fill the grid so every row, column and box holds 1 to 9 once each.
 - Rebuilt on [Vite](https://vite.dev) with Vitest, ESLint and Prettier, replacing the abandoned hyperapp-tools webpack 4 setup.
 - A plain static build with readable asset names, versioned links so browsers never mix old and new files, and a simple offline-capable service worker.
 - Settings survive browsers that block site storage, falling back to the defaults.
-- The games and their guides are pages of one build. Code the games share (the taskbar and window, themes, backgrounds, zoom, pause, the boss key, best times, settings storage, dealing in a worker) lives in `src/shell`, Minesweeper keeps the original's file layout in `src`, Takuzu, Nonograms and Sudoku have `src/takuzu`, `src/nonograms` and `src/sudoku`, and the guides `src/guide`.
+- The games and their guides are pages of one build. Code the games share (the taskbar and window, themes, backgrounds, zoom, pause, the boss key, best times, settings storage, dealing in a worker) lives in `src/shell`, Minesweeper keeps the original's file layout in `src`, Takuzu, Nonograms, Sudoku and 2048 have `src/takuzu`, `src/nonograms`, `src/sudoku` and `src/2048`, and the guides `src/guide`.
 - The guides' examples are real positions from dealt boards, drawn with each game's own cells and captioned by its own hint code, and a test checks every one still shows its technique.
-- Takuzu's, Nonograms' and Sudoku's rules, solvers, the technique ladders behind hints and difficulty, and the generators are plain modules with no interface code, and boards are dealt in a web worker. Nonograms solves a line by dynamic programming over every way its clue can fit. Sudoku's grid is built from units (rows, columns, boxes), so other sizes and variants are a few lines.
+- Takuzu's, Nonograms' and Sudoku's rules, solvers, the technique ladders behind hints and difficulty, and the generators are plain modules with no interface code, and boards are dealt in a web worker. Nonograms solves a line by dynamic programming over every way its clue can fit. Sudoku's grid is built from units (rows, columns, boxes), so other sizes and variants are a few lines. 2048 moves plain values for its expectimax hint and tiles with ids for the view, so each tile keeps its element and slides by CSS transition.
 - Animated backgrounds are canvas ports in `src/shell/backgrounds`, one file each. A port declares its options and the settings dialog builds itself from them, so adding another xscreensaver hack needs no other code. Phosphor's source code text is only downloaded when that theme is used.
 - Google Analytics removed.
 - Tests for mine placement and the no-guessing solver, chording and its explanations, hints, best times, zoom and fitting, portrait boards and every background and its settings, and for Takuzu's rules, solver (checked against a brute force search), every technique, difficulty rating, generation at every size and level, hints that always agree with the solution, and playing, and the same for Nonograms, whose line solver is checked against a brute force search and whose boards are played to the end by following hints, and for Sudoku, whose every technique is checked against the solution at every step of dozens of dealt boards.
@@ -84,7 +92,7 @@ Fill the grid so every row, column and box holds 1 to 9 once each.
 
 ```sh
 yarn          #install dependencies
-yarn start    #dev server, the games are at /minesweeper/, /takuzu/, /nonograms/ and /sudoku/
+yarn start    #dev server, the games are at /minesweeper/, /takuzu/, /nonograms/, /sudoku/ and /2048/
 yarn build    #static site in build/
 yarn test     #run tests
 yarn lint     #lint
@@ -96,6 +104,7 @@ Classic's hill (`src/shell/backgrounds/hill.webp` and `ridge.json`) is made from
 ## Credits
 
 - Takuzu, also known as Binairo, was devised by Frank Coussement and Peter De Schepper. This version's puzzles, solver and hints are its own.
+- 2048 is based on [2048](https://github.com/gabrielecirulli/2048) by Gabriele Cirulli (MIT licence), itself inspired by 1024 and Threes. The rules follow it; this version's code, hint and records are its own.
 - Sudoku was devised by Howard Garns as Number Place in 1979 and named by Nikoli in 1984. This version's puzzles, solver and hints are its own.
 - Nonograms were devised in 1987 by Non Ishida and, independently, Tetsuya Nishio. This version's pictures, solver and hints are its own.
 - Forked from [frenzzy/minesweeper](https://github.com/frenzzy/minesweeper) by Vladimir Kutepov, bootstrapped with [Hyperapp Starter](https://github.com/kriasoft/hyperapp-starter).

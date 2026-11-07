@@ -11,6 +11,8 @@ import { parts as howToParts } from './howToPlay'
 import { easiest, exampleStep } from './SudokuExample'
 import { examples as sudokuExamples, parts as sudokuParts } from './sudoku'
 import { guideTopic as sudokuTopic } from '../sudoku/hint'
+import { examples as twentyExamples, parts as twentyParts } from './2048'
+import { suggest } from '../2048/search'
 
 const ids = (parts) => parts.flatMap((part) => part.sections.map((section) => section.id))
 
@@ -47,6 +49,14 @@ it('finds every sudoku technique in its example, as the easiest step there', () 
   }
 })
 
+it('captions every 2048 example with the move the hint really picks there', () => {
+  for (const [id, { values, dir }] of Object.entries(twentyExamples)) {
+    expect(suggest(values, 4).dir, id).toBe(dir)
+    expect(ids(twentyParts)).toContain(id)
+  }
+  expect(ids(twentyParts)).toContain('hints')
+})
+
 //every hint a game gives lands on a section of its guide
 it('has a section for every topic a hint can link to', () => {
   const minesTopics = ['wrong-flags', 'chording', 'guessing', 'first-click', 'mine-counter']
@@ -56,7 +66,14 @@ it('has a section for every topic a hint can link to', () => {
 })
 
 it('renders every guide without crashing', async () => {
-  for (const parts of [minesParts, takuzuParts, nonogramsParts, sudokuParts, howToParts]) {
+  for (const parts of [
+    minesParts,
+    takuzuParts,
+    nonogramsParts,
+    sudokuParts,
+    twentyParts,
+    howToParts,
+  ]) {
     const container = document.createElement('div')
     await new Promise((resolve) => {
       const view = () => (
