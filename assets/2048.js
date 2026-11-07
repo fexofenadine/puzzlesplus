@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, c as typing, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-jSr8LPG_.js";
-import { a as resumable, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-Do22uNo8.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-DGmbpxeH.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-u56121_g.js";
-import { a as canMove, c as sizes, d as tilesOf, f as valuesOf, i as running, l as spawn, o as highest, r as Game, s as move, t as suggest, u as targets } from "./search-CgTQeh5y.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-DRmo2mVG.js";
+import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, c as typing, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-BQuQEqsA.js";
+import { a as resumable, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-BStK0LAB.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-CBYjW0R5.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-BD7kOVSC.js";
+import { a as canMove, c as sizes, d as tilesOf, f as valuesOf, i as running, l as spawn, o as highest, r as Game, s as move, t as suggest, u as targets } from "./search-8O73bA0L.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-CDBqO81f.js";
 //#region src/2048/BestScores.jsx
 var tabs = [{
 	id: "clean",
@@ -100,6 +100,65 @@ var recordActions = {
 		} };
 	}
 };
+var NUDGE = .12;
+var lockOf = (dx, dy) => {
+	if (Math.max(Math.abs(dx), Math.abs(dy)) < 10) return null;
+	if (Math.abs(dx) > Math.abs(dy)) return dx > 0 ? "right" : "left";
+	return dy > 0 ? "down" : "up";
+};
+var along = (dir, dx, dy) => ({
+	left: -dx,
+	right: dx,
+	up: -dy,
+	down: dy
+})[dir];
+var planOf = (tiles, n, dir, nextId) => {
+	const done = move(tiles, n, dir, nextId);
+	const to = /* @__PURE__ */ new Map();
+	for (const t of done.tiles) if (t.id < nextId) to.set(t.id, t.cell);
+	const shift = {};
+	const byCell = {};
+	let far = 0;
+	for (const t of tiles) {
+		if (t.gone) continue;
+		const cell = to.get(t.id);
+		const dx = cell % n - t.cell % n;
+		const dy = Math.floor(cell / n) - Math.floor(t.cell / n);
+		shift[t.id] = [dx, dy];
+		byCell[t.cell] = shift[t.id];
+		far = Math.max(far, Math.abs(dx) + Math.abs(dy));
+	}
+	for (const t of tiles) if (t.gone) shift[t.id] = byCell[t.cell] || [0, 0];
+	return {
+		dir,
+		moved: done.moved,
+		far,
+		shift
+	};
+};
+var unit = {
+	left: [-1, 0],
+	right: [1, 0],
+	up: [0, -1],
+	down: [0, 1]
+};
+var offsetsOf = (plan, cells) => {
+	const offsets = {};
+	if (!plan.moved) {
+		const [ux, uy] = unit[plan.dir];
+		const r = NUDGE * (1 - Math.exp(-Math.max(0, cells) * 2));
+		for (const id in plan.shift) offsets[id] = [ux * r, uy * r];
+		return offsets;
+	}
+	const p = progressOf(plan, cells);
+	for (const id in plan.shift) {
+		const [dx, dy] = plan.shift[id];
+		offsets[id] = [dx * p, dy * p];
+	}
+	return offsets;
+};
+var progressOf = (plan, cells) => plan.moved ? Math.min(1, Math.max(0, cells / plan.far)) : 0;
+var finishes = (plan, cells, speed) => plan.moved && (progressOf(plan, cells) >= .5 || cells > 0 && speed >= .5);
 //#endregion
 //#region src/2048/About.jsx
 var TwentyAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
@@ -198,12 +257,13 @@ var keyDirs = {
 	40: "down",
 	83: "down"
 };
-var SWIPE = 24;
 var swipe = null;
+var RECENT = 100;
 var state = {
 	...shellState("2048"),
 	hint: null,
 	prompt: false,
+	drag: null,
 	timer: load("2048.timer") === "on",
 	about: false,
 	game: saved.restore() || createGame(loadSize()),
@@ -214,8 +274,9 @@ var actions = {
 	...shellActions,
 	init: () => (state, actions) => {
 		window.addEventListener("keydown", actions.press);
+		window.addEventListener("pointermove", actions.swipeMove);
 		window.addEventListener("pointerup", actions.swipeEnd);
-		window.addEventListener("pointercancel", () => swipe = null);
+		window.addEventListener("pointercancel", actions.swipeCancel);
 		listen(actions);
 	},
 	press: (event) => (state, actions) => {
@@ -239,10 +300,12 @@ var actions = {
 		cancelAnimationFrame(game.raf);
 		const n = payload && payload.n || game.n;
 		save("2048.size", n);
+		swipe = null;
 		const winner = !game.offered && game.history.length ? offer(game) : null;
 		return {
 			menu: null,
 			hint: null,
+			drag: null,
 			prompt: false,
 			...winner && { winner },
 			game: createGame(n)
@@ -250,9 +313,10 @@ var actions = {
 	},
 	slide: (dir) => (state, actions) => {
 		const { game } = state;
-		if (game.paused || game.over || state.prompt) return null;
+		swipe = null;
+		if (game.paused || game.over || state.prompt) return state.drag && { drag: null };
 		const done = move(game.tiles, game.n, dir, game.nextId);
-		if (!done.moved) return null;
+		if (!done.moved) return state.drag && { drag: null };
 		const { tiles, nextId } = spawn(done.tiles, game.n, rng, done.nextId);
 		const values = valuesOf(tiles, game.n);
 		const next = {
@@ -277,28 +341,70 @@ var actions = {
 		}
 		return {
 			hint: null,
+			drag: null,
 			prompt: reached && !next.over,
 			...winner && { winner },
 			game: next
 		};
 	},
-	swipeStart: (event) => () => {
+	swipeStart: (event) => (state) => {
+		const { game } = state;
+		if (game.paused || game.over || state.prompt || event.button > 0) return;
+		const rect = event.currentTarget.getBoundingClientRect();
+		const { clientX: x, clientY: y, timeStamp: t } = event;
 		swipe = {
-			x: event.clientX,
-			y: event.clientY
+			x,
+			y,
+			size: rect.width / game.n || 1,
+			plan: null,
+			samples: [{
+				t,
+				x,
+				y
+			}]
 		};
 	},
+	swipeMove: (event) => (state) => {
+		if (!swipe) return null;
+		const { clientX: x, clientY: y, timeStamp: t } = event;
+		swipe.samples = [...swipe.samples.filter((s) => t - s.t <= RECENT), {
+			t,
+			x,
+			y
+		}];
+		const dx = x - swipe.x;
+		const dy = y - swipe.y;
+		if (!swipe.plan) {
+			const dir = lockOf(dx, dy);
+			if (!dir) return null;
+			const { game } = state;
+			swipe.plan = planOf(game.tiles, game.n, dir, game.nextId);
+		}
+		return { drag: offsetsOf(swipe.plan, along(swipe.plan.dir, dx, dy) / swipe.size) };
+	},
 	swipeEnd: (event) => (state, actions) => {
-		if (!swipe) return;
-		const dx = event.clientX - swipe.x;
-		const dy = event.clientY - swipe.y;
+		if (!swipe) return null;
+		const { plan, size, samples } = swipe;
+		const { clientX: x, clientY: y, timeStamp: t } = event;
+		const start = swipe;
 		swipe = null;
-		if (Math.max(Math.abs(dx), Math.abs(dy)) < SWIPE) return;
-		if (Math.abs(dx) > Math.abs(dy)) actions.slide(dx > 0 ? "right" : "left");
-		else actions.slide(dy > 0 ? "down" : "up");
+		if (!plan) return null;
+		const a = along(plan.dir, x - start.x, y - start.y);
+		const first = samples.find((s) => t - s.t <= RECENT);
+		const speed = first && t > first.t ? along(plan.dir, x - first.x, y - first.y) / (t - first.t) : 0;
+		if (finishes(plan, a / size, speed)) {
+			actions.slide(plan.dir);
+			return null;
+		}
+		return { drag: null };
+	},
+	swipeCancel: () => () => {
+		swipe = null;
+		return { drag: null };
 	},
 	undo: () => ({ game }, actions) => {
 		if (!game.history.length || game.paused) return { menu: null };
+		swipe = null;
 		const { values, score } = game.history.at(-1);
 		const { tiles, nextId } = tilesOf(values, game.nextId);
 		const next = {
@@ -315,6 +421,7 @@ var actions = {
 		return {
 			menu: null,
 			hint: null,
+			drag: null,
 			game: next
 		};
 	},
@@ -357,7 +464,7 @@ var actions = {
 	}),
 	pause: pauseAction(running, () => {
 		swipe = null;
-		return {};
+		return { drag: null };
 	}),
 	tick: () => ({ game }, actions) => {
 		game.raf = requestAnimationFrame(actions.tick);

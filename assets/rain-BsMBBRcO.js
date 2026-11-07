@@ -1,4 +1,4 @@
-import { D as BRIGHT, O as GLYPH, k as glyphImage } from "./HowToPlay-jSr8LPG_.js";
+import { D as BRIGHT, O as GLYPH, k as glyphImage } from "./HowToPlay-BQuQEqsA.js";
 //#region src/shell/rain.js
 var rain = ["ｼ", "ﾓ"];
 var showRain = (on) => {

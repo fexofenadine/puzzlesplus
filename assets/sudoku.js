@@ -1,10 +1,10 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, T as BackgroundSettings, a as shellActions, c as typing, i as listen, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-jSr8LPG_.js";
-import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-Do22uNo8.js";
-import { n as Prompt } from "./BestTimes.module-DGmbpxeH.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-u56121_g.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DADYZTmt.js";
-import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-Dgso-oUi.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-CeS_4wyP.js";
+import { A as load, E as startBackgrounds, I as app, L as h, M as save, T as BackgroundSettings, a as shellActions, c as typing, i as listen, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-BQuQEqsA.js";
+import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-BStK0LAB.js";
+import { n as Prompt } from "./BestTimes.module-CBYjW0R5.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-BD7kOVSC.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-PseqgZuc.js";
+import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-DjuZmVeP.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-C0rH18WU.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,

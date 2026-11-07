@@ -1355,10 +1355,11 @@ var brightness = ([r, g, b]) => Math.max(r, g, b);
 var sources = /* #__PURE__ */ Object.assign({
 	"/src/2048/About.jsx": () => __vitePreload(() => import("./About-CQw7XMUQ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/BestScores.jsx": () => __vitePreload(() => import("./BestScores-C9FMjk-i.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/2048/Game.jsx": () => __vitePreload(() => import("./Game--ub294Ys.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/2048/Game.jsx": () => __vitePreload(() => import("./Game-CvC-FBJR.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-DRbYD0xL.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/Menu.jsx": () => __vitePreload(() => import("./Menu-ED9DZ45l.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/2048/app.jsx": () => __vitePreload(() => import("./app-CJPFOze4.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/2048/app.jsx": () => __vitePreload(() => import("./app-ClmCbYqB.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/2048/drag.js": () => __vitePreload(() => import("./drag-BbqVQj4t.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/index.js": () => __vitePreload(() => import("./2048-Bzi2wUuD.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/records.js": () => __vitePreload(() => import("./records-C0vYzbe8.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/rules.js": () => __vitePreload(() => import("./rules--WVjBeuD.js").then((m) => m["default"]), [], import.meta.url),

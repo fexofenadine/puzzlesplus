@@ -1,5 +1,5 @@
-import { C as Menu_module_default, L as h, N as Dialog, S as ThemeMenu, _ as Separator, g as MenuItem, p as gameLinks, v as SubMenuItem, x as watchWindow, y as ViewMenu } from "./HowToPlay-jSr8LPG_.js";
-import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-u56121_g.js";
+import { C as Menu_module_default, L as h, N as Dialog, S as ThemeMenu, _ as Separator, g as MenuItem, p as gameLinks, v as SubMenuItem, x as watchWindow, y as ViewMenu } from "./HowToPlay-BQuQEqsA.js";
+import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-BD7kOVSC.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 var Board2048_module_default = {
 	board: "Board2048_board",
@@ -8,6 +8,7 @@ var Board2048_module_default = {
 	tile: "Board2048_tile",
 	beyond: "Board2048_beyond",
 	gone: "Board2048_gone",
+	hide: "Board2048_hide",
 	fresh: "Board2048_fresh",
 	grow: "Board2048_grow",
 	merged: "Board2048_merged",
@@ -249,8 +250,23 @@ var cellSizes = {
 	5: 52,
 	6: 46
 };
-var Tile = ({ tile, n }) => {
+var glide = (element, from, to) => {
+	if (from[0] === to[0] && from[1] === to[1]) return;
+	if (!element.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+	const board = element.parentNode.parentNode;
+	const step = element.offsetWidth + parseFloat(getComputedStyle(board).columnGap || 0);
+	const dx = (from[0] - to[0]) * step;
+	const dy = (from[1] - to[1]) * step;
+	element.animate([{ translate: `${dx}px ${dy}px` }, { translate: "0 0" }], {
+		duration: 100,
+		easing: "ease-in-out"
+	});
+};
+var Tile = ({ tile, n, offset, still }) => {
 	const k = Math.log2(tile.value);
+	const [ox, oy] = offset || [0, 0];
+	const x = tile.cell % n + ox;
+	const y = Math.floor(tile.cell / n) + oy;
 	return /* @__PURE__ */ h("div", {
 		key: tile.id,
 		class: [
@@ -262,22 +278,26 @@ var Tile = ({ tile, n }) => {
 		].filter(Boolean).join(" "),
 		"data-digits": Math.min(5, String(tile.value).length),
 		style: {
-			"--x": tile.cell % n,
-			"--y": Math.floor(tile.cell / n),
+			"--x": x,
+			"--y": y,
 			"--k": k
-		}
+		},
+		onupdate: (element, old) => !still && glide(element, [old.style["--x"], old.style["--y"]], [x, y])
 	}, tile.value);
 };
-var Board = ({ n, tiles, hidden, onDown }, children) => /* @__PURE__ */ h("div", {
+var byId = (a, b) => a.id - b.id;
+var Board = ({ n, tiles, hidden, drag, onDown }, children) => /* @__PURE__ */ h("div", {
 	class: Board2048_module_default.board,
 	style: {
 		"--n": n,
 		"--cell": `${cellSizes[n]}px`
 	},
 	onpointerdown: onDown
-}, Array.from({ length: n * n }, () => /* @__PURE__ */ h("div", { class: Board2048_module_default.cell })), !hidden && /* @__PURE__ */ h("div", { class: Board2048_module_default.tiles }, tiles.map((tile) => Tile({
+}, Array.from({ length: n * n }, () => /* @__PURE__ */ h("div", { class: Board2048_module_default.cell })), !hidden && /* @__PURE__ */ h("div", { class: Board2048_module_default.tiles }, [...tiles].sort(byId).map((tile) => Tile({
 	tile,
-	n
+	n,
+	offset: drag && drag[tile.id],
+	still: Boolean(drag)
 }))), children);
 var scoreDigits = (score) => Math.max(4, String(score).length);
 var Game = ({ key, state, actions }) => {
@@ -322,6 +342,7 @@ var Game = ({ key, state, actions }) => {
 		n,
 		tiles: game.tiles,
 		hidden: paused,
+		drag: state.drag,
 		onDown: actions.swipeStart
 	}, paused && /* @__PURE__ */ h(PausedCover, { onResume: () => actions.pause(false) })), hint && !paused && /* @__PURE__ */ h(HintPanel, {
 		text: hint.text,
