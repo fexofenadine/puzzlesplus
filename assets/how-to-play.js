@@ -1,8 +1,10 @@
-import { L as h, c as help_default } from "./actions-CwmsdzSZ.js";
-import { n as Rules } from "./HowToPlay-BygCInn5.js";
-import { t as Rules$1 } from "./HowToPlay-DxmTU6yz.js";
-import { n as Rules$2 } from "./HowToPlay-wsOt1exb.js";
-import { n as Page, r as startGuide } from "./Guide-Drho50Xm.js";
+import { L as h, f as help_default } from "./HowToPlay-jSr8LPG_.js";
+import { t as Rules } from "./HowToPlay-DRmo2mVG.js";
+import { n as Rules$1 } from "./HowToPlay-D136E4Ur.js";
+import { t as Rules$2 } from "./HowToPlay-pD12Nso_.js";
+import { n as Rules$3 } from "./HowToPlay-BxqSS5ra.js";
+import { t as Rules$4 } from "./HowToPlay-CeS_4wyP.js";
+import { n as Page, r as startGuide } from "./Guide-DqM3M1q8.js";
 //#region src/guide/howToPlay.jsx
 var game = (id, title, Rules) => ({
 	id,
@@ -12,9 +14,11 @@ var game = (id, title, Rules) => ({
 var parts = [{
 	title: "How to Play",
 	sections: [
-		game("minesweeper", "Minesweeper", Rules),
-		game("takuzu", "Takuzu", Rules$1),
-		game("nonograms", "Nonograms", Rules$2),
+		game("minesweeper", "Minesweeper", Rules$1),
+		game("takuzu", "Takuzu", Rules$2),
+		game("nonograms", "Nonograms", Rules$3),
+		game("sudoku", "Sudoku", Rules$4),
+		game("2048", "2048", Rules),
 		{
 			id: "shortcuts",
 			title: "Every game",

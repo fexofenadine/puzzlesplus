@@ -1,9 +1,9 @@
-import { L as h, s as icons } from "./actions-CwmsdzSZ.js";
+import { L as h, d as icons } from "./HowToPlay-jSr8LPG_.js";
 import { n as cellsOf } from "./grid-D_4m0l-G.js";
-import { C as Game_module_default, _ as cluesOf, a as Cell, b as lineDone, f as lineSteps, i as tracks, n as place, p as nextSteps } from "./Game-CNuG2Ne6.js";
-import { n as Rules } from "./HowToPlay-wsOt1exb.js";
-import { r as startGuide, t as Figure } from "./Guide-Drho50Xm.js";
-import { t as desktopSection } from "./desktop-CRZLMeUu.js";
+import { C as Game_module_default, _ as cluesOf, a as Cell, b as lineDone, f as lineSteps, i as tracks, n as place, p as nextSteps } from "./Game-Bqr6OIu5.js";
+import { n as Rules } from "./HowToPlay-BxqSS5ra.js";
+import { r as startGuide, t as Figure } from "./Guide-DqM3M1q8.js";
+import { t as desktopSection } from "./desktop-DYw1uM31.js";
 //#region src/guide/NonogramsExample.jsx
 var levelOf = {
 	complete: 0,

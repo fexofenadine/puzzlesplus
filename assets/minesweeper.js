@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Button, I as app, L as h, M as save, P as Dialog, d as About, f as Link, g as Menu, h as Overlay, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, w as watchWindow } from "./actions-CwmsdzSZ.js";
+import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, h as Menu, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss, x as watchWindow } from "./HowToPlay-jSr8LPG_.js";
+import { a as resumable, c as Input, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-Do22uNo8.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-u56121_g.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as WindowControls, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-9oQB1azL.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-CbfVvFVU.js";
-import { a as Winner, i as BestTime_module_default, n as OpenGames, o as Input, r as Tabs, t as registerWorker } from "./worker-vjvov7S-.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-BygCInn5.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-Dvima81s.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-D136E4Ur.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -54,7 +54,8 @@ var Game = ({ key, state, actions }) => /* @__PURE__ */ h(Dialog, {
 	onClick: actions.hint
 }, /* @__PURE__ */ h(HintIcon, null))), /* @__PURE__ */ h(Digit, {
 	value: state.game.time,
-	digits: clockDigits(state.theme, state.game.time)
+	digits: clockDigits(state.theme, state.game.time),
+	blank: !state.timer
 })), /* @__PURE__ */ h("div", { class: state.game.lose ? Game_module_default.fieldLost : Game_module_default.field }, rowsOf(state).map((row) => /* @__PURE__ */ h("div", { class: running(state.game) && !state.game.paused ? Game_module_default.active : Game_module_default.inactive }, row.map(({ cell, x, y }) => /* @__PURE__ */ h(Cell, {
 	x,
 	y,
@@ -216,9 +217,54 @@ var createGame = ({ level, width, height, mines }) => {
 			x: -1,
 			y: -1,
 			time: 0
-		}
+		},
+		untimed: false
 	};
 };
+var packCell = ({ opened, mined, flag, mark, num }) => num | (opened ? 16 : 0) | (mined ? 32 : 0) | (flag ? 64 : 0) | (mark ? 128 : 0);
+var unpackCell = (v) => {
+	check(Number.isInteger(v) && v >= 0 && v < 256 && (v & 15) <= 8);
+	return {
+		opened: !!(v & 16),
+		mined: !!(v & 32),
+		flag: !!(v & 64),
+		mark: !!(v & 128),
+		num: v & 15
+	};
+};
+var saved = resumable({
+	key: "savedGame",
+	running,
+	pack: ({ level, width, height, mines, field, left, flags, hinted, untimed }) => ({
+		level,
+		width,
+		height,
+		mines,
+		field: field.map((row) => row.map(packCell)),
+		left,
+		flags,
+		hinted,
+		untimed
+	}),
+	unpack: ({ level, width, height, mines, field, left, flags, hinted, untimed }) => {
+		check(typeof level === "string" && Array.isArray(field) && field.length === height);
+		check(field.every((row) => Array.isArray(row) && row.length === width));
+		check(Number.isInteger(left) && Number.isInteger(flags) && Number.isInteger(mines));
+		return {
+			...createGame({
+				level,
+				width,
+				height,
+				mines
+			}),
+			field: field.map((row) => row.map(unpackCell)),
+			left,
+			flags,
+			hinted: Boolean(hinted),
+			untimed: Boolean(untimed)
+		};
+	}
+});
 var openable = (game, x, y) => {
 	const cell = game.field[y][x];
 	if (cell.opened) {
@@ -294,10 +340,11 @@ var prevent = (event) => {
 var state = {
 	...shellState("minesweeper"),
 	hint: null,
-	game: createGame(loadLevel()),
+	game: saved.restore() || createGame(loadLevel()),
 	marks: Boolean(load("marks")),
 	safeStart: load("safeStart") !== "off",
 	noGuess: Boolean(load("noGuess")),
+	timer: loadTimer("timer"),
 	winner: null,
 	bestTime: null,
 	about: false,
@@ -544,7 +591,7 @@ var actions = {
 				} : game.openedAt,
 				pressed: false,
 				group: false,
-				start: begin ? performance.now() : game.start,
+				start: begin ? clock() : game.start,
 				time: begin ? 1 : game.time,
 				lose,
 				win,
@@ -552,17 +599,18 @@ var actions = {
 			}
 		};
 	},
-	tick: (now) => ({ game }, actions) => {
+	tick: () => ({ game }, actions) => {
 		game.raf = requestAnimationFrame(actions.tick);
-		const next = Math.floor((now - game.start) / 1e3) + 1;
+		const next = seconds(game.start);
 		if (game.time === next) return null;
 		return { game: {
 			...game,
 			time: next
 		} };
 	},
-	win: () => ({ game }) => {
-		if (game.level === "custom") return null;
+	win: () => (state) => {
+		const { game } = state;
+		if (game.level === "custom" || !timed(state)) return null;
 		const time = parseInt(load(timeKey(game.level, game.hinted)), 10);
 		if (time && time <= game.time) return null;
 		return { winner: {
@@ -638,6 +686,7 @@ var actions = {
 			noGuess
 		};
 	},
+	toggleTimer: timerAction("timer"),
 	toggleMarks: () => (state) => {
 		const marks = !state.marks;
 		save("marks", marks ? "yes" : "");
@@ -645,12 +694,14 @@ var actions = {
 			menu: null,
 			marks
 		};
-	}
+	},
+	...saved.actions
 };
 var view = (state, actions) => /* @__PURE__ */ h("main", {
 	oncontextmenu: prevent,
 	ondragstart: prevent,
-	oncreate: actions.init
+	oncreate: actions.init,
+	onupdate: () => saved.keep(state.game)
 }, state.game && /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,

@@ -1,9 +1,11 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, a as typing, d as About, f as Link, i as shortcut, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen } from "./actions-CwmsdzSZ.js";
-import { n as pauseAction } from "./clock-9oQB1azL.js";
-import { a as Winner, n as OpenGames, t as registerWorker } from "./worker-vjvov7S-.js";
-import { a as Prompt, i as dealer, n as random, o as BestTimes, s as records, t as showRain } from "./rain-BlavWlJu.js";
-import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-CNuG2Ne6.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-wsOt1exb.js";
+import { A as load, E as startBackgrounds, I as app, L as h, M as save, T as BackgroundSettings, a as shellActions, c as typing, i as listen, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-jSr8LPG_.js";
+import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-Do22uNo8.js";
+import { n as Prompt } from "./BestTimes.module-DGmbpxeH.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-u56121_g.js";
+import { a as records, i as BestTimes, r as dealer, t as random } from "./random-DADYZTmt.js";
+import { t as showRain } from "./rain-DCbFj_ZH.js";
+import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-Bqr6OIu5.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-BxqSS5ra.js";
 //#region src/nonograms/generate.js
 var makePicture = (n, rng, dense = 0) => {
 	const density = .48 + dense + .08 * rng();
@@ -110,7 +112,43 @@ var createGame = ({ n, level }) => ({
 	paused: false,
 	pausedAt: 0,
 	win: false,
-	hinted: false
+	hinted: false,
+	untimed: false
+});
+var boardOf = (cells, n) => {
+	check(Array.isArray(cells) && cells.length === n * n && cells.every((v) => v >= -1 && v <= 1));
+	return Int8Array.from(cells);
+};
+var saved = resumable({
+	key: "nonograms.saved",
+	running,
+	pack: ({ n, level, clues, solution, board, stroke, history, hinted, untimed }) => ({
+		n,
+		level,
+		clues,
+		solution: Array.from(solution),
+		board: Array.from(stroke ? stroke.before : board),
+		history,
+		hinted,
+		untimed
+	}),
+	unpack: ({ n, level, clues, solution, board, history, hinted, untimed }) => {
+		check(sizes.includes(n) && level >= 0 && level < levelNames.length && Array.isArray(history));
+		check(Array.isArray(clues) && clues.length === 2 * n && clues.every(Array.isArray));
+		return {
+			...createGame({
+				n,
+				level
+			}),
+			clues,
+			solution: boardOf(solution, n),
+			board: boardOf(board, n),
+			history,
+			hinted: Boolean(hinted),
+			untimed: Boolean(untimed),
+			dealing: false
+		};
+	}
 });
 var { actions: recordActions } = records("nonograms", sizes, levelNames);
 var cycle = [
@@ -130,11 +168,11 @@ var begin = (game, actions) => {
 	game.raf = requestAnimationFrame(actions.tick);
 	return {
 		...game,
-		start: performance.now(),
+		start: clock(),
 		time: 1
 	};
 };
-var changed = (game, board, history, actions, settled = false) => {
+var changed = (state, game, board, history, actions, settled = false) => {
 	const next = {
 		...game,
 		board,
@@ -144,7 +182,10 @@ var changed = (game, board, history, actions, settled = false) => {
 	next.win = solved(board, next.n, next.clues);
 	if (next.win) {
 		cancelAnimationFrame(next.raf);
-		actions.win(next);
+		if (timed({
+			...state,
+			game: next
+		})) actions.win(next);
 	}
 	const stuck = !next.win && fillsLeft(board, next.n, next.clues) === 0;
 	if (stuck && !settled) setTimeout(() => actions.ask(next.change), ASK_AFTER);
@@ -182,11 +223,12 @@ var state = {
 	hint: null,
 	prompt: false,
 	errors: Boolean(load("nonograms.errors")),
+	timer: loadTimer("nonograms.timer"),
 	rain: Boolean(load("nonograms.rain")),
 	touch: Boolean(window.matchMedia && matchMedia("(pointer: coarse)").matches),
 	mode: 1,
 	about: false,
-	game: createGame(loadChoice()),
+	game: saved.restore() || createGame(loadChoice()),
 	winner: null,
 	bestTime: null
 };
@@ -202,7 +244,7 @@ var actions = {
 		window.addEventListener("pointercancel", () => actions.up());
 		listen(actions);
 		showRain(state.rain);
-		actions.reset();
+		if (state.game.dealing) actions.reset();
 	},
 	press: (event) => (state, actions) => {
 		if ((event.ctrlKey || event.metaKey) && !event.altKey && event.keyCode === 90) {
@@ -289,24 +331,26 @@ var actions = {
 			board
 		} };
 	},
-	up: () => ({ game }, actions) => {
+	up: () => (state, actions) => {
+		const { game } = state;
 		const { stroke, board } = game;
 		if (!stroke) return null;
 		const step = [...board.keys()].filter((c) => board[c] !== stroke.before[c]).map((c) => [c, stroke.before[c]]);
 		const history = step.length ? [...game.history, step] : game.history;
 		const passing = step.length === 1 && stroke.from === -1 && stroke.to === 1 && !stroke.touch;
-		return changed({
+		return changed(state, {
 			...game,
 			stroke: null
 		}, board, history, actions, !passing);
 	},
-	undo: () => ({ game }, actions) => {
+	undo: () => (state, actions) => {
+		const { game } = state;
 		if (!game.history.length || game.win || game.paused || game.dealing || game.stroke) return { menu: null };
 		const board = game.board.slice();
 		for (const [c, from] of game.history[game.history.length - 1]) board[c] = from;
 		return {
 			menu: null,
-			...changed(game, board, game.history.slice(0, -1), actions)
+			...changed(state, game, board, game.history.slice(0, -1), actions)
 		};
 	},
 	ask: (change) => ({ game }) => {
@@ -343,6 +387,7 @@ var actions = {
 			errors: !state.errors
 		};
 	},
+	toggleTimer: timerAction("nonograms.timer"),
 	toggleRain: () => (state) => {
 		save("nonograms.rain", state.rain ? "" : "yes");
 		showRain(!state.rain);
@@ -356,21 +401,23 @@ var actions = {
 		about: !about
 	}),
 	pause: pauseAction(running),
-	tick: (now) => ({ game }, actions) => {
+	tick: () => ({ game }, actions) => {
 		game.raf = requestAnimationFrame(actions.tick);
-		const next = Math.floor((now - game.start) / 1e3) + 1;
+		const next = seconds(game.start);
 		if (game.time === next) return null;
 		return { game: {
 			...game,
 			time: next
 		} };
 	},
-	...recordActions
+	...recordActions,
+	...saved.actions
 };
 var view = (state, actions) => /* @__PURE__ */ h("main", {
 	oncontextmenu: prevent,
 	ondragstart: prevent,
-	oncreate: actions.init
+	oncreate: actions.init,
+	onupdate: () => saved.keep(state.game)
 }, /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,

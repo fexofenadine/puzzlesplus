@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>2048 Plus Guide</title>
+    <meta
+      name="description"
+      content="How to play 2048 Plus, from the rules to the strategies that reach 2048, with examples"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <link rel="apple-touch-icon" href="../../2048/icon.png" />
+    <link rel="shortcut icon" href="../../2048/favicon.ico" />
+    <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
+//apply the saved theme and window size before first paint
+try {
+  document.documentElement.dataset.theme = localStorage.getItem('theme') || 'classic'
+  //assume animated off classic, the script corrects it
+  if (document.documentElement.dataset.theme !== 'classic') {
+    document.documentElement.dataset.background = 'animated'
+  }
+  document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
+} catch {
+  //blocked storage keeps the defaults
+}
+//if the game fails to start, show why instead of an empty desktop
+addEventListener('error', (event) => {
+  if (document.querySelector('main *')) return
+  const note = document.createElement('pre')
+  note.style.cssText =
+    'position:fixed;left:0;right:0;bottom:0;z-index:9;margin:0;padding:8px;background:#000;color:#fff;font:12px monospace;white-space:pre-wrap'
+  note.textContent = `${document.title} could not start: ${event.message}`
+  document.body.append(note)
+})
+</script>
+    <script type="module" crossorigin src="../../assets/2048-guide.js?v=61d04607"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-jSr8LPG_.js?v=013bb0ab">
+    <link rel="modulepreload" crossorigin href="../../assets/Board-u56121_g.js?v=2655b7f9">
+    <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
+    <link rel="modulepreload" crossorigin href="../../assets/search-CgTQeh5y.js?v=a8f5bcfc">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DRmo2mVG.js?v=12e4aeee">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-DqM3M1q8.js?v=8ee52844">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-DYw1uM31.js?v=31d176fc">
+    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=df1f0f5b">
+    <link rel="stylesheet" crossorigin href="../../assets/Board.css?v=f5b0e619">
+    <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=0f918f63">
+    <link rel="stylesheet" crossorigin href="../../assets/search.css?v=f0047806">
+    <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">
+  </head>
+  <body>
+    <div id="app">
+      <main></main>
+    </div>
+  </body>
+</html>

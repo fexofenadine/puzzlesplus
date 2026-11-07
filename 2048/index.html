@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <title>2048</title>
+    <meta
+      name="description"
+      content="2048 on four board sizes, with unlimited undo and a hint that looks ahead, free and open source"
+    />
+    <meta name="keywords" content="2048, sliding tiles, puzzle game, online, free, open source" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#cbcbcb" />
+    <meta property="og:title" content="2048 Plus: Sliding Tiles" />
+    <meta
+      property="og:description"
+      content="2048 on four board sizes, with unlimited undo and a hint that looks ahead, free and open source"
+    />
+    <meta property="og:url" content="https://fexofenadine.github.io/puzzlesplus/2048/" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:image"
+      content="https://fexofenadine.github.io/puzzlesplus/2048/2048.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="2048" />
+    <link rel="manifest" href="../2048/site.webmanifest" />
+    <link rel="apple-touch-icon" href="../2048/icon.png" />
+    <link rel="shortcut icon" href="../2048/favicon.ico" />
+    <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
+//apply the saved theme and window size before first paint
+try {
+  document.documentElement.dataset.theme = localStorage.getItem('theme') || 'classic'
+  //assume animated off classic, the script corrects it
+  if (document.documentElement.dataset.theme !== 'classic') {
+    document.documentElement.dataset.background = 'animated'
+  }
+  document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
+} catch {
+  //blocked storage keeps the defaults
+}
+//if the game fails to start, show why instead of an empty desktop
+addEventListener('error', (event) => {
+  if (document.querySelector('main *')) return
+  const note = document.createElement('pre')
+  note.style.cssText =
+    'position:fixed;left:0;right:0;bottom:0;z-index:9;margin:0;padding:8px;background:#000;color:#fff;font:12px monospace;white-space:pre-wrap'
+  note.textContent = `${document.title} could not start: ${event.message}`
+  document.body.append(note)
+})
+</script>
+    <script type="module" crossorigin src="../assets/2048.js?v=983b7212"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-jSr8LPG_.js?v=013bb0ab">
+    <link rel="modulepreload" crossorigin href="../assets/Board-u56121_g.js?v=2655b7f9">
+    <link rel="modulepreload" crossorigin href="../assets/worker-Do22uNo8.js?v=0265ea60">
+    <link rel="modulepreload" crossorigin href="../assets/BestTimes.module-DGmbpxeH.js?v=8c5351f9">
+    <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
+    <link rel="modulepreload" crossorigin href="../assets/search-CgTQeh5y.js?v=a8f5bcfc">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DRmo2mVG.js?v=12e4aeee">
+    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=df1f0f5b">
+    <link rel="stylesheet" crossorigin href="../assets/Board.css?v=f5b0e619">
+    <link rel="stylesheet" crossorigin href="../assets/worker.css?v=984238e4">
+    <link rel="stylesheet" crossorigin href="../assets/BestTimes.css?v=225b2355">
+    <link rel="stylesheet" crossorigin href="../assets/Game.css?v=0f918f63">
+    <link rel="stylesheet" crossorigin href="../assets/search.css?v=f0047806">
+  </head>
+  <body>
+    <div id="app">
+      <main></main>
+    </div>
+  </body>
+</html>

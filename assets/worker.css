@@ -39,62 +39,6 @@
   outline: 0;
   appearance: none;
 }
-.BestTime_root {
-  padding: 12px 8px 12px;
-  white-space: nowrap;
-}
-
-.BestTime_table {
-  width: 100%;
-  border: 0;
-  border-collapse: collapse;
-}
-
-.BestTime_cell {
-  padding: 0 8px;
-}
-
-.BestTime_cell:first-child::first-letter {
-  text-transform: uppercase;
-}
-
-.BestTime_footer {
-  display: flex;
-  justify-content: space-around;
-  padding: 18px 0 0;
-  text-align: center;
-}
-
-.BestTime_button {
-  display: block;
-  min-width: 34px;
-  padding: 1px 5px 0;
-}
-
-.BestTime_tabs {
-  display: flex;
-  gap: 2px;
-  margin: 0 8px 12px;
-  border-bottom: 1px solid var(--shadow);
-}
-
-.BestTime_tab {
-  margin: 0 0 -1px;
-  padding: 2px 8px 3px;
-  color: inherit;
-  font: inherit;
-  background: var(--face);
-  border: 1px solid;
-  border-color: var(--light) var(--shadow) var(--shadow) var(--light);
-  cursor: pointer;
-}
-
-/*the open tab stands a little taller and merges into the page below it*/
-.BestTime_tabActive {
-  margin-top: -2px;
-  padding-bottom: 5px;
-  border-bottom-color: var(--face);
-}
 .OpenGames_root {
   width: 260px;
   padding: 10px 12px 12px;
@@ -153,4 +97,60 @@
   display: flex;
   gap: 8px;
   justify-content: flex-end;
+}
+.BestTime_root {
+  padding: 12px 8px 12px;
+  white-space: nowrap;
+}
+
+.BestTime_table {
+  width: 100%;
+  border: 0;
+  border-collapse: collapse;
+}
+
+.BestTime_cell {
+  padding: 0 8px;
+}
+
+.BestTime_cell:first-child::first-letter {
+  text-transform: uppercase;
+}
+
+.BestTime_footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 18px 0 0;
+  text-align: center;
+}
+
+.BestTime_button {
+  display: block;
+  min-width: 34px;
+  padding: 1px 5px 0;
+}
+
+.BestTime_tabs {
+  display: flex;
+  gap: 2px;
+  margin: 0 8px 12px;
+  border-bottom: 1px solid var(--shadow);
+}
+
+.BestTime_tab {
+  margin: 0 0 -1px;
+  padding: 2px 8px 3px;
+  color: inherit;
+  font: inherit;
+  background: var(--face);
+  border: 1px solid;
+  border-color: var(--light) var(--shadow) var(--shadow) var(--light);
+  cursor: pointer;
+}
+
+/*the open tab stands a little taller and merges into the page below it*/
+.BestTime_tabActive {
+  margin-top: -2px;
+  padding-bottom: 5px;
+  border-bottom-color: var(--face);
 }

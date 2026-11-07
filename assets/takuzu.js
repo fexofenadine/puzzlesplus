@@ -1,10 +1,12 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, N as Menu_module_default, P as Dialog, S as ViewMenu, T as ThemeMenu, _ as MenuItem, a as typing, b as gameLinks, d as About, f as Link, i as shortcut, j as remove, l as Boss, m as BackgroundSettings, n as shellActions, o as Taskbar, r as shellState, t as listen, v as Separator, w as watchWindow, y as SubMenuItem } from "./actions-CwmsdzSZ.js";
+import { A as load, C as Menu_module_default, E as startBackgrounds, I as app, L as h, M as save, N as Dialog, S as ThemeMenu, T as BackgroundSettings, _ as Separator, a as shellActions, c as typing, g as MenuItem, i as listen, j as remove, n as About, o as shellState, p as gameLinks, r as Link, s as shortcut, u as Taskbar, v as SubMenuItem, w as Boss, x as watchWindow, y as ViewMenu } from "./HowToPlay-jSr8LPG_.js";
+import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-Do22uNo8.js";
+import { n as Prompt } from "./BestTimes.module-DGmbpxeH.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-u56121_g.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as WindowControls, d as UndoIcon, f as Play, i as PausedCover, l as HintIcon, n as pauseAction, o as windowProps, p as Digit, r as HintPanel, t as clockDigits, u as SideButton } from "./clock-9oQB1azL.js";
-import { a as Winner, n as OpenGames, t as registerWorker } from "./worker-vjvov7S-.js";
-import { a as Prompt, i as dealer, n as random, o as BestTimes, r as shuffled, s as records, t as showRain } from "./rain-BlavWlJu.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-rw3_cTGq.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-DxmTU6yz.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DADYZTmt.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-DE1YSRA1.js";
+import { t as showRain } from "./rain-DCbFj_ZH.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-pD12Nso_.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
@@ -94,6 +96,10 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	name: "Show Errors",
 	checked: state.errors,
 	onClick: actions.toggleErrors
+}), /* @__PURE__ */ h(SubMenuItem, {
+	name: "Timer",
+	checked: state.timer,
+	onClick: actions.toggleTimer
 }), /* @__PURE__ */ h(Separator, null), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Best Times...",
 	onClick: actions.toggleBestTime
@@ -168,7 +174,8 @@ var Game = ({ key, state, actions }) => {
 		onClick: actions.hint
 	}, /* @__PURE__ */ h(HintIcon, null))), /* @__PURE__ */ h(Digit, {
 		value: game.time,
-		digits: clockDigits(state.theme, game.time)
+		digits: clockDigits(state.theme, game.time),
+		blank: !state.timer
 	})), /* @__PURE__ */ h("div", {
 		class: running(game) && !paused ? Game_module_default$1.active : Game_module_default$1.inactive,
 		style: { "--n": n }
@@ -272,7 +279,42 @@ var createGame = ({ n, level }) => ({
 	paused: false,
 	pausedAt: 0,
 	win: false,
-	hinted: false
+	hinted: false,
+	untimed: false
+});
+var boardOf = (cells, n) => {
+	check(Array.isArray(cells) && cells.length === n * n && cells.every((v) => v >= -1 && v <= 1));
+	return Int8Array.from(cells);
+};
+var saved = resumable({
+	key: "takuzu.saved",
+	running,
+	pack: ({ n, level, givens, solution, board, history, hinted, untimed }) => ({
+		n,
+		level,
+		givens: Array.from(givens),
+		solution: Array.from(solution),
+		board: Array.from(board),
+		history,
+		hinted,
+		untimed
+	}),
+	unpack: ({ n, level, givens, solution, board, history, hinted, untimed }) => {
+		check(sizes.includes(n) && level >= 0 && level < levels.length && Array.isArray(history));
+		return {
+			...createGame({
+				n,
+				level
+			}),
+			givens: boardOf(givens, n),
+			solution: boardOf(solution, n),
+			board: boardOf(board, n),
+			history,
+			hinted: Boolean(hinted),
+			untimed: Boolean(untimed),
+			dealing: false
+		};
+	}
 });
 var { timeKey, eachSlot, actions: recordActions } = records("takuzu", sizes, levelNames);
 var cycle = [
@@ -292,13 +334,13 @@ var begin = (game, actions) => {
 	game.raf = requestAnimationFrame(actions.tick);
 	return {
 		...game,
-		start: performance.now(),
+		start: clock(),
 		time: 1
 	};
 };
-var changed = (game, board, history, actions, settled = false) => {
+var changed = (state, board, history, actions, settled = false) => {
 	const next = {
-		...begin(game, actions),
+		...begin(state.game, actions),
 		board,
 		history,
 		change: ++changes
@@ -306,7 +348,10 @@ var changed = (game, board, history, actions, settled = false) => {
 	next.win = solved(board, next.n);
 	if (next.win) {
 		cancelAnimationFrame(next.raf);
-		actions.win(next);
+		if (timed({
+			...state,
+			game: next
+		})) actions.win(next);
 	}
 	const stuck = !next.win && full(board);
 	if (stuck && !settled) setTimeout(() => actions.ask(next.change), ASK_AFTER);
@@ -334,9 +379,10 @@ var state = {
 	hint: null,
 	prompt: false,
 	errors: Boolean(load("takuzu.errors")),
+	timer: loadTimer("takuzu.timer"),
 	rain: Boolean(load("takuzu.rain")),
 	about: false,
-	game: createGame(loadChoice()),
+	game: saved.restore() || createGame(loadChoice()),
 	winner: null,
 	bestTime: null
 };
@@ -346,7 +392,7 @@ var actions = {
 		window.addEventListener("keydown", actions.press);
 		listen(actions);
 		showRain(state.rain);
-		actions.reset();
+		if (state.game.dealing) actions.reset();
 	},
 	press: (event) => (state, actions) => {
 		if ((event.ctrlKey || event.metaKey) && !event.altKey && event.keyCode === 90) {
@@ -394,7 +440,8 @@ var actions = {
 			dealing: false
 		} };
 	},
-	play: ({ event, i }) => ({ game }, actions) => {
+	play: ({ event, i }) => (state, actions) => {
+		const { game } = state;
 		if (event.button !== 0 && event.button !== 2) return null;
 		if (game.dealing || game.paused || game.win || game.givens[i] !== -1) return null;
 		const back = event.button === 2;
@@ -402,20 +449,21 @@ var actions = {
 		const board = game.board.slice();
 		board[i] = cycle[(cycle.indexOf(from) + (back ? 2 : 1)) % 3];
 		const settled = board[i] === (back ? 0 : 1);
-		return changed(game, board, [...game.history, [i, from]], actions, settled);
+		return changed(state, board, [...game.history, [i, from]], actions, settled);
 	},
 	ask: (change) => ({ game }) => {
 		if (game.change !== change || game.win || game.paused || !full(game.board)) return null;
 		return { prompt: true };
 	},
-	undo: () => ({ game }, actions) => {
+	undo: () => (state, actions) => {
+		const { game } = state;
 		if (!game.history.length || game.win || game.paused || game.dealing) return { menu: null };
 		const [i, from] = game.history[game.history.length - 1];
 		const board = game.board.slice();
 		board[i] = from;
 		return {
 			menu: null,
-			...changed(game, board, game.history.slice(0, -1), actions)
+			...changed(state, board, game.history.slice(0, -1), actions)
 		};
 	},
 	hint: () => ({ game }, actions) => {
@@ -446,6 +494,7 @@ var actions = {
 			errors: !state.errors
 		};
 	},
+	toggleTimer: timerAction("takuzu.timer"),
 	toggleRain: () => (state) => {
 		save("takuzu.rain", state.rain ? "" : "yes");
 		showRain(!state.rain);
@@ -459,21 +508,23 @@ var actions = {
 		about: !about
 	}),
 	pause: pauseAction(running),
-	tick: (now) => ({ game }, actions) => {
+	tick: () => ({ game }, actions) => {
 		game.raf = requestAnimationFrame(actions.tick);
-		const next = Math.floor((now - game.start) / 1e3) + 1;
+		const next = seconds(game.start);
 		if (game.time === next) return null;
 		return { game: {
 			...game,
 			time: next
 		} };
 	},
-	...recordActions
+	...recordActions,
+	...saved.actions
 };
 var view = (state, actions) => /* @__PURE__ */ h("main", {
 	oncontextmenu: prevent,
 	ondragstart: prevent,
-	oncreate: actions.init
+	oncreate: actions.init,
+	onupdate: () => saved.keep(state.game)
 }, /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,

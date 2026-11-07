@@ -1,0 +1,270 @@
+/*the field and the pad under it, as wide as the field and centred*/
+.Sudoku_board {
+  --size: 32px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/*lines between cells are the field's own colour showing through the gaps between tracks*/
+.Sudoku_field {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--tracks);
+  grid-template-rows: var(--rows);
+  background: var(--dark-shadow);
+  border-width: 2px 3px 3px 2px;
+  border-style: solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+  border-radius: 0 2px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.Sudoku_active {
+  cursor: pointer;
+}
+
+.Sudoku_inactive {
+  cursor: default;
+}
+
+/*the pad's digits line up under the field's columns*/
+.Sudoku_pad {
+  margin: 6px 0 0;
+  padding: 0 3px 0 2px;
+}
+
+.Sudoku_digits {
+  display: grid;
+}
+
+.Sudoku_tools {
+  display: flex;
+  gap: 4px;
+  margin: 4px 0 0;
+}
+
+.Sudoku_tools .Sudoku_key {
+  flex: 1;
+  height: 24px;
+  font: 11px var(--ui-font);
+}
+
+/*raised like the scoreboard's buttons, sunk while picked or on*/
+.Sudoku_key {
+  position: relative;
+  display: block;
+  height: var(--size);
+  margin: 0;
+  padding: 0;
+  color: var(--glyph);
+  font: bold 16px var(--text-font);
+  background: var(--cell);
+  border: 1px solid var(--cell-shadow);
+  outline: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.Sudoku_key::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid;
+  border-color: var(--cell-light) var(--cell-shadow) var(--cell-shadow) var(--cell-light);
+  content: '';
+}
+
+.Sudoku_key:active:not(:disabled),
+.Sudoku_picked {
+  padding: 2px 0 0 2px;
+}
+
+.Sudoku_key:active:not(:disabled)::before,
+.Sudoku_picked::before {
+  border-width: 1px 0 0 1px;
+  border-color: var(--cell-shadow);
+}
+
+.Sudoku_picked {
+  background: var(--sd-same);
+}
+
+/*a digit placed n times already*/
+.Sudoku_used {
+  color: var(--cell-shadow);
+}
+
+.Sudoku_key:disabled {
+  color: var(--cell-shadow);
+  cursor: default;
+}
+/*play button over the hidden board*/.Board_paused {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}.Board_paused svg {
+  display: block;
+  margin: 2px;
+  fill: currentColor;
+}/*explanation under the field, never wider than it*/.Board_hint {
+  box-sizing: border-box;
+  width: 0;
+  min-width: 100%;
+  margin: 6px 0 0;
+  padding: 3px 4px 4px;
+  color: var(--text);
+  line-height: 1.3;
+  background: var(--input);
+  border: 2px solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+}/*a small raised button floated into the hint's first line*/.Board_more {
+  float: right;
+  margin: 0 0 2px 6px;
+  padding: 0 4px 1px;
+  color: var(--text);
+  font-family: var(--ui-font);
+  text-decoration: none;
+  background: var(--face);
+  border: 1px solid;
+  border-color: var(--light) var(--dark-shadow) var(--dark-shadow) var(--light);
+}.Board_more:active {
+  border-color: var(--dark-shadow) var(--light) var(--light) var(--dark-shadow);
+}/*a hint's outline on a board cell, dark edged to show on every theme*/.Board_outline::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px solid var(--hint-color);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  content: '';
+}
+/*the player's digits in each theme's first number colour, highlights mixed from its highlight*/
+:root {
+  --sd-ink: var(--num-1);
+  --sd-peer: color-mix(in srgb, var(--highlight) 12%, var(--cell-open));
+  --sd-same: color-mix(in srgb, var(--highlight) 30%, var(--cell-open));
+  --sd-select: color-mix(in srgb, var(--highlight) 45%, var(--cell-open));
+  --sd-note: color-mix(in srgb, var(--text) 62%, transparent);
+}
+
+.SudokuCell_root {
+  position: relative;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  font: 20px/var(--size) var(--text-font);
+  text-align: center;
+  background: var(--cell-open);
+  border: 0;
+  outline: 0;
+  cursor: inherit;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.SudokuCell_given {
+  font-weight: bold;
+}
+
+.SudokuCell_entry {
+  color: var(--sd-ink);
+}
+
+/*the selected cell, the cells it shares a row, column or box with, and the same digit elsewhere*/
+.SudokuCell_peer {
+  background: var(--sd-peer);
+}
+
+.SudokuCell_same {
+  background: var(--sd-same);
+}
+
+.SudokuCell_selected {
+  background: var(--sd-select);
+}
+
+.SudokuCell_error {
+  color: #ff2020;
+}
+
+.SudokuCell_error::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 3px,
+    color-mix(in srgb, #ff2020 35%, transparent) 3px 5px
+  );
+  content: '';
+}
+
+.SudokuCell_notes {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  align-items: center;
+  font: calc(var(--size) * 0.3) / 1 var(--text-font);
+  color: var(--sd-note);
+}
+
+.SudokuCell_note,
+.SudokuCell_noteOff,
+.SudokuCell_noteFocus {
+  display: block;
+}
+
+.SudokuCell_noteOff {
+  visibility: hidden;
+}
+
+.SudokuCell_noteFocus {
+  color: var(--sd-ink);
+  font-weight: bold;
+}
+
+.SudokuCell_ghost {
+  color: color-mix(in srgb, var(--text) 45%, transparent);
+}
+
+/*hint outlines, the same colours the other games use, amber for candidates taken away*/
+
+.SudokuCell_hintSource {
+  --hint-color: #2e8bff;
+}
+
+.SudokuCell_hintPlace {
+  --hint-color: #12d12a;
+}
+
+.SudokuCell_hintRemove {
+  --hint-color: #ffb000;
+}
+
+.SudokuCell_hintWrong {
+  --hint-color: #ff3b3b;
+}

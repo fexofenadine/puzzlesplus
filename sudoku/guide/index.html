@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sudoku Plus Guide</title>
+    <meta
+      name="description"
+      content="How to play Sudoku Plus, from the rules to every solving technique, with examples"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <link rel="apple-touch-icon" href="../../sudoku/icon.png" />
+    <link rel="shortcut icon" href="../../sudoku/favicon.ico" />
+    <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
+//apply the saved theme and window size before first paint
+try {
+  document.documentElement.dataset.theme = localStorage.getItem('theme') || 'classic'
+  //assume animated off classic, the script corrects it
+  if (document.documentElement.dataset.theme !== 'classic') {
+    document.documentElement.dataset.background = 'animated'
+  }
+  document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
+} catch {
+  //blocked storage keeps the defaults
+}
+//if the game fails to start, show why instead of an empty desktop
+addEventListener('error', (event) => {
+  if (document.querySelector('main *')) return
+  const note = document.createElement('pre')
+  note.style.cssText =
+    'position:fixed;left:0;right:0;bottom:0;z-index:9;margin:0;padding:8px;background:#000;color:#fff;font:12px monospace;white-space:pre-wrap'
+  note.textContent = `${document.title} could not start: ${event.message}`
+  document.body.append(note)
+})
+</script>
+    <script type="module" crossorigin src="../../assets/sudoku-guide.js?v=49bcd36f"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-jSr8LPG_.js?v=013bb0ab">
+    <link rel="modulepreload" crossorigin href="../../assets/Board-u56121_g.js?v=2655b7f9">
+    <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
+    <link rel="modulepreload" crossorigin href="../../assets/grid-D_4m0l-G.js?v=fbd636bb">
+    <link rel="modulepreload" crossorigin href="../../assets/Game-Dgso-oUi.js?v=83695f46">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CeS_4wyP.js?v=b6c77545">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-DqM3M1q8.js?v=8ee52844">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-DYw1uM31.js?v=31d176fc">
+    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=df1f0f5b">
+    <link rel="stylesheet" crossorigin href="../../assets/Board.css?v=f5b0e619">
+    <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=0f918f63">
+    <link rel="stylesheet" crossorigin href="../../assets/Game3.css?v=d263edaf">
+    <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">
+  </head>
+  <body>
+    <div id="app">
+      <main></main>
+    </div>
+  </body>
+</html>
