@@ -5,10 +5,11 @@ import avatar from './avatar.png'
 import minesweeper from './icons/minesweeper.png'
 import takuzu from './icons/takuzu.png'
 import nonograms from './icons/nonograms.png'
+import sudoku from './icons/sudoku.png'
 import help from './icons/help.svg'
 import book from './icons/book.svg'
 
-export const icons = { minesweeper, takuzu, nonograms }
+export const icons = { minesweeper, takuzu, nonograms, sudoku }
 export { book, help }
 
 const REPO = 'https://github.com/fexofenadine/puzzlesplus'

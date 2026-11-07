@@ -5,6 +5,7 @@ export const games = [
   ['minesweeper', 'Minesweeper'],
   ['takuzu', 'Takuzu'],
   ['nonograms', 'Nonograms'],
+  ['sudoku', 'Sudoku'],
 ]
 
 //every game's page for the game menu, the open one checked

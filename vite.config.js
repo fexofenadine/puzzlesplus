@@ -57,9 +57,11 @@ export default defineConfig({
         minesweeper: 'minesweeper/index.html',
         takuzu: 'takuzu/index.html',
         nonograms: 'nonograms/index.html',
+        sudoku: 'sudoku/index.html',
         'minesweeper-guide': 'minesweeper/guide/index.html',
         'takuzu-guide': 'takuzu/guide/index.html',
         'nonograms-guide': 'nonograms/guide/index.html',
+        'sudoku-guide': 'sudoku/guide/index.html',
         'how-to-play': 'how-to-play/index.html',
       },
       output: {

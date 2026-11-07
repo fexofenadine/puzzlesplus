@@ -2,6 +2,7 @@ import { h } from 'hyperapp'
 import { Rules as MinesweeperRules } from '../HowToPlay'
 import { Rules as TakuzuRules } from '../takuzu/HowToPlay'
 import { Rules as NonogramsRules } from '../nonograms/HowToPlay'
+import { Rules as SudokuRules } from '../sudoku/HowToPlay'
 import { Page } from './Guide'
 
 //the short rules of every game on one page, each with its game and full guide
@@ -24,6 +25,7 @@ export const parts = [
       game('minesweeper', 'Minesweeper', MinesweeperRules),
       game('takuzu', 'Takuzu', TakuzuRules),
       game('nonograms', 'Nonograms', NonogramsRules),
+      game('sudoku', 'Sudoku', SudokuRules),
       {
         id: 'shortcuts',
         title: 'Every game',
