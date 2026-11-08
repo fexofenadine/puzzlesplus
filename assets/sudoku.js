@@ -1,10 +1,10 @@
-import { D as BackgroundSettings, E as Boss, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-DAnWEJz0.js";
-import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-D9QuEZo5.js";
-import { n as Prompt } from "./BestTimes.module-CP0TO9Z-.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-D3x1X5-p.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DfIgY2F1.js";
-import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-Bg2-RYtB.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-YwoYncAN.js";
+import { D as BackgroundSettings, E as Boss, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-CmhOznvD.js";
+import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-Bod9kBHX.js";
+import { n as Prompt } from "./BestTimes.module-rvyLLC15.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-D8rikewI.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-LiJBrp-a.js";
+import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-JrlHeB8f.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-Bq3_G1AK.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,

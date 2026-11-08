@@ -1,4 +1,4 @@
-import { t as HowToPlay, z as h } from "./HowToPlay-DAnWEJz0.js";
+import { t as HowToPlay, z as h } from "./HowToPlay-CmhOznvD.js";
 //#region src/takuzu/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Fill every cell with 0 or 1 so that no row or column has three of the same digit next to each other, every row and column holds as many 0s as 1s, and no two rows or two columns are the same."),

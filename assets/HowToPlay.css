@@ -845,8 +845,18 @@ main::before {
   background: #f8f9fa;
 }
 
+/*a button that looks like the sheet's plain title*/
 .Boss_title {
+  display: block;
+  padding: 0;
+  color: inherit;
+  font: inherit;
   font-size: 18px;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .Boss_menus {

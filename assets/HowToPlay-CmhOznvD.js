@@ -1421,7 +1421,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/BackgroundSettings.jsx": () => __vitePreload(() => import("./BackgroundSettings-BiYM-aZn.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/BestTimes.jsx": () => __vitePreload(() => import("./BestTimes-3zHmOYNZ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/Board.jsx": () => __vitePreload(() => import("./Board-CpaoLjQ1.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/Boss.jsx": () => __vitePreload(() => import("./Boss-BkSn4gsE.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/Boss.jsx": () => __vitePreload(() => import("./Boss-C4n6SZRd.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/GameLinks.jsx": () => __vitePreload(() => import("./GameLinks-DUqc6rfh.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-C6SSEPdi.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/OpenGames.jsx": () => __vitePreload(() => import("./OpenGames-BhSsW_cY.js").then((m) => m["default"]), [], import.meta.url),
@@ -2388,7 +2388,11 @@ var Boss = ({ key, state, actions }) => {
 		tabindex: -1,
 		oncreate: cover,
 		ondestroy: uncover
-	}, /* @__PURE__ */ h("header", { class: Boss_module_default.header }, /* @__PURE__ */ h("div", { class: Boss_module_default.title }, "Q3 budget"), /* @__PURE__ */ h("nav", { class: Boss_module_default.menus }, [
+	}, /* @__PURE__ */ h("header", { class: Boss_module_default.header }, /* @__PURE__ */ h("button", {
+		type: "button",
+		class: Boss_module_default.title,
+		onclick: () => actions.boss()
+	}, "Q3 budget"), /* @__PURE__ */ h("nav", { class: Boss_module_default.menus }, [
 		"File",
 		"Edit",
 		"View",
