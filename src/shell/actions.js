@@ -1,6 +1,7 @@
 import { makeSheet } from './Boss'
 import { load, save } from './storage'
 import { themes } from './themes'
+import { games } from './GameLinks'
 import { backgroundFor, configure, defaults, loadSettings, saveSettings } from './backgrounds'
 import {
   applyZoom,
@@ -23,9 +24,15 @@ const loadTheme = () => {
   return themes.some(([id]) => id === theme) ? theme : 'classic'
 }
 
+//the site's top page opens the game played last
+const remember = (page) => {
+  if (games.some(([id]) => id === page)) save('lastGame', page)
+  return page
+}
+
 //page is the game's folder name, root the way from this page back to the site's top
 export const shellState = (page, root = '../') => ({
-  page,
+  page: remember(page),
   root,
   menu: null,
   //open, minimised or closed
