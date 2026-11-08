@@ -1,4 +1,4 @@
-import { F as Overlay, L as h, N as Dialog, P as Button } from "./HowToPlay-BQuQEqsA.js";
+import { F as Overlay, L as h, N as Dialog, P as Button } from "./HowToPlay-ClOjG6pr.js";
 var Prompt_module_default = {
 	root: "Prompt_root",
 	text: "Prompt_text",

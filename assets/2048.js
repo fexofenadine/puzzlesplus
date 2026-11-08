@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, c as typing, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-BQuQEqsA.js";
-import { a as resumable, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-BStK0LAB.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-CBYjW0R5.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-BD7kOVSC.js";
-import { a as canMove, c as sizes, d as tilesOf, f as valuesOf, i as running, l as spawn, o as highest, r as Game, s as move, t as suggest, u as targets } from "./search-8O73bA0L.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-CDBqO81f.js";
+import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, c as typing, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-ClOjG6pr.js";
+import { a as resumable, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-CKWT_1wS.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-BwrSDN0S.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-BLQ2H6XF.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-CGj0Dv8h.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-gfF9J-x-.js";
 //#region src/2048/BestScores.jsx
 var tabs = [{
 	id: "clean",
@@ -165,7 +165,7 @@ var TwentyAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
 	key,
 	name: "2048 Plus",
 	actions
-}, /* @__PURE__ */ h("p", null, "Slide the tiles: equal tiles that meet merge into one of twice the value. Make a 2048 tile, or keep going for the highest score you can."), /* @__PURE__ */ h("p", null, "Based on ", /* @__PURE__ */ h(Link, { href: "https://github.com/gabrielecirulli/2048" }, "2048"), " by Gabriele Cirulli (MIT licence), itself inspired by 1024 and Threes, with the rules kept and the code written anew. The hint is a short look ahead over the tiles that may appear."), /* @__PURE__ */ h("p", null, "Part of Puzzles Plus by fexofenadine, sharing its window, themes and backgrounds with Minesweeper Plus, which is based on", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov."));
+}, /* @__PURE__ */ h("p", null, "Slide the tiles: equal tiles that meet merge into one of twice the value. Make a 2048 tile, or keep going for the highest score you can."), /* @__PURE__ */ h("p", null, "Based on ", /* @__PURE__ */ h(Link, { href: "https://github.com/gabrielecirulli/2048" }, "2048"), " by Gabriele Cirulli (MIT licence), itself inspired by 1024 and Threes, with the rules kept and the code written anew. The hint is a short look ahead over the tiles that may appear. Its tiles keep the original's shapes and, on Classic, its colours, with the Clear Sans font by Intel (Apache 2.0 licence)."), /* @__PURE__ */ h("p", null, "Part of Puzzles Plus by fexofenadine, sharing its window, themes and backgrounds with Minesweeper Plus, which is based on", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov."));
 //#endregion
 //#region src/2048/app.jsx
 var loadSize = () => {
@@ -263,7 +263,6 @@ var state = {
 	...shellState("2048"),
 	hint: null,
 	prompt: false,
-	drag: null,
 	timer: load("2048.timer") === "on",
 	about: false,
 	game: saved.restore() || createGame(loadSize()),
@@ -305,7 +304,6 @@ var actions = {
 		return {
 			menu: null,
 			hint: null,
-			drag: null,
 			prompt: false,
 			...winner && { winner },
 			game: createGame(n)
@@ -313,10 +311,13 @@ var actions = {
 	},
 	slide: (dir) => (state, actions) => {
 		const { game } = state;
+		const held = swipe && swipe.board;
 		swipe = null;
-		if (game.paused || game.over || state.prompt) return state.drag && { drag: null };
-		const done = move(game.tiles, game.n, dir, game.nextId);
-		if (!done.moved) return state.drag && { drag: null };
+		const done = !game.paused && !game.over && !state.prompt && move(game.tiles, game.n, dir, game.nextId);
+		if (!done || !done.moved) {
+			letGo(held);
+			return null;
+		}
 		const { tiles, nextId } = spawn(done.tiles, game.n, rng, done.nextId);
 		const values = valuesOf(tiles, game.n);
 		const next = {
@@ -341,7 +342,6 @@ var actions = {
 		}
 		return {
 			hint: null,
-			drag: null,
 			prompt: reached && !next.over,
 			...winner && { winner },
 			game: next
@@ -350,11 +350,13 @@ var actions = {
 	swipeStart: (event) => (state) => {
 		const { game } = state;
 		if (game.paused || game.over || state.prompt || event.button > 0) return;
-		const rect = event.currentTarget.getBoundingClientRect();
+		const board = event.currentTarget;
+		const rect = board.getBoundingClientRect();
 		const { clientX: x, clientY: y, timeStamp: t } = event;
 		swipe = {
 			x,
 			y,
+			board,
 			size: rect.width / game.n || 1,
 			plan: null,
 			samples: [{
@@ -365,7 +367,7 @@ var actions = {
 		};
 	},
 	swipeMove: (event) => (state) => {
-		if (!swipe) return null;
+		if (!swipe) return;
 		const { clientX: x, clientY: y, timeStamp: t } = event;
 		swipe.samples = [...swipe.samples.filter((s) => t - s.t <= RECENT), {
 			t,
@@ -376,15 +378,15 @@ var actions = {
 		const dy = y - swipe.y;
 		if (!swipe.plan) {
 			const dir = lockOf(dx, dy);
-			if (!dir) return null;
+			if (!dir) return;
 			const { game } = state;
 			swipe.plan = planOf(game.tiles, game.n, dir, game.nextId);
 		}
-		return { drag: offsetsOf(swipe.plan, along(swipe.plan.dir, dx, dy) / swipe.size) };
+		hold(swipe.board, offsetsOf(swipe.plan, along(swipe.plan.dir, dx, dy) / swipe.size));
 	},
 	swipeEnd: (event) => (state, actions) => {
 		if (!swipe) return null;
-		const { plan, size, samples } = swipe;
+		const { plan, size, samples, board } = swipe;
 		const { clientX: x, clientY: y, timeStamp: t } = event;
 		const start = swipe;
 		swipe = null;
@@ -396,11 +398,12 @@ var actions = {
 			actions.slide(plan.dir);
 			return null;
 		}
-		return { drag: null };
+		letGo(board);
+		return null;
 	},
 	swipeCancel: () => () => {
+		if (swipe) letGo(swipe.board);
 		swipe = null;
-		return { drag: null };
 	},
 	undo: () => ({ game }, actions) => {
 		if (!game.history.length || game.paused) return { menu: null };
@@ -421,7 +424,6 @@ var actions = {
 		return {
 			menu: null,
 			hint: null,
-			drag: null,
 			game: next
 		};
 	},
@@ -464,7 +466,7 @@ var actions = {
 	}),
 	pause: pauseAction(running, () => {
 		swipe = null;
-		return { drag: null };
+		return {};
 	}),
 	tick: () => ({ game }, actions) => {
 		game.raf = requestAnimationFrame(actions.tick);

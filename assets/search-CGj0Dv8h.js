@@ -1,5 +1,5 @@
-import { C as Menu_module_default, L as h, N as Dialog, S as ThemeMenu, _ as Separator, g as MenuItem, p as gameLinks, v as SubMenuItem, x as watchWindow, y as ViewMenu } from "./HowToPlay-BQuQEqsA.js";
-import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-BD7kOVSC.js";
+import { C as Menu_module_default, L as h, N as Dialog, S as ThemeMenu, _ as Separator, g as MenuItem, p as gameLinks, v as SubMenuItem, x as watchWindow, y as ViewMenu } from "./HowToPlay-ClOjG6pr.js";
+import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-BLQ2H6XF.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 var Board2048_module_default = {
 	board: "Board2048_board",
@@ -157,7 +157,7 @@ var spawn = (tiles, n, rng, nextId) => {
 		nextId: nextId + 1
 	};
 };
-var tilesOf = (values, nextId) => {
+var tilesOf$1 = (values, nextId) => {
 	let id = nextId;
 	const tiles = [];
 	values.forEach((value, cell) => {
@@ -242,6 +242,63 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	onClick: actions.toggleAbout
 })));
 //#endregion
+//#region src/2048/motion.js
+var still = () => !globalThis.matchMedia || matchMedia("(prefers-reduced-motion: reduce)").matches;
+var stepOf = (element) => {
+	const board = element.parentNode && element.parentNode.parentNode;
+	const gap = board ? parseFloat(getComputedStyle(board).columnGap) || 0 : 0;
+	return element.offsetWidth + gap;
+};
+var offsetOf = (element) => {
+	const value = element.style.translate || getComputedStyle(element).translate;
+	if (!value || value === "none") return [0, 0];
+	const [x, y = "0"] = value.split(" ");
+	return [parseFloat(x) || 0, parseFloat(y) || 0];
+};
+var glide = (element, from, to) => {
+	if (!(from[0] !== to[0] || from[1] !== to[1]) && !element.style.translate) return;
+	if (!element.animate || still()) {
+		element.style.translate = "";
+		return;
+	}
+	const step = stepOf(element);
+	const [ox, oy] = offsetOf(element);
+	const dx = (from[0] - to[0]) * step + ox;
+	const dy = (from[1] - to[1]) * step + oy;
+	const dragged = Boolean(element.style.translate);
+	element.style.translate = "";
+	if (element.glide) element.glide.cancel();
+	if (!dx && !dy) return;
+	const left = Math.hypot(dx, dy) / step;
+	element.glide = element.animate([{ translate: `${dx}px ${dy}px` }, { translate: "0 0" }], {
+		duration: dragged ? Math.max(60, Math.min(120, left * 120)) : 100,
+		easing: dragged ? "cubic-bezier(0.2, 0.6, 0.35, 1)" : "ease-in-out",
+		fill: "backwards"
+	});
+};
+var tilesOf = (board) => board && board.querySelectorAll ? board.querySelectorAll("[data-id]") : [];
+var hold = (board, offsets) => {
+	for (const element of tilesOf(board)) {
+		const offset = offsets[element.dataset.id];
+		if (!offset) continue;
+		if (element.glide) element.glide.finish();
+		const step = stepOf(element);
+		element.style.translate = `${offset[0] * step}px ${offset[1] * step}px`;
+	}
+};
+var letGo = (board) => {
+	for (const element of tilesOf(board)) {
+		if (!element.style.translate) continue;
+		const [ox, oy] = offsetOf(element);
+		element.style.translate = "";
+		if (!element.animate || still()) continue;
+		element.glide = element.animate([{ translate: `${ox}px ${oy}px` }, { translate: "0 0" }], {
+			duration: 150,
+			easing: "cubic-bezier(0.2, 0.6, 0.35, 1)"
+		});
+	}
+};
+//#endregion
 //#region src/2048/Game.jsx
 var running = ({ start, over }) => start >= 0 && !over;
 var cellSizes = {
@@ -250,25 +307,14 @@ var cellSizes = {
 	5: 52,
 	6: 46
 };
-var glide = (element, from, to) => {
-	if (from[0] === to[0] && from[1] === to[1]) return;
-	if (!element.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-	const board = element.parentNode.parentNode;
-	const step = element.offsetWidth + parseFloat(getComputedStyle(board).columnGap || 0);
-	const dx = (from[0] - to[0]) * step;
-	const dy = (from[1] - to[1]) * step;
-	element.animate([{ translate: `${dx}px ${dy}px` }, { translate: "0 0" }], {
-		duration: 100,
-		easing: "ease-in-out"
-	});
-};
-var Tile = ({ tile, n, offset, still }) => {
+var Tile = ({ tile, n }) => {
 	const k = Math.log2(tile.value);
-	const [ox, oy] = offset || [0, 0];
-	const x = tile.cell % n + ox;
-	const y = Math.floor(tile.cell / n) + oy;
+	const x = tile.cell % n;
+	const y = Math.floor(tile.cell / n);
 	return /* @__PURE__ */ h("div", {
 		key: tile.id,
+		"data-id": tile.id,
+		"data-k": k,
 		class: [
 			Board2048_module_default.tile,
 			k > 11 && Board2048_module_default.beyond,
@@ -282,11 +328,11 @@ var Tile = ({ tile, n, offset, still }) => {
 			"--y": y,
 			"--k": k
 		},
-		onupdate: (element, old) => !still && glide(element, [old.style["--x"], old.style["--y"]], [x, y])
+		onupdate: (element, old) => glide(element, [old.style["--x"], old.style["--y"]], [x, y])
 	}, tile.value);
 };
 var byId = (a, b) => a.id - b.id;
-var Board = ({ n, tiles, hidden, drag, onDown }, children) => /* @__PURE__ */ h("div", {
+var Board = ({ n, tiles, hidden, onDown }, children) => /* @__PURE__ */ h("div", {
 	class: Board2048_module_default.board,
 	style: {
 		"--n": n,
@@ -295,9 +341,7 @@ var Board = ({ n, tiles, hidden, drag, onDown }, children) => /* @__PURE__ */ h(
 	onpointerdown: onDown
 }, Array.from({ length: n * n }, () => /* @__PURE__ */ h("div", { class: Board2048_module_default.cell })), !hidden && /* @__PURE__ */ h("div", { class: Board2048_module_default.tiles }, [...tiles].sort(byId).map((tile) => Tile({
 	tile,
-	n,
-	offset: drag && drag[tile.id],
-	still: Boolean(drag)
+	n
 }))), children);
 var scoreDigits = (score) => Math.max(4, String(score).length);
 var Game = ({ key, state, actions }) => {
@@ -342,7 +386,6 @@ var Game = ({ key, state, actions }) => {
 		n,
 		tiles: game.tiles,
 		hidden: paused,
-		drag: state.drag,
 		onDown: actions.swipeStart
 	}, paused && /* @__PURE__ */ h(PausedCover, { onResume: () => actions.pause(false) })), hint && !paused && /* @__PURE__ */ h(HintPanel, {
 		text: hint.text,
@@ -452,4 +495,4 @@ var suggest = (values, n) => {
 	};
 };
 //#endregion
-export { canMove as a, sizes as c, tilesOf as d, valuesOf as f, running as i, spawn as l, Board as n, highest as o, Game as r, move as s, suggest as t, targets as u };
+export { hold as a, highest as c, spawn as d, targets as f, running as i, move as l, valuesOf as m, Board as n, letGo as o, tilesOf$1 as p, Game as r, canMove as s, suggest as t, sizes as u };

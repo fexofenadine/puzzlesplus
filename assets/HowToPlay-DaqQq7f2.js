@@ -1,4 +1,4 @@
-import { L as h, t as HowToPlay } from "./HowToPlay-BQuQEqsA.js";
+import { L as h, t as HowToPlay } from "./HowToPlay-ClOjG6pr.js";
 //#region src/sudoku/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Fill the empty cells so every row, every column and every 3×3 box holds each digit from 1 to 9 exactly once. The digits in bold are the puzzle's own and can't be changed."),

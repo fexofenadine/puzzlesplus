@@ -1,4 +1,4 @@
-import { C as Menu_module_default, E as startBackgrounds, I as app, L as h, N as Dialog, S as ThemeMenu, T as BackgroundSettings, a as shellActions, i as listen, o as shellState, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-BQuQEqsA.js";
+import { C as Menu_module_default, E as startBackgrounds, I as app, L as h, N as Dialog, S as ThemeMenu, T as BackgroundSettings, a as shellActions, i as listen, o as shellState, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-ClOjG6pr.js";
 var Guide_module_default = {
 	page: "Guide_page",
 	body: "Guide_body",

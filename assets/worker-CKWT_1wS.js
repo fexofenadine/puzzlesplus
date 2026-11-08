@@ -1,5 +1,5 @@
-import { A as load, F as Overlay, L as h, M as save, N as Dialog, P as Button, d as icons, j as remove, l as About_module_default, m as games } from "./HowToPlay-BQuQEqsA.js";
-import { f as clock } from "./Board-BD7kOVSC.js";
+import { A as load, F as Overlay, L as h, M as save, N as Dialog, P as Button, d as icons, j as remove, l as About_module_default, m as games } from "./HowToPlay-ClOjG6pr.js";
+import { f as clock } from "./Board-BLQ2H6XF.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",
