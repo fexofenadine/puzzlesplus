@@ -208,6 +208,13 @@ export const shellActions = {
       save('windowHidden', glass.hidden ? '' : 'yes')
       return { menu: null, glass: { ...glass, hidden: !glass.hidden } }
     },
+  //a phone's options sheet sets the opacity straight away, saved as it goes
+  setOpacity:
+    (opacity) =>
+    ({ glass }) => {
+      save('windowOpacity', opacity === 100 ? '' : opacity)
+      return { glass: { ...glass, opacity } }
+    },
   //shrink the chosen zoom to fit, only for a new level, theme or browser size
   fit:
     () =>
