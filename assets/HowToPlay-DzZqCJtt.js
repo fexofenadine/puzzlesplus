@@ -1430,7 +1430,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/ThemeMenu.jsx": () => __vitePreload(() => import("./ThemeMenu-CjGFC0cl.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/ViewMenu.jsx": () => __vitePreload(() => import("./ViewMenu-h4XuwPLe.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/WindowControls.jsx": () => __vitePreload(() => import("./WindowControls-a3R3DjjO.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-BcdHtQay.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-HdinxzbZ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/hill.js": () => __vitePreload(() => import("./hill-C0RBa6DT.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/index.js": () => __vitePreload(() => import("./backgrounds-DqF45KDc.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/matrix.js": () => __vitePreload(() => import("./matrix-BPjC-X-W.js").then((m) => m["default"]), [], import.meta.url),
@@ -2807,8 +2807,12 @@ var loadTheme = () => {
 	const theme = load("theme");
 	return themes.some(([id]) => id === theme) ? theme : "classic";
 };
+var remember = (page) => {
+	if (games.some(([id]) => id === page)) save("lastGame", page);
+	return page;
+};
 var shellState = (page, root = "../") => ({
-	page,
+	page: remember(page),
 	root,
 	menu: null,
 	windowState: "open",

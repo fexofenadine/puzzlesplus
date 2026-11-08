@@ -1,8 +1,8 @@
-import { L as h, d as icons } from "./HowToPlay-ClOjG6pr.js";
-import { C as xyWing, D as bit, I as Sudoku_module_default, M as geometry, N as onlyDigit, S as xWing, _ as nakedSingles, a as Cell, b as swordfish, d as hiddenPairs, f as hiddenSingles, g as nakedPairs, h as lockedCandidates, i as tracks, k as candidatesOf, n as place, p as hiddenTriples, v as nakedTriples, w as xyzWing, x as whatIf } from "./Game-D6pHfHJ4.js";
-import { t as Rules } from "./HowToPlay-DaqQq7f2.js";
-import { r as startGuide, t as Figure } from "./Guide-Dl7xf2s-.js";
-import { t as desktopSection } from "./desktop-DhBUUQV5.js";
+import { L as h, d as icons } from "./HowToPlay-DzZqCJtt.js";
+import { C as xyWing, D as bit, I as Sudoku_module_default, M as geometry, N as onlyDigit, S as xWing, _ as nakedSingles, a as Cell, b as swordfish, d as hiddenPairs, f as hiddenSingles, g as nakedPairs, h as lockedCandidates, i as tracks, k as candidatesOf, n as place, p as hiddenTriples, v as nakedTriples, w as xyzWing, x as whatIf } from "./Game-D68rpAxS.js";
+import { t as Rules } from "./HowToPlay-DAeHgUFh.js";
+import { r as startGuide, t as Figure } from "./Guide-T10ADCWy.js";
+import { t as desktopSection } from "./desktop-DMkLk3W5.js";
 //#region src/guide/SudokuExample.jsx
 var finders = {
 	"hidden-single": hiddenSingles,

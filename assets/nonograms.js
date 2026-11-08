@@ -1,11 +1,11 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, T as BackgroundSettings, a as shellActions, c as typing, i as listen, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-ClOjG6pr.js";
-import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-CKWT_1wS.js";
-import { n as Prompt } from "./BestTimes.module-BwrSDN0S.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-BLQ2H6XF.js";
-import { a as records, i as BestTimes, r as dealer, t as random } from "./random-xUwxNGN9.js";
-import { t as showRain } from "./rain-CK9Rw4cn.js";
-import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-CNAr9E0Z.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-DeVvy-1X.js";
+import { A as load, E as startBackgrounds, I as app, L as h, M as save, T as BackgroundSettings, a as shellActions, c as typing, i as listen, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-DzZqCJtt.js";
+import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-CUMYqhkT.js";
+import { n as Prompt } from "./BestTimes.module-D4qAuhKH.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-Cajad2cE.js";
+import { a as records, i as BestTimes, r as dealer, t as random } from "./random-DTobraYn.js";
+import { t as showRain } from "./rain-DCQAX_eV.js";
+import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-BCTKgmH4.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-DLlzwH_B.js";
 //#region src/nonograms/generate.js
 var makePicture = (n, rng, dense = 0) => {
 	const density = .48 + dense + .08 * rng();

@@ -1,10 +1,10 @@
-import { L as h, f as help_default } from "./HowToPlay-ClOjG6pr.js";
-import { t as Rules } from "./HowToPlay-gfF9J-x-.js";
-import { n as Rules$1 } from "./HowToPlay-CoH5D3Af.js";
-import { t as Rules$2 } from "./HowToPlay-CtP_Jcdb.js";
-import { n as Rules$3 } from "./HowToPlay-DeVvy-1X.js";
-import { t as Rules$4 } from "./HowToPlay-DaqQq7f2.js";
-import { n as Page, r as startGuide } from "./Guide-Dl7xf2s-.js";
+import { L as h, f as help_default } from "./HowToPlay-DzZqCJtt.js";
+import { t as Rules } from "./HowToPlay-Ckouq_C_.js";
+import { n as Rules$1 } from "./HowToPlay-IHl4Djs7.js";
+import { t as Rules$2 } from "./HowToPlay-Bx1e80sh.js";
+import { n as Rules$3 } from "./HowToPlay-DLlzwH_B.js";
+import { t as Rules$4 } from "./HowToPlay-DAeHgUFh.js";
+import { n as Page, r as startGuide } from "./Guide-T10ADCWy.js";
 //#region src/guide/howToPlay.jsx
 var game = (id, title, Rules) => ({
 	id,

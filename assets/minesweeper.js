@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, h as Menu, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss, x as watchWindow } from "./HowToPlay-ClOjG6pr.js";
-import { a as resumable, c as Input, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-CKWT_1wS.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-BLQ2H6XF.js";
+import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, h as Menu, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss, x as watchWindow } from "./HowToPlay-DzZqCJtt.js";
+import { a as resumable, c as Input, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-CUMYqhkT.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-Cajad2cE.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-CbGjXgbs.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-CoH5D3Af.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-FxqVwa1D.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-IHl4Djs7.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
