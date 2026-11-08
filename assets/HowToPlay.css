@@ -262,6 +262,8 @@
   --cell-light: #2a8f4a;
   --cell-shadow: #000;
   --cell-open: #010803;
+  /*lines between open cells, black would vanish into them*/
+  --grid-line: #0e4a1f;
   --lcd: #000;
   --lcd-on: #39d26b;
   --lcd-off: rgba(57, 210, 107, 0.1);
@@ -1250,7 +1252,8 @@ main::before {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1;
+  /*above the board's own layers: merged tiles, the paused cover, the lost field's glitch*/
+  z-index: 3;
   display: none;
   background: var(--face);
   border: 1px solid;

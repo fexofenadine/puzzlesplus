@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-CmhOznvD.js";
-import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker } from "./worker-Bod9kBHX.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-rvyLLC15.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-D8rikewI.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-DMB5Vnx_.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-DVIqMqV6.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-B8mFKdpg.js";
+import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker } from "./worker-BRCwxoE3.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-CxlHHq4T.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-DQcUInwY.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-CbuTCZnr.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-CX0OkvmR.js";
 //#region src/2048/BestScores.jsx
 var tabs = [{
 	id: "clean",
@@ -158,7 +158,7 @@ var offsetsOf = (plan, cells) => {
 	return offsets;
 };
 var progressOf = (plan, cells) => plan.moved ? Math.min(1, Math.max(0, cells / plan.far)) : 0;
-var finishes = (plan, cells, speed) => plan.moved && (progressOf(plan, cells) >= .5 || cells > 0 && speed >= .5);
+var finishes = (plan, pixels) => plan.moved && pixels > 10;
 //#endregion
 //#region src/2048/About.jsx
 var TwentyAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
@@ -259,7 +259,6 @@ var keyDirs = {
 	83: "down"
 };
 var swipe = null;
-var RECENT = 100;
 var state = {
 	...shellState("2048"),
 	hint: null,
@@ -354,28 +353,18 @@ var actions = {
 		if (game.paused || game.over || state.prompt || event.button > 0) return;
 		const board = event.currentTarget;
 		const rect = board.getBoundingClientRect();
-		const { clientX: x, clientY: y, timeStamp: t } = event;
+		const { clientX: x, clientY: y } = event;
 		swipe = {
 			x,
 			y,
 			board,
 			size: rect.width / game.n || 1,
-			plan: null,
-			samples: [{
-				t,
-				x,
-				y
-			}]
+			plan: null
 		};
 	},
 	swipeMove: (event) => (state) => {
 		if (!swipe) return;
-		const { clientX: x, clientY: y, timeStamp: t } = event;
-		swipe.samples = [...swipe.samples.filter((s) => t - s.t <= RECENT), {
-			t,
-			x,
-			y
-		}];
+		const { clientX: x, clientY: y } = event;
 		const dx = x - swipe.x;
 		const dy = y - swipe.y;
 		if (!swipe.plan) {
@@ -388,15 +377,11 @@ var actions = {
 	},
 	swipeEnd: (event) => (state, actions) => {
 		if (!swipe) return null;
-		const { plan, size, samples, board } = swipe;
-		const { clientX: x, clientY: y, timeStamp: t } = event;
+		const { plan, board } = swipe;
 		const start = swipe;
 		swipe = null;
 		if (!plan) return null;
-		const a = along(plan.dir, x - start.x, y - start.y);
-		const first = samples.find((s) => t - s.t <= RECENT);
-		const speed = first && t > first.t ? along(plan.dir, x - first.x, y - first.y) / (t - first.t) : 0;
-		if (finishes(plan, a / size, speed)) {
+		if (finishes(plan, along(plan.dir, event.clientX - start.x, event.clientY - start.y))) {
 			actions.slide(plan.dir);
 			return null;
 		}
