@@ -1,8 +1,8 @@
-import { L as h, d as icons } from "./HowToPlay-DzZqCJtt.js";
-import { n as Board, p as tilesOf, t as suggest } from "./search-aOl6tbt8.js";
-import { t as Rules } from "./HowToPlay-Ckouq_C_.js";
-import { r as startGuide, t as Figure } from "./Guide-T10ADCWy.js";
-import { t as desktopSection } from "./desktop-DMkLk3W5.js";
+import { o as icons, z as h } from "./HowToPlay-BHsDglch.js";
+import { n as Board, p as tilesOf, t as suggest } from "./search-Cbkrdi7n.js";
+import { t as Rules } from "./HowToPlay-C7pxfaeR.js";
+import { r as startGuide, t as Figure } from "./Guide-WrhXxiud.js";
+import { t as desktopSection } from "./desktop-_PqnfIo0.js";
 //#region src/guide/2048.jsx
 var examples = {
 	corner: {
@@ -116,7 +116,7 @@ var parts = [{
 		{
 			id: "records",
 			title: "Sizes and best scores",
-			body: () => [/* @__PURE__ */ h("p", null, "The Size menu has 3 × 3 to 6 × 6. Smaller boards fill up fast and need care from the first move, bigger ones forgive more and run longer. On 3 × 3 the winning tile is 512, since 2048 can't fit."), /* @__PURE__ */ h("p", null, "Each size keeps a best score with the highest tile of that game, one table for games played alone and one for games that used a hint or undo. The name box opens when a game ends, or when you leave it for a new one, with a better score than the table's.")]
+			body: () => [/* @__PURE__ */ h("p", null, "The Size menu has 3 × 3 to 5 × 5. Smaller boards fill up fast and need care from the first move, bigger ones forgive more and run longer. On 3 × 3 the winning tile is 512, since 2048 can't fit."), /* @__PURE__ */ h("p", null, "Each size keeps a best score with the highest tile of that game, one table for games played alone and one for games that used a hint or undo. The name box opens when a game ends, or when you leave it for a new one, with a better score than the table's.")]
 		},
 		{
 			id: "hints",

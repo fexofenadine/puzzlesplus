@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, h as Menu, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss, x as watchWindow } from "./HowToPlay-DzZqCJtt.js";
-import { a as resumable, c as Input, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-CUMYqhkT.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-Cajad2cE.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-BHsDglch.js";
+import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker, u as Input } from "./worker-BLeCaFCA.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-xSlloW--.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-FxqVwa1D.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-IHl4Djs7.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-BfqqEzEI.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-D2OfWw01.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -28,6 +28,7 @@ var Face = ({ state, actions }) => /* @__PURE__ */ h(Play, {
 	onReset: actions.reset
 });
 var Game = ({ key, state, actions }) => /* @__PURE__ */ h(Dialog, {
+	clear: windowClear(state),
 	key,
 	hidden: state.windowState !== "open",
 	title: state.theme === "classic" ? "Minesweeper" : "Minesweeper Plus",
@@ -235,6 +236,7 @@ var unpackCell = (v) => {
 var saved = resumable({
 	key: "savedGame",
 	running,
+	label: ({ level, width, height, mines }) => level === "custom" ? `${width} × ${height}, ${mines} mines` : level[0].toUpperCase() + level.slice(1),
 	pack: ({ level, width, height, mines, field, left, flags, hinted, untimed }) => ({
 		level,
 		width,
@@ -340,6 +342,7 @@ var prevent = (event) => {
 var state = {
 	...shellState("minesweeper"),
 	hint: null,
+	shelf: saved.list(),
 	game: saved.restore() || createGame(loadLevel()),
 	marks: Boolean(load("marks")),
 	safeStart: load("safeStart") !== "off",
@@ -358,7 +361,7 @@ var actions = {
 	},
 	press: (event) => (state, actions) => {
 		const key = shortcut(event, state, actions);
-		if (key === 113 || key === 78) actions.reset();
+		if (key === 113 || key === 78) actions.newGame();
 		else if (key === 72) actions.hint();
 		else if (key === 80) actions.pause();
 	},
@@ -667,7 +670,7 @@ var actions = {
 	} }),
 	submitCustomField: (event) => ({ game, customField }, actions) => {
 		event.preventDefault();
-		actions.reset(customLevel(customField, game));
+		actions.newGame(customLevel(customField, game));
 		return { customField: null };
 	},
 	toggleSafeStart: () => (state) => {
@@ -726,6 +729,10 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }), state.backgroundSettings && /* @__PURE__ */ h(BackgroundSettings, {
 	key: "e",
 	state: state.backgroundSettings,
+	actions
+}), state.switching && /* @__PURE__ */ h(Switching, {
+	key: "k",
+	title: "Minesweeper Plus",
 	actions
 }), state.about && /* @__PURE__ */ h(MinesweeperAbout, {
 	key: "f",

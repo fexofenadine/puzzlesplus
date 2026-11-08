@@ -1,10 +1,10 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, T as BackgroundSettings, a as shellActions, c as typing, i as listen, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-DzZqCJtt.js";
-import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-CUMYqhkT.js";
-import { n as Prompt } from "./BestTimes.module-D4qAuhKH.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-Cajad2cE.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DTobraYn.js";
-import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-D68rpAxS.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-DAeHgUFh.js";
+import { D as BackgroundSettings, E as Boss, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BHsDglch.js";
+import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BLeCaFCA.js";
+import { n as Prompt } from "./BestTimes.module-D07Fbq-q.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-xSlloW--.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-CkLtUhJB.js";
+import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-DHcsK14V.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-Bvh0m1co.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,
@@ -116,6 +116,11 @@ var boardOf = (cells, n) => {
 var saved = resumable({
 	key: "sudoku.saved",
 	running,
+	label: ({ level }) => levelNames[level],
+	fresh: {
+		selected: -1,
+		picked: 0
+	},
 	pack: ({ n, level, givens, solution, board, notes, history, hinted, untimed }) => ({
 		n,
 		level,
@@ -256,6 +261,7 @@ var state = {
 	picked: 0,
 	noting: false,
 	about: false,
+	shelf: saved.list(),
 	game: saved.restore() || createGame(loadChoice()),
 	winner: null,
 	bestTime: null
@@ -277,7 +283,7 @@ var actions = {
 		const key = shortcut(event, state, actions);
 		if (key === null) return;
 		const digit = digitOf(event);
-		if (key === 113 || key === 78) actions.reset();
+		if (key === 113 || key === 78) actions.newGame();
 		else if (key === 72) actions.hint();
 		else if (key === 80) actions.pause();
 		else if (arrows[key]) {
@@ -495,6 +501,10 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }), state.backgroundSettings && /* @__PURE__ */ h(BackgroundSettings, {
 	key: "e",
 	state: state.backgroundSettings,
+	actions
+}), state.switching && /* @__PURE__ */ h(Switching, {
+	key: "k",
+	title: "Sudoku",
 	actions
 }), state.about && /* @__PURE__ */ h(SudokuAbout, {
 	key: "f",

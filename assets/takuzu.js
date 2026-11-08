@@ -1,12 +1,12 @@
-import { A as load, C as Menu_module_default, E as startBackgrounds, I as app, L as h, M as save, N as Dialog, S as ThemeMenu, T as BackgroundSettings, _ as Separator, a as shellActions, c as typing, g as MenuItem, i as listen, j as remove, n as About, o as shellState, p as gameLinks, r as Link, s as shortcut, u as Taskbar, v as SubMenuItem, w as Boss, x as watchWindow, y as ViewMenu } from "./HowToPlay-DzZqCJtt.js";
-import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-CUMYqhkT.js";
-import { n as Prompt } from "./BestTimes.module-D4qAuhKH.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-Cajad2cE.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, T as Menu_module_default, _ as listen, a as Taskbar, b as shortcut, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, n as About, p as SubMenuItem, r as Link, v as shellActions, w as watchWindow, x as typing, y as shellState, z as h } from "./HowToPlay-BHsDglch.js";
+import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BLeCaFCA.js";
+import { n as Prompt } from "./BestTimes.module-D07Fbq-q.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-xSlloW--.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DTobraYn.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-DeWO7jOe.js";
-import { t as showRain } from "./rain-DCQAX_eV.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-Bx1e80sh.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-CkLtUhJB.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-CsDnVQeR.js";
+import { t as showRain } from "./rain-D1zL8Yg7.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-qTZku9vm.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
@@ -78,7 +78,7 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 }, /* @__PURE__ */ h(SubMenuItem, {
 	name: "New",
 	hotKey: "F2",
-	onClick: () => actions.reset()
+	onClick: () => actions.newGame()
 }), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Undo",
 	hotKey: "Ctrl+Z",
@@ -91,7 +91,7 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	name: levelNames[level],
 	checked: state.game.level === level,
 	disabled: !allowed(state.game.n, level),
-	onClick: () => actions.reset({ level })
+	onClick: () => actions.newGame({ level })
 })), /* @__PURE__ */ h(Separator, null), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Show Errors",
 	checked: state.errors,
@@ -103,7 +103,7 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 }), /* @__PURE__ */ h(Separator, null), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Best Times...",
 	onClick: actions.toggleBestTime
-}), /* @__PURE__ */ h(Separator, null), gameLinks("takuzu")), /* @__PURE__ */ h(MenuItem, {
+}), /* @__PURE__ */ h(Separator, null), resumeItems(state, actions), gameLinks("takuzu")), /* @__PURE__ */ h(MenuItem, {
 	name: "Size",
 	type: "size",
 	active: state.menu,
@@ -111,7 +111,7 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 }, sizes.map((n) => /* @__PURE__ */ h(SubMenuItem, {
 	name: `${n} × ${n}`,
 	checked: state.game.n === n,
-	onClick: () => actions.reset({ n })
+	onClick: () => actions.newGame({ n })
 }))), /* @__PURE__ */ h(ViewMenu, {
 	state,
 	actions
@@ -145,6 +145,7 @@ var Game = ({ key, state, actions }) => {
 	const marks = !paused && hint && hint.marks || {};
 	const left = board.filter((v) => v === -1).length;
 	return /* @__PURE__ */ h(Dialog, {
+		clear: windowClear(state),
 		key,
 		hidden: state.windowState !== "open",
 		title: state.theme === "classic" ? "Takuzu" : "Takuzu Plus",
@@ -289,6 +290,7 @@ var boardOf = (cells, n) => {
 var saved = resumable({
 	key: "takuzu.saved",
 	running,
+	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
 	pack: ({ n, level, givens, solution, board, history, hinted, untimed }) => ({
 		n,
 		level,
@@ -382,6 +384,7 @@ var state = {
 	timer: loadTimer("takuzu.timer"),
 	rain: Boolean(load("takuzu.rain")),
 	about: false,
+	shelf: saved.list(),
 	game: saved.restore() || createGame(loadChoice()),
 	winner: null,
 	bestTime: null
@@ -402,7 +405,7 @@ var actions = {
 			return;
 		}
 		const key = shortcut(event, state, actions);
-		if (key === 113 || key === 78) actions.reset();
+		if (key === 113 || key === 78) actions.newGame();
 		else if (key === 72) actions.hint();
 		else if (key === 80) actions.pause();
 	},
@@ -554,6 +557,10 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }), state.backgroundSettings && /* @__PURE__ */ h(BackgroundSettings, {
 	key: "e",
 	state: state.backgroundSettings,
+	actions
+}), state.switching && /* @__PURE__ */ h(Switching, {
+	key: "k",
+	title: "Takuzu",
 	actions
 }), state.about && /* @__PURE__ */ h(TakuzuAbout, {
 	key: "f",

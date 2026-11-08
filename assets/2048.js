@@ -1,9 +1,9 @@
-import { A as load, E as startBackgrounds, F as Overlay, I as app, L as h, M as save, N as Dialog, P as Button, T as BackgroundSettings, a as shellActions, c as typing, i as listen, j as remove, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-DzZqCJtt.js";
-import { a as resumable, i as check, n as Tabs, o as OpenGames, r as BestTime_module_default, s as Winner, t as registerWorker } from "./worker-CUMYqhkT.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-D4qAuhKH.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-Cajad2cE.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-aOl6tbt8.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-Ckouq_C_.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BHsDglch.js";
+import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker } from "./worker-BLeCaFCA.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-D07Fbq-q.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-xSlloW--.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-Cbkrdi7n.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-C7pxfaeR.js";
 //#region src/2048/BestScores.jsx
 var tabs = [{
 	id: "clean",
@@ -204,6 +204,7 @@ var valuesCheck = (values, n) => {
 var saved = resumable({
 	key: "2048.saved",
 	running,
+	label: ({ n, score }) => `${n} × ${n}, ${score} points`,
 	pack: ({ n, tiles, score, tile, history, reached, hinted, undone, untimed }) => ({
 		n,
 		values: valuesOf(tiles, n),
@@ -265,6 +266,7 @@ var state = {
 	prompt: false,
 	timer: load("2048.timer") === "on",
 	about: false,
+	shelf: saved.list(),
 	game: saved.restore() || createGame(loadSize()),
 	winner: null,
 	bestTime: null
@@ -287,7 +289,7 @@ var actions = {
 		}
 		const key = shortcut(event, state, actions);
 		if (key === null) return;
-		if (key === 113 || key === 78) actions.reset();
+		if (key === 113 || key === 78) actions.newGame();
 		else if (key === 72) actions.hint();
 		else if (key === 80) actions.pause();
 		else if (keyDirs[key]) {
@@ -295,12 +297,12 @@ var actions = {
 			actions.slide(keyDirs[key]);
 		}
 	},
-	reset: (payload) => ({ game }) => {
+	reset: (payload) => ({ game, switching }) => {
 		cancelAnimationFrame(game.raf);
 		const n = payload && payload.n || game.n;
 		save("2048.size", n);
 		swipe = null;
-		const winner = !game.offered && game.history.length ? offer(game) : null;
+		const winner = !(switching && switching.parked) && !game.offered && game.history.length ? offer(game) : null;
 		return {
 			menu: null,
 			hint: null,
@@ -510,6 +512,10 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }), state.backgroundSettings && /* @__PURE__ */ h(BackgroundSettings, {
 	key: "e",
 	state: state.backgroundSettings,
+	actions
+}), state.switching && /* @__PURE__ */ h(Switching, {
+	key: "k",
+	title: "2048",
 	actions
 }), state.about && /* @__PURE__ */ h(TwentyAbout, {
 	key: "f",

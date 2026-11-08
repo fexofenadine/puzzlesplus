@@ -1,11 +1,11 @@
-import { A as load, E as startBackgrounds, I as app, L as h, M as save, T as BackgroundSettings, a as shellActions, c as typing, i as listen, n as About, o as shellState, r as Link, s as shortcut, u as Taskbar, w as Boss } from "./HowToPlay-DzZqCJtt.js";
-import { a as resumable, i as check, o as OpenGames, s as Winner, t as registerWorker } from "./worker-CUMYqhkT.js";
-import { n as Prompt } from "./BestTimes.module-D4qAuhKH.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-Cajad2cE.js";
-import { a as records, i as BestTimes, r as dealer, t as random } from "./random-DTobraYn.js";
-import { t as showRain } from "./rain-DCQAX_eV.js";
-import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-BCTKgmH4.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-DLlzwH_B.js";
+import { D as BackgroundSettings, E as Boss, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BHsDglch.js";
+import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BLeCaFCA.js";
+import { n as Prompt } from "./BestTimes.module-D07Fbq-q.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-xSlloW--.js";
+import { a as records, i as BestTimes, r as dealer, t as random } from "./random-CkLtUhJB.js";
+import { t as showRain } from "./rain-D1zL8Yg7.js";
+import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-Co1Xr0rD.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-D9ISioHD.js";
 //#region src/nonograms/generate.js
 var makePicture = (n, rng, dense = 0) => {
 	const density = .48 + dense + .08 * rng();
@@ -122,6 +122,7 @@ var boardOf = (cells, n) => {
 var saved = resumable({
 	key: "nonograms.saved",
 	running,
+	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
 	pack: ({ n, level, clues, solution, board, stroke, history, hinted, untimed }) => ({
 		n,
 		level,
@@ -228,6 +229,7 @@ var state = {
 	touch: Boolean(window.matchMedia && matchMedia("(pointer: coarse)").matches),
 	mode: 1,
 	about: false,
+	shelf: saved.list(),
 	game: saved.restore() || createGame(loadChoice()),
 	winner: null,
 	bestTime: null
@@ -254,7 +256,7 @@ var actions = {
 			return;
 		}
 		const key = shortcut(event, state, actions);
-		if (key === 113 || key === 78) actions.reset();
+		if (key === 113 || key === 78) actions.newGame();
 		else if (key === 72) actions.hint();
 		else if (key === 80) actions.pause();
 	},
@@ -447,6 +449,10 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }), state.backgroundSettings && /* @__PURE__ */ h(BackgroundSettings, {
 	key: "e",
 	state: state.backgroundSettings,
+	actions
+}), state.switching && /* @__PURE__ */ h(Switching, {
+	key: "k",
+	title: "Nonograms",
 	actions
 }), state.about && /* @__PURE__ */ h(NonogramsAbout, {
 	key: "f",
