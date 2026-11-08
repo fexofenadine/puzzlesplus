@@ -1,9 +1,9 @@
-import { o as icons, z as h } from "./HowToPlay-BHsDglch.js";
+import { o as icons, z as h } from "./HowToPlay-DAnWEJz0.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as neighboursOf, n as findHint, s as Cell, t as explainChord } from "./hint-BfqqEzEI.js";
-import { n as Rules } from "./HowToPlay-D2OfWw01.js";
-import { r as startGuide, t as Figure } from "./Guide-WrhXxiud.js";
-import { t as desktopSection } from "./desktop-_PqnfIo0.js";
+import { a as neighboursOf, n as findHint, s as Cell, t as explainChord } from "./hint-C3RSrlcq.js";
+import { n as Rules } from "./HowToPlay-B1cmtQzV.js";
+import { r as startGuide, t as Figure } from "./Guide-nDuKpE8L.js";
+import { t as desktopSection } from "./desktop-C3z4NlHd.js";
 //#region src/guide/MinesExample.jsx
 var fieldOf = (rows) => {
 	const width = rows[0].length;

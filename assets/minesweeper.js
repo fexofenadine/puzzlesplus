@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-BHsDglch.js";
-import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker, u as Input } from "./worker-BLeCaFCA.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-xSlloW--.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-DAnWEJz0.js";
+import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker, u as Input } from "./worker-D9QuEZo5.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-D3x1X5-p.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-BfqqEzEI.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-D2OfWw01.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-C3RSrlcq.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-B1cmtQzV.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;

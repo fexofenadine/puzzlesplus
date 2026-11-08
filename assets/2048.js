@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BHsDglch.js";
-import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker } from "./worker-BLeCaFCA.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-D07Fbq-q.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-xSlloW--.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-Cbkrdi7n.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-C7pxfaeR.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-DAnWEJz0.js";
+import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker } from "./worker-D9QuEZo5.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-CP0TO9Z-.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-D3x1X5-p.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-CvnrHxWX.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-DgzljH5F.js";
 //#region src/2048/BestScores.jsx
 var tabs = [{
 	id: "clean",

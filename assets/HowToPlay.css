@@ -13,6 +13,27 @@
 
 /*theme fonts, all under the sil open font license, see src/fonts*/
 @font-face {
+  font-family: 'Nunito';
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(./nunito.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  font-weight: 400;
+  font-display: swap;
+  src: url(./chakra-petch.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  font-weight: 600 700;
+  font-display: swap;
+  src: url(./chakra-petch-semibold.woff2) format('woff2');
+}
+
+@font-face {
   font-family: 'Orbitron';
   font-weight: 400 900;
   font-display: swap;
@@ -105,11 +126,12 @@
 }
 
 :root[data-theme='synthwave'] {
-  /*synthwave '84 palette with eighties sci-fi lettering*/
-  --ui-font: 'Orbitron', var(--pixel-font);
+  /*synthwave '84 palette with eighties sci-fi lettering: orbitron titles and digits, chakra petch to read*/
+  --ui-font: 'Chakra Petch', var(--pixel-font);
   --title-font: 'Orbitron', var(--pixel-font);
   --title-weight: normal;
-  --text-font: 'Orbitron', Tahoma, sans-serif;
+  --text-font: 'Chakra Petch', Tahoma, sans-serif;
+  --digit-font: 'Orbitron', Tahoma, sans-serif;
   --font-smoothing: auto;
   --text-glow: 0 0 3px #ff7edb, 0 0 8px rgba(54, 249, 246, 0.7);
   --title-glow: 0 0 4px #ff7edb, 0 0 10px #f92aad;
@@ -270,7 +292,7 @@
 :root[data-theme='nord'] {
   /*nord dark palette*/
   color-scheme: dark;
-  --ui-font: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --ui-font: 'Nunito', system-ui, 'Segoe UI', Roboto, sans-serif;
   --title-font: var(--ui-font);
   --text-font: var(--ui-font);
   --font-size: 12px;

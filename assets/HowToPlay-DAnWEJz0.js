@@ -1434,7 +1434,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/ThemeMenu.jsx": () => __vitePreload(() => import("./ThemeMenu-CRjFeyOY.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/ViewMenu.jsx": () => __vitePreload(() => import("./ViewMenu-h4XuwPLe.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/WindowControls.jsx": () => __vitePreload(() => import("./WindowControls-a3R3DjjO.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-BXX5gynH.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-D2wGtByu.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/hill.js": () => __vitePreload(() => import("./hill-C0RBa6DT.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/index.js": () => __vitePreload(() => import("./backgrounds-DqF45KDc.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/matrix.js": () => __vitePreload(() => import("./matrix-BPjC-X-W.js").then((m) => m["default"]), [], import.meta.url),
@@ -2709,6 +2709,13 @@ var shellActions = {
 				hidden: !glass.hidden
 			}
 		};
+	},
+	setOpacity: (opacity) => ({ glass }) => {
+		save("windowOpacity", opacity === 100 ? "" : opacity);
+		return { glass: {
+			...glass,
+			opacity
+		} };
 	},
 	fit: () => ({ zoom }) => {
 		const { fit, size } = measureFit();
