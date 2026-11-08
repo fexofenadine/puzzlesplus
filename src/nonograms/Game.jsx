@@ -13,6 +13,7 @@ import { clockDigits } from '../shell/clock'
 import Menu from './Menu'
 import Cell from './Cell'
 import { EMPTY, FILL, CROSS, breaks, cellsOf, fillsLeft, lineDone } from './rules'
+import { windowClear } from '../shell/actions'
 
 //the guide's section on a hint, none for a solved board
 const more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`
@@ -59,6 +60,7 @@ const Game = ({ key, state, actions }) => {
   )
   return (
     <Dialog
+      clear={windowClear(state)}
       key={key}
       hidden={state.windowState !== 'open'}
       title={state.theme === 'classic' ? 'Nonograms' : 'Nonograms Plus'}

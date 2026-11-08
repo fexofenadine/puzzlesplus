@@ -11,6 +11,7 @@ import { PausedCover, HintPanel } from './shell/Board'
 import { guideTopic } from './hint'
 import { watchWindow } from './shell/zoom'
 import { clockDigits } from './shell/clock'
+import { windowClear } from './shell/actions'
 
 //the guide's section on a hint, none for a solved board
 const more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`
@@ -37,6 +38,7 @@ const Face = ({ state, actions }) => (
 
 const Game = ({ key, state, actions }) => (
   <Dialog
+    clear={windowClear(state)}
     key={key}
     hidden={state.windowState !== 'open'}
     title={state.theme === 'classic' ? 'Minesweeper' : 'Minesweeper Plus'}
