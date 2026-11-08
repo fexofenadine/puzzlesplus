@@ -63,7 +63,7 @@ Fill the grid so every row, column and box holds 1 to 9 once each.
 
 Slide the tiles so equal ones merge, and make a 2048.
 
-- Four board sizes from 3 × 3 to 6 × 6, best scores with the highest tile per size, kept apart for games that used help.
+- Three board sizes from 3 × 3 to 5 × 5, best scores with the highest tile per size, kept apart for games that used help.
 - Arrow keys or WASD, or swipe and drag on the board, with tiles that slide, merge and pop.
 - Unlimited undo, and a hint that looks two moves ahead over the tiles that might appear and says why it picks its move.
 
