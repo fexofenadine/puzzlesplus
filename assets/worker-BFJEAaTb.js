@@ -1,5 +1,5 @@
-import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, i as About_module_default, l as games, o as icons, z as h } from "./HowToPlay-CY1p7JOT.js";
-import { f as clock } from "./Board-DWftJVEI.js";
+import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, i as About_module_default, l as games, o as icons, z as h } from "./HowToPlay-25rzq32L.js";
+import { f as clock } from "./Board-3WHGg41b.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",
@@ -361,15 +361,14 @@ var looks = {
 };
 looks["solarized-phosphor"] = looks.solarized;
 var lookOf = (theme) => looks[theme] || looks.classic;
-var BURSTS = 7;
-var SPAN = 2.6;
 var SPARKS = 70;
 var TRAIL = 5;
-var plan = (rng) => Array.from({ length: BURSTS }, (_, k) => ({
-	at: k / BURSTS * SPAN + rng() * .25,
+var LIMIT = 120;
+var launch = (rng) => ({
 	x: .15 + rng() * .7,
-	y: .15 + rng() * .4
-})).sort((a, b) => a.at - b.at);
+	y: .15 + rng() * .4,
+	wait: .3 + rng() * .4
+});
 var sparks = (look, x, y, rng) => {
 	const main = look.colors[Math.floor(rng() * look.colors.length)];
 	const other = look.colors[Math.floor(rng() * look.colors.length)];
@@ -431,13 +430,21 @@ var celebrate = (theme = document.documentElement.dataset.theme) => {
 	target.height = Math.round(height * scale);
 	target.style.display = "block";
 	context.setTransform(scale, 0, 0, scale, 0, 0);
-	const waiting = plan(Math.random);
+	const started = performance.now();
+	let open = true;
+	let wait = 0;
 	let alive = [];
 	let rockets = [];
 	let clock = 0;
 	let last = null;
 	running = true;
+	const interrupt = (event) => {
+		if (event.timeStamp > started && !event.repeat) open = false;
+	};
+	const listening = ["pointerdown", "keydown"];
+	for (const name of listening) window.addEventListener(name, interrupt, true);
 	const stop = () => {
+		for (const name of listening) window.removeEventListener(name, interrupt, true);
 		running = false;
 		context.setTransform(1, 0, 0, 1, 0, 0);
 		context.clearRect(0, 0, target.width, target.height);
@@ -448,12 +455,15 @@ var celebrate = (theme = document.documentElement.dataset.theme) => {
 		last = now;
 		clock += dt;
 		if (root.dataset.boss || document.hidden) return stop();
-		while (waiting.length && waiting[0].at <= clock) {
-			const { x, y } = waiting.shift();
+		if (clock > LIMIT) open = false;
+		wait -= dt;
+		while (open && wait <= 0) {
+			const next = launch(Math.random);
+			wait += next.wait;
 			rockets.push({
-				x: x * width,
+				x: next.x * width,
 				y: height,
-				top: y * height,
+				top: next.y * height,
 				speed: 520 + Math.random() * 120,
 				trail: []
 			});
@@ -475,7 +485,7 @@ var celebrate = (theme = document.documentElement.dataset.theme) => {
 			char: look.glyphs?.[0] || ""
 		}, 1);
 		for (const p of alive) draw(context, look, p, 1 - p.age / p.life);
-		if (waiting.length || rockets.length || alive.length) requestAnimationFrame(frame);
+		if (open || rockets.length || alive.length) requestAnimationFrame(frame);
 		else stop();
 	};
 	requestAnimationFrame(frame);

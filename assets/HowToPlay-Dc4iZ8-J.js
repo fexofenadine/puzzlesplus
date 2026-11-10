@@ -1,4 +1,4 @@
-import { t as HowToPlay, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { t as HowToPlay, z as h } from "./HowToPlay-25rzq32L.js";
 //#region src/2048/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Slide every tile at once with the arrow keys or W, A, S and D, or by swiping or dragging across the board. Two equal tiles that meet merge into one of twice the value and add it to your score. After each move a new 2 or 4 appears in an empty cell."),

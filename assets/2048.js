@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-CY1p7JOT.js";
-import { a as Tabs, c as resumable, d as Winner, i as Switching, n as FireworksCanvas, o as BestTime_module_default, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-CH0fRA5p.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-CpAtZwgd.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-DWftJVEI.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-B-7I6JrD.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-JnSv2GCH.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-25rzq32L.js";
+import { a as Tabs, c as resumable, d as Winner, i as Switching, n as FireworksCanvas, o as BestTime_module_default, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-BFJEAaTb.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-Cke4TTyk.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-3WHGg41b.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-CzajflLe.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-Dc4iZ8-J.js";
 //#region src/2048/BestScores.jsx
 var tabs = [{
 	id: "clean",

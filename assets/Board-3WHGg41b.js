@@ -1,4 +1,4 @@
-import { C as hangBelow, I as Button, M as load, P as save, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { C as hangBelow, I as Button, M as load, P as save, z as h } from "./HowToPlay-25rzq32L.js";
 //#region src/shell/clock.js
 var clockDigits = (theme, time) => theme !== "classic" && time > 999 ? 4 : 3;
 var clock = () => performance.timeOrigin + performance.now();

@@ -1446,7 +1446,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/backgrounds/truchet.js": () => __vitePreload(() => import("./truchet-MOZfSJKS.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/clock.js": () => __vitePreload(() => import("./clock-BzKvCpH8.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/deal.js": () => __vitePreload(() => import("./deal-DPVkJkol.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/fireworks.js": () => __vitePreload(() => import("./fireworks-fJXpBZGl.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/fireworks.js": () => __vitePreload(() => import("./fireworks-DnZL55Jw.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/grid.js": () => __vitePreload(() => import("./grid-Cn7FYfb1.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/prepaint.js": () => __vitePreload(() => import("./prepaint-BOQns3Rk.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/rain.js": () => __vitePreload(() => import("./rain-C_2PVHRD.js").then((m) => m["default"]), [], import.meta.url),

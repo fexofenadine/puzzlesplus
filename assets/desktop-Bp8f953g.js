@@ -1,4 +1,4 @@
-import { z as h } from "./HowToPlay-CY1p7JOT.js";
+import { z as h } from "./HowToPlay-25rzq32L.js";
 //#region src/guide/desktop.jsx
 var desktopSection = {
 	id: "window",
