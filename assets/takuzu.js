@@ -1,12 +1,12 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, T as Menu_module_default, _ as listen, a as Taskbar, b as shortcut, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, n as About, p as SubMenuItem, r as Link, v as shellActions, w as watchWindow, x as typing, y as shellState, z as h } from "./HowToPlay-25rzq32L.js";
-import { c as resumable, d as Winner, i as Switching, n as FireworksCanvas, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-BFJEAaTb.js";
-import { n as Prompt } from "./BestTimes.module-Cke4TTyk.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-3WHGg41b.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, T as Menu_module_default, _ as listen, a as Taskbar, b as shortcut, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, n as About, p as SubMenuItem, r as Link, v as shellActions, w as watchWindow, x as typing, y as shellState, z as h } from "./HowToPlay-C4zys83Q.js";
+import { _ as OpenGames, h as resumable, i as Switching, m as check, n as FireworksCanvas, r as celebrate, t as registerWorker, u as tally, v as Winner } from "./worker-M9j8t0tS.js";
+import { n as Prompt } from "./BestTimes.module-BonQhRW3.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-BzVGp7Po.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DRj1Y5xN.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-jXHYFx6h.js";
-import { t as showRain } from "./rain-Lbynunze.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-C6JJHtJN.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-CK4Zt0e7.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-4_rDtpHg.js";
+import { t as showRain } from "./rain-B6-G32zO.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-DkyEBWiw.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
@@ -351,6 +351,10 @@ var changed = (state, board, history, actions, settled = false) => {
 	if (next.win) {
 		cancelAnimationFrame(next.raf);
 		celebrate();
+		if (!state.game.win) tally("takuzu", {
+			won: true,
+			clean: !next.hinted
+		});
 		if (timed({
 			...state,
 			game: next

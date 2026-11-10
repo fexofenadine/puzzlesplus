@@ -1,61 +1,46 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-25rzq32L.js";
-import { a as Tabs, c as resumable, d as Winner, i as Switching, n as FireworksCanvas, o as BestTime_module_default, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-BFJEAaTb.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-Cke4TTyk.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-3WHGg41b.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-CzajflLe.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-Dc4iZ8-J.js";
-//#region src/2048/BestScores.jsx
-var tabs = [{
-	id: "clean",
-	name: "No help"
-}, {
-	id: "hinted",
-	name: "Hints or undo"
-}];
-var BestScores = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
-	key,
-	onKeyDown: (event) => event.keyCode === 27 && actions.toggleBestTime()
-}, /* @__PURE__ */ h(Dialog, {
-	title: "Best 2048 Scores",
-	onClose: actions.toggleBestTime
-}, /* @__PURE__ */ h("div", { class: BestTime_module_default.root }, /* @__PURE__ */ h(Tabs, {
-	tabs,
-	active: state.tab,
-	onSelect: actions.setBestTimeTab
-}), /* @__PURE__ */ h("table", { class: BestTimes_module_default.table }, /* @__PURE__ */ h("thead", null, /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", null), /* @__PURE__ */ h("th", { class: BestTimes_module_default.level }, "Score"), /* @__PURE__ */ h("th", { class: BestTimes_module_default.level }, "Tile"))), /* @__PURE__ */ h("tbody", null, sizes.map((n) => {
-	const best = state[state.tab][n];
-	return /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", { class: BestTimes_module_default.size }, n, " × ", n), /* @__PURE__ */ h("td", { class: BestTimes_module_default.slot }, best.score > 0 && /* @__PURE__ */ h("span", { class: BestTimes_module_default.time }, best.score), best.score > 0 && /* @__PURE__ */ h("span", { class: BestTimes_module_default.name }, best.name)), /* @__PURE__ */ h("td", { class: BestTimes_module_default.slot }, best.tile > 0 && best.tile));
-}))), /* @__PURE__ */ h("div", { class: BestTime_module_default.footer }, /* @__PURE__ */ h(Button, {
-	type: "button",
-	onClick: actions.resetBestTime
-}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Scores")), /* @__PURE__ */ h(Button, {
-	type: "button",
-	onClick: actions.toggleBestTime,
-	onCreate: (el) => el.focus()
-}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "OK"))))));
-//#endregion
-//#region src/2048/records.js
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-C4zys83Q.js";
+import { _ as OpenGames, a as clearStats, c as lossesOn, d as StatsList, f as Tabs, h as resumable, i as Switching, l as readStats, m as check, n as FireworksCanvas, o as lossActions, p as BestTime_module_default, r as celebrate, s as lossState, t as registerWorker, u as tally, v as Winner } from "./worker-M9j8t0tS.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-BonQhRW3.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-BzVGp7Po.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-Dtqyrerz.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-5MY4N7ZY.js";
 var keyOf = (n, assisted) => `2048.${n}${assisted ? ".help" : ""}`;
-var bestOf = (n, assisted) => {
+var clean = (entry) => ({
+	score: parseInt(entry && entry.score, 10) || 0,
+	tile: parseInt(entry && entry.tile, 10) || 0,
+	name: String(entry && entry.name || "Anonymous")
+});
+var topOf = (n, assisted) => {
 	const key = keyOf(n, assisted);
-	return {
-		score: parseInt(load(key), 10) || 0,
-		tile: parseInt(load(`${key}.tile`), 10) || 0,
-		name: load(`${key}.name`) || "Anonymous"
-	};
+	let list = [];
+	try {
+		const saved = JSON.parse(load(`${key}.top`));
+		if (Array.isArray(saved)) list = saved.map(clean);
+	} catch {}
+	const old = clean({
+		score: load(key),
+		tile: load(`${key}.tile`),
+		name: load(`${key}.name`)
+	});
+	if (!list.length && old.score > 0) list = [old];
+	return list.filter((entry) => entry.score > 0).sort((a, b) => b.score - a.score).slice(0, 5);
 };
-var bestScores = (assisted) => Object.fromEntries(sizes.map((n) => [n, bestOf(n, assisted)]));
+var bestScores = (assisted) => Object.fromEntries(sizes.map((n) => [n, topOf(n, assisted)]));
 var assistedOf = (game) => game.hinted || game.undone;
 var offer = (game) => {
 	const assisted = assistedOf(game);
-	if (!game.score || game.score <= bestOf(game.n, assisted).score) return null;
+	const list = topOf(game.n, assisted);
+	if (!game.score || list.length >= 5 && game.score <= list[4].score) return null;
+	const first = !list.length || game.score > list[0].score;
+	const where = `${game.n} × ${game.n}${assisted ? " with help" : ""}`;
 	return {
 		key: keyOf(game.n, assisted),
+		n: game.n,
 		score: game.score,
 		tile: game.tile,
 		assisted,
 		name: load("2048.name") || "",
-		text: `You have the best score for ${game.n} × ${game.n}${assisted ? " with help" : ""}: ${game.score}.`
+		text: first ? `You have the best score for ${where}: ${game.score}.` : `You have a top 5 score for ${where}: ${game.score}.`
 	};
 };
 var recordActions = {
@@ -66,9 +51,14 @@ var recordActions = {
 	submitBestTime: (event) => ({ winner }, actions) => {
 		event.preventDefault();
 		const name = winner.name.trim();
-		save(winner.key, winner.score);
-		save(`${winner.key}.tile`, winner.tile);
-		save(`${winner.key}.name`, name);
+		const list = [...topOf(winner.n, winner.assisted), clean({
+			...winner,
+			name
+		})].sort((a, b) => b.score - a.score).slice(0, 5);
+		save(`${winner.key}.top`, JSON.stringify(list));
+		save(winner.key, list[0].score);
+		save(`${winner.key}.tile`, list[0].tile);
+		save(`${winner.key}.name`, list[0].name);
 		save("2048.name", name);
 		actions.toggleBestTime();
 		actions.setBestTimeTab(winner.assisted ? "hinted" : "clean");
@@ -79,7 +69,9 @@ var recordActions = {
 		bestTime: bestTime ? null : {
 			tab: "clean",
 			clean: bestScores(false),
-			hinted: bestScores(true)
+			hinted: bestScores(true),
+			stats: readStats("2048"),
+			losses: lossesOn()
 		}
 	}),
 	setBestTimeTab: (tab) => (state) => state.bestTime ? { bestTime: {
@@ -93,13 +85,56 @@ var recordActions = {
 			remove(key);
 			remove(`${key}.tile`);
 			remove(`${key}.name`);
+			remove(`${key}.top`);
 		}
 		return { bestTime: {
 			...bestTime,
 			[bestTime.tab]: bestScores(assisted)
 		} };
-	}
+	},
+	resetStats: () => ({ bestTime }) => ({ bestTime: {
+		...bestTime,
+		stats: clearStats("2048")
+	} })
 };
+//#endregion
+//#region src/2048/BestScores.jsx
+var tabs = [{
+	id: "clean",
+	name: "No help"
+}, {
+	id: "hinted",
+	name: "Hints or undo"
+}];
+var places = Array.from({ length: 5 }, (_, place) => place);
+var BestScores = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
+	key,
+	onKeyDown: (event) => event.keyCode === 27 && actions.toggleBestTime()
+}, /* @__PURE__ */ h(Dialog, {
+	title: "Best 2048 Scores",
+	onClose: actions.toggleBestTime
+}, /* @__PURE__ */ h("div", { class: BestTime_module_default.root }, /* @__PURE__ */ h(Tabs, {
+	tabs,
+	active: state.tab,
+	onSelect: actions.setBestTimeTab
+}), /* @__PURE__ */ h("table", { class: BestTimes_module_default.table }, /* @__PURE__ */ h("thead", null, /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", null), sizes.map((n) => /* @__PURE__ */ h("th", { class: BestTimes_module_default.level }, n, " × ", n)))), /* @__PURE__ */ h("tbody", null, places.map((place) => /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", { class: BestTimes_module_default.size }, place + 1), sizes.map((n) => {
+	const best = state[state.tab][n][place];
+	return /* @__PURE__ */ h("td", { class: BestTimes_module_default.slot }, !best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.empty }, "–"), best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.time }, best.score), best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.name }, best.tile, " · ", best.name));
+}))))), state.stats && /* @__PURE__ */ h(StatsList, {
+	stats: state.stats,
+	wonLabel: "Made the target",
+	losses: state.losses
+}), /* @__PURE__ */ h("div", { class: BestTime_module_default.footer }, /* @__PURE__ */ h(Button, {
+	type: "button",
+	onClick: actions.resetBestTime
+}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Scores")), /* @__PURE__ */ h(Button, {
+	type: "button",
+	onClick: actions.resetStats
+}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Stats")), /* @__PURE__ */ h(Button, {
+	type: "button",
+	onClick: actions.toggleBestTime,
+	onCreate: (el) => el.focus()
+}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "OK"))))));
 var NUDGE = .12;
 var lockOf = (dx, dy) => {
 	if (Math.max(Math.abs(dx), Math.abs(dy)) < 10) return null;
@@ -261,6 +296,7 @@ var keyDirs = {
 var swipe = null;
 var state = {
 	...shellState("2048"),
+	...lossState(),
 	hint: null,
 	prompt: false,
 	timer: load("2048.timer") === "on",
@@ -272,6 +308,7 @@ var state = {
 };
 var actions = {
 	...shellActions,
+	...lossActions,
 	init: () => (state, actions) => {
 		window.addEventListener("keydown", actions.press);
 		window.addEventListener("pointermove", actions.swipeMove);
@@ -337,10 +374,15 @@ var actions = {
 		if (reached) {
 			next.reached = true;
 			celebrate();
+			tally("2048", {
+				won: true,
+				clean: !assistedOf(next)
+			});
 		}
 		let winner = null;
 		if (next.over) {
 			cancelAnimationFrame(next.raf);
+			if (!next.reached) tally("2048", { won: false });
 			winner = offer(next);
 			next.offered = true;
 		}

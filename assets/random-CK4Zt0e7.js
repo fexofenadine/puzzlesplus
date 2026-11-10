@@ -1,6 +1,6 @@
-import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, z as h } from "./HowToPlay-25rzq32L.js";
-import { a as Tabs, o as BestTime_module_default } from "./worker-BFJEAaTb.js";
-import { t as BestTimes_module_default } from "./BestTimes.module-Cke4TTyk.js";
+import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, z as h } from "./HowToPlay-C4zys83Q.js";
+import { a as clearStats, d as StatsList, f as Tabs, l as readStats, p as BestTime_module_default } from "./worker-M9j8t0tS.js";
+import { t as BestTimes_module_default } from "./BestTimes.module-BonQhRW3.js";
 //#region src/shell/records.js
 var records = (prefix, sizes, levelNames, withArt = false) => {
 	const timeKey = (n, level, hinted, art = false) => `${prefix}${art ? ".art" : ""}.${n}.${level}${hinted ? ".hints" : ""}`;
@@ -8,8 +8,10 @@ var records = (prefix, sizes, levelNames, withArt = false) => {
 	const keyOf = (board, n, level) => timeKey(n, level, board === "hinted", board === "art");
 	const bestTimes = (board) => Object.fromEntries(eachSlot((n, level, slot) => {
 		const key = keyOf(board, n, level);
+		const saved = parseInt(load(key), 10);
 		return [slot, {
-			time: parseInt(load(key), 10) || 999,
+			set: Boolean(saved),
+			time: saved || 999,
 			name: load(`${key}.name`) || "Anonymous"
 		}];
 	}));
@@ -60,7 +62,8 @@ var records = (prefix, sizes, levelNames, withArt = false) => {
 					tab: "clean",
 					clean: bestTimes("clean"),
 					hinted: bestTimes("hinted"),
-					...withArt && { art: bestTimes("art") }
+					...withArt && { art: bestTimes("art") },
+					stats: readStats(prefix)
 				}
 			}),
 			setBestTimeTab: (tab) => (state) => state.bestTime ? { bestTime: {
@@ -70,6 +73,10 @@ var records = (prefix, sizes, levelNames, withArt = false) => {
 			resetBestTime: () => ({ bestTime }) => ({ bestTime: {
 				...bestTime,
 				[bestTime.tab]: clearBestTimes(bestTime.tab)
+			} }),
+			resetStats: () => ({ bestTime }) => ({ bestTime: {
+				...bestTime,
+				stats: clearStats(prefix)
 			} })
 		}
 	};
@@ -98,12 +105,16 @@ var BestTimes = ({ key, title, sizes, levelNames, allowed, state, actions, art =
 	active: state.tab,
 	onSelect: actions.setBestTimeTab
 }), /* @__PURE__ */ h("table", { class: BestTimes_module_default.table }, /* @__PURE__ */ h("thead", null, /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", null), levelNames.map((name) => /* @__PURE__ */ h("th", { class: BestTimes_module_default.level }, name)))), /* @__PURE__ */ h("tbody", null, sizes.map((n) => /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", { class: BestTimes_module_default.size }, n, " × ", n), levelNames.map((_, level) => {
-	const best = allowed(n, level) && state[state.tab][`${n}.${level}`];
-	return /* @__PURE__ */ h("td", { class: BestTimes_module_default.slot }, !allowed(n, level) && "–", best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.time }, best.time, " s"), best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.name }, best.name));
-}))))), /* @__PURE__ */ h("div", { class: BestTime_module_default.footer }, /* @__PURE__ */ h(Button, {
+	const ok = allowed(n, level);
+	const best = ok && state[state.tab][`${n}.${level}`];
+	return /* @__PURE__ */ h("td", { class: BestTimes_module_default.slot }, !ok && /* @__PURE__ */ h("span", { class: BestTimes_module_default.never }, "–"), ok && !best.set && /* @__PURE__ */ h("span", { class: BestTimes_module_default.empty }, "–"), best && best.set && /* @__PURE__ */ h("span", { class: BestTimes_module_default.time }, best.time, " s"), best && best.set && /* @__PURE__ */ h("span", { class: BestTimes_module_default.name }, best.name));
+}))))), state.stats && /* @__PURE__ */ h(StatsList, { stats: state.stats }), /* @__PURE__ */ h("div", { class: BestTime_module_default.footer }, /* @__PURE__ */ h(Button, {
 	type: "button",
 	onClick: actions.resetBestTime
 }, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Scores")), /* @__PURE__ */ h(Button, {
+	type: "button",
+	onClick: actions.resetStats
+}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Stats")), /* @__PURE__ */ h(Button, {
 	type: "button",
 	onClick: actions.toggleBestTime,
 	onCreate: (el) => el.focus()

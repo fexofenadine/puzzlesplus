@@ -1,5 +1,5 @@
-import { F as Dialog, S as windowClear, T as Menu_module_default, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, p as SubMenuItem, w as watchWindow, z as h } from "./HowToPlay-25rzq32L.js";
-import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-3WHGg41b.js";
+import { F as Dialog, S as windowClear, T as Menu_module_default, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, p as SubMenuItem, w as watchWindow, z as h } from "./HowToPlay-C4zys83Q.js";
+import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-BzVGp7Po.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 var Board2048_module_default = {
 	board: "Board2048_board",
@@ -209,6 +209,10 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	name: "Timer",
 	checked: state.timer,
 	onClick: actions.toggleTimer
+}), /* @__PURE__ */ h(SubMenuItem, {
+	name: "Track Losses",
+	checked: state.trackLosses,
+	onClick: actions.toggleTrackLosses
 }), /* @__PURE__ */ h(Separator, null), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Best Scores...",
 	onClick: actions.toggleBestTime

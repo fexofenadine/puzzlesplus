@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-25rzq32L.js";
-import { a as Tabs, c as resumable, d as Winner, f as Input, i as Switching, n as FireworksCanvas, o as BestTime_module_default, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-BFJEAaTb.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-3WHGg41b.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-C4zys83Q.js";
+import { _ as OpenGames, a as clearStats, c as lossesOn, d as StatsList, f as Tabs, h as resumable, i as Switching, l as readStats, m as check, n as FireworksCanvas, o as lossActions, p as BestTime_module_default, r as celebrate, s as lossState, t as registerWorker, u as tally, v as Winner, y as Input } from "./worker-M9j8t0tS.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-BzVGp7Po.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-BzUt1Ydc.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-_G3GtS7J.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-DSR0C3qc.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-BgLTosMl.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -98,10 +98,16 @@ var BestTime = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
 	tabs,
 	active: state.tab,
 	onSelect: actions.setBestTimeTab
-}), /* @__PURE__ */ h("table", { class: BestTime_module_default.table }, /* @__PURE__ */ h("tbody", null, state[state.tab].map((row) => /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.level, ":"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.time, " seconds"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.name))))), /* @__PURE__ */ h("div", { class: BestTime_module_default.footer }, /* @__PURE__ */ h(Button, {
+}), /* @__PURE__ */ h("table", { class: BestTime_module_default.table }, /* @__PURE__ */ h("tbody", null, state[state.tab].map((row) => /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.level, ":"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.time, " seconds"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.name))))), state.stats && /* @__PURE__ */ h(StatsList, {
+	stats: state.stats,
+	losses: state.losses
+}), /* @__PURE__ */ h("div", { class: BestTime_module_default.footer }, /* @__PURE__ */ h(Button, {
 	type: "button",
 	onClick: actions.resetBestTime
-}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Scores")), /* @__PURE__ */ h(Button, {
+}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Scores")), state.stats && /* @__PURE__ */ h(Button, {
+	type: "button",
+	onClick: actions.resetStats
+}, /* @__PURE__ */ h("span", { class: BestTime_module_default.button }, "Reset Stats")), /* @__PURE__ */ h(Button, {
 	type: "button",
 	onClick: actions.toggleBestTime,
 	onCreate: (el) => el.focus()
@@ -341,6 +347,7 @@ var prevent = (event) => {
 };
 var state = {
 	...shellState("minesweeper"),
+	...lossState(),
 	hint: null,
 	shelf: saved.list(),
 	game: saved.restore() || createGame(loadLevel()),
@@ -355,6 +362,7 @@ var state = {
 };
 var actions = {
 	...shellActions,
+	...lossActions,
 	init: () => (state, actions) => {
 		window.addEventListener("keydown", actions.press);
 		listen(actions);
@@ -571,6 +579,10 @@ var actions = {
 		const win = left <= 0;
 		if (win || lose) {
 			cancelAnimationFrame(game.raf);
+			tally("minesweeper", {
+				won: !lose,
+				clean: !game.hinted
+			});
 			if (!lose) {
 				celebrate();
 				actions.win();
@@ -643,14 +655,20 @@ var actions = {
 		menu: null,
 		about: !about
 	}),
-	toggleBestTime: () => ({ bestTime }) => ({
+	toggleBestTime: () => ({ bestTime, theme }) => ({
 		menu: null,
 		bestTime: bestTime ? null : {
 			tab: "clean",
 			clean: bestTimes(false),
-			hinted: bestTimes(true)
+			hinted: bestTimes(true),
+			stats: theme === "classic" ? null : readStats("minesweeper"),
+			losses: lossesOn()
 		}
 	}),
+	resetStats: () => ({ bestTime }) => ({ bestTime: {
+		...bestTime,
+		stats: clearStats("minesweeper")
+	} }),
 	setBestTimeTab: (tab) => (state) => state.bestTime ? { bestTime: {
 		...state.bestTime,
 		tab

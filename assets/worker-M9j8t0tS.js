@@ -1,5 +1,5 @@
-import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, i as About_module_default, l as games, o as icons, z as h } from "./HowToPlay-25rzq32L.js";
-import { f as clock } from "./Board-3WHGg41b.js";
+import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, i as About_module_default, l as games, o as icons, z as h } from "./HowToPlay-C4zys83Q.js";
+import { f as clock } from "./Board-BzVGp7Po.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",
@@ -269,6 +269,67 @@ var Tabs = ({ tabs, active, onSelect }) => /* @__PURE__ */ h("div", {
 	class: active === tab.id ? BestTime_module_default.tabActive : BestTime_module_default.tab,
 	onclick: () => onSelect(tab.id)
 }, tab.name)));
+var StatsList_module_default = {
+	root: "StatsList_root",
+	list: "StatsList_list",
+	row: "StatsList_row",
+	note: "StatsList_note"
+};
+//#endregion
+//#region src/shell/StatsList.jsx
+var StatsList = ({ stats, losses = false, wonLabel = "Won" }) => {
+	const played = stats.won + stats.lost;
+	const rows = [
+		[wonLabel, stats.won],
+		...losses ? [["Lost", stats.lost], ["Win rate", played ? `${Math.round(100 * stats.won / played)}%` : "–"]] : [],
+		["Without help", stats.clean],
+		["Streak", stats.streak],
+		["Best streak", stats.best]
+	];
+	return /* @__PURE__ */ h("div", { class: StatsList_module_default.root }, /* @__PURE__ */ h("dl", { class: StatsList_module_default.list }, rows.map(([name, value]) => /* @__PURE__ */ h("div", { class: StatsList_module_default.row }, /* @__PURE__ */ h("dt", null, name), /* @__PURE__ */ h("dd", null, value)))), /* @__PURE__ */ h("p", { class: StatsList_module_default.note }, "Streaks count wins without hints or undo."));
+};
+//#endregion
+//#region src/shell/stats.js
+var fields = [
+	"won",
+	"lost",
+	"clean",
+	"streak",
+	"best"
+];
+var keyOf = (prefix) => `${prefix}.stats`;
+var readStats = (prefix) => {
+	let saved = null;
+	try {
+		saved = JSON.parse(load(keyOf(prefix)));
+	} catch {}
+	return Object.fromEntries(fields.map((field) => [field, Math.max(0, parseInt(saved && saved[field], 10) || 0)]));
+};
+var lossesOn = () => load("losses") === "on";
+var lossState = () => ({ trackLosses: lossesOn() });
+var lossActions = { toggleTrackLosses: () => ({ trackLosses }) => {
+	save("losses", trackLosses ? "off" : "on");
+	return {
+		menu: null,
+		trackLosses: !trackLosses
+	};
+} };
+var tally = (prefix, { won, clean = true }) => {
+	if (!won && !lossesOn()) return;
+	const stats = readStats(prefix);
+	if (won) stats.won++;
+	else stats.lost++;
+	if (won && clean) {
+		stats.clean++;
+		stats.streak++;
+		stats.best = Math.max(stats.best, stats.streak);
+	} else stats.streak = 0;
+	save(keyOf(prefix), JSON.stringify(stats));
+};
+var clearStats = (prefix) => {
+	remove(keyOf(prefix));
+	return readStats(prefix);
+};
 //#endregion
 //#region src/shell/Switching.jsx
 var Switching = ({ key, title, actions }) => /* @__PURE__ */ h(Overlay, {
@@ -530,4 +591,4 @@ var registerWorker = () => {
 	if ("serviceWorker" in navigator && true) navigator.serviceWorker.register("../service-worker.js", { scope: "./" }).catch(() => {});
 };
 //#endregion
-export { Tabs as a, resumable as c, Winner as d, Input as f, Switching as i, Prompt_module_default as l, FireworksCanvas as n, BestTime_module_default as o, celebrate as r, check as s, registerWorker as t, OpenGames as u };
+export { OpenGames as _, clearStats as a, lossesOn as c, StatsList as d, Tabs as f, Prompt_module_default as g, resumable as h, Switching as i, readStats as l, check as m, FireworksCanvas as n, lossActions as o, BestTime_module_default as p, celebrate as r, lossState as s, registerWorker as t, tally as u, Winner as v, Input as y };

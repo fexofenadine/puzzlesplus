@@ -1,4 +1,4 @@
-import { t as HowToPlay, z as h } from "./HowToPlay-25rzq32L.js";
+import { t as HowToPlay, z as h } from "./HowToPlay-C4zys83Q.js";
 //#region src/nonograms/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "The numbers beside each row and above each column are the lengths of its runs of filled cells, in order, with at least one empty cell between runs. Fill cells until every row and column matches its clue; a clue dims once its line matches."),

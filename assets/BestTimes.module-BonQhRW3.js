@@ -1,5 +1,5 @@
-import { F as Dialog, I as Button, L as Overlay, z as h } from "./HowToPlay-25rzq32L.js";
-import { l as Prompt_module_default } from "./worker-BFJEAaTb.js";
+import { F as Dialog, I as Button, L as Overlay, z as h } from "./HowToPlay-C4zys83Q.js";
+import { g as Prompt_module_default } from "./worker-M9j8t0tS.js";
 //#region src/shell/Prompt.jsx
 var Prompt = ({ key, title, text, actions }) => /* @__PURE__ */ h(Overlay, {
 	key,
@@ -21,7 +21,9 @@ var BestTimes_module_default = {
 	size: "BestTimes_size",
 	slot: "BestTimes_slot",
 	time: "BestTimes_time",
-	name: "BestTimes_name"
+	name: "BestTimes_name",
+	empty: "BestTimes_empty",
+	never: "BestTimes_never"
 };
 //#endregion
 export { Prompt as n, BestTimes_module_default as t };
