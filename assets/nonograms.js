@@ -1,13 +1,81 @@
-import { D as BackgroundSettings, E as Boss, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-B8mFKdpg.js";
-import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BRCwxoE3.js";
-import { n as Prompt } from "./BestTimes.module-CxlHHq4T.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-DQcUInwY.js";
-import { a as records, i as BestTimes, r as dealer, t as random } from "./random-CvGWgAK1.js";
-import { t as showRain } from "./rain-B_W5YyFa.js";
-import { S as solved, _ as cluesOf, c as levelNames, d as levels, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-B_YF33AN.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-C_wcEPZo.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, i as About_module_default, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BSugkO4s.js";
+import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BYEAi_0D.js";
+import { n as Prompt } from "./BestTimes.module-Co1LdOkt.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-aQlUKWW2.js";
+import { a as records, i as BestTimes, r as dealer, t as random } from "./random-DtZnze6y.js";
+import { t as showRain } from "./rain-CDSUa0yA.js";
+import { S as solved, _ as cluesOf, c as levelNames, d as levels$1, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-B7nW7lUk.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-BMVU5RVs.js";
+//#region src/nonograms/art/10/heart.txt?raw
+var heart_default$2 = "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.###..###.\n##########\n##########\n##########\n.########.\n.########.\n..######..\n...####...\n....##....\n....##....\n";
+//#endregion
+//#region src/nonograms/art/10/smiley.txt?raw
+var smiley_default = "name: Smiley\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..######..\n.########.\n##########\n##.####.##\n##########\n##########\n##.####.##\n###....###\n.########.\n..######..\n";
+//#endregion
+//#region src/nonograms/art/10/tree.txt?raw
+var tree_default = "name: Tree\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n....##....\n...####...\n..######..\n...####...\n..######..\n.########.\n##########\n....##....\n....##....\n....##....\n";
+//#endregion
+//#region src/nonograms/art/15/heart.txt?raw
+var heart_default$1 = "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..####...####..\n.######.######.\n###############\n###############\n###############\n###############\n###############\n.#############.\n.#############.\n..###########..\n...#########...\n....#######....\n.....#####.....\n......###......\n.......#.......\n";
+//#endregion
+//#region src/nonograms/art/15/mushroom.txt?raw
+var mushroom_default = "name: Mushroom\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n....#######....\n..###########..\n.####.###.####.\n###############\n####..###..####\n###############\n.#############.\n..###########..\n.....#####.....\n.....#####.....\n.....#####.....\n.....#####.....\n.....#####.....\n....#######....\n...#########...\n";
+//#endregion
+//#region src/nonograms/art/15/rocket.txt?raw
+var rocket_default = "name: Rocket\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.......#.......\n......###......\n.....#####.....\n....#######....\n....#######....\n....##...##....\n....##...##....\n....#######....\n....#######....\n..##.#####.##..\n.###..###..###.\n###...###...###\n......###......\n.....#####.....\n.....#####.....\n";
+//#endregion
+//#region src/nonograms/art/20/cat.txt?raw
+var cat_default = "name: Cat\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..##............##..\n..####........####..\n..################..\n.##################.\n####################\n####################\n#####..######..#####\n#####..######..#####\n####################\n####################\n#########..#########\n########.##.########\n#########..#########\n.##################.\n.##################.\n..################..\n...##############...\n....############....\n.....##########.....\n......########......\n";
+//#endregion
+//#region src/nonograms/art/20/trophy.txt?raw
+var trophy_default = "name: Trophy\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..################..\n..################..\n##.##############.##\n#..##############..#\n#..##############..#\n##.##############.##\n...##############...\n....############....\n.....##########.....\n......########......\n.......######.......\n........####........\n........####........\n........####........\n.....##########.....\n....############....\n....############....\n..################..\n..################..\n..################..\n";
+//#endregion
+//#region src/nonograms/art/20/umbrella.txt?raw
+var umbrella_default = "name: Umbrella\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n......########......\n....############....\n..################..\n.##################.\n####################\n####################\n###.###.####.###.###\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n.......######.......\n......########......\n......########......\n";
+//#endregion
+//#region src/nonograms/art/25/butterfly.txt?raw
+var butterfly_default = "name: Butterfly\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n#####......#.#......#####\n#######...........#######\n########.........########\n#########..###..#########\n##########.###.##########\n##########.###.##########\n##########.###.##########\n##########.###.##########\n#########..###..#########\n#########..###..#########\n.########..###..########.\n...######..###..######...\n....#####..###..#####....\n..#######..###..#######..\n.#########.###.#########.\n##########.###.##########\n##########.###.##########\n.#########.###.#########.\n..#######..###..#######..\n...#####...###...#####...\n....###....###....###....\n.....##....###....##.....\n...........###...........\n...........###...........\n...........###...........\n";
+//#endregion
+//#region src/nonograms/art/25/castle.txt?raw
+var castle_default = "name: Castle\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n............#............\n...........###...........\n..........#####..........\n.........#######.........\n........#########........\n##.##.##.#######.##.##.##\n########.#######.########\n########.#######.########\n###..###.#######.###..###\n###..###.#######.###..###\n########.#######.########\n########.#######.########\n#########################\n#########################\n#########################\n#########################\n#########################\n#########################\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n";
+//#endregion
+//#region src/nonograms/art/25/pine.txt?raw
+var pine_default = "name: Pine Tree\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n............#............\n...........###...........\n...........###...........\n..........#####..........\n.........#######.........\n..........#####..........\n........#########........\n.......###########.......\n........#########........\n......#############......\n.....###############.....\n....#################....\n......#############......\n.....###############.....\n....#################....\n...###################...\n..#####################..\n.#######################.\n#########################\n..........#####..........\n..........#####..........\n..........#####..........\n..........#####..........\n..........#####..........\n........#########........\n";
+//#endregion
+//#region src/nonograms/art/5/arrow.txt?raw
+var arrow_default = "name: Arrow\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..#..\n.###.\n#.#.#\n..#..\n..#..\n";
+//#endregion
+//#region src/nonograms/art/5/heart.txt?raw
+var heart_default = "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.#.#.\n#####\n#####\n.###.\n..#..\n";
+//#endregion
+//#region src/nonograms/art/5/house.txt?raw
+var house_default = "name: House\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..#..\n.###.\n#####\n##.##\n##.##\n";
+//#endregion
 //#region src/nonograms/generate.js
-var makePicture = (n, rng, dense = 0) => {
+var filled = (cells, n) => {
+	const used = (line) => line.some((k) => cells[k]);
+	const rows = [...Array(n).keys()].map((y) => [...Array(n).keys()].map((x) => y * n + x));
+	const columns = [...Array(n).keys()].map((x) => [...Array(n).keys()].map((y) => y * n + x));
+	return (n <= 10 ? [...rows, ...columns] : [
+		rows[0],
+		rows[n - 1],
+		columns[0],
+		columns[n - 1]
+	]).every(used);
+};
+var mirrored = (cells, n) => {
+	for (let y = 0; y < n; y++) for (let x = 0; x < n / 2; x++) if (cells[y * n + x] !== cells[y * n + n - 1 - x]) return false;
+	return true;
+};
+var twin = (i, n) => i - i % n + n - 1 - i % n;
+var shaped = (cells, n, symmetric) => filled(cells, n) && mirrored(cells, n) === symmetric;
+var makePicture = (n, rng, dense = 0, symmetric = true) => {
+	for (;;) {
+		const cells = scatter(n, rng, dense, symmetric);
+		if (shaped(cells, n, symmetric)) return cells;
+	}
+};
+var scatter = (n, rng, dense, symmetric) => {
 	const density = .48 + dense + .08 * rng();
 	let cells = Int8Array.from({ length: n * n }, () => rng() < density ? 1 : 0);
 	for (let pass = 0; pass < (n < 10 ? 0 : 2); pass++) {
@@ -24,12 +92,12 @@ var makePicture = (n, rng, dense = 0) => {
 		}
 		cells = next;
 	}
-	if (rng() < .5) for (let y = 0; y < n; y++) for (let x = Math.ceil(n / 2); x < n; x++) cells[y * n + x] = cells[y * n + n - 1 - x];
+	if (symmetric) for (let y = 0; y < n; y++) for (let x = Math.ceil(n / 2); x < n; x++) cells[y * n + x] = cells[y * n + n - 1 - x];
 	return cells;
 };
-var makePuzzle = (n, rng, top = levels.length - 1, deadline = Infinity) => {
+var makePuzzle = (n, rng, top = levels$1.length - 1, deadline = Infinity, symmetric = true) => {
 	while (performance.now() < deadline) {
-		const solution = makePicture(n, rng, top ? 0 : .12);
+		const solution = makePicture(n, rng, top ? 0 : .12, symmetric);
 		for (let flips = 0; flips < 4 * n && performance.now() < deadline; flips++) {
 			const clues = cluesOf(solution, n);
 			const board = emptyBoard(n);
@@ -45,41 +113,185 @@ var makePuzzle = (n, rng, top = levels.length - 1, deadline = Infinity) => {
 				level: 3
 			};
 			const unsettled = [...board.keys()].filter((i) => board[i] === -1);
-			solution[unsettled[Math.floor(rng() * unsettled.length)]] ^= 1;
+			const flip = unsettled[Math.floor(rng() * unsettled.length)];
+			const cells = symmetric ? [flip, twin(flip, n)] : [flip];
+			for (const k of cells) solution[k] ^= 1;
+			if (!shaped(solution, n, symmetric)) for (const k of cells) solution[k] ^= 1;
 		}
 	}
 	return null;
 };
-var makeGame = (n, level, rng, budget = n >= 20 ? 3e3 : 1500) => {
+var makeGame = (n, level, rng, budget = n >= 20 ? 3e3 : 1500, symmetric = true) => {
 	const deadline = performance.now() + budget;
 	let best = null;
 	for (;;) {
-		const puzzle = makePuzzle(n, rng, level, deadline);
+		const puzzle = makePuzzle(n, rng, level, deadline, symmetric);
 		if (!puzzle) break;
 		if (puzzle.level === level) return puzzle;
 		if (!best || puzzle.level > best.level) best = puzzle;
 	}
-	return best ?? makePuzzle(n, rng, 1);
+	return best ?? makePuzzle(n, rng, 1, Infinity, symmetric);
+};
+//#endregion
+//#region src/nonograms/art.js
+var files = /* #__PURE__ */ Object.assign({
+	"./art/10/heart.txt": heart_default$2,
+	"./art/10/smiley.txt": smiley_default,
+	"./art/10/tree.txt": tree_default,
+	"./art/15/heart.txt": heart_default$1,
+	"./art/15/mushroom.txt": mushroom_default,
+	"./art/15/rocket.txt": rocket_default,
+	"./art/20/cat.txt": cat_default,
+	"./art/20/trophy.txt": trophy_default,
+	"./art/20/umbrella.txt": umbrella_default,
+	"./art/25/butterfly.txt": butterfly_default,
+	"./art/25/castle.txt": castle_default,
+	"./art/25/pine.txt": pine_default,
+	"./art/5/arrow.txt": arrow_default,
+	"./art/5/heart.txt": heart_default,
+	"./art/5/house.txt": house_default
+});
+var required = [
+	"name",
+	"credit",
+	"licence"
+];
+var parseArt = (path, text) => {
+	const fail = (why) => {
+		throw new Error(`${path}: ${why}`);
+	};
+	const [head, ...rest] = text.replace(/\r/g, "").split(/^---$/m);
+	if (rest.length !== 1) fail("needs one --- line between the header and the grid");
+	const info = {};
+	for (const line of head.split("\n")) {
+		const at = line.indexOf(":");
+		if (line.trim() && at > 0) info[line.slice(0, at).trim()] = line.slice(at + 1).trim();
+	}
+	for (const key of required) if (!info[key]) fail(`missing ${key}`);
+	const rows = rest[0].split("\n").map((row) => row.trim()).filter(Boolean);
+	const n = rows.length;
+	if (n < 5 || n > 25) fail(`${n} rows, sizes go from 5 to 25`);
+	if (rows.some((row) => row.length !== n || /[^#.]/.test(row))) fail("rows must be n of # or .");
+	if (path.split("/").at(-2) !== String(n)) fail(`a ${n} × ${n} grid belongs in the ${n} folder`);
+	const cells = Int8Array.from(rows.join(""), (c) => c === "#" ? 1 : 0);
+	if (!filled(cells, n)) fail("must touch every edge, and have no empty line up to 10 × 10");
+	return {
+		id: path.replace(/^.*art\//, "").replace(/\.txt$/, ""),
+		n,
+		cells,
+		name: info.name,
+		credit: info.credit,
+		licence: info.licence,
+		source: info.source ?? ""
+	};
+};
+var pool = Object.entries(files).flatMap(([path, text]) => {
+	try {
+		return [parseArt(path, text)];
+	} catch {
+		return [];
+	}
+});
+var levels = /* @__PURE__ */ new Map();
+var levelOf = (art) => {
+	if (!levels.has(art.id)) levels.set(art.id, rate(cluesOf(art.cells, art.n), art.n));
+	return levels.get(art.id);
+};
+var infoOf = ({ id, name, credit, licence, source }) => ({
+	id,
+	name,
+	credit,
+	licence,
+	source
+});
+var artFor = (n) => pool.filter((art) => art.n === n && levelOf(art) !== null);
+var pickArt = (n, level, rng, id = null, avoid = null) => {
+	const all = artFor(n);
+	let options = all.filter((art) => art.id === id);
+	if (!options.length) {
+		const others = all.length > 1 ? all.filter((art) => art.id !== avoid) : all;
+		const gap = (art) => Math.abs(levelOf(art) - level);
+		const nearest = Math.min(...others.map(gap));
+		options = others.filter((art) => gap(art) === nearest);
+	}
+	if (!options.length) return null;
+	const art = options[Math.floor(rng() * options.length)];
+	return {
+		solution: art.cells.slice(),
+		clues: cluesOf(art.cells, art.n),
+		level: levelOf(art),
+		art: infoOf(art)
+	};
+};
+//#endregion
+//#region src/nonograms/dealing.js
+var deal$1 = ({ n, level, seed, art = false, pick = null, avoid = null, symmetric = true }) => {
+	const rng = random(seed);
+	return art && pickArt(n, level, rng, pick, avoid) || makeGame(n, level, rng, void 0, symmetric);
 };
 //#endregion
 //#region src/nonograms/deal.js
 var dealOne = dealer(() => new Worker(new URL(
 	/* @vite-ignore */
-	new URL("deal.worker-f_4U9A5A.js", import.meta.url).href,
+	new URL("deal.worker-D3TW1Oei.js", import.meta.url).href,
 	"" + import.meta.url
-), { type: "module" }), ({ n, level, seed }) => makeGame(n, level, random(seed)));
-var deal = (n, level, seed) => dealOne({
+), { type: "module" }), deal$1);
+var deal = (n, level, seed, options = {}) => dealOne({
 	n,
 	level,
-	seed
+	seed,
+	...options
 });
+var Pictures_module_default = {
+	root: "Pictures_root",
+	text: "Pictures_text",
+	list: "Pictures_list",
+	option: "Pictures_option",
+	thumb: "Pictures_thumb",
+	label: "Pictures_label",
+	level: "Pictures_level",
+	footer: "Pictures_footer"
+};
+//#endregion
+//#region src/nonograms/Pictures.jsx
+var outline = ({ cells, n }) => [...cells.keys()].filter((i) => cells[i]).map((i) => `M${i % n} ${Math.floor(i / n)}h1v1h-1z`).join("");
+var Thumb = ({ art, solved }) => solved ? /* @__PURE__ */ h("svg", {
+	class: Pictures_module_default.thumb,
+	viewBox: `0 0 ${art.n} ${art.n}`,
+	"shape-rendering": "crispEdges"
+}, /* @__PURE__ */ h("path", { d: outline(art) })) : /* @__PURE__ */ h("span", { class: Pictures_module_default.thumb }, "?");
+var Pictures = ({ key, state, actions }) => {
+	const { n } = state.game;
+	const pool = artFor(n);
+	return /* @__PURE__ */ h(Overlay, {
+		key,
+		onKeyDown: (event) => event.keyCode === 27 && actions.togglePictures()
+	}, /* @__PURE__ */ h(Dialog, {
+		title: "Choose Picture",
+		onClose: actions.togglePictures
+	}, /* @__PURE__ */ h("div", { class: Pictures_module_default.root }, /* @__PURE__ */ h("p", { class: Pictures_module_default.text }, pool.length ? `Pick a ${n} × ${n} picture to solve. Times aren't kept for a picture you choose.` : `There are no ${n} × ${n} pictures yet.`), /* @__PURE__ */ h("ul", { class: Pictures_module_default.list }, pool.map((art) => {
+		const solved = state.solved.includes(art.id);
+		return /* @__PURE__ */ h("li", null, /* @__PURE__ */ h("button", {
+			type: "button",
+			class: Pictures_module_default.option,
+			onclick: () => actions.choosePicture(art.id)
+		}, /* @__PURE__ */ h(Thumb, {
+			art,
+			solved
+		}), /* @__PURE__ */ h("span", { class: Pictures_module_default.label }, solved ? art.name : "Unsolved"), /* @__PURE__ */ h("span", { class: Pictures_module_default.level }, levelNames[levelOf(art)])));
+	})), /* @__PURE__ */ h("div", { class: Pictures_module_default.footer }, /* @__PURE__ */ h(Button, {
+		type: "button",
+		onClick: actions.togglePictures,
+		onCreate: (el) => el.focus()
+	}, /* @__PURE__ */ h("span", { class: About_module_default.button }, "Cancel"))))));
+};
 //#endregion
 //#region src/nonograms/About.jsx
 var NonogramsAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
 	key,
 	name: "Nonograms Plus",
 	actions
-}, /* @__PURE__ */ h("p", null, "Picture logic puzzles: the numbers beside each row and above each column give the lengths of its runs of filled cells, in order, with at least one empty cell between runs. Fill the cells that match every clue."), /* @__PURE__ */ h("p", null, "Every board has exactly one solution and can be solved by logic alone. Nonograms were devised in 1987 by Non Ishida and, independently, Tetsuya Nishio."), /* @__PURE__ */ h("p", null, "Part of Puzzles Plus by fexofenadine, sharing its window, themes and backgrounds with Minesweeper Plus, which is based on", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov."));
+}, /* @__PURE__ */ h("p", null, "Picture logic puzzles: the numbers beside each row and above each column give the lengths of its runs of filled cells, in order, with at least one empty cell between runs. Fill the cells that match every clue."), /* @__PURE__ */ h("p", null, "Every board has exactly one solution and can be solved by logic alone. Nonograms were devised in 1987 by Non Ishida and, independently, Tetsuya Nishio. The pictures are drawn for Puzzles Plus and free to reuse (CC0)."), /* @__PURE__ */ h("p", null, "Part of Puzzles Plus by fexofenadine, sharing its window, themes and backgrounds with Minesweeper Plus, which is based on", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov."));
 //#endregion
 //#region src/nonograms/app.jsx
 var loadChoice = () => {
@@ -113,7 +325,9 @@ var createGame = ({ n, level }) => ({
 	pausedAt: 0,
 	win: false,
 	hinted: false,
-	untimed: false
+	untimed: false,
+	art: null,
+	picked: false
 });
 var boardOf = (cells, n) => {
 	check(Array.isArray(cells) && cells.length === n * n && cells.every((v) => v >= -1 && v <= 1));
@@ -123,7 +337,7 @@ var saved = resumable({
 	key: "nonograms.saved",
 	running,
 	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
-	pack: ({ n, level, clues, solution, board, stroke, history, hinted, untimed }) => ({
+	pack: ({ n, level, clues, solution, board, stroke, history, hinted, untimed, art, picked }) => ({
 		n,
 		level,
 		clues,
@@ -131,11 +345,14 @@ var saved = resumable({
 		board: Array.from(stroke ? stroke.before : board),
 		history,
 		hinted,
-		untimed
+		untimed,
+		art,
+		picked
 	}),
-	unpack: ({ n, level, clues, solution, board, history, hinted, untimed }) => {
+	unpack: ({ n, level, clues, solution, board, history, hinted, untimed, art, picked }) => {
 		check(sizes.includes(n) && level >= 0 && level < levelNames.length && Array.isArray(history));
 		check(Array.isArray(clues) && clues.length === 2 * n && clues.every(Array.isArray));
+		check(!art || typeof art.id === "string" && typeof art.name === "string" && art.level >= 0);
 		return {
 			...createGame({
 				n,
@@ -147,11 +364,13 @@ var saved = resumable({
 			history,
 			hinted: Boolean(hinted),
 			untimed: Boolean(untimed),
+			art: art || null,
+			picked: Boolean(picked),
 			dealing: false
 		};
 	}
 });
-var { actions: recordActions } = records("nonograms", sizes, levelNames);
+var { actions: recordActions } = records("nonograms", sizes, levelNames, true);
 var cycle = [
 	-1,
 	1,
@@ -186,15 +405,42 @@ var changed = (state, game, board, history, actions, settled = false) => {
 		if (timed({
 			...state,
 			game: next
-		})) actions.win(next);
+		})) record(next, actions);
 	}
 	const stuck = !next.win && fillsLeft(board, next.n, next.clues) === 0;
 	if (stuck && !settled) setTimeout(() => actions.ask(next.change), ASK_AFTER);
+	const done = next.win && next.art ? { solved: markSolved(state.solved, next.art.id) } : null;
 	return {
 		hint: null,
 		prompt: stuck && settled,
-		game: next
+		game: next,
+		...done
 	};
+};
+var record = (game, actions) => {
+	if (!game.art) actions.win({
+		...game,
+		art: false
+	});
+	else if (!game.picked && !game.hinted) actions.win({
+		...game,
+		level: game.art.level,
+		art: true
+	});
+};
+var markSolved = (solved, id) => {
+	if (solved.includes(id)) return solved;
+	const next = [...solved, id];
+	save("nonograms.solved", JSON.stringify(next));
+	return next;
+};
+var loadSolved = () => {
+	try {
+		const list = JSON.parse(load("nonograms.solved"));
+		return Array.isArray(list) ? list.filter((id) => typeof id === "string") : [];
+	} catch {
+		return [];
+	}
 };
 var span = ({ start, axis }, i, n) => {
 	const [sx, sy] = [start % n, Math.floor(start / n)];
@@ -226,6 +472,10 @@ var state = {
 	errors: Boolean(load("nonograms.errors")),
 	timer: loadTimer("nonograms.timer"),
 	rain: Boolean(load("nonograms.rain")),
+	procedural: load("nonograms.procedural") !== "off",
+	symmetric: load("nonograms.symmetric") !== "off",
+	pictures: false,
+	solved: loadSolved(),
 	touch: Boolean(window.matchMedia && matchMedia("(pointer: coarse)").matches),
 	mode: 1,
 	about: false,
@@ -260,15 +510,21 @@ var actions = {
 		else if (key === 72) actions.hint();
 		else if (key === 80) actions.pause();
 	},
-	reset: (payload) => ({ game }, actions) => {
+	reset: (payload) => ({ game, procedural, symmetric }, actions) => {
 		cancelAnimationFrame(game.raf);
 		const n = payload && payload.n || game.n;
 		const asked = payload && payload.level !== void 0 ? payload.level : game.level;
 		const level = fallback(n, asked);
+		const pick = payload && payload.pick || null;
 		save("nonograms.size", n);
 		save("nonograms.level", level);
 		const id = ++deals;
-		deal(n, level, Math.floor(Math.random() * 2 ** 32)).then((dealt) => actions.dealt({
+		deal(n, level, Math.floor(Math.random() * 2 ** 32), {
+			art: Boolean(pick) || !procedural,
+			pick,
+			avoid: game.art && game.art.id,
+			symmetric
+		}).then((dealt) => actions.dealt({
 			id,
 			...dealt
 		}));
@@ -281,17 +537,23 @@ var actions = {
 					n,
 					level
 				}),
-				deal: id
+				deal: id,
+				picked: Boolean(pick)
 			}
 		};
 	},
-	dealt: ({ id, clues, solution }) => ({ game }) => {
+	dealt: ({ id, clues, solution, level, art }) => ({ game }) => {
 		if (game.deal !== id) return null;
+		const picture = art ? {
+			...art,
+			level
+		} : null;
 		return { game: {
 			...game,
 			clues,
 			solution,
-			dealing: false
+			dealing: false,
+			art: picture
 		} };
 	},
 	down: ({ event, i }) => ({ game, mode }, actions) => {
@@ -398,6 +660,28 @@ var actions = {
 			rain: !state.rain
 		};
 	},
+	toggleProcedural: () => (state) => {
+		save("nonograms.procedural", state.procedural ? "off" : "");
+		return {
+			menu: null,
+			procedural: !state.procedural
+		};
+	},
+	toggleSymmetric: () => (state) => {
+		save("nonograms.symmetric", state.symmetric ? "off" : "");
+		return {
+			menu: null,
+			symmetric: !state.symmetric
+		};
+	},
+	togglePictures: () => ({ pictures }) => ({
+		menu: null,
+		pictures: !pictures
+	}),
+	choosePicture: (id) => (state, actions) => {
+		actions.newGame({ pick: id });
+		return { pictures: false };
+	},
 	toggleAbout: () => ({ about }) => ({
 		menu: null,
 		about: !about
@@ -439,6 +723,7 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 	sizes,
 	levelNames,
 	allowed,
+	art: true,
 	state: state.bestTime,
 	actions
 }), state.prompt && /* @__PURE__ */ h(Prompt, {
@@ -449,6 +734,10 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }), state.backgroundSettings && /* @__PURE__ */ h(BackgroundSettings, {
 	key: "e",
 	state: state.backgroundSettings,
+	actions
+}), state.pictures && /* @__PURE__ */ h(Pictures, {
+	key: "l",
+	state,
 	actions
 }), state.switching && /* @__PURE__ */ h(Switching, {
 	key: "k",
