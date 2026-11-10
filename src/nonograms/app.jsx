@@ -22,6 +22,8 @@ import Pictures from './Pictures'
 import Switching from '../shell/Switching'
 import About from './About'
 import HowToPlay from './HowToPlay'
+import { celebrate } from '../shell/fireworks'
+import FireworksCanvas from '../shell/FireworksCanvas'
 
 //the saved size and level, easy 10x10 when missing or out of range
 const loadChoice = () => {
@@ -130,6 +132,7 @@ const changed = (state, game, board, history, actions, settled = false) => {
   next.win = solved(board, next.n, next.clues)
   if (next.win) {
     cancelAnimationFrame(next.raf)
+    celebrate()
     if (timed({ ...state, game: next })) record(next, actions)
   }
   const stuck = !next.win && fillsLeft(board, next.n, next.clues) === 0
@@ -411,6 +414,7 @@ export const view = (state, actions) => (
     oncreate={actions.init}
     onupdate={() => saved.keep(state.game)}
   >
+    <FireworksCanvas key="fw" />
     <Game key="a" state={state} actions={actions} />
     <Taskbar key="h" name="Nonograms Plus" state={state} actions={actions} />
     {state.winner && <Winner key="b" state={state.winner} actions={actions} />}

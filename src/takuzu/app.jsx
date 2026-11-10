@@ -22,6 +22,8 @@ import { showRain } from '../shell/rain'
 import Switching from '../shell/Switching'
 import About from './About'
 import HowToPlay from './HowToPlay'
+import { celebrate } from '../shell/fireworks'
+import FireworksCanvas from '../shell/FireworksCanvas'
 
 //the saved size and level, medium 8x8 when missing or out of range
 const loadChoice = () => {
@@ -119,6 +121,7 @@ const changed = (state, board, history, actions, settled = false) => {
   next.win = solved(board, next.n)
   if (next.win) {
     cancelAnimationFrame(next.raf)
+    celebrate()
     if (timed({ ...state, game: next })) actions.win(next)
   }
   const stuck = !next.win && full(board)
@@ -289,6 +292,7 @@ export const view = (state, actions) => (
     oncreate={actions.init}
     onupdate={() => saved.keep(state.game)}
   >
+    <FireworksCanvas key="fw" />
     <Game key="a" state={state} actions={actions} />
     <Taskbar key="h" name="Takuzu Plus" state={state} actions={actions} />
     {state.winner && <Winner key="b" state={state.winner} actions={actions} />}

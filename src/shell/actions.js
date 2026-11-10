@@ -67,6 +67,7 @@ export const shellState = (page, root = '../') => ({
   backgrounds: loadSettings(),
   backgroundSettings: null,
   glass: loadGlass(),
+  fireworks: load('fireworks') !== 'off',
   howTo: false,
   zoom: { chosen: loadZoom(), scale: loadZoom(), seen: null, maximised: loadMaximised() },
   portrait: Boolean(window.matchMedia && matchMedia('(orientation: portrait)').matches),
@@ -207,6 +208,12 @@ export const shellActions = {
     ({ glass }) => {
       save('windowHidden', glass.hidden ? '' : 'yes')
       return { menu: null, glass: { ...glass, hidden: !glass.hidden } }
+    },
+  toggleFireworks:
+    () =>
+    ({ fireworks }) => {
+      save('fireworks', fireworks ? 'off' : '')
+      return { menu: null, fireworks: !fireworks }
     },
   //a phone's options sheet sets the opacity straight away, saved as it goes
   setOpacity:

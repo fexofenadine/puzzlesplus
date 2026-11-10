@@ -20,6 +20,8 @@ import { hold, letGo } from './motion'
 import Switching from '../shell/Switching'
 import About from './About'
 import HowToPlay from './HowToPlay'
+import { celebrate } from '../shell/fireworks'
+import FireworksCanvas from '../shell/FireworksCanvas'
 
 //the saved size, 4x4 when missing or out of range
 const loadSize = () => {
@@ -221,7 +223,10 @@ export const actions = {
     }
     //making the target asks whether to keep going, once a game
     const reached = !game.reached && highest(values) >= targets[game.n]
-    if (reached) next.reached = true
+    if (reached) {
+      next.reached = true
+      celebrate()
+    }
     let winner = null
     if (next.over) {
       cancelAnimationFrame(next.raf)
@@ -347,6 +352,7 @@ export const view = (state, actions) => (
     oncreate={actions.init}
     onupdate={() => saved.keep(state.game)}
   >
+    <FireworksCanvas key="fw" />
     <Game key="a" state={state} actions={actions} />
     <Taskbar key="h" name="2048 Plus" state={state} actions={actions} />
     {state.winner && <Winner key="b" state={state.winner} actions={actions} />}
