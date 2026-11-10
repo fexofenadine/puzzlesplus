@@ -112,9 +112,8 @@ const begin = (game, actions) => {
   return { ...game, start: clock(), time: 1 }
 }
 
-//after a cell changes: a win, or a full board that isn't one
-//settled means another click the same way would only empty the cell again, so ask now
-//otherwise the cell may be passing through on its way to the value meant, so ask later
+//after a cell changes: a win, or a full board that is not one
+//settled means another click would only empty the cell, so ask now, else ask later
 const changed = (state, board, history, actions, settled = false) => {
   const next = { ...begin(state.game, actions), board, history, change: ++changes }
   next.win = solved(board, next.n)

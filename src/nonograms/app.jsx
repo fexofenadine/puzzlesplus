@@ -123,9 +123,8 @@ const begin = (game, actions) => {
   return { ...game, start: clock(), time: 1 }
 }
 
-//after a stroke or undo: a win stops the clock, and any hint is out of date
-//a board with all its fills placed that isn't solved asks about a hint, at once when settled,
-//otherwise only if nothing changes for a moment
+//after a stroke or undo: a win stops the clock and any hint is out of date
+//a full but unsolved board asks about a hint, at once when settled, else after a pause
 const changed = (state, game, board, history, actions, settled = false) => {
   const next = { ...game, board, history, change: ++changes }
   next.win = solved(board, next.n, next.clues)

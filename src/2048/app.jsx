@@ -235,9 +235,8 @@ export const actions = {
       game: next,
     }
   },
-  //drags on the board, by touch or with the mouse held down: the tiles follow along the direction
-  //the drag settles on, and the release finishes the move or lets them spring back
-  //the tiles are moved on the page directly, so a drag never renders the window
+  //drags on the board: tiles follow the settled direction, the release finishes or springs back
+  //tiles move on the page directly, so a drag never renders the window
   swipeStart: (event) => (state) => {
     const { game } = state
     if (game.paused || game.over || state.prompt || event.button > 0) return

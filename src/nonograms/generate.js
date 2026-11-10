@@ -28,10 +28,9 @@ const twin = (i, n) => i - (i % n) + n - 1 - (i % n)
 //a grid that fills its space and is symmetric or not, as asked
 const shaped = (cells, n, symmetric) => filled(cells, n) && mirrored(cells, n) === symmetric
 
-//a random picture: noise smoothed into blobs so it looks like shapes
-//symmetric ones are mirrored, the others dealt again if they happen to be symmetric
-//5x5 is too small to smooth, it would wash out to a few cells
-//dense adds to the fill, easy boards want long runs that overlap a lot
+//a random picture: noise smoothed into blobs, mirrored when symmetric
+//non-symmetric ones that come out symmetric are dealt again
+//5x5 is too small to smooth, dense suits easy boards
 export const makePicture = (n, rng, dense = 0, symmetric = true) => {
   for (;;) {
     const cells = scatter(n, rng, dense, symmetric)
@@ -69,10 +68,9 @@ const scatter = (n, rng, dense, symmetric) => {
   return cells
 }
 
-//a picture whose clues the techniques up to top can finish, which also proves it is the only answer
-//a cell they can't settle gets flipped, changing the clues around it, and after too many flips
-//it starts over with a new picture, giving up with null once the deadline passes
-//what-if is slow over a mostly open board, so it waits until lines leave a quarter or less open
+//a picture the techniques up to top can finish, which also proves it unique
+//unsettled cells get flipped, a new picture after too many flips, null at the deadline
+//what-if waits until lines leave a quarter or less open
 export const makePuzzle = (
   n,
   rng,

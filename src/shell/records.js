@@ -1,8 +1,7 @@
 import { load, remove, save } from './storage'
 
-//best times by size and level for a game saved under its own prefix, kept apart for games with
-//and without hints, with the winner and best times dialog actions that go with them
-//a game with pictures asks for the art board too, which counts only games played without hints
+//best times by size and level under prefix, apart for games with and without hints
+//withArt adds the art board, which counts only games played without hints
 export const records = (prefix, sizes, levelNames, withArt = false) => {
   const timeKey = (n, level, hinted, art = false) =>
     `${prefix}${art ? '.art' : ''}.${n}.${level}${hinted ? '.hints' : ''}`
