@@ -56,7 +56,7 @@ Fill the cells whose runs match the clues beside each row and above each column,
 
 ## Sudoku Plus
 
-Fill the grid so every row, column and box holds 1 to 9 once each.
+Fill the grid so every row, column and box holds 1 to 9 once each, or play a smaller 6×6 or 4×4 board.
 
 - Four levels from Easy to Expert, every board with one solution and graded by the hardest technique it needs, from singles to the Swordfish and XYZ-Wing.
 - A number pad under the board for touch screens and mice, the keyboard for everything, notes (with Auto Notes and notes that tidy themselves as digits go in), and a pick-a-digit-then-tap-cells mode.
@@ -78,6 +78,9 @@ Slide the tiles so equal ones merge, and make a 2048.
 - **Fireworks** in each theme's colours when you win, until you press a key or click, and when 2048 reaches its tile. Switch them off in the Theme menu.
 - **Pause**, automatic when you switch away, and a **boss key** (Esc) that hides everything behind a spreadsheet.
 - **Resume**: a game in progress survives a reload or a closed tab and comes back paused. A **Timer** option turns the clock off (and best times with it).
+- **Daily Puzzle** in Takuzu, Nonograms and Sudoku: one board a day, the same for everyone, with a streak of days solved. **Copy Link** shares the board in play as a link.
+- **Backup** in the Start menu carries settings, best times, statistics and saved games to another browser or the app, as a file or as text.
+- Undo everywhere it makes sense, and **redo** in Takuzu, Nonograms and Sudoku.
 - Best times per level, with and without hints, and an offline-capable service worker.
 
 ## Under the hood
@@ -124,5 +127,5 @@ Classic's hill (`src/shell/backgrounds/hill.webp` and `ridge.json`) is made from
 - Solarized static background by [Chris Ried](https://unsplash.com/photos/ieic5Tq8YMk) on Unsplash.
 - Solarized Truchet background is a canvas port of [Truchet](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/truchet.c) from xscreensaver by Adrian Likins.
 - Solarized Phosphor background is a canvas port of [Phosphor](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/phosphor.c) from xscreensaver by Jamie Zawinski, with its built-in public domain 6x10 font.
-- Theme fonts [Orbitron](https://fonts.google.com/specimen/Orbitron) by Matt McInerney and The League of Moveable Type, [Courier Prime](https://fonts.google.com/specimen/Courier+Prime) by Alan Dague-Greene for Quote-Unquote Apps, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) by JetBrains, [Nunito](https://fonts.google.com/specimen/Nunito) by Vernon Adams, Cyreal and Jacques Le Bailly and [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch) by Cadson Demak, all under the SIL Open Font License (licences in `src/fonts/`). 2048's tiles use [Clear Sans](https://github.com/intel/clear-sans) by Intel, as the original does, under the Apache License 2.0.
+- Theme fonts [Orbitron](https://fonts.google.com/specimen/Orbitron) by Matt McInerney and The League of Moveable Type, [Courier Prime](https://fonts.google.com/specimen/Courier+Prime) by Alan Dague-Greene for Quote-Unquote Apps, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) by JetBrains, [Nunito](https://fonts.google.com/specimen/Nunito) by Vernon Adams, Cyreal and Jacques Le Bailly and [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch) by Cadson Demak, all under the SIL Open Font License (licences in `src/fonts/`). 2048's tiles use [Clear Sans](https://github.com/intel/clear-sans) by Intel, as the original does, under the Apache License 2.0 (cut down here to its digits, the only characters a tile shows).
 - Classic menu and title bar font is a pixel conversion of [Wine](https://gitlab.winehq.org/wine/wine)'s MS Sans Serif by Huw D M Davies and Dmitry Timoshkov, under the LGPL 2.1 (source, converter and licence in `src/fonts/`).
