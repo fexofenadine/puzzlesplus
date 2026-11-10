@@ -4,6 +4,8 @@
 
 Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All five games share the window, the six themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
+> **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these five games as an app, offline, with every theme. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
+
 | [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              | [Play 2048 Plus](https://fexofenadine.github.io/puzzlesplus/2048/)                          |
 | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) | [![Play Sudoku Plus](public/sudoku/sudoku.jpg)](https://fexofenadine.github.io/puzzlesplus/sudoku/) | [![Play 2048 Plus](public/2048/2048.jpg)](https://fexofenadine.github.io/puzzlesplus/2048/) |
@@ -21,7 +23,7 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Nonograms on Nord](docs/screenshots/nord-nonograms.webp)                     | ![Takuzu on Solarized Truchet](docs/screenshots/solarized-takuzu.jpg)       |
 | **Solarized Phosphor: Open Games after closing a window**                      | **A guide page, its example drawn by the game's own code**                  |
 | ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                             |
-| **Matrix: Sudoku with notes, a hint taking candidates away first**             | **Solarized Phosphor: 2048 with the hint's advice**                         |
+| **Matrix: Sudoku with notes and a hint**                                       | **Solarized Phosphor: 2048 with the hint's advice**                         |
 | ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)           |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
@@ -48,7 +50,8 @@ Fill the grid with 0s and 1s: no three alike in a row, as many 0s as 1s in every
 
 Fill the cells whose runs match the clues beside each row and above each column, and a picture appears.
 
-- Four levels and five sizes from 5 × 5 to 25 × 25, random pictures touched up until logic alone can finish them.
+- Four levels and five sizes from 5 × 5 to 25 × 25, random pictures touched up until logic alone can finish them, symmetric or not as you choose, and always filling the grid.
+- Turn off Procedural to play a pool of pictures drawn for the game, picked at your level or chosen by hand, with their own best times and a name and credit when you solve one. Pictures are plain text files in `src/nonograms/art`, easy to add to.
 - Drag to paint along a line, crosses as notes, a fill or cross mode for touch screens, hints, Show Errors and undo.
 
 ## Sudoku Plus
@@ -72,6 +75,7 @@ Slide the tiles so equal ones merge, and make a 2048.
 - **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the View menu or with + and -.
 - **Six themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet and Solarized Phosphor, most over an xscreensaver port with its original options, any of which can be switched to a still picture.
 - **Hints with a More button** that opens their technique in the game's guide.
+- **Fireworks** in each theme's colours when you win, until you press a key or click, and when 2048 reaches its tile. Switch them off in the Theme menu.
 - **Pause**, automatic when you switch away, and a **boss key** (Esc) that hides everything behind a spreadsheet.
 - **Resume**: a game in progress survives a reload or a closed tab and comes back paused. A **Timer** option turns the clock off (and best times with it).
 - Best times per level, with and without hints, and an offline-capable service worker.
