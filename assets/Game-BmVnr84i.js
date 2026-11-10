@@ -1,5 +1,5 @@
-import { B as Menu_module_default, C as resumeItems, H as cx, I as windowClear, S as SizeMenu, T as ThemeMenu, Z as Dialog, b as SubMenuItem, h as gameLinks, ot as h, tt as watchWindow, v as MenuItem, w as ViewMenu, x as HelpMenu, y as Separator } from "./HowToPlay-CdnnUesu.js";
-import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-JF5Te-JW.js";
+import { B as Menu_module_default, C as resumeItems, H as cx, I as windowClear, S as SizeMenu, T as ThemeMenu, Z as Dialog, b as SubMenuItem, h as gameLinks, ot as h, tt as watchWindow, v as MenuItem, w as ViewMenu, x as HelpMenu, y as Separator } from "./HowToPlay-B-GK6Mo_.js";
+import { c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-BuZpLT6t.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 import { i as listOf, t as capital } from "./grid-BZP-Z9Tf.js";
 var Sudoku_module_default = {

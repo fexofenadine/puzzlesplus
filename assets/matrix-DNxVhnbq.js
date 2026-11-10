@@ -1,4 +1,4 @@
-import { q as matrix } from "./HowToPlay-CdnnUesu.js";
+import { q as matrix } from "./HowToPlay-B-GK6Mo_.js";
 import { i as drawGlyph, n as GLYPH, r as PAD, t as BRIGHT } from "./glyph-DM9oq3hS.js";
 //#region src/shell/backgrounds/matrix.js
 var GRID_SIZE = 70;

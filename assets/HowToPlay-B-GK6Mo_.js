@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-C1B1OQdK.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-DNxVhnbq.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
 //#region \0rolldown/runtime.js
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -360,7 +360,7 @@ var fitDialog = (el) => {
 	const dialog = el.querySelector(`.${Dialog_module_default.dialog}`);
 	if (!dialog || !dialog.offsetWidth) return;
 	const frame = getComputedStyle(dialog.parentElement.parentElement);
-	const room = el.clientWidth - parseFloat(frame.marginLeft) - parseFloat(frame.marginRight);
+	const room = Math.min(el.clientWidth, document.documentElement.clientWidth) - parseFloat(frame.marginLeft) - parseFloat(frame.marginRight);
 	const shown = parseFloat(getComputedStyle(el).getPropertyValue("--scale")) || 1;
 	const scale = Math.max(shown, loadZoom());
 	el.style.setProperty("--scale", 1);
@@ -927,11 +927,11 @@ var __vitePreload = function preload(baseModule, deps, importerUrl) {
 //#endregion
 //#region src/shell/backgrounds/index.js
 var loaders = {
-	matrix: () => __vitePreload(() => import("./matrix-C1B1OQdK.js"), __vite__mapDeps([0,1]), import.meta.url),
-	substrate: () => __vitePreload(() => import("./substrate-Bm6xoVVz.js"), [], import.meta.url),
-	truchet: () => __vitePreload(() => import("./truchet-DuazlWh-.js"), [], import.meta.url),
-	phosphor: () => __vitePreload(() => import("./phosphor-CHxpyWkb.js"), [], import.meta.url),
-	hill: () => __vitePreload(() => import("./hill-B33UceGg.js"), [], import.meta.url)
+	matrix: () => __vitePreload(() => import("./matrix-DNxVhnbq.js"), __vite__mapDeps([0,1]), import.meta.url),
+	substrate: () => __vitePreload(() => import("./substrate-DEMyPSBS.js"), [], import.meta.url),
+	truchet: () => __vitePreload(() => import("./truchet-CIYCrSUa.js"), [], import.meta.url),
+	phosphor: () => __vitePreload(() => import("./phosphor-Cf7VG63j.js"), [], import.meta.url),
+	hill: () => __vitePreload(() => import("./hill-PYrNdJ2p.js"), [], import.meta.url)
 };
 var themeBackgrounds = {
 	classic: "hill",
@@ -1315,7 +1315,8 @@ var plain = [
 	"marks",
 	"timer",
 	"savedGame",
-	"savedGame.shelf"
+	"savedGame.shelf",
+	"windowCard"
 ];
 var ours = (key) => plain.includes(key) || /^(minesweeper|takuzu|nonograms|sudoku|2048)\./.test(key) || /^(beginner|intermediate|expert|extreme)(Hints)?(Name)?$/.test(key);
 var exportData = (now = /* @__PURE__ */ new Date()) => JSON.stringify({

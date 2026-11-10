@@ -1,4 +1,4 @@
-import { K as hill } from "./HowToPlay-CdnnUesu.js";
+import { K as hill } from "./HowToPlay-B-GK6Mo_.js";
 //#region src/shell/backgrounds/hill.webp
 var hill_default$1 = new URL("hill.webp", import.meta.url).href;
 //#endregion

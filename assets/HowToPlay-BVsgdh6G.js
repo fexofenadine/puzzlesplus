@@ -1,4 +1,4 @@
-import { ot as h, t as HowToPlay } from "./HowToPlay-CdnnUesu.js";
+import { ot as h, t as HowToPlay } from "./HowToPlay-B-GK6Mo_.js";
 //#region src/sudoku/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Fill the empty cells so every row, every column and every 3×3 box holds each digit from 1 to 9 exactly once. The digits in bold are the puzzle's own and can't be changed. The Size menu has smaller boards too: 6×6 with 3×2 boxes and the digits 1 to 6, and 4×4 with 2×2 boxes and 1 to 4."),

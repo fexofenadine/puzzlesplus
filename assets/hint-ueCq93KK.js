@@ -1,4 +1,4 @@
-import { H as cx, ot as h } from "./HowToPlay-CdnnUesu.js";
+import { H as cx, ot as h } from "./HowToPlay-B-GK6Mo_.js";
 var Cell_module_default = {
 	root: "Cell_root",
 	pressed: "Cell_pressed Cell_root",

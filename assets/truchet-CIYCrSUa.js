@@ -1,4 +1,4 @@
-import { X as truchet } from "./HowToPlay-CdnnUesu.js";
+import { X as truchet } from "./HowToPlay-B-GK6Mo_.js";
 //#region src/shell/backgrounds/truchet.js
 var MAXRATIO = 2;
 var palettes = {

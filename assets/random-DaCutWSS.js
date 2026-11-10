@@ -1,6 +1,6 @@
-import { $ as Overlay, Q as Button, Z as Dialog, ot as h } from "./HowToPlay-CdnnUesu.js";
-import { d as StatsList, f as StatsList_module_default, h as BestTime_module_default, m as hintTabs, p as Tabs } from "./start-BqCHtXOL.js";
-import { r as BestTimes_module_default } from "./records-icyXVvxG.js";
+import { $ as Overlay, Q as Button, Z as Dialog, ot as h } from "./HowToPlay-B-GK6Mo_.js";
+import { d as StatsList, f as StatsList_module_default, h as BestTime_module_default, m as hintTabs, p as Tabs } from "./start-kzk86FJi.js";
+import { r as BestTimes_module_default } from "./records-BZ7Vxfhr.js";
 //#region src/shell/DailyList.jsx
 var days = (count) => `${count} ${count === 1 ? "day" : "days"}`;
 var DailyList = ({ daily }) => {

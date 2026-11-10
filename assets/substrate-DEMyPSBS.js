@@ -1,4 +1,4 @@
-import { Y as substrate } from "./HowToPlay-CdnnUesu.js";
+import { Y as substrate } from "./HowToPlay-B-GK6Mo_.js";
 //#region src/shell/backgrounds/substrate.js
 var STEP = .42;
 var EMPTY = 10001;
