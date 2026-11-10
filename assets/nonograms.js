@@ -1,11 +1,11 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, i as About_module_default, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BSugkO4s.js";
-import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BYEAi_0D.js";
-import { n as Prompt } from "./BestTimes.module-Co1LdOkt.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-aQlUKWW2.js";
-import { a as records, i as BestTimes, r as dealer, t as random } from "./random-DtZnze6y.js";
-import { t as showRain } from "./rain-CDSUa0yA.js";
-import { S as solved, _ as cluesOf, c as levelNames, d as levels$1, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-B7nW7lUk.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-BMVU5RVs.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, i as About_module_default, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { c as resumable, d as Winner, i as Switching, n as FireworksCanvas, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-CH0fRA5p.js";
+import { n as Prompt } from "./BestTimes.module-CpAtZwgd.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-DWftJVEI.js";
+import { a as records, i as BestTimes, r as dealer, t as random } from "./random-UbsQQ3xE.js";
+import { t as showRain } from "./rain-c798-fpD.js";
+import { S as solved, _ as cluesOf, c as levelNames, d as levels$1, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-CtiTJzcE.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-6p-cjnja.js";
 //#region src/nonograms/art/10/heart.txt?raw
 var heart_default$2 = "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.###..###.\n##########\n##########\n##########\n.########.\n.########.\n..######..\n...####...\n....##....\n....##....\n";
 //#endregion
@@ -402,6 +402,7 @@ var changed = (state, game, board, history, actions, settled = false) => {
 	next.win = solved(board, next.n, next.clues);
 	if (next.win) {
 		cancelAnimationFrame(next.raf);
+		celebrate();
 		if (timed({
 			...state,
 			game: next
@@ -704,7 +705,7 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 	ondragstart: prevent,
 	oncreate: actions.init,
 	onupdate: () => saved.keep(state.game)
-}, /* @__PURE__ */ h(Game, {
+}, /* @__PURE__ */ h(FireworksCanvas, { key: "fw" }), /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,
 	actions

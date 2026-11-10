@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BSugkO4s.js";
-import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker } from "./worker-BYEAi_0D.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-Co1LdOkt.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-aQlUKWW2.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-B9nkQejE.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-uGwyCONC.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { a as Tabs, c as resumable, d as Winner, i as Switching, n as FireworksCanvas, o as BestTime_module_default, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-CH0fRA5p.js";
+import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-CpAtZwgd.js";
+import { f as clock, g as seconds, h as pauseAction } from "./Board-DWftJVEI.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-B-7I6JrD.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-JnSv2GCH.js";
 //#region src/2048/BestScores.jsx
 var tabs = [{
 	id: "clean",
@@ -334,7 +334,10 @@ var actions = {
 			over: !canMove(values, game.n)
 		};
 		const reached = !game.reached && highest(values) >= targets[game.n];
-		if (reached) next.reached = true;
+		if (reached) {
+			next.reached = true;
+			celebrate();
+		}
 		let winner = null;
 		if (next.over) {
 			cancelAnimationFrame(next.raf);
@@ -472,7 +475,7 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 	ondragstart: prevent,
 	oncreate: actions.init,
 	onupdate: () => saved.keep(state.game)
-}, /* @__PURE__ */ h(Game, {
+}, /* @__PURE__ */ h(FireworksCanvas, { key: "fw" }), /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,
 	actions

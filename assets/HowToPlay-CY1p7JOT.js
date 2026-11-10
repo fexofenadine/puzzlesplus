@@ -1360,7 +1360,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/2048/Game.jsx": () => __vitePreload(() => import("./Game-DJGRpu_m.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-DRbYD0xL.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/Menu.jsx": () => __vitePreload(() => import("./Menu-VeyWlpfT.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/2048/app.jsx": () => __vitePreload(() => import("./app-B6mNA-QX.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/2048/app.jsx": () => __vitePreload(() => import("./app-sdm56NCc.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/drag.js": () => __vitePreload(() => import("./drag-nGDPw2x5.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/index.js": () => __vitePreload(() => import("./2048-Bzi2wUuD.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/motion.js": () => __vitePreload(() => import("./motion-ByCoJPHM.js").then((m) => m["default"]), [], import.meta.url),
@@ -1381,7 +1381,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/Overlay.jsx": () => __vitePreload(() => import("./Overlay-CwIq95vb.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Play.jsx": () => __vitePreload(() => import("./Play-DPV83WcB.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/Winner.jsx": () => __vitePreload(() => import("./Winner-DnonW7kW.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/app.jsx": () => __vitePreload(() => import("./app-RcxyzHRz.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/app.jsx": () => __vitePreload(() => import("./app-D4DKkKfs.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/2048.jsx": () => __vitePreload(() => import("./2048-BS1TzBbr.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/Guide.jsx": () => __vitePreload(() => import("./Guide-DlzqJIup.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/guide/MinesExample.jsx": () => __vitePreload(() => import("./MinesExample-D0bFGvQS.js").then((m) => m["default"]), [], import.meta.url),
@@ -1409,7 +1409,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/nonograms/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-Cc1dJ3Io.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/Menu.jsx": () => __vitePreload(() => import("./Menu-DzD9sxrS.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/Pictures.jsx": () => __vitePreload(() => import("./Pictures-VgLZyUV5.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/nonograms/app.jsx": () => __vitePreload(() => import("./app-qxG_kjML.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/nonograms/app.jsx": () => __vitePreload(() => import("./app-CbPEyJXr.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/art.js": () => __vitePreload(() => import("./art-BvDoSGMX.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/deal.js": () => __vitePreload(() => import("./deal-DJuJq7Ka.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/deal.worker.js": () => __vitePreload(() => import("./deal.worker-BqjaOp6m.js").then((m) => m["default"]), [], import.meta.url),
@@ -1425,6 +1425,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/BestTimes.jsx": () => __vitePreload(() => import("./BestTimes-uo32YnZA.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/Board.jsx": () => __vitePreload(() => import("./Board-CpaoLjQ1.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/Boss.jsx": () => __vitePreload(() => import("./Boss-C4n6SZRd.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/FireworksCanvas.jsx": () => __vitePreload(() => import("./FireworksCanvas-BHhtrVpQ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/GameLinks.jsx": () => __vitePreload(() => import("./GameLinks-DUqc6rfh.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-C6SSEPdi.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/OpenGames.jsx": () => __vitePreload(() => import("./OpenGames-BhSsW_cY.js").then((m) => m["default"]), [], import.meta.url),
@@ -1434,10 +1435,10 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/Switching.jsx": () => __vitePreload(() => import("./Switching-CIcrA6nZ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/Tabs.jsx": () => __vitePreload(() => import("./Tabs-ClkdhSrf.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/Taskbar.jsx": () => __vitePreload(() => import("./Taskbar-CzH1ndq9.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/ThemeMenu.jsx": () => __vitePreload(() => import("./ThemeMenu-CRjFeyOY.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/ThemeMenu.jsx": () => __vitePreload(() => import("./ThemeMenu-ZLquk35d.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/ViewMenu.jsx": () => __vitePreload(() => import("./ViewMenu-h4XuwPLe.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/WindowControls.jsx": () => __vitePreload(() => import("./WindowControls-a3R3DjjO.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-D2wGtByu.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-CPt-s30q.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/hill.js": () => __vitePreload(() => import("./hill-C0RBa6DT.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/index.js": () => __vitePreload(() => import("./backgrounds-drb6CUBG.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/matrix.js": () => __vitePreload(() => import("./matrix-BPjC-X-W.js").then((m) => m["default"]), [], import.meta.url),
@@ -1445,6 +1446,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/backgrounds/truchet.js": () => __vitePreload(() => import("./truchet-MOZfSJKS.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/clock.js": () => __vitePreload(() => import("./clock-BzKvCpH8.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/deal.js": () => __vitePreload(() => import("./deal-DPVkJkol.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/fireworks.js": () => __vitePreload(() => import("./fireworks-fJXpBZGl.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/grid.js": () => __vitePreload(() => import("./grid-Cn7FYfb1.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/prepaint.js": () => __vitePreload(() => import("./prepaint-BOQns3Rk.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/rain.js": () => __vitePreload(() => import("./rain-C_2PVHRD.js").then((m) => m["default"]), [], import.meta.url),
@@ -1460,7 +1462,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/sudoku/Game.jsx": () => __vitePreload(() => import("./Game-lQ5tqhwJ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/sudoku/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-ZqQLhLPb.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/sudoku/Menu.jsx": () => __vitePreload(() => import("./Menu-BXEaik67.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/sudoku/app.jsx": () => __vitePreload(() => import("./app-DeaTYMLT.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/sudoku/app.jsx": () => __vitePreload(() => import("./app-6emRcv80.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/sudoku/deal.js": () => __vitePreload(() => import("./deal-tpNiDFb4.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/sudoku/deal.worker.js": () => __vitePreload(() => import("./deal.worker-DY9IVf71.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/sudoku/generate.js": () => __vitePreload(() => import("./generate-D1gOfcd6.js").then((m) => m["default"]), [], import.meta.url),
@@ -1474,7 +1476,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/takuzu/Game.jsx": () => __vitePreload(() => import("./Game-CEJl4sSS.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-CNTxwcqQ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/Menu.jsx": () => __vitePreload(() => import("./Menu-BT7qoDLm.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/takuzu/app.jsx": () => __vitePreload(() => import("./app-DGdwoa6c.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/takuzu/app.jsx": () => __vitePreload(() => import("./app-Du_BYTY_.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/deal.js": () => __vitePreload(() => import("./deal-Y44P_Wcn.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/deal.worker.js": () => __vitePreload(() => import("./deal.worker-CZDca1Jh.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/takuzu/generate.js": () => __vitePreload(() => import("./generate-BLk9abw-.js").then((m) => m["default"]), [], import.meta.url),
@@ -2560,6 +2562,7 @@ var shellState = (page, root = "../") => ({
 	backgrounds: loadSettings(),
 	backgroundSettings: null,
 	glass: loadGlass(),
+	fireworks: load("fireworks") !== "off",
 	howTo: false,
 	zoom: {
 		chosen: loadZoom(),
@@ -2717,6 +2720,13 @@ var shellActions = {
 			}
 		};
 	},
+	toggleFireworks: () => ({ fireworks }) => {
+		save("fireworks", fireworks ? "off" : "");
+		return {
+			menu: null,
+			fireworks: !fireworks
+		};
+	},
 	setOpacity: (opacity) => ({ glass }) => {
 		save("windowOpacity", opacity === 100 ? "" : opacity);
 		return { glass: {
@@ -2806,6 +2816,10 @@ var ThemeMenu = ({ state, actions }, children) => /* @__PURE__ */ h(MenuItem, {
 	name: "Hide Window",
 	checked: state.glass.hidden,
 	onClick: actions.toggleHideWindow
+}), isGame(state.page) && /* @__PURE__ */ h(SubMenuItem, {
+	name: "Fireworks",
+	checked: state.fireworks,
+	onClick: actions.toggleFireworks
 }), children);
 //#endregion
 //#region src/shell/ViewMenu.jsx

@@ -1,5 +1,5 @@
-import { F as Dialog, I as Button, L as Overlay, z as h } from "./HowToPlay-BSugkO4s.js";
-import { s as Prompt_module_default } from "./worker-BYEAi_0D.js";
+import { F as Dialog, I as Button, L as Overlay, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { l as Prompt_module_default } from "./worker-CH0fRA5p.js";
 //#region src/shell/Prompt.jsx
 var Prompt = ({ key, title, text, actions }) => /* @__PURE__ */ h(Overlay, {
 	key,

@@ -1,12 +1,12 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, T as Menu_module_default, _ as listen, a as Taskbar, b as shortcut, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, n as About, p as SubMenuItem, r as Link, v as shellActions, w as watchWindow, x as typing, y as shellState, z as h } from "./HowToPlay-BSugkO4s.js";
-import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BYEAi_0D.js";
-import { n as Prompt } from "./BestTimes.module-Co1LdOkt.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-aQlUKWW2.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, T as Menu_module_default, _ as listen, a as Taskbar, b as shortcut, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, n as About, p as SubMenuItem, r as Link, v as shellActions, w as watchWindow, x as typing, y as shellState, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { c as resumable, d as Winner, i as Switching, n as FireworksCanvas, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-CH0fRA5p.js";
+import { n as Prompt } from "./BestTimes.module-CpAtZwgd.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-DWftJVEI.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DtZnze6y.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-S7n88MCZ.js";
-import { t as showRain } from "./rain-CDSUa0yA.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-IvM2oCk5.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-UbsQQ3xE.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-DGdpwJ_0.js";
+import { t as showRain } from "./rain-c798-fpD.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-BTfw-KFx.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
@@ -350,6 +350,7 @@ var changed = (state, board, history, actions, settled = false) => {
 	next.win = solved(board, next.n);
 	if (next.win) {
 		cancelAnimationFrame(next.raf);
+		celebrate();
 		if (timed({
 			...state,
 			game: next
@@ -528,7 +529,7 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 	ondragstart: prevent,
 	oncreate: actions.init,
 	onupdate: () => saved.keep(state.game)
-}, /* @__PURE__ */ h(Game, {
+}, /* @__PURE__ */ h(FireworksCanvas, { key: "fw" }), /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,
 	actions

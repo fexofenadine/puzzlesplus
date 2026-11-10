@@ -1,10 +1,10 @@
-import { D as BackgroundSettings, E as Boss, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-BSugkO4s.js";
-import { a as check, c as OpenGames, l as Winner, n as Switching, o as resumable, t as registerWorker } from "./worker-BYEAi_0D.js";
-import { n as Prompt } from "./BestTimes.module-Co1LdOkt.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-aQlUKWW2.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DtZnze6y.js";
-import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-sye4_tO9.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-DoynY0QE.js";
+import { D as BackgroundSettings, E as Boss, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { c as resumable, d as Winner, i as Switching, n as FireworksCanvas, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-CH0fRA5p.js";
+import { n as Prompt } from "./BestTimes.module-CpAtZwgd.js";
+import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-DWftJVEI.js";
+import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-UbsQQ3xE.js";
+import { A as emptyBoard, D as bit, E as solve, F as solved, M as geometry, O as boxShapes, P as sizes, T as countSolutions, c as levelNames, j as full, k as candidatesOf, m as levels, o as allowed, r as running, s as fallback, t as Game, u as findHint, y as rate } from "./Game-X-8pLibs.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-Cm3U94sA.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,
@@ -178,6 +178,7 @@ var changed = (state, board, notes, history, actions) => {
 	next.win = solved(board, next.n);
 	if (next.win) {
 		cancelAnimationFrame(next.raf);
+		celebrate();
 		if (timed({
 			...state,
 			game: next
@@ -472,7 +473,7 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 	ondragstart: prevent,
 	oncreate: actions.init,
 	onupdate: () => saved.keep(state.game)
-}, /* @__PURE__ */ h(Game, {
+}, /* @__PURE__ */ h(FireworksCanvas, { key: "fw" }), /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,
 	actions

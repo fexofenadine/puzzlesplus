@@ -1,5 +1,5 @@
-import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, i as About_module_default, l as games, o as icons, z as h } from "./HowToPlay-BSugkO4s.js";
-import { f as clock } from "./Board-aQlUKWW2.js";
+import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, i as About_module_default, l as games, o as icons, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { f as clock } from "./Board-DWftJVEI.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",
@@ -289,9 +289,235 @@ var Switching = ({ key, title, actions }) => /* @__PURE__ */ h(Overlay, {
 	onCreate: (el) => el.focus()
 }, /* @__PURE__ */ h("span", { class: Prompt_module_default.button }, "Cancel"))))));
 //#endregion
+//#region src/shell/fireworks.js
+var square = "square";
+var dot = "dot";
+var glyph = "glyph";
+var looks = {
+	classic: {
+		colors: [
+			"#ff0000",
+			"#ffff00",
+			"#00ff00",
+			"#00ffff",
+			"#ff00ff",
+			"#ffffff"
+		],
+		shape: square,
+		gravity: 90,
+		size: 3
+	},
+	synthwave: {
+		colors: [
+			"#ff2a95",
+			"#00e5ff",
+			"#ffe600",
+			"#a259ff"
+		],
+		shape: dot,
+		gravity: 70,
+		size: 2.6,
+		glow: 10
+	},
+	solarized: {
+		colors: [
+			"#b58900",
+			"#cb4b16",
+			"#dc322f",
+			"#d33682",
+			"#6c71c4",
+			"#268bd2",
+			"#2aa198",
+			"#859900"
+		],
+		shape: dot,
+		gravity: 80,
+		size: 2.6
+	},
+	matrix: {
+		colors: [
+			"#2cff6e",
+			"#d4ffe0",
+			"#0f9d3a"
+		],
+		shape: glyph,
+		gravity: 40,
+		size: 15,
+		glyphs: "ｼﾓｱｦｿﾅﾊﾋﾌﾍﾎ"
+	},
+	nord: {
+		colors: [
+			"#88c0d0",
+			"#81a1c1",
+			"#8fbcbb",
+			"#eceff4",
+			"#b48ead"
+		],
+		shape: dot,
+		gravity: 30,
+		size: 2.4,
+		glow: 6
+	}
+};
+looks["solarized-phosphor"] = looks.solarized;
+var lookOf = (theme) => looks[theme] || looks.classic;
+var BURSTS = 7;
+var SPAN = 2.6;
+var SPARKS = 70;
+var TRAIL = 5;
+var plan = (rng) => Array.from({ length: BURSTS }, (_, k) => ({
+	at: k / BURSTS * SPAN + rng() * .25,
+	x: .15 + rng() * .7,
+	y: .15 + rng() * .4
+})).sort((a, b) => a.at - b.at);
+var sparks = (look, x, y, rng) => {
+	const main = look.colors[Math.floor(rng() * look.colors.length)];
+	const other = look.colors[Math.floor(rng() * look.colors.length)];
+	return Array.from({ length: SPARKS }, () => {
+		const angle = rng() * Math.PI * 2;
+		const speed = (.25 + .75 * Math.sqrt(rng())) * 220;
+		const life = 1.1 + rng() * .9;
+		return {
+			x,
+			y,
+			vx: Math.cos(angle) * speed,
+			vy: Math.sin(angle) * speed,
+			life,
+			age: 0,
+			trail: [],
+			color: rng() < .2 ? other : main,
+			char: look.glyphs ? look.glyphs[Math.floor(rng() * look.glyphs.length)] : ""
+		};
+	});
+};
+var advance = (list, dt, look) => list.filter((p) => {
+	p.age += dt;
+	if (p.age >= p.life) return false;
+	p.trail.push([p.x, p.y]);
+	if (p.trail.length > TRAIL) p.trail.shift();
+	const drag = Math.exp(-1.6 * dt);
+	p.vx *= drag;
+	p.vy = p.vy * drag + look.gravity * dt;
+	p.x += p.vx * dt;
+	p.y += p.vy * dt;
+	return true;
+});
+var calm = () => !globalThis.matchMedia || matchMedia("(prefers-reduced-motion: reduce)").matches;
+var canvas$1 = null;
+var running = false;
+var place = () => {
+	const page = document.getElementById("fireworks");
+	if (page) return page;
+	if (canvas$1?.isConnected) return canvas$1;
+	canvas$1 = document.createElement("canvas");
+	canvas$1.style.cssText = "position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:none";
+	const background = document.body.querySelector("canvas");
+	if (background) background.after(canvas$1);
+	else document.body.prepend(canvas$1);
+	return canvas$1;
+};
+var celebrate = (theme = document.documentElement.dataset.theme) => {
+	if (running || load("fireworks") === "off" || document.hidden || calm()) return;
+	const root = document.documentElement;
+	if (root.dataset.boss) return;
+	const target = place();
+	const context = target.getContext?.("2d");
+	if (!context) return;
+	const look = lookOf(theme);
+	const scale = Math.min(window.devicePixelRatio || 1, 2);
+	const width = innerWidth;
+	const height = innerHeight;
+	target.width = Math.round(width * scale);
+	target.height = Math.round(height * scale);
+	target.style.display = "block";
+	context.setTransform(scale, 0, 0, scale, 0, 0);
+	const waiting = plan(Math.random);
+	let alive = [];
+	let rockets = [];
+	let clock = 0;
+	let last = null;
+	running = true;
+	const stop = () => {
+		running = false;
+		context.setTransform(1, 0, 0, 1, 0, 0);
+		context.clearRect(0, 0, target.width, target.height);
+		target.style.display = "none";
+	};
+	const frame = (now) => {
+		const dt = last === null ? 0 : Math.min(Math.max((now - last) / 1e3, 0), .05);
+		last = now;
+		clock += dt;
+		if (root.dataset.boss || document.hidden) return stop();
+		while (waiting.length && waiting[0].at <= clock) {
+			const { x, y } = waiting.shift();
+			rockets.push({
+				x: x * width,
+				y: height,
+				top: y * height,
+				speed: 520 + Math.random() * 120,
+				trail: []
+			});
+		}
+		rockets = rockets.filter((r) => {
+			r.trail.push([r.x, r.y]);
+			if (r.trail.length > 10) r.trail.shift();
+			r.y -= r.speed * dt;
+			if (r.y > r.top) return true;
+			alive.push(...sparks(look, r.x, r.y, Math.random));
+			return false;
+		});
+		alive = advance(alive, dt, look);
+		context.clearRect(0, 0, width, height);
+		context.globalCompositeOperation = "lighter";
+		for (const r of rockets) draw(context, look, {
+			...r,
+			color: look.colors[0],
+			char: look.glyphs?.[0] || ""
+		}, 1);
+		for (const p of alive) draw(context, look, p, 1 - p.age / p.life);
+		if (waiting.length || rockets.length || alive.length) requestAnimationFrame(frame);
+		else stop();
+	};
+	requestAnimationFrame(frame);
+};
+var mark = (context, look, p, x, y, alpha) => {
+	context.globalAlpha = Math.max(0, alpha);
+	context.fillStyle = p.color;
+	if (look.shape === glyph) {
+		context.font = `${look.size}px monospace`;
+		context.fillText(p.char, x, y);
+	} else if (look.shape === square) context.fillRect(Math.round(x), Math.round(y), look.size, look.size);
+	else {
+		context.beginPath();
+		const radius = look.size * (.4 + .6 * alpha);
+		context.arc(x, y, radius, 0, Math.PI * 2);
+		context.fill();
+		if (look.glow) {
+			context.globalAlpha = Math.max(0, alpha) * .25;
+			context.beginPath();
+			context.arc(x, y, radius * 2.4, 0, Math.PI * 2);
+			context.fill();
+		}
+	}
+};
+var draw = (context, look, p, alpha) => {
+	const { trail } = p;
+	trail.forEach(([x, y], k) => mark(context, look, p, x, y, alpha * (k + 1) / (trail.length + 2)));
+	mark(context, look, p, p.x, p.y, alpha);
+	context.globalAlpha = 1;
+};
+var FireworksCanvas_module_default = { canvas: "FireworksCanvas_canvas" };
+//#endregion
+//#region src/shell/FireworksCanvas.jsx
+var FireworksCanvas = ({ key }) => /* @__PURE__ */ h("canvas", {
+	key,
+	id: "fireworks",
+	class: FireworksCanvas_module_default.canvas
+});
+//#endregion
 //#region src/shell/worker.js
 var registerWorker = () => {
 	if ("serviceWorker" in navigator && true) navigator.serviceWorker.register("../service-worker.js", { scope: "./" }).catch(() => {});
 };
 //#endregion
-export { check as a, OpenGames as c, BestTime_module_default as i, Winner as l, Switching as n, resumable as o, Tabs as r, Prompt_module_default as s, registerWorker as t, Input as u };
+export { Tabs as a, resumable as c, Winner as d, Input as f, Switching as i, Prompt_module_default as l, FireworksCanvas as n, BestTime_module_default as o, celebrate as r, check as s, registerWorker as t, OpenGames as u };

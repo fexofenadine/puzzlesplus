@@ -1,4 +1,4 @@
-import { z as h } from "./HowToPlay-BSugkO4s.js";
+import { z as h } from "./HowToPlay-CY1p7JOT.js";
 var Cell_module_default = {
 	root: "Cell_root",
 	pressed: "Cell_pressed Cell_root",

@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-BSugkO4s.js";
-import { a as check, c as OpenGames, i as BestTime_module_default, l as Winner, n as Switching, o as resumable, r as Tabs, t as registerWorker, u as Input } from "./worker-BYEAi_0D.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-aQlUKWW2.js";
+import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { a as Tabs, c as resumable, d as Winner, f as Input, i as Switching, n as FireworksCanvas, o as BestTime_module_default, r as celebrate, s as check, t as registerWorker, u as OpenGames } from "./worker-CH0fRA5p.js";
+import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-DWftJVEI.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-CI99rXTh.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-CwgQ5eU0.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-ARQXBDis.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-CmHU3D4Q.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -571,7 +571,10 @@ var actions = {
 		const win = left <= 0;
 		if (win || lose) {
 			cancelAnimationFrame(game.raf);
-			if (!lose) actions.win();
+			if (!lose) {
+				celebrate();
+				actions.win();
+			}
 		}
 		if (win && !lose) field.forEach((row) => row.forEach((c) => {
 			if (c.mined) Object.assign(c, {
@@ -705,7 +708,7 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 	ondragstart: prevent,
 	oncreate: actions.init,
 	onupdate: () => saved.keep(state.game)
-}, state.game && /* @__PURE__ */ h(Game, {
+}, /* @__PURE__ */ h(FireworksCanvas, { key: "fw" }), state.game && /* @__PURE__ */ h(Game, {
 	key: "a",
 	state,
 	actions

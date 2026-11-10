@@ -1,6 +1,6 @@
-import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, z as h } from "./HowToPlay-BSugkO4s.js";
-import { i as BestTime_module_default, r as Tabs } from "./worker-BYEAi_0D.js";
-import { t as BestTimes_module_default } from "./BestTimes.module-Co1LdOkt.js";
+import { F as Dialog, I as Button, L as Overlay, M as load, N as remove, P as save, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { a as Tabs, o as BestTime_module_default } from "./worker-CH0fRA5p.js";
+import { t as BestTimes_module_default } from "./BestTimes.module-CpAtZwgd.js";
 //#region src/shell/records.js
 var records = (prefix, sizes, levelNames, withArt = false) => {
 	const timeKey = (n, level, hinted, art = false) => `${prefix}${art ? ".art" : ""}.${n}.${level}${hinted ? ".hints" : ""}`;

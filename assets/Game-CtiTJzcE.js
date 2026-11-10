@@ -1,5 +1,5 @@
-import { F as Dialog, S as windowClear, T as Menu_module_default, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, p as SubMenuItem, w as watchWindow, z as h } from "./HowToPlay-BSugkO4s.js";
-import { a as CrossIcon, c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, o as FillIcon, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-aQlUKWW2.js";
+import { F as Dialog, S as windowClear, T as Menu_module_default, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, p as SubMenuItem, w as watchWindow, z as h } from "./HowToPlay-CY1p7JOT.js";
+import { a as CrossIcon, c as SideButton, d as Digit, i as windowProps, l as UndoIcon, n as PausedCover, o as FillIcon, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play } from "./Board-DWftJVEI.js";
 import { t as Game_module_default$1 } from "./Game.module-CghLtUtO.js";
 import { n as cellsOf, r as lineName, t as capital } from "./grid-D_4m0l-G.js";
 var Game_module_default = {

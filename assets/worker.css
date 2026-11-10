@@ -175,3 +175,14 @@
   padding-bottom: 5px;
   border-bottom-color: var(--face);
 }
+/*over main's wallpaper layers, under everything else in the page*/
+.FireworksCanvas_canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: none;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
