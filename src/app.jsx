@@ -15,6 +15,7 @@ import { placeMines } from './mines'
 import { explainChord, findHint, noHint } from './hint'
 import { load, save, remove } from './shell/storage'
 import { listen, shellActions, shellState, shortcut } from './shell/actions'
+import { clearStats, readStats, tally } from './shell/stats'
 import { clock, loadTimer, pauseAction, seconds, timed, timerAction } from './shell/clock'
 import { check, resumable } from './shell/resume'
 import { celebrate } from './shell/fireworks'
@@ -474,6 +475,7 @@ export const actions = {
       const win = left <= 0
       if (win || lose) {
         cancelAnimationFrame(game.raf)
+        tally('minesweeper', { won: !lose, clean: !game.hinted })
         if (!lose) {
           celebrate()
           actions.win()
@@ -554,12 +556,21 @@ export const actions = {
     ({ about }) => ({ menu: null, about: !about }),
   toggleBestTime:
     () =>
-    ({ bestTime }) => ({
+    ({ bestTime, theme }) => ({
       menu: null,
       bestTime: bestTime
         ? null
-        : { tab: 'clean', clean: bestTimes(false), hinted: bestTimes(true) },
+        : {
+            tab: 'clean',
+            clean: bestTimes(false),
+            hinted: bestTimes(true),
+            //classic keeps the original dialog, the stats wait for another theme
+            stats: theme === 'classic' ? null : readStats('minesweeper'),
+          },
     }),
+  resetStats:
+    () =>
+    ({ bestTime }) => ({ bestTime: { ...bestTime, stats: clearStats('minesweeper') } }),
   setBestTimeTab: (tab) => (state) =>
     state.bestTime ? { bestTime: { ...state.bestTime, tab } } : null,
   resetBestTime:

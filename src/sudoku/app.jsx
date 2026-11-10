@@ -7,6 +7,7 @@ import Taskbar from '../shell/Taskbar'
 import OpenGames from '../shell/OpenGames'
 import { load, save } from '../shell/storage'
 import { records } from '../shell/records'
+import { tally } from '../shell/stats'
 import BestTimes from '../shell/BestTimes'
 import Prompt from '../shell/Prompt'
 import { listen, shellActions, shellState, shortcut, typing } from '../shell/actions'
@@ -134,6 +135,7 @@ const changed = (state, board, notes, history, actions) => {
   if (next.win) {
     cancelAnimationFrame(next.raf)
     celebrate()
+    if (!state.game.win) tally('sudoku', { won: true, clean: !next.hinted })
     if (timed({ ...state, game: next })) actions.win(next)
   }
   return { hint: null, prompt: !next.win && full(board), game: next }
