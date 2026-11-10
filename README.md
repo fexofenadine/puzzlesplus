@@ -104,6 +104,7 @@ Classic's hill (`src/shell/backgrounds/hill.webp` and `ridge.json`) is made from
 ## Credits
 
 - Takuzu, also known as Binairo, was devised by Frank Coussement and Peter De Schepper. This version's puzzles, solver and hints are its own.
+- Nonograms' pictures (in `src/nonograms/art/`, one plain text file each) are all drawn for Puzzles Plus and released as CC0.
 - 2048 is based on [2048](https://github.com/gabrielecirulli/2048) by Gabriele Cirulli (MIT licence), itself inspired by 1024 and Threes. The rules follow it; this version's code, hint and records are its own.
 - Sudoku was devised by Howard Garns as Number Place in 1979 and named by Nikoli in 1984. This version's puzzles, solver and hints are its own.
 - Nonograms were devised in 1987 by Non Ishida and, independently, Tetsuya Nishio. This version's pictures, solver and hints are its own.
