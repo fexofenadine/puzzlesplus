@@ -1,0 +1,4 @@
+//#region src/takuzu/About.jsx?raw
+var About_default = "import { h } from 'hyperapp'\nimport About from '../shell/About'\n\nconst TakuzuAbout = ({ key, actions }) => (\n  <About key={key} name=\"Takuzu Plus\" actions={actions}>\n    <p>\n      Binary puzzles: fill the grid with 0s and 1s so that no row or column has three alike in a\n      row, every row and column holds as many 0s as 1s, and no two rows or two columns are the same.\n    </p>\n    <p>\n      Boards from 6 × 6 to 14 × 14 in five levels, each with exactly one solution that logic alone\n      finds, graded by the hardest technique it needs. Hints explain their reasoning and link to the\n      guide.\n    </p>\n    <p>Takuzu, also known as Binairo, was devised by Frank Coussement and Peter De Schepper.</p>\n  </About>\n)\n\nexport default TakuzuAbout\n";
+//#endregion
+export { About_default as default };

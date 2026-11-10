@@ -1,9 +1,9 @@
-import { o as icons, z as h } from "./HowToPlay-C4zys83Q.js";
-import { n as cellsOf } from "./grid-D_4m0l-G.js";
-import { C as Game_module_default, _ as cluesOf, a as Cell, b as lineDone, f as lineSteps, i as tracks, n as place, p as nextSteps } from "./Game-f2iErqpQ.js";
-import { n as Rules } from "./HowToPlay-hTwV4P4H.js";
-import { r as startGuide, t as Figure } from "./Guide-Bx_UAuss.js";
-import { t as desktopSection } from "./desktop-D2lcjbtq.js";
+import { H as cx, o as icons, ot as h } from "./HowToPlay-CdnnUesu.js";
+import { n as cellsOf } from "./grid-BZP-Z9Tf.js";
+import { a as Cell, f as lineSteps, i as tracks, n as place, p as nextSteps, v as cluesOf, w as Game_module_default, x as lineDone } from "./Game-Ce3esCef.js";
+import { n as Rules } from "./HowToPlay-8J1SCFEU.js";
+import { r as startGuide, t as Figure } from "./Guide-CxcsN4CY.js";
+import { t as desktopSection } from "./desktop-SlUpsu6v.js";
 //#region src/guide/NonogramsExample.jsx
 var levelOf = {
 	complete: 0,
@@ -27,11 +27,7 @@ var boardStep = (clues, rows, technique) => nextSteps(boardOf(rows), rows.length
 var marksOf = (step) => step ? Object.fromEntries([...step.sources.map((i) => [i, "source"]), ...step.place.map(([i, v]) => [i, v === 1 ? "fill" : "cross"])]) : {};
 var noop = () => null;
 var Clue = ({ clue, done, hinted, style }) => /* @__PURE__ */ h("div", {
-	class: [
-		Game_module_default.clue,
-		done && Game_module_default.done,
-		hinted && Game_module_default.hinted
-	].filter(Boolean).join(" "),
+	class: cx(Game_module_default.clue, done && Game_module_default.done, hinted && Game_module_default.hinted),
 	style
 }, (clue.length ? clue : [0]).map((run) => /* @__PURE__ */ h("span", { class: run > 9 && Game_module_default.wide }, run)));
 var LineExample = ({ clue, values, technique }) => {

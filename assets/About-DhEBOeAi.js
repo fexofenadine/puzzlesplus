@@ -1,0 +1,4 @@
+//#region src/sudoku/About.jsx?raw
+var About_default = "import { h } from 'hyperapp'\nimport About from '../shell/About'\n\nconst SudokuAbout = ({ key, actions }) => (\n  <About key={key} name=\"Sudoku Plus\" actions={actions}>\n    <p>\n      Number placement puzzles: fill the grid so every row, column and box holds each digit exactly\n      once, on the classic 9×9 board or a smaller 6×6 or 4×4.\n    </p>\n    <p>\n      Four levels, each board with exactly one solution that logic alone finds, graded by the\n      hardest technique it needs, from singles to swordfish. Notes, Auto Notes and hints that\n      explain their reasoning and link to the guide.\n    </p>\n    <p>\n      The puzzle was devised by Howard Garns as Number Place in 1979 and named Sudoku by Nikoli in\n      1984.\n    </p>\n  </About>\n)\n\nexport default SudokuAbout\n";
+//#endregion
+export { About_default as default };

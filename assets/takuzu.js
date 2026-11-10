@@ -1,12 +1,12 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, T as Menu_module_default, _ as listen, a as Taskbar, b as shortcut, c as gameLinks, d as MenuItem, f as Separator, g as ThemeMenu, h as ViewMenu, m as resumeItems, n as About, p as SubMenuItem, r as Link, v as shellActions, w as watchWindow, x as typing, y as shellState, z as h } from "./HowToPlay-C4zys83Q.js";
-import { _ as OpenGames, h as resumable, i as Switching, m as check, n as FireworksCanvas, r as celebrate, t as registerWorker, u as tally, v as Winner } from "./worker-M9j8t0tS.js";
-import { n as Prompt } from "./BestTimes.module-BonQhRW3.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-BzVGp7Po.js";
+import { A as shareAction, B as Menu_module_default, C as resumeItems, D as historyKey, E as gameKey, I as windowClear, L as codeOf, M as shellState, N as shortcut, O as listen, P as toggleAction, R as partsOf, S as SizeMenu, T as ThemeMenu, U as BackgroundSettings, V as Boss, Z as Dialog, a as Taskbar, b as SubMenuItem, c as DAILY_BUDGET, d as finish, h as gameLinks, it as save, j as shellActions, k as prevent, m as special, n as About, nt as load, ot as h, p as seedOf, rt as remove, st as __exportAll, tt as watchWindow, u as dayOf, v as MenuItem, w as ViewMenu, x as HelpMenu, y as Separator, z as sharedCode } from "./HowToPlay-CdnnUesu.js";
+import { _ as check, b as OpenGames, g as boardOf, i as Switching, n as FireworksCanvas, r as celebrate, t as start, u as tally, v as resumable, x as Winner } from "./start-BqCHtXOL.js";
+import { i as Prompt, t as records } from "./records-icyXVvxG.js";
+import { S as timerAction, b as tickAction, c as SideButton, d as Digit, g as pauseAction, i as windowProps, l as UndoIcon, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as startClock, y as stopTick } from "./Board-JF5Te-JW.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as records, i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-CK4Zt0e7.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-4_rDtpHg.js";
-import { t as showRain } from "./rain-B6-G32zO.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-DkyEBWiw.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-BQBuxNxz.js";
+import { i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-DfvPuH6a.js";
+import { t as showRain } from "./rain-D7NoZOvq.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-BTBwsHTG.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
@@ -80,9 +80,17 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	hotKey: "F2",
 	onClick: () => actions.newGame()
 }), /* @__PURE__ */ h(SubMenuItem, {
+	name: "Daily Puzzle",
+	checked: Boolean(state.game.daily),
+	onClick: () => actions.newGame({ daily: true })
+}), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Undo",
 	hotKey: "Ctrl+Z",
 	onClick: () => actions.undo()
+}), /* @__PURE__ */ h(SubMenuItem, {
+	name: "Redo",
+	hotKey: "Ctrl+Y",
+	onClick: () => actions.redo()
 }), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Hint",
 	hotKey: "H",
@@ -101,18 +109,16 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	checked: state.timer,
 	onClick: actions.toggleTimer
 }), /* @__PURE__ */ h(Separator, null), /* @__PURE__ */ h(SubMenuItem, {
+	name: "Copy Link...",
+	onClick: () => actions.share()
+}), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Best Times...",
 	onClick: actions.toggleBestTime
-}), /* @__PURE__ */ h(Separator, null), resumeItems(state, actions), gameLinks("takuzu")), /* @__PURE__ */ h(MenuItem, {
-	name: "Size",
-	type: "size",
-	active: state.menu,
-	onChange: actions.toggleMenu
-}, sizes.map((n) => /* @__PURE__ */ h(SubMenuItem, {
-	name: `${n} × ${n}`,
-	checked: state.game.n === n,
-	onClick: () => actions.newGame({ n })
-}))), /* @__PURE__ */ h(ViewMenu, {
+}), /* @__PURE__ */ h(Separator, null), resumeItems(state, actions), gameLinks("takuzu")), /* @__PURE__ */ h(SizeMenu, {
+	state,
+	actions,
+	sizes
+}), /* @__PURE__ */ h(ViewMenu, {
 	state,
 	actions
 }), /* @__PURE__ */ h(ThemeMenu, {
@@ -122,18 +128,11 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	name: "Rain Glyphs",
 	checked: state.rain,
 	onClick: actions.toggleRain
-})), /* @__PURE__ */ h(MenuItem, {
-	name: "Help",
-	type: "help",
-	active: state.menu,
-	onChange: actions.toggleMenu
-}, /* @__PURE__ */ h(SubMenuItem, {
-	name: "How to Play...",
-	onClick: actions.toggleHowTo
-}), /* @__PURE__ */ h(Separator, null), /* @__PURE__ */ h(SubMenuItem, {
-	name: "About Takuzu Plus...",
-	onClick: actions.toggleAbout
-})));
+})), /* @__PURE__ */ h(HelpMenu, {
+	state,
+	actions,
+	name: "Takuzu Plus"
+}));
 //#endregion
 //#region src/takuzu/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
@@ -234,13 +233,14 @@ var makeGame = (n, level, rng, budget = 1500) => {
 //#region src/takuzu/deal.js
 var dealOne = dealer(() => new Worker(new URL(
 	/* @vite-ignore */
-	new URL("deal.worker-CCQVs0aW.js", import.meta.url).href,
+	new URL("deal.worker-C5Bq1nz4.js", import.meta.url).href,
 	"" + import.meta.url
-), { type: "module" }), ({ n, level, seed }) => makeGame(n, level, random(seed)));
-var deal = (n, level, seed) => dealOne({
+), { type: "module" }), ({ n, level, seed, budget }) => makeGame(n, level, random(seed), budget));
+var deal = (n, level, seed, budget) => dealOne({
 	n,
 	level,
-	seed
+	seed,
+	budget
 });
 //#endregion
 //#region src/takuzu/About.jsx
@@ -248,9 +248,18 @@ var TakuzuAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
 	key,
 	name: "Takuzu Plus",
 	actions
-}, /* @__PURE__ */ h("p", null, "Binary puzzles: fill the grid with 0s and 1s so that no row or column has three alike in a row, every row and column holds as many 0s as 1s, and no two rows or two columns are the same."), /* @__PURE__ */ h("p", null, "Every board has exactly one solution and can be solved by logic alone, from easy to expert, and hints explain their reasoning. Takuzu, also known as Binairo, was devised by Frank Coussement and Peter De Schepper."), /* @__PURE__ */ h("p", null, "Part of Puzzles Plus by fexofenadine, sharing its window, themes and backgrounds with Minesweeper Plus, which is based on", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov."));
+}, /* @__PURE__ */ h("p", null, "Binary puzzles: fill the grid with 0s and 1s so that no row or column has three alike in a row, every row and column holds as many 0s as 1s, and no two rows or two columns are the same."), /* @__PURE__ */ h("p", null, "Boards from 6 × 6 to 14 × 14 in five levels, each with exactly one solution that logic alone finds, graded by the hardest technique it needs. Hints explain their reasoning and link to the guide."), /* @__PURE__ */ h("p", null, "Takuzu, also known as Binairo, was devised by Frank Coussement and Peter De Schepper."));
 //#endregion
 //#region src/takuzu/app.jsx
+var app_exports = /* @__PURE__ */ __exportAll({
+	actions: () => actions,
+	createGame: () => createGame,
+	gameOf: () => gameOf,
+	saved: () => saved,
+	state: () => state,
+	upgradeLadder: () => upgradeLadder,
+	view: () => view
+});
 var loadChoice = () => {
 	const saved = parseInt(load("takuzu.size"), 10);
 	const n = sizes.includes(saved) ? saved : 8;
@@ -271,6 +280,7 @@ var createGame = ({ n, level }) => ({
 	solution: null,
 	board: emptyBoard(n),
 	history: [],
+	future: [],
 	change: 0,
 	dealing: true,
 	deal: 0,
@@ -281,44 +291,76 @@ var createGame = ({ n, level }) => ({
 	pausedAt: 0,
 	win: false,
 	hinted: false,
-	untimed: false
+	untimed: false,
+	daily: null,
+	shared: false
 });
-var boardOf = (cells, n) => {
-	check(Array.isArray(cells) && cells.length === n * n && cells.every((v) => v >= -1 && v <= 1));
-	return Int8Array.from(cells);
-};
 var saved = resumable({
 	key: "takuzu.saved",
 	running,
 	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
-	pack: ({ n, level, givens, solution, board, history, hinted, untimed }) => ({
+	pack: ({ n, level, givens, solution, board, history, future, hinted, untimed, daily, shared }) => ({
 		n,
 		level,
 		givens: Array.from(givens),
 		solution: Array.from(solution),
 		board: Array.from(board),
 		history,
+		future,
 		hinted,
-		untimed
+		untimed,
+		daily,
+		shared
 	}),
-	unpack: ({ n, level, givens, solution, board, history, hinted, untimed }) => {
+	unpack: ({ n, level, givens, solution, board, history, future, hinted, untimed, daily, shared }) => {
 		check(sizes.includes(n) && level >= 0 && level < levels.length && Array.isArray(history));
 		return {
 			...createGame({
 				n,
 				level
 			}),
-			givens: boardOf(givens, n),
-			solution: boardOf(solution, n),
-			board: boardOf(board, n),
+			givens: boardOf(givens, n, -1, 1),
+			solution: boardOf(solution, n, -1, 1),
+			board: boardOf(board, n, -1, 1),
 			history,
+			future: Array.isArray(future) ? future : [],
 			hinted: Boolean(hinted),
 			untimed: Boolean(untimed),
+			daily: typeof daily === "string" ? daily : null,
+			shared: Boolean(shared),
 			dealing: false
 		};
 	}
 });
 var { timeKey, eachSlot, actions: recordActions } = records("takuzu", sizes, levelNames);
+var DAILY = {
+	n: 8,
+	level: 1
+};
+var shareCode = ({ n, level, givens }) => codeOf(n, level, Array.from(givens, (v) => v + 1), 3);
+var gameOf = (code) => {
+	const parts = partsOf(code, 3, (n, level) => sizes.includes(n) && allowed(n, level));
+	if (!parts) return null;
+	const { n, level, values } = parts;
+	const givens = Int8Array.from(values, (v) => v - 1);
+	if (countSolutions(givens, n, 2) !== 1) return null;
+	const solution = solve(givens, n);
+	return {
+		...createGame({
+			n,
+			level
+		}),
+		givens,
+		solution,
+		board: givens.slice(),
+		dealing: false,
+		shared: true
+	};
+};
+var linkedGame = () => {
+	const code = sharedCode();
+	return code && gameOf(code);
+};
 var cycle = [
 	-1,
 	0,
@@ -327,38 +369,23 @@ var cycle = [
 var ASK_AFTER = 2500;
 var deals = 0;
 var changes = 0;
-var prevent = (event) => {
-	event.preventDefault();
-	return false;
-};
-var begin = (game, actions) => {
-	if (game.start >= 0) return game;
-	game.raf = requestAnimationFrame(actions.tick);
-	return {
-		...game,
-		start: clock(),
-		time: 1
-	};
-};
 var changed = (state, board, history, actions, settled = false) => {
 	const next = {
-		...begin(state.game, actions),
+		...startClock(state.game, actions),
 		board,
 		history,
+		future: [],
 		change: ++changes
 	};
 	next.win = solved(board, next.n);
 	if (next.win) {
-		cancelAnimationFrame(next.raf);
+		stopTick(next.raf);
 		celebrate();
 		if (!state.game.win) tally("takuzu", {
 			won: true,
 			clean: !next.hinted
 		});
-		if (timed({
-			...state,
-			game: next
-		})) actions.win(next);
+		finish("takuzu", state, next, actions);
 	}
 	const stuck = !next.win && full(board);
 	if (stuck && !settled) setTimeout(() => actions.ask(next.change), ASK_AFTER);
@@ -381,6 +408,7 @@ var upgradeLadder = () => {
 	save("takuzu.ladder", "5");
 };
 upgradeLadder();
+var opened = saved.open(linkedGame());
 var state = {
 	...shellState("takuzu"),
 	hint: null,
@@ -388,9 +416,8 @@ var state = {
 	errors: Boolean(load("takuzu.errors")),
 	timer: loadTimer("takuzu.timer"),
 	rain: Boolean(load("takuzu.rain")),
-	about: false,
 	shelf: saved.list(),
-	game: saved.restore() || createGame(loadChoice()),
+	game: opened || createGame(loadChoice()),
 	winner: null,
 	bestTime: null
 };
@@ -403,25 +430,22 @@ var actions = {
 		if (state.game.dealing) actions.reset();
 	},
 	press: (event) => (state, actions) => {
-		if ((event.ctrlKey || event.metaKey) && !event.altKey && event.keyCode === 90) {
-			if (typing(event) || state.boss || state.windowState !== "open") return;
-			event.preventDefault();
-			actions.undo();
-			return;
-		}
-		const key = shortcut(event, state, actions);
-		if (key === 113 || key === 78) actions.newGame();
-		else if (key === 72) actions.hint();
-		else if (key === 80) actions.pause();
+		if (historyKey(event, state, actions)) return;
+		gameKey(shortcut(event, state, actions), actions);
 	},
 	reset: (payload) => ({ game }, actions) => {
-		cancelAnimationFrame(game.raf);
-		const n = payload && payload.n || game.n;
-		const level = fallback(n, payload && payload.level !== void 0 ? payload.level : game.level);
-		save("takuzu.size", n);
-		save("takuzu.level", level);
+		stopTick(game.raf);
+		const day = payload && payload.daily ? dayOf() : null;
+		const base = day ? DAILY : special(game) ? loadChoice() : game;
+		const n = payload && payload.n || base.n;
+		const level = fallback(n, payload && payload.level !== void 0 ? payload.level : base.level);
+		const seed = day ? seedOf(day, "takuzu") : Math.floor(Math.random() * 2 ** 32);
+		if (!day) {
+			save("takuzu.size", n);
+			save("takuzu.level", level);
+		}
 		const id = ++deals;
-		deal(n, level, Math.floor(Math.random() * 2 ** 32)).then((dealt) => actions.dealt({
+		deal(n, level, seed, day ? DAILY_BUDGET : void 0).then((dealt) => actions.dealt({
 			id,
 			...dealt
 		}));
@@ -434,7 +458,8 @@ var actions = {
 					n,
 					level
 				}),
-				deal: id
+				deal: id,
+				daily: day
 			}
 		};
 	},
@@ -466,12 +491,27 @@ var actions = {
 	undo: () => (state, actions) => {
 		const { game } = state;
 		if (!game.history.length || game.win || game.paused || game.dealing) return { menu: null };
-		const [i, from] = game.history[game.history.length - 1];
+		const [i, from] = game.history.at(-1);
 		const board = game.board.slice();
 		board[i] = from;
+		const next = changed(state, board, game.history.slice(0, -1), actions);
+		next.game.future = [...game.future, [i, game.board[i]]];
 		return {
 			menu: null,
-			...changed(state, board, game.history.slice(0, -1), actions)
+			...next
+		};
+	},
+	redo: () => (state, actions) => {
+		const { game } = state;
+		if (!game.future.length || game.win || game.paused || game.dealing) return { menu: null };
+		const [i, to] = game.future.at(-1);
+		const board = game.board.slice();
+		board[i] = to;
+		const next = changed(state, board, [...game.history, [i, game.board[i]]], actions);
+		next.game.future = game.future.slice(0, -1);
+		return {
+			menu: null,
+			...next
 		};
 	},
 	hint: () => ({ game }, actions) => {
@@ -486,7 +526,7 @@ var actions = {
 				n
 			}),
 			game: {
-				...begin(game, actions),
+				...startClock(game, actions),
 				hinted: true
 			}
 		};
@@ -495,13 +535,7 @@ var actions = {
 		if (yes) actions.hint();
 		return { prompt: false };
 	},
-	toggleErrors: () => (state) => {
-		save("takuzu.errors", state.errors ? "" : "yes");
-		return {
-			menu: null,
-			errors: !state.errors
-		};
-	},
+	toggleErrors: toggleAction("errors", "takuzu.errors", "yes"),
 	toggleTimer: timerAction("takuzu.timer"),
 	toggleRain: () => (state) => {
 		save("takuzu.rain", state.rain ? "" : "yes");
@@ -511,20 +545,9 @@ var actions = {
 			rain: !state.rain
 		};
 	},
-	toggleAbout: () => ({ about }) => ({
-		menu: null,
-		about: !about
-	}),
+	share: shareAction(shareCode),
 	pause: pauseAction(running),
-	tick: () => ({ game }, actions) => {
-		game.raf = requestAnimationFrame(actions.tick);
-		const next = seconds(game.start);
-		if (game.time === next) return null;
-		return { game: {
-			...game,
-			time: next
-		} };
-	},
+	tick: tickAction,
 	...recordActions,
 	...saved.actions
 };
@@ -584,7 +607,5 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }));
 //#endregion
 //#region src/takuzu/index.js
-app(state, actions, view, document.getElementById("app"));
-startBackgrounds();
-registerWorker();
+start(app_exports);
 //#endregion

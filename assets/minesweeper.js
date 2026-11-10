@@ -1,9 +1,10 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, S as windowClear, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, u as Menu, v as shellActions, w as watchWindow, y as shellState, z as h } from "./HowToPlay-C4zys83Q.js";
-import { _ as OpenGames, a as clearStats, c as lossesOn, d as StatsList, f as Tabs, h as resumable, i as Switching, l as readStats, m as check, n as FireworksCanvas, o as lossActions, p as BestTime_module_default, r as celebrate, s as lossState, t as registerWorker, u as tally, v as Winner, y as Input } from "./worker-M9j8t0tS.js";
-import { _ as timed, c as SideButton, d as Digit, f as clock, g as seconds, h as pauseAction, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, v as timerAction } from "./Board-BzVGp7Po.js";
+import { $ as Overlay, I as windowClear, M as shellState, N as shortcut, O as listen, Q as Button, U as BackgroundSettings, V as Boss, Z as Dialog, _ as Menu, a as Taskbar, it as save, j as shellActions, n as About, nt as load, ot as h, rt as remove, st as __exportAll, tt as watchWindow } from "./HowToPlay-CdnnUesu.js";
+import { S as Input, _ as check, a as clearStats, b as OpenGames, c as lossesOn, d as StatsList, h as BestTime_module_default, i as Switching, l as readStats, m as hintTabs, n as FireworksCanvas, o as lossActions, p as Tabs, r as celebrate, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-BqCHtXOL.js";
+import { S as timerAction, _ as seconds, c as SideButton, d as Digit, f as clock, g as pauseAction, h as nextTick, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, x as timed, y as stopTick } from "./Board-JF5Te-JW.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-DSR0C3qc.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-BgLTosMl.js";
+import { t as capital } from "./grid-BZP-Z9Tf.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-C68FTW75.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-B0MEQ3PT.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -81,13 +82,6 @@ var Game = ({ key, state, actions }) => /* @__PURE__ */ h(Dialog, {
 })));
 //#endregion
 //#region src/BestTime.jsx
-var tabs = [{
-	id: "clean",
-	name: "No hints"
-}, {
-	id: "hinted",
-	name: "Hints used"
-}];
 var BestTime = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
 	key,
 	onKeyDown: (event) => event.keyCode === 27 && actions.toggleBestTime()
@@ -95,7 +89,7 @@ var BestTime = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
 	title: "Fastest Mine Sweepers",
 	onClose: actions.toggleBestTime
 }, /* @__PURE__ */ h("div", { class: BestTime_module_default.root }, /* @__PURE__ */ h(Tabs, {
-	tabs,
+	tabs: hintTabs,
 	active: state.tab,
 	onSelect: actions.setBestTimeTab
 }), /* @__PURE__ */ h("table", { class: BestTime_module_default.table }, /* @__PURE__ */ h("tbody", null, state[state.tab].map((row) => /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.level, ":"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.time, " seconds"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.name))))), state.stats && /* @__PURE__ */ h(StatsList, {
@@ -157,9 +151,15 @@ var MinesweeperAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
 	key,
 	name: "Minesweeper Plus",
 	actions
-}, /* @__PURE__ */ h("p", null, "A Windows style minesweeper with boards that never need a guess, hints that explain their reasoning, zoom, and animated themes ported from xscreensaver."), /* @__PURE__ */ h("p", null, "Based on ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov, extended by fexofenadine."));
+}, /* @__PURE__ */ h("p", null, "Open every square that hides no mine, from Beginner to Extreme or a field of your own size."), /* @__PURE__ */ h("p", null, "No Guessing deals boards that logic alone can clear, Hint explains the next safe move from the numbers you can see, and a chord that opens nothing says why. Best times are kept apart for games with and without hints."));
 //#endregion
 //#region src/app.jsx
+var app_exports = /* @__PURE__ */ __exportAll({
+	actions: () => actions,
+	saved: () => saved,
+	state: () => state,
+	view: () => view
+});
 var levels = {
 	beginner: {
 		level: "beginner",
@@ -242,7 +242,7 @@ var unpackCell = (v) => {
 var saved = resumable({
 	key: "savedGame",
 	running,
-	label: ({ level, width, height, mines }) => level === "custom" ? `${width} × ${height}, ${mines} mines` : level[0].toUpperCase() + level.slice(1),
+	label: ({ level, width, height, mines }) => level === "custom" ? `${width} × ${height}, ${mines} mines` : capital(level),
 	pack: ({ level, width, height, mines, field, left, flags, hinted, untimed }) => ({
 		level,
 		width,
@@ -357,7 +357,6 @@ var state = {
 	timer: loadTimer("timer"),
 	winner: null,
 	bestTime: null,
-	about: false,
 	customField: null
 };
 var actions = {
@@ -383,7 +382,7 @@ var actions = {
 		};
 	}),
 	reset: (payload) => ({ game }) => {
-		cancelAnimationFrame(game.raf);
+		stopTick(game.raf);
 		const params = payload && levels[payload.level] || payload || game;
 		save("level", params.level === "custom" ? [
 			params.width,
@@ -554,7 +553,7 @@ var actions = {
 				noGuess
 			});
 			field.forEach((row, y) => row.forEach((c, x) => c.mined = mined[y * width + x] === 1));
-			game.raf = requestAnimationFrame(actions.tick);
+			game.raf = nextTick(actions.tick);
 		}
 		const cell = field[pressedY][pressedX];
 		const wasOpened = cell.opened;
@@ -578,7 +577,7 @@ var actions = {
 		}
 		const win = left <= 0;
 		if (win || lose) {
-			cancelAnimationFrame(game.raf);
+			stopTick(game.raf);
 			tally("minesweeper", {
 				won: !lose,
 				clean: !game.hinted
@@ -618,7 +617,7 @@ var actions = {
 		};
 	},
 	tick: () => ({ game }, actions) => {
-		game.raf = requestAnimationFrame(actions.tick);
+		game.raf = nextTick(actions.tick, game.start);
 		const next = seconds(game.start);
 		if (game.time === next) return null;
 		return { game: {
@@ -651,10 +650,6 @@ var actions = {
 		actions.setBestTimeTab(winner.hinted ? "hinted" : "clean");
 		return { winner: null };
 	},
-	toggleAbout: () => ({ about }) => ({
-		menu: null,
-		about: !about
-	}),
 	toggleBestTime: () => ({ bestTime, theme }) => ({
 		menu: null,
 		bestTime: bestTime ? null : {
@@ -772,7 +767,5 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }));
 //#endregion
 //#region src/index.js
-app(state, actions, view, document.getElementById("app"));
-startBackgrounds();
-registerWorker();
+start(app_exports);
 //#endregion

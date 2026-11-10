@@ -1,67 +1,22 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, i as About_module_default, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-C4zys83Q.js";
-import { _ as OpenGames, h as resumable, i as Switching, m as check, n as FireworksCanvas, r as celebrate, t as registerWorker, u as tally, v as Winner } from "./worker-M9j8t0tS.js";
-import { n as Prompt } from "./BestTimes.module-BonQhRW3.js";
-import { _ as timed, f as clock, g as seconds, h as pauseAction, m as loadTimer, v as timerAction } from "./Board-BzVGp7Po.js";
-import { a as records, i as BestTimes, r as dealer, t as random } from "./random-CK4Zt0e7.js";
-import { t as showRain } from "./rain-B6-G32zO.js";
-import { S as solved, _ as cluesOf, c as levelNames, d as levels$1, g as deduce, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as emptyBoard, x as sizes, y as fillsLeft } from "./Game-f2iErqpQ.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-hTwV4P4H.js";
-//#region src/nonograms/art/10/heart.txt?raw
-var heart_default$2 = "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.###..###.\n##########\n##########\n##########\n.########.\n.########.\n..######..\n...####...\n....##....\n....##....\n";
-//#endregion
-//#region src/nonograms/art/10/smiley.txt?raw
-var smiley_default = "name: Smiley\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..######..\n.########.\n##########\n##.####.##\n##########\n##########\n##.####.##\n###....###\n.########.\n..######..\n";
-//#endregion
-//#region src/nonograms/art/10/tree.txt?raw
-var tree_default = "name: Tree\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n....##....\n...####...\n..######..\n...####...\n..######..\n.########.\n##########\n....##....\n....##....\n....##....\n";
-//#endregion
-//#region src/nonograms/art/15/heart.txt?raw
-var heart_default$1 = "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..####...####..\n.######.######.\n###############\n###############\n###############\n###############\n###############\n.#############.\n.#############.\n..###########..\n...#########...\n....#######....\n.....#####.....\n......###......\n.......#.......\n";
-//#endregion
-//#region src/nonograms/art/15/mushroom.txt?raw
-var mushroom_default = "name: Mushroom\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n....#######....\n..###########..\n.####.###.####.\n###############\n####..###..####\n###############\n.#############.\n..###########..\n.....#####.....\n.....#####.....\n.....#####.....\n.....#####.....\n.....#####.....\n....#######....\n...#########...\n";
-//#endregion
-//#region src/nonograms/art/15/rocket.txt?raw
-var rocket_default = "name: Rocket\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.......#.......\n......###......\n.....#####.....\n....#######....\n....#######....\n....##...##....\n....##...##....\n....#######....\n....#######....\n..##.#####.##..\n.###..###..###.\n###...###...###\n......###......\n.....#####.....\n.....#####.....\n";
-//#endregion
-//#region src/nonograms/art/20/cat.txt?raw
-var cat_default = "name: Cat\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..##............##..\n..####........####..\n..################..\n.##################.\n####################\n####################\n#####..######..#####\n#####..######..#####\n####################\n####################\n#########..#########\n########.##.########\n#########..#########\n.##################.\n.##################.\n..################..\n...##############...\n....############....\n.....##########.....\n......########......\n";
-//#endregion
-//#region src/nonograms/art/20/trophy.txt?raw
-var trophy_default = "name: Trophy\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..################..\n..################..\n##.##############.##\n#..##############..#\n#..##############..#\n##.##############.##\n...##############...\n....############....\n.....##########.....\n......########......\n.......######.......\n........####........\n........####........\n........####........\n.....##########.....\n....############....\n....############....\n..################..\n..################..\n..################..\n";
-//#endregion
-//#region src/nonograms/art/20/umbrella.txt?raw
-var umbrella_default = "name: Umbrella\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n......########......\n....############....\n..################..\n.##################.\n####################\n####################\n###.###.####.###.###\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n.......######.......\n......########......\n......########......\n";
-//#endregion
-//#region src/nonograms/art/25/butterfly.txt?raw
-var butterfly_default = "name: Butterfly\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n#####......#.#......#####\n#######...........#######\n########.........########\n#########..###..#########\n##########.###.##########\n##########.###.##########\n##########.###.##########\n##########.###.##########\n#########..###..#########\n#########..###..#########\n.########..###..########.\n...######..###..######...\n....#####..###..#####....\n..#######..###..#######..\n.#########.###.#########.\n##########.###.##########\n##########.###.##########\n.#########.###.#########.\n..#######..###..#######..\n...#####...###...#####...\n....###....###....###....\n.....##....###....##.....\n...........###...........\n...........###...........\n...........###...........\n";
-//#endregion
-//#region src/nonograms/art/25/castle.txt?raw
-var castle_default = "name: Castle\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n............#............\n...........###...........\n..........#####..........\n.........#######.........\n........#########........\n##.##.##.#######.##.##.##\n########.#######.########\n########.#######.########\n###..###.#######.###..###\n###..###.#######.###..###\n########.#######.########\n########.#######.########\n#########################\n#########################\n#########################\n#########################\n#########################\n#########################\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n";
-//#endregion
-//#region src/nonograms/art/25/pine.txt?raw
-var pine_default = "name: Pine Tree\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n............#............\n...........###...........\n...........###...........\n..........#####..........\n.........#######.........\n..........#####..........\n........#########........\n.......###########.......\n........#########........\n......#############......\n.....###############.....\n....#################....\n......#############......\n.....###############.....\n....#################....\n...###################...\n..#####################..\n.#######################.\n#########################\n..........#####..........\n..........#####..........\n..........#####..........\n..........#####..........\n..........#####..........\n........#########........\n";
-//#endregion
-//#region src/nonograms/art/5/arrow.txt?raw
-var arrow_default = "name: Arrow\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..#..\n.###.\n#.#.#\n..#..\n..#..\n";
-//#endregion
-//#region src/nonograms/art/5/heart.txt?raw
-var heart_default = "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.#.#.\n#####\n#####\n.###.\n..#..\n";
-//#endregion
-//#region src/nonograms/art/5/house.txt?raw
-var house_default = "name: House\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..#..\n.###.\n#####\n##.##\n##.##\n";
-//#endregion
+import { $ as Overlay, A as shareAction, D as historyKey, E as gameKey, L as codeOf, M as shellState, N as shortcut, O as listen, P as toggleAction, Q as Button, R as partsOf, U as BackgroundSettings, V as Boss, Z as Dialog, a as Taskbar, c as DAILY_BUDGET, d as finish, i as About_module_default, it as save, j as shellActions, k as prevent, m as special, n as About, nt as load, ot as h, p as seedOf, st as __exportAll, u as dayOf, z as sharedCode } from "./HowToPlay-CdnnUesu.js";
+import { _ as check, b as OpenGames, g as boardOf, i as Switching, n as FireworksCanvas, r as celebrate, t as start, u as tally, v as resumable, x as Winner } from "./start-BqCHtXOL.js";
+import { i as Prompt, t as records } from "./records-icyXVvxG.js";
+import { S as timerAction, b as tickAction, g as pauseAction, m as loadTimer, v as startClock, y as stopTick } from "./Board-JF5Te-JW.js";
+import { n as cellsOf } from "./grid-BZP-Z9Tf.js";
+import { i as BestTimes, r as dealer, t as random } from "./random-DfvPuH6a.js";
+import { t as showRain } from "./rain-D7NoZOvq.js";
+import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-Ce3esCef.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-8J1SCFEU.js";
 //#region src/nonograms/generate.js
 var filled = (cells, n) => {
-	const used = (line) => line.some((k) => cells[k]);
-	const rows = [...Array(n).keys()].map((y) => [...Array(n).keys()].map((x) => y * n + x));
-	const columns = [...Array(n).keys()].map((x) => [...Array(n).keys()].map((y) => y * n + x));
-	return (n <= 10 ? [...rows, ...columns] : [
-		rows[0],
-		rows[n - 1],
-		columns[0],
-		columns[n - 1]
-	]).every(used);
+	const lines = cellsOf(n);
+	const edges = [
+		lines[0],
+		lines[n - 1],
+		lines[n],
+		lines[2 * n - 1]
+	];
+	return (n <= 10 ? lines : edges).every((line) => line.some((k) => cells[k]));
 };
 var mirrored = (cells, n) => {
 	for (let y = 0; y < n; y++) for (let x = 0; x < n / 2; x++) if (cells[y * n + x] !== cells[y * n + n - 1 - x]) return false;
@@ -135,21 +90,21 @@ var makeGame = (n, level, rng, budget = n >= 20 ? 3e3 : 1500, symmetric = true) 
 //#endregion
 //#region src/nonograms/art.js
 var files = /* #__PURE__ */ Object.assign({
-	"./art/10/heart.txt": heart_default$2,
-	"./art/10/smiley.txt": smiley_default,
-	"./art/10/tree.txt": tree_default,
-	"./art/15/heart.txt": heart_default$1,
-	"./art/15/mushroom.txt": mushroom_default,
-	"./art/15/rocket.txt": rocket_default,
-	"./art/20/cat.txt": cat_default,
-	"./art/20/trophy.txt": trophy_default,
-	"./art/20/umbrella.txt": umbrella_default,
-	"./art/25/butterfly.txt": butterfly_default,
-	"./art/25/castle.txt": castle_default,
-	"./art/25/pine.txt": pine_default,
-	"./art/5/arrow.txt": arrow_default,
-	"./art/5/heart.txt": heart_default,
-	"./art/5/house.txt": house_default
+	"./art/10/heart.txt": "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.###..###.\n##########\n##########\n##########\n.########.\n.########.\n..######..\n...####...\n....##....\n....##....\n",
+	"./art/10/smiley.txt": "name: Smiley\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..######..\n.########.\n##########\n##.####.##\n##########\n##########\n##.####.##\n###....###\n.########.\n..######..\n",
+	"./art/10/tree.txt": "name: Tree\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n....##....\n...####...\n..######..\n...####...\n..######..\n.########.\n##########\n....##....\n....##....\n....##....\n",
+	"./art/15/heart.txt": "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..####...####..\n.######.######.\n###############\n###############\n###############\n###############\n###############\n.#############.\n.#############.\n..###########..\n...#########...\n....#######....\n.....#####.....\n......###......\n.......#.......\n",
+	"./art/15/mushroom.txt": "name: Mushroom\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n....#######....\n..###########..\n.####.###.####.\n###############\n####..###..####\n###############\n.#############.\n..###########..\n.....#####.....\n.....#####.....\n.....#####.....\n.....#####.....\n.....#####.....\n....#######....\n...#########...\n",
+	"./art/15/rocket.txt": "name: Rocket\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.......#.......\n......###......\n.....#####.....\n....#######....\n....#######....\n....##...##....\n....##...##....\n....#######....\n....#######....\n..##.#####.##..\n.###..###..###.\n###...###...###\n......###......\n.....#####.....\n.....#####.....\n",
+	"./art/20/cat.txt": "name: Cat\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..##............##..\n..####........####..\n..################..\n.##################.\n####################\n####################\n#####..######..#####\n#####..######..#####\n####################\n####################\n#########..#########\n########.##.########\n#########..#########\n.##################.\n.##################.\n..################..\n...##############...\n....############....\n.....##########.....\n......########......\n",
+	"./art/20/trophy.txt": "name: Trophy\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..################..\n..################..\n##.##############.##\n#..##############..#\n#..##############..#\n##.##############.##\n...##############...\n....############....\n.....##########.....\n......########......\n.......######.......\n........####........\n........####........\n........####........\n.....##########.....\n....############....\n....############....\n..################..\n..################..\n..################..\n",
+	"./art/20/umbrella.txt": "name: Umbrella\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n......########......\n....############....\n..################..\n.##################.\n####################\n####################\n###.###.####.###.###\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n........####........\n.......######.......\n......########......\n......########......\n",
+	"./art/25/butterfly.txt": "name: Butterfly\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n#####......#.#......#####\n#######...........#######\n########.........########\n#########..###..#########\n##########.###.##########\n##########.###.##########\n##########.###.##########\n##########.###.##########\n#########..###..#########\n#########..###..#########\n.########..###..########.\n...######..###..######...\n....#####..###..#####....\n..#######..###..#######..\n.#########.###.#########.\n##########.###.##########\n##########.###.##########\n.#########.###.#########.\n..#######..###..#######..\n...#####...###...#####...\n....###....###....###....\n.....##....###....##.....\n...........###...........\n...........###...........\n...........###...........\n",
+	"./art/25/castle.txt": "name: Castle\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n............#............\n...........###...........\n..........#####..........\n.........#######.........\n........#########........\n##.##.##.#######.##.##.##\n########.#######.########\n########.#######.########\n###..###.#######.###..###\n###..###.#######.###..###\n########.#######.########\n########.#######.########\n#########################\n#########################\n#########################\n#########################\n#########################\n#########################\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n##########.....##########\n",
+	"./art/25/pine.txt": "name: Pine Tree\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n............#............\n...........###...........\n...........###...........\n..........#####..........\n.........#######.........\n..........#####..........\n........#########........\n.......###########.......\n........#########........\n......#############......\n.....###############.....\n....#################....\n......#############......\n.....###############.....\n....#################....\n...###################...\n..#####################..\n.#######################.\n#########################\n..........#####..........\n..........#####..........\n..........#####..........\n..........#####..........\n..........#####..........\n........#########........\n",
+	"./art/5/arrow.txt": "name: Arrow\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..#..\n.###.\n#.#.#\n..#..\n..#..\n",
+	"./art/5/heart.txt": "name: Heart\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n.#.#.\n#####\n#####\n.###.\n..#..\n",
+	"./art/5/house.txt": "name: House\ncredit: drawn for Puzzles Plus\nlicence: CC0\nsource: original\n---\n..#..\n.###.\n#####\n##.##\n##.##\n"
 });
 var required = [
 	"name",
@@ -225,15 +180,15 @@ var pickArt = (n, level, rng, id = null, avoid = null) => {
 };
 //#endregion
 //#region src/nonograms/dealing.js
-var deal$1 = ({ n, level, seed, art = false, pick = null, avoid = null, symmetric = true }) => {
+var deal$1 = ({ n, level, seed, art = false, pick = null, avoid = null, symmetric = true, budget }) => {
 	const rng = random(seed);
-	return art && pickArt(n, level, rng, pick, avoid) || makeGame(n, level, rng, void 0, symmetric);
+	return art && pickArt(n, level, rng, pick, avoid) || makeGame(n, level, rng, budget, symmetric);
 };
 //#endregion
 //#region src/nonograms/deal.js
 var dealOne = dealer(() => new Worker(new URL(
 	/* @vite-ignore */
-	new URL("deal.worker-D3TW1Oei.js", import.meta.url).href,
+	new URL("deal.worker-Bz1MbO-C.js", import.meta.url).href,
 	"" + import.meta.url
 ), { type: "module" }), deal$1);
 var deal = (n, level, seed, options = {}) => dealOne({
@@ -290,10 +245,19 @@ var Pictures = ({ key, state, actions }) => {
 var NonogramsAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
 	key,
 	name: "Nonograms Plus",
-	actions
-}, /* @__PURE__ */ h("p", null, "Picture logic puzzles: the numbers beside each row and above each column give the lengths of its runs of filled cells, in order, with at least one empty cell between runs. Fill the cells that match every clue."), /* @__PURE__ */ h("p", null, "Every board has exactly one solution and can be solved by logic alone. Nonograms were devised in 1987 by Non Ishida and, independently, Tetsuya Nishio. The pictures are drawn for Puzzles Plus and free to reuse (CC0)."), /* @__PURE__ */ h("p", null, "Part of Puzzles Plus by fexofenadine, sharing its window, themes and backgrounds with Minesweeper Plus, which is based on", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov."));
+	actions,
+	credits: [/* @__PURE__ */ h("li", null, "The pictures are drawn for Puzzles Plus and free to reuse (CC0).")]
+}, /* @__PURE__ */ h("p", null, "Picture logic puzzles: the numbers beside each row and above each column give the lengths of its runs of filled cells, in order, with at least one empty cell between runs. Fill the cells that match every clue."), /* @__PURE__ */ h("p", null, "Boards from 5 × 5 to 25 × 25 in four levels, drawn at random or picked from a pool of pictures, each with exactly one solution that logic alone finds. Hints explain their reasoning and link to the guide."), /* @__PURE__ */ h("p", null, "Nonograms were devised in 1987 by Non Ishida and, independently, Tetsuya Nishio."));
 //#endregion
 //#region src/nonograms/app.jsx
+var app_exports = /* @__PURE__ */ __exportAll({
+	actions: () => actions,
+	createGame: () => createGame,
+	gameOf: () => gameOf,
+	saved: () => saved,
+	state: () => state,
+	view: () => view
+});
 var loadChoice = () => {
 	const saved = parseInt(load("nonograms.size"), 10);
 	const n = sizes.includes(saved) ? saved : 10;
@@ -314,6 +278,7 @@ var createGame = ({ n, level }) => ({
 	solution: null,
 	board: emptyBoard(n),
 	history: [],
+	future: [],
 	change: 0,
 	stroke: null,
 	dealing: true,
@@ -326,30 +291,31 @@ var createGame = ({ n, level }) => ({
 	win: false,
 	hinted: false,
 	untimed: false,
+	daily: null,
+	shared: false,
 	art: null,
 	picked: false
 });
-var boardOf = (cells, n) => {
-	check(Array.isArray(cells) && cells.length === n * n && cells.every((v) => v >= -1 && v <= 1));
-	return Int8Array.from(cells);
-};
 var saved = resumable({
 	key: "nonograms.saved",
 	running,
 	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
-	pack: ({ n, level, clues, solution, board, stroke, history, hinted, untimed, art, picked }) => ({
+	pack: ({ n, level, clues, solution, board, stroke, history, future, hinted, untimed, art, picked, daily, shared }) => ({
 		n,
 		level,
 		clues,
 		solution: Array.from(solution),
 		board: Array.from(stroke ? stroke.before : board),
 		history,
+		future,
 		hinted,
 		untimed,
 		art,
-		picked
+		picked,
+		daily,
+		shared
 	}),
-	unpack: ({ n, level, clues, solution, board, history, hinted, untimed, art, picked }) => {
+	unpack: ({ n, level, clues, solution, board, history, future, hinted, untimed, art, picked, daily, shared }) => {
 		check(sizes.includes(n) && level >= 0 && level < levelNames.length && Array.isArray(history));
 		check(Array.isArray(clues) && clues.length === 2 * n && clues.every(Array.isArray));
 		check(!art || typeof art.id === "string" && typeof art.name === "string" && art.level >= 0);
@@ -359,11 +325,14 @@ var saved = resumable({
 				level
 			}),
 			clues,
-			solution: boardOf(solution, n),
-			board: boardOf(board, n),
+			solution: boardOf(solution, n, -1, 1),
+			board: boardOf(board, n, -1, 1),
 			history,
+			future: Array.isArray(future) ? future : [],
 			hinted: Boolean(hinted),
 			untimed: Boolean(untimed),
+			daily: typeof daily === "string" ? daily : null,
+			shared: Boolean(shared),
 			art: art || null,
 			picked: Boolean(picked),
 			dealing: false
@@ -379,38 +348,24 @@ var cycle = [
 var ASK_AFTER = 2500;
 var deals = 0;
 var changes = 0;
-var prevent = (event) => {
-	event.preventDefault();
-	return false;
-};
-var begin = (game, actions) => {
-	if (game.start >= 0) return game;
-	game.raf = requestAnimationFrame(actions.tick);
-	return {
-		...game,
-		start: clock(),
-		time: 1
-	};
-};
 var changed = (state, game, board, history, actions, settled = false) => {
+	const future = history === game.history ? game.future : [];
 	const next = {
 		...game,
 		board,
 		history,
+		future,
 		change: ++changes
 	};
 	next.win = solved(board, next.n, next.clues);
 	if (next.win) {
-		cancelAnimationFrame(next.raf);
+		stopTick(next.raf);
 		celebrate();
 		if (!state.game.win) tally("nonograms", {
 			won: true,
 			clean: !next.hinted
 		});
-		if (timed({
-			...state,
-			game: next
-		})) record(next, actions);
+		finish("nonograms", state, next, actions, record);
 	}
 	const stuck = !next.win && fillsLeft(board, next.n, next.clues) === 0;
 	if (stuck && !settled) setTimeout(() => actions.ask(next.change), ASK_AFTER);
@@ -421,6 +376,33 @@ var changed = (state, game, board, history, actions, settled = false) => {
 		game: next,
 		...done
 	};
+};
+var DAILY = {
+	n: 10,
+	level: 1
+};
+var shareCode = ({ n, level, solution }) => codeOf(n, level, Array.from(solution, (v) => v === 1 ? 1 : 0), 2);
+var gameOf = (code) => {
+	const parts = partsOf(code, 2, (n, level) => sizes.includes(n) && allowed(n, level));
+	if (!parts) return null;
+	const { n, level, values } = parts;
+	const solution = Int8Array.from(values, (v) => v ? 1 : 0);
+	const clues = cluesOf(solution, n);
+	if (!filled(values, n) || countSolutions(clues, n, 2) !== 1) return null;
+	return {
+		...createGame({
+			n,
+			level
+		}),
+		clues,
+		solution,
+		dealing: false,
+		shared: true
+	};
+};
+var linkedGame = () => {
+	const code = sharedCode();
+	return code && gameOf(code);
 };
 var record = (game, actions) => {
 	if (!game.art) actions.win({
@@ -470,6 +452,7 @@ var cellAt = (event) => {
 	const cell = target && target.closest("[data-cell]");
 	return cell ? Number(cell.dataset.cell) : -1;
 };
+var opened = saved.open(linkedGame());
 var state = {
 	...shellState("nonograms"),
 	hint: null,
@@ -483,9 +466,8 @@ var state = {
 	solved: loadSolved(),
 	touch: Boolean(window.matchMedia && matchMedia("(pointer: coarse)").matches),
 	mode: 1,
-	about: false,
 	shelf: saved.list(),
-	game: saved.restore() || createGame(loadChoice()),
+	game: opened || createGame(loadChoice()),
 	winner: null,
 	bestTime: null
 };
@@ -493,10 +475,7 @@ var actions = {
 	...shellActions,
 	init: () => (state, actions) => {
 		window.addEventListener("keydown", actions.press);
-		window.addEventListener("pointermove", (event) => {
-			const i = cellAt(event);
-			if (i >= 0) actions.drag(i);
-		});
+		window.addEventListener("pointermove", actions.trace);
 		window.addEventListener("pointerup", () => actions.up());
 		window.addEventListener("pointercancel", () => actions.up());
 		listen(actions);
@@ -504,27 +483,24 @@ var actions = {
 		if (state.game.dealing) actions.reset();
 	},
 	press: (event) => (state, actions) => {
-		if ((event.ctrlKey || event.metaKey) && !event.altKey && event.keyCode === 90) {
-			if (typing(event) || state.boss || state.windowState !== "open") return;
-			event.preventDefault();
-			actions.undo();
-			return;
-		}
-		const key = shortcut(event, state, actions);
-		if (key === 113 || key === 78) actions.newGame();
-		else if (key === 72) actions.hint();
-		else if (key === 80) actions.pause();
+		if (historyKey(event, state, actions)) return;
+		gameKey(shortcut(event, state, actions), actions);
 	},
 	reset: (payload) => ({ game, procedural, symmetric }, actions) => {
-		cancelAnimationFrame(game.raf);
-		const n = payload && payload.n || game.n;
-		const asked = payload && payload.level !== void 0 ? payload.level : game.level;
+		stopTick(game.raf);
+		const day = payload && payload.daily ? dayOf() : null;
+		const base = day ? DAILY : special(game) ? loadChoice() : game;
+		const n = payload && payload.n || base.n;
+		const asked = payload && payload.level !== void 0 ? payload.level : base.level;
 		const level = fallback(n, asked);
+		const seed = day ? seedOf(day, "nonograms") : Math.floor(Math.random() * 2 ** 32);
 		const pick = payload && payload.pick || null;
-		save("nonograms.size", n);
-		save("nonograms.level", level);
+		if (!day) {
+			save("nonograms.size", n);
+			save("nonograms.level", level);
+		}
 		const id = ++deals;
-		deal(n, level, Math.floor(Math.random() * 2 ** 32), {
+		deal(n, level, seed, day ? { budget: DAILY_BUDGET } : {
 			art: Boolean(pick) || !procedural,
 			pick,
 			avoid: game.art && game.art.id,
@@ -543,7 +519,8 @@ var actions = {
 					level
 				}),
 				deal: id,
-				picked: Boolean(pick)
+				picked: Boolean(pick),
+				daily: day
 			}
 		};
 	},
@@ -579,11 +556,16 @@ var actions = {
 		return {
 			...touch && { touch },
 			game: {
-				...begin(game, actions),
+				...startClock(game, actions),
 				stroke,
 				board: paint(stroke, i, game.n)
 			}
 		};
+	},
+	trace: (event) => (state, actions) => {
+		if (!state.game.stroke) return;
+		const i = cellAt(event);
+		if (i >= 0) actions.drag(i);
 	},
 	drag: (i) => ({ game }) => {
 		const { stroke, n } = game;
@@ -615,11 +597,27 @@ var actions = {
 	undo: () => (state, actions) => {
 		const { game } = state;
 		if (!game.history.length || game.win || game.paused || game.dealing || game.stroke) return { menu: null };
+		const step = game.history.at(-1);
 		const board = game.board.slice();
-		for (const [c, from] of game.history[game.history.length - 1]) board[c] = from;
+		for (const [c, from] of step) board[c] = from;
+		const next = changed(state, game, board, game.history.slice(0, -1), actions);
+		next.game.future = [...game.future, step.map(([c]) => [c, game.board[c]])];
 		return {
 			menu: null,
-			...changed(state, game, board, game.history.slice(0, -1), actions)
+			...next
+		};
+	},
+	redo: () => (state, actions) => {
+		const { game } = state;
+		if (!game.future.length || game.win || game.paused || game.dealing || game.stroke) return { menu: null };
+		const step = game.future.at(-1);
+		const board = game.board.slice();
+		for (const [c, to] of step) board[c] = to;
+		const next = changed(state, game, board, [...game.history, step.map(([c]) => [c, game.board[c]])], actions);
+		next.game.future = game.future.slice(0, -1);
+		return {
+			menu: null,
+			...next
 		};
 	},
 	ask: (change) => ({ game }) => {
@@ -639,7 +637,7 @@ var actions = {
 				n
 			}),
 			game: {
-				...begin(game, actions),
+				...startClock(game, actions),
 				hinted: true
 			}
 		};
@@ -649,13 +647,7 @@ var actions = {
 		return { prompt: false };
 	},
 	setMode: (mode) => ({ mode }),
-	toggleErrors: () => (state) => {
-		save("nonograms.errors", state.errors ? "" : "yes");
-		return {
-			menu: null,
-			errors: !state.errors
-		};
-	},
+	toggleErrors: toggleAction("errors", "nonograms.errors", "yes"),
 	toggleTimer: timerAction("nonograms.timer"),
 	toggleRain: () => (state) => {
 		save("nonograms.rain", state.rain ? "" : "yes");
@@ -665,20 +657,8 @@ var actions = {
 			rain: !state.rain
 		};
 	},
-	toggleProcedural: () => (state) => {
-		save("nonograms.procedural", state.procedural ? "off" : "");
-		return {
-			menu: null,
-			procedural: !state.procedural
-		};
-	},
-	toggleSymmetric: () => (state) => {
-		save("nonograms.symmetric", state.symmetric ? "off" : "");
-		return {
-			menu: null,
-			symmetric: !state.symmetric
-		};
-	},
+	toggleProcedural: toggleAction("procedural", "nonograms.procedural", "", "off"),
+	toggleSymmetric: toggleAction("symmetric", "nonograms.symmetric", "", "off"),
 	togglePictures: () => ({ pictures }) => ({
 		menu: null,
 		pictures: !pictures
@@ -687,20 +667,9 @@ var actions = {
 		actions.newGame({ pick: id });
 		return { pictures: false };
 	},
-	toggleAbout: () => ({ about }) => ({
-		menu: null,
-		about: !about
-	}),
+	share: shareAction(shareCode),
 	pause: pauseAction(running),
-	tick: () => ({ game }, actions) => {
-		game.raf = requestAnimationFrame(actions.tick);
-		const next = seconds(game.start);
-		if (game.time === next) return null;
-		return { game: {
-			...game,
-			time: next
-		} };
-	},
+	tick: tickAction,
 	...recordActions,
 	...saved.actions
 };
@@ -765,7 +734,5 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }));
 //#endregion
 //#region src/nonograms/index.js
-app(state, actions, view, document.getElementById("app"));
-startBackgrounds();
-registerWorker();
+start(app_exports);
 //#endregion

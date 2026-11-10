@@ -1324,6 +1324,70 @@ main::before {
   border-top: 1px solid var(--shadow);
   border-bottom: 1px solid var(--light);
 }
+/*the backup and copy link dialogs*/
+.Transfer_root {
+  width: 320px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px 12px;
+}
+
+.Transfer_root p {
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.Transfer_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+
+.Transfer_button {
+  display: block;
+  min-width: 60px;
+  padding: 4px 6px 3px;
+}
+
+/*sunken like the name box, in the theme's input colours*/
+.Transfer_field {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 8px;
+  padding: 2px 3px;
+  color: inherit;
+  font: inherit;
+  background: var(--input);
+  border: 1px solid;
+  border-color: var(--shadow) var(--light) var(--light) var(--shadow);
+  border-radius: 0;
+  outline: 0;
+}
+
+textarea.Transfer_field {
+  height: 64px;
+  font-size: 0.85em;
+  resize: none;
+  word-break: break-all;
+}
+
+.Transfer_root p.Transfer_note {
+  min-height: 1.35em;
+  font-weight: bold;
+}
+
+.Transfer_file {
+  display: none;
+}
+
+.Transfer_footer {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 2px 0 0;
+}
 .About_root {
   max-width: 340px;
   padding: 10px 14px 12px;
@@ -1357,4 +1421,32 @@ main::before {
   display: block;
   min-width: 60px;
   padding: 4px 5px 3px;
+}
+
+/*who made it, straight under the name*/
+.About_root p.About_name {
+  margin-bottom: 0;
+}
+
+.About_root p.About_author {
+  opacity: 0.75;
+}
+
+/*other people's work, folded away under the repository link*/
+.About_credits {
+  margin: 0 0 8px;
+}
+
+.About_credits summary {
+  cursor: pointer;
+}
+
+.About_credits ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  line-height: 1.35;
+}
+
+.About_credits li {
+  margin: 0 0 4px;
 }

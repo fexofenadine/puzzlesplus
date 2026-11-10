@@ -86,6 +86,12 @@
 .Game_inactive {
   cursor: default;
 }
+
+/*a faded or hidden window leaves the clues on the wallpaper, so they keep a backing of their own*/
+.Dialog_clear .Game_columns,
+.Dialog_clear .Game_rows {
+  background: color-mix(in srgb, var(--face) 80%, transparent);
+}
 /*play button over the hidden board*/.Board_paused {
   position: absolute;
   top: 0;

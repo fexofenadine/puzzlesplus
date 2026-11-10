@@ -1,9 +1,9 @@
-import { D as BackgroundSettings, E as Boss, F as Dialog, I as Button, L as Overlay, M as load, N as remove, O as startBackgrounds, P as save, R as app, _ as listen, a as Taskbar, b as shortcut, n as About, r as Link, v as shellActions, x as typing, y as shellState, z as h } from "./HowToPlay-C4zys83Q.js";
-import { _ as OpenGames, a as clearStats, c as lossesOn, d as StatsList, f as Tabs, h as resumable, i as Switching, l as readStats, m as check, n as FireworksCanvas, o as lossActions, p as BestTime_module_default, r as celebrate, s as lossState, t as registerWorker, u as tally, v as Winner } from "./worker-M9j8t0tS.js";
-import { n as Prompt, t as BestTimes_module_default } from "./BestTimes.module-BonQhRW3.js";
-import { f as clock, g as seconds, h as pauseAction } from "./Board-BzVGp7Po.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-Dtqyrerz.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-5MY4N7ZY.js";
+import { $ as Overlay, E as gameKey, F as undoKey, M as shellState, N as shortcut, O as listen, Q as Button, U as BackgroundSettings, V as Boss, Z as Dialog, a as Taskbar, it as save, j as shellActions, k as prevent, n as About, nt as load, ot as h, r as Link, rt as remove, st as __exportAll } from "./HowToPlay-CdnnUesu.js";
+import { _ as check, a as clearStats, b as OpenGames, c as lossesOn, d as StatsList, h as BestTime_module_default, i as Switching, l as readStats, n as FireworksCanvas, o as lossActions, p as Tabs, r as celebrate, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-BqCHtXOL.js";
+import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-icyXVvxG.js";
+import { S as timerAction, b as tickAction, g as pauseAction, h as nextTick, v as startClock, y as stopTick } from "./Board-JF5Te-JW.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-C1uDNW8L.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-1td59A68.js";
 var keyOf = (n, assisted) => `2048.${n}${assisted ? ".help" : ""}`;
 var clean = (entry) => ({
 	score: parseInt(entry && entry.score, 10) || 0,
@@ -44,10 +44,7 @@ var offer = (game) => {
 	};
 };
 var recordActions = {
-	changeWinner: (payload) => ({ winner }) => ({ winner: {
-		...winner,
-		...payload
-	} }),
+	...winnerActions,
 	submitBestTime: (event) => ({ winner }, actions) => {
 		event.preventDefault();
 		const name = winner.name.trim();
@@ -74,10 +71,6 @@ var recordActions = {
 			losses: lossesOn()
 		}
 	}),
-	setBestTimeTab: (tab) => (state) => state.bestTime ? { bestTime: {
-		...state.bestTime,
-		tab
-	} } : null,
 	resetBestTime: () => ({ bestTime }) => {
 		const assisted = bestTime.tab === "hinted";
 		for (const n of sizes) {
@@ -199,15 +192,27 @@ var finishes = (plan, pixels) => plan.moved && pixels > 10;
 var TwentyAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
 	key,
 	name: "2048 Plus",
-	actions
-}, /* @__PURE__ */ h("p", null, "Slide the tiles: equal tiles that meet merge into one of twice the value. Make a 2048 tile, or keep going for the highest score you can."), /* @__PURE__ */ h("p", null, "Based on ", /* @__PURE__ */ h(Link, { href: "https://github.com/gabrielecirulli/2048" }, "2048"), " by Gabriele Cirulli (MIT licence), itself inspired by 1024 and Threes, with the rules kept and the code written anew. The hint is a short look ahead over the tiles that may appear. Its tiles keep the original's shapes and, on Classic, its colours, with the Clear Sans font by Intel (Apache 2.0 licence)."), /* @__PURE__ */ h("p", null, "Part of Puzzles Plus by fexofenadine, sharing its window, themes and backgrounds with Minesweeper Plus, which is based on", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov."));
+	actions,
+	credits: [/* @__PURE__ */ h("li", null, "Rules, tile shapes and Classic's tile colours follow", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/gabrielecirulli/2048" }, "2048"), " by Gabriele Cirulli (MIT licence), itself inspired by 1024 and Threes; the code is written anew."), /* @__PURE__ */ h("li", null, "The tiles use the Clear Sans font by Intel (Apache 2.0 licence).")]
+}, /* @__PURE__ */ h("p", null, "Slide the tiles: equal tiles that meet merge into one of twice the value. Make a 2048 tile, or keep going for the highest score you can."), /* @__PURE__ */ h("p", null, "Boards of 3 × 3, 4 × 4 and 5 × 5, unlimited undo, and a hint that looks a short way ahead over the tiles that may appear and says why it likes a move. The best five scores per size are kept, apart for games that used help."));
 //#endregion
 //#region src/2048/app.jsx
+var app_exports = /* @__PURE__ */ __exportAll({
+	actions: () => actions,
+	createGame: () => createGame,
+	saved: () => saved,
+	setRandom: () => setRandom,
+	state: () => state,
+	view: () => view
+});
 var loadSize = () => {
 	const saved = parseInt(load("2048.size"), 10);
 	return sizes.includes(saved) ? saved : 4;
 };
 var rng = Math.random;
+var setRandom = (next) => {
+	rng = next;
+};
 var createGame = (n) => {
 	let { tiles, nextId } = spawn([], n, rng, 1);
 	({tiles, nextId} = spawn(tiles, n, rng, nextId));
@@ -270,19 +275,6 @@ var saved = resumable({
 		};
 	}
 });
-var prevent = (event) => {
-	event.preventDefault();
-	return false;
-};
-var begin = (game, actions) => {
-	if (game.start >= 0) return game;
-	game.raf = requestAnimationFrame(actions.tick);
-	return {
-		...game,
-		start: clock(),
-		time: 1
-	};
-};
 var keyDirs = {
 	37: "left",
 	65: "left",
@@ -300,7 +292,6 @@ var state = {
 	hint: null,
 	prompt: false,
 	timer: load("2048.timer") === "on",
-	about: false,
 	shelf: saved.list(),
 	game: saved.restore() || createGame(loadSize()),
 	winner: null,
@@ -317,24 +308,21 @@ var actions = {
 		listen(actions);
 	},
 	press: (event) => (state, actions) => {
-		if ((event.ctrlKey || event.metaKey) && !event.altKey && event.keyCode === 90) {
-			if (typing(event) || state.boss || state.windowState !== "open") return;
+		if (undoKey(event, state)) {
 			event.preventDefault();
 			actions.undo();
 			return;
 		}
 		const key = shortcut(event, state, actions);
 		if (key === null) return;
-		if (key === 113 || key === 78) actions.newGame();
-		else if (key === 72) actions.hint();
-		else if (key === 80) actions.pause();
-		else if (keyDirs[key]) {
+		if (gameKey(key, actions)) return;
+		if (keyDirs[key]) {
 			event.preventDefault();
 			actions.slide(keyDirs[key]);
 		}
 	},
 	reset: (payload) => ({ game, switching }) => {
-		cancelAnimationFrame(game.raf);
+		stopTick(game.raf);
 		const n = payload && payload.n || game.n;
 		save("2048.size", n);
 		swipe = null;
@@ -359,7 +347,7 @@ var actions = {
 		const { tiles, nextId } = spawn(done.tiles, game.n, rng, done.nextId);
 		const values = valuesOf(tiles, game.n);
 		const next = {
-			...begin(game, actions),
+			...startClock(game, actions),
 			tiles,
 			nextId,
 			score: game.score + done.score,
@@ -381,7 +369,7 @@ var actions = {
 		}
 		let winner = null;
 		if (next.over) {
-			cancelAnimationFrame(next.raf);
+			stopTick(next.raf);
 			if (!next.reached) tally("2048", { won: false });
 			winner = offer(next);
 			next.offered = true;
@@ -452,7 +440,7 @@ var actions = {
 			undone: true,
 			offered: false
 		};
-		if (game.over && game.start >= 0) next.raf = requestAnimationFrame(actions.tick);
+		if (game.over && game.start >= 0) next.raf = nextTick(actions.tick, game.start);
 		return {
 			menu: null,
 			hint: null,
@@ -472,7 +460,7 @@ var actions = {
 				text: "No move is left."
 			},
 			game: {
-				...begin(game, actions),
+				...startClock(game, actions),
 				hinted: true
 			}
 		};
@@ -481,34 +469,12 @@ var actions = {
 		if (!yes) actions.reset();
 		return { prompt: false };
 	},
-	toggleTimer: () => (state) => {
-		save("2048.timer", state.timer ? "" : "on");
-		return {
-			menu: null,
-			timer: !state.timer,
-			game: state.timer ? {
-				...state.game,
-				untimed: true
-			} : state.game
-		};
-	},
-	toggleAbout: () => ({ about }) => ({
-		menu: null,
-		about: !about
-	}),
+	toggleTimer: timerAction("2048.timer", "on", ""),
 	pause: pauseAction(running, () => {
 		swipe = null;
 		return {};
 	}),
-	tick: () => ({ game }, actions) => {
-		game.raf = requestAnimationFrame(actions.tick);
-		const next = seconds(game.start);
-		if (game.time === next) return null;
-		return { game: {
-			...game,
-			time: next
-		} };
-	},
+	tick: tickAction,
 	...recordActions,
 	...saved.actions
 };
@@ -564,7 +530,5 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }));
 //#endregion
 //#region src/2048/index.js
-app(state, actions, view, document.getElementById("app"));
-startBackgrounds();
-registerWorker();
+start(app_exports);
 //#endregion

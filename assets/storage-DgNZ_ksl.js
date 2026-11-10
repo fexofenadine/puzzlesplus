@@ -1,0 +1,4 @@
+//#region src/shell/storage.js?raw
+var storage_default = "//settings that survive blocked storage\nexport const load = (key) => {\n  try {\n    return localStorage.getItem(key)\n  } catch {\n    return null\n  }\n}\n\n//after a backup is restored nothing is written until the page reloads\nlet frozen = false\n\nexport const freeze = () => {\n  frozen = true\n}\n\nexport const save = (key, value) => {\n  if (frozen) return\n  try {\n    localStorage.setItem(key, value)\n  } catch {\n    //settings just are not remembered\n  }\n}\n\nexport const remove = (key) => {\n  if (frozen) return\n  try {\n    localStorage.removeItem(key)\n  } catch {\n    //nothing was stored\n  }\n}\n\n//every key kept on this site, ours or not\nexport const keys = () => {\n  try {\n    return Object.keys(localStorage)\n  } catch {\n    return []\n  }\n}\n";
+//#endregion
+export { storage_default as default };
