@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-DNxVhnbq.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-C8QU9jrE.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
 //#region \0rolldown/runtime.js
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -927,11 +927,11 @@ var __vitePreload = function preload(baseModule, deps, importerUrl) {
 //#endregion
 //#region src/shell/backgrounds/index.js
 var loaders = {
-	matrix: () => __vitePreload(() => import("./matrix-DNxVhnbq.js"), __vite__mapDeps([0,1]), import.meta.url),
-	substrate: () => __vitePreload(() => import("./substrate-DEMyPSBS.js"), [], import.meta.url),
-	truchet: () => __vitePreload(() => import("./truchet-CIYCrSUa.js"), [], import.meta.url),
-	phosphor: () => __vitePreload(() => import("./phosphor-Cf7VG63j.js"), [], import.meta.url),
-	hill: () => __vitePreload(() => import("./hill-PYrNdJ2p.js"), [], import.meta.url)
+	matrix: () => __vitePreload(() => import("./matrix-C8QU9jrE.js"), __vite__mapDeps([0,1]), import.meta.url),
+	substrate: () => __vitePreload(() => import("./substrate-BsMLYqFF.js"), [], import.meta.url),
+	truchet: () => __vitePreload(() => import("./truchet-CKbXYzzU.js"), [], import.meta.url),
+	phosphor: () => __vitePreload(() => import("./phosphor-DrkNSaFI.js"), [], import.meta.url),
+	hill: () => __vitePreload(() => import("./hill-CFmhKOvu.js"), [], import.meta.url)
 };
 var themeBackgrounds = {
 	classic: "hill",

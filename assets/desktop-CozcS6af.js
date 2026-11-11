@@ -1,4 +1,4 @@
-import { ot as h } from "./HowToPlay-B-GK6Mo_.js";
+import { ot as h } from "./HowToPlay-DbrvSPio.js";
 //#region src/guide/desktop.jsx
 var desktopSection = {
 	id: "window",

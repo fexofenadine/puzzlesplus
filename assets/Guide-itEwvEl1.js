@@ -1,4 +1,4 @@
-import { B as Menu_module_default, M as shellState, N as shortcut, O as listen, T as ThemeMenu, U as BackgroundSettings, V as Boss, W as startBackgrounds, Z as Dialog, a as Taskbar, at as app, j as shellActions, ot as h } from "./HowToPlay-B-GK6Mo_.js";
+import { B as Menu_module_default, M as shellState, N as shortcut, O as listen, T as ThemeMenu, U as BackgroundSettings, V as Boss, W as startBackgrounds, Z as Dialog, a as Taskbar, at as app, j as shellActions, ot as h } from "./HowToPlay-DbrvSPio.js";
 var Guide_module_default = {
 	page: "Guide_page",
 	body: "Guide_body",

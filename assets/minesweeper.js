@@ -1,10 +1,10 @@
-import { $ as Overlay, I as windowClear, M as shellState, N as shortcut, O as listen, Q as Button, U as BackgroundSettings, V as Boss, Z as Dialog, _ as Menu, a as Taskbar, it as save, j as shellActions, n as About, nt as load, ot as h, rt as remove, st as __exportAll, tt as watchWindow } from "./HowToPlay-B-GK6Mo_.js";
-import { S as Input, _ as check, a as clearStats, b as OpenGames, c as lossesOn, d as StatsList, h as BestTime_module_default, i as Switching, l as readStats, m as hintTabs, n as FireworksCanvas, o as lossActions, p as Tabs, r as celebrate, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-kzk86FJi.js";
-import { S as timerAction, _ as seconds, c as SideButton, d as Digit, f as clock, g as pauseAction, h as nextTick, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, x as timed, y as stopTick } from "./Board-BuZpLT6t.js";
+import { $ as Overlay, I as windowClear, M as shellState, N as shortcut, O as listen, Q as Button, U as BackgroundSettings, V as Boss, Z as Dialog, _ as Menu, a as Taskbar, it as save, j as shellActions, n as About, nt as load, ot as h, rt as remove, st as __exportAll, tt as watchWindow } from "./HowToPlay-DbrvSPio.js";
+import { S as Input, _ as check, a as clearStats, b as OpenGames, c as lossesOn, d as StatsList, h as BestTime_module_default, i as Switching, l as readStats, m as hintTabs, n as FireworksCanvas, o as lossActions, p as Tabs, r as celebrate, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-B-jOo2Ym.js";
+import { S as timerAction, _ as seconds, c as SideButton, d as Digit, f as clock, g as pauseAction, h as nextTick, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, x as timed, y as stopTick } from "./Board-Be64sGno.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 import { t as capital } from "./grid-BZP-Z9Tf.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-ueCq93KK.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-CuDZYY33.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-B1-l91nx.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-B-4h1pS5.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -228,6 +228,27 @@ var createGame = ({ level, width, height, mines }) => {
 		untimed: false
 	};
 };
+var saveSettings = ({ safeStart, noGuess }) => {
+	if (safeStart !== void 0) save("safeStart", safeStart ? "" : "off");
+	if (noGuess !== void 0) save("noGuess", noGuess ? "yes" : "");
+};
+var setting = (state, actions, settings) => {
+	if (!running(state.game)) {
+		saveSettings(settings);
+		return {
+			menu: null,
+			...settings
+		};
+	}
+	const { level, width, height, mines } = state.game;
+	actions.newGame({
+		level,
+		width,
+		height,
+		mines,
+		settings
+	});
+};
 var packCell = ({ opened, mined, flag, mark, num }) => num | (opened ? 16 : 0) | (mined ? 32 : 0) | (flag ? 64 : 0) | (mark ? 128 : 0);
 var unpackCell = (v) => {
 	check(Number.isInteger(v) && v >= 0 && v < 256 && (v & 15) <= 8);
@@ -389,9 +410,12 @@ var actions = {
 			params.height,
 			params.mines
 		].join() : params.level);
+		const settings = payload && payload.settings || {};
+		saveSettings(settings);
 		return {
 			menu: null,
 			hint: null,
+			...settings,
 			game: createGame(params)
 		};
 	},
@@ -689,22 +713,8 @@ var actions = {
 		actions.newGame(customLevel(customField, game));
 		return { customField: null };
 	},
-	toggleSafeStart: () => (state) => {
-		const safeStart = !state.safeStart;
-		save("safeStart", safeStart ? "" : "off");
-		return {
-			menu: null,
-			safeStart
-		};
-	},
-	toggleNoGuess: () => (state) => {
-		const noGuess = !state.noGuess;
-		save("noGuess", noGuess ? "yes" : "");
-		return {
-			menu: null,
-			noGuess
-		};
-	},
+	toggleSafeStart: () => (state, actions) => setting(state, actions, { safeStart: !state.safeStart }),
+	toggleNoGuess: () => (state, actions) => setting(state, actions, { noGuess: !state.noGuess }),
 	toggleTimer: timerAction("timer"),
 	toggleMarks: () => (state) => {
 		const marks = !state.marks;

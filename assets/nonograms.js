@@ -1,12 +1,12 @@
-import { $ as Overlay, A as shareAction, D as historyKey, E as gameKey, L as codeOf, M as shellState, N as shortcut, O as listen, P as toggleAction, Q as Button, R as partsOf, U as BackgroundSettings, V as Boss, Z as Dialog, a as Taskbar, c as DAILY_BUDGET, d as finish, i as About_module_default, it as save, j as shellActions, k as prevent, m as special, n as About, nt as load, ot as h, p as seedOf, st as __exportAll, u as dayOf, z as sharedCode } from "./HowToPlay-B-GK6Mo_.js";
-import { _ as check, b as OpenGames, g as boardOf, i as Switching, n as FireworksCanvas, r as celebrate, t as start, u as tally, v as resumable, x as Winner } from "./start-kzk86FJi.js";
-import { i as Prompt, t as records } from "./records-BZ7Vxfhr.js";
-import { S as timerAction, b as tickAction, g as pauseAction, m as loadTimer, v as startClock, y as stopTick } from "./Board-BuZpLT6t.js";
+import { $ as Overlay, A as shareAction, D as historyKey, E as gameKey, L as codeOf, M as shellState, N as shortcut, O as listen, P as toggleAction, Q as Button, R as partsOf, U as BackgroundSettings, V as Boss, Z as Dialog, a as Taskbar, c as DAILY_BUDGET, d as finish, i as About_module_default, it as save, j as shellActions, k as prevent, m as special, n as About, nt as load, ot as h, p as seedOf, st as __exportAll, u as dayOf, z as sharedCode } from "./HowToPlay-DbrvSPio.js";
+import { _ as check, b as OpenGames, g as boardOf, i as Switching, n as FireworksCanvas, r as celebrate, t as start, u as tally, v as resumable, x as Winner } from "./start-B-jOo2Ym.js";
+import { i as Prompt, t as records } from "./records-CHVytHDE.js";
+import { S as timerAction, b as tickAction, g as pauseAction, m as loadTimer, v as startClock, y as stopTick } from "./Board-Be64sGno.js";
 import { n as cellsOf } from "./grid-BZP-Z9Tf.js";
-import { i as BestTimes, r as dealer, t as random } from "./random-DaCutWSS.js";
+import { i as BestTimes, r as dealer, t as random } from "./random-qFFcp7wb.js";
 import { t as showRain } from "./rain-D7NoZOvq.js";
-import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-CpkCQd8V.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-B-498h6I.js";
+import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-AvtJzeHn.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-BUzldWqD.js";
 //#region src/nonograms/generate.js
 var filled = (cells, n) => {
 	const lines = cellsOf(n);
@@ -486,8 +486,13 @@ var actions = {
 		if (historyKey(event, state, actions)) return;
 		gameKey(shortcut(event, state, actions), actions);
 	},
-	reset: (payload) => ({ game, procedural, symmetric }, actions) => {
+	reset: (payload) => ({ game, ...state }, actions) => {
 		stopTick(game.raf);
+		const setting = (name) => payload && payload[name] !== void 0 ? payload[name] : state[name];
+		const procedural = setting("procedural");
+		const symmetric = setting("symmetric");
+		save("nonograms.procedural", procedural ? "" : "off");
+		save("nonograms.symmetric", symmetric ? "" : "off");
 		const day = payload && payload.daily ? dayOf() : null;
 		const base = day ? DAILY : special(game) ? loadChoice() : game;
 		const n = payload && payload.n || base.n;
@@ -513,6 +518,8 @@ var actions = {
 			menu: null,
 			hint: null,
 			prompt: false,
+			procedural,
+			symmetric,
 			game: {
 				...createGame({
 					n,
@@ -657,8 +664,12 @@ var actions = {
 			rain: !state.rain
 		};
 	},
-	toggleProcedural: toggleAction("procedural", "nonograms.procedural", "", "off"),
-	toggleSymmetric: toggleAction("symmetric", "nonograms.symmetric", "", "off"),
+	toggleProcedural: () => ({ procedural }, actions) => {
+		actions.newGame({ procedural: !procedural });
+	},
+	toggleSymmetric: () => ({ symmetric }, actions) => {
+		actions.newGame({ symmetric: !symmetric });
+	},
 	togglePictures: () => ({ pictures }) => ({
 		menu: null,
 		pictures: !pictures
