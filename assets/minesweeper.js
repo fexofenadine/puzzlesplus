@@ -1,14 +1,15 @@
-import { $ as Overlay, I as windowClear, M as shellState, N as shortcut, O as listen, Q as Button, U as BackgroundSettings, V as Boss, Z as Dialog, _ as Menu, a as Taskbar, it as save, j as shellActions, n as About, nt as load, ot as h, rt as remove, st as __exportAll, tt as watchWindow } from "./HowToPlay-DbrvSPio.js";
-import { S as Input, _ as check, a as clearStats, b as OpenGames, c as lossesOn, d as StatsList, h as BestTime_module_default, i as Switching, l as readStats, m as hintTabs, n as FireworksCanvas, o as lossActions, p as Tabs, r as celebrate, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-B-jOo2Ym.js";
-import { S as timerAction, _ as seconds, c as SideButton, d as Digit, f as clock, g as pauseAction, h as nextTick, i as windowProps, m as loadTimer, n as PausedCover, p as clockDigits, r as WindowControls, s as HintIcon, t as HintPanel, u as Play, x as timed, y as stopTick } from "./Board-Be64sGno.js";
+import { $ as Button, H as Boss, I as windowClear, L as celebrate, M as shellState, N as shortcut, O as listen, Q as Dialog, W as BackgroundSettings, _ as Menu, a as Taskbar, at as save, ct as __exportAll, et as Overlay, it as remove, j as shellActions, n as About, nt as watchWindow, rt as load, st as h } from "./HowToPlay-sfgAnlPV.js";
+import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, p as hintTabs, r as Switching, s as lossesOn, t as start, u as StatsList, x as Input, y as OpenGames } from "./start-DG6zwpFh.js";
+import { C as timerAction, S as timed, _ as pauseAction, b as stopTick, c as PauseButton, d as Play, f as Digit, g as nextTick, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, p as clock, r as WindowControls, s as HintIcon, t as HintPanel, v as seconds } from "./Board-xFGCjAaj.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 import { t as capital } from "./grid-BZP-Z9Tf.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-B1-l91nx.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-B-4h1pS5.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-9UsJu-RV.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-COwfpvbz.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
 var transposed = ({ portrait, game }) => portrait && game.width > game.height;
+var ROOMY = 11;
 var rowsOf = (state) => {
 	const { field } = state.game;
 	if (!transposed(state)) return field.map((row, y) => row.map((cell, x) => ({
@@ -35,7 +36,10 @@ var Game = ({ key, state, actions }) => /* @__PURE__ */ h(Dialog, {
 	title: state.theme === "classic" ? "Minesweeper" : "Minesweeper Plus",
 	titleHint: "Double-click for 100% zoom",
 	onTitleDoubleClick: () => actions.zoom(0),
-	controls: /* @__PURE__ */ h(WindowControls, windowProps(state, actions, state.game.paused, running(state.game))),
+	controls: /* @__PURE__ */ h(WindowControls, {
+		...windowProps(state, actions, state.game.paused, running(state.game)),
+		original: state.theme === "classic"
+	}),
 	onClose: actions.close,
 	onCreate: (dialog) => {
 		watchWindow(dialog, actions.fit);
@@ -54,7 +58,7 @@ var Game = ({ key, state, actions }) => /* @__PURE__ */ h(Dialog, {
 	title: "Hint (H)",
 	disabled: state.game.win || state.game.lose || state.game.paused,
 	onClick: actions.hint
-}, /* @__PURE__ */ h(HintIcon, null))), /* @__PURE__ */ h(Digit, {
+}, /* @__PURE__ */ h(HintIcon, null)), (transposed(state) ? state.game.height : state.game.width) >= ROOMY && /* @__PURE__ */ h(PauseButton, windowProps(state, actions, state.game.paused, running(state.game)))), /* @__PURE__ */ h(Digit, {
 	value: state.game.time,
 	digits: clockDigits(state.theme, state.game.time),
 	blank: !state.timer
@@ -607,7 +611,7 @@ var actions = {
 				clean: !game.hinted
 			});
 			if (!lose) {
-				celebrate();
+				celebrate("minesweeper");
 				actions.win();
 			}
 		}

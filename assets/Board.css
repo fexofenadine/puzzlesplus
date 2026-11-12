@@ -199,6 +199,11 @@
   cursor: default;
 }
 
+/*marks the pause button, which a phone leaves to its own bar*/
+.SideButton_pause {
+  flex: none;
+}
+
 .SideButton_root svg {
   display: block;
   fill: currentColor;
