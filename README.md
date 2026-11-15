@@ -27,6 +27,8 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)           |
 | **Vaporwave: 2048 with a hint, over Pipes**                                    | **Everforest, still: Nonograms with a broken clue outlined, over Coral**    |
 | ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Nonograms on Everforest](docs/screenshots/everforest-nonograms.jpg)       |
+| **Synthwave: Light Up on 14 × 14 with a hint**                                 | **Nord, still: the Light Up guide, its examples drawn by the game**         |
+| ![Light Up on Synthwave](docs/screenshots/synthwave-lightup.jpg)               | ![The Light Up guide](docs/screenshots/lightup-guide.jpg)                   |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
 
