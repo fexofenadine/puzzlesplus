@@ -56,15 +56,18 @@
 .Game_fieldLost {
 }
 
-:root:is([data-theme='synthwave'], [data-theme='matrix']) .Game_fieldLost {
+:root:is([data-theme='synthwave'], [data-theme='matrix'], [data-theme='vaporwave'])
+  .Game_fieldLost {
   position: relative;
   animation:
     Game_jitter 2.4s steps(1, end) infinite,
     Game_chroma 3.1s steps(1, end) infinite;
 }
 
-:root:is([data-theme='synthwave'], [data-theme='matrix']) .Game_fieldLost::before,
-:root:is([data-theme='synthwave'], [data-theme='matrix']) .Game_fieldLost::after {
+:root:is([data-theme='synthwave'], [data-theme='matrix'], [data-theme='vaporwave'])
+  .Game_fieldLost::before,
+:root:is([data-theme='synthwave'], [data-theme='matrix'], [data-theme='vaporwave'])
+  .Game_fieldLost::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -75,7 +78,8 @@
   content: '';
 }
 
-:root:is([data-theme='synthwave'], [data-theme='matrix']) .Game_fieldLost::before {
+:root:is([data-theme='synthwave'], [data-theme='matrix'], [data-theme='vaporwave'])
+  .Game_fieldLost::before {
   background: linear-gradient(
       transparent,
       color-mix(in srgb, var(--fringe-b) 40%, transparent) 45%,
@@ -87,7 +91,8 @@
   animation: Game_band 1.7s linear infinite;
 }
 
-:root:is([data-theme='synthwave'], [data-theme='matrix']) .Game_fieldLost::after {
+:root:is([data-theme='synthwave'], [data-theme='matrix'], [data-theme='vaporwave'])
+  .Game_fieldLost::after {
   background: repeating-linear-gradient(transparent 0 2px, rgba(0, 0, 0, 0.3) 2px 3px);
   animation: Game_flicker 0.15s steps(2) infinite;
 }

@@ -1,5 +1,5 @@
-import { $ as Button, G as startBackgrounds, Q as Dialog, at as save, et as Overlay, g as games, i as About_module_default, it as remove, o as icons, ot as app, rt as load, st as h } from "./HowToPlay-CsahZP7Z.js";
-import { b as stopTick, p as clock } from "./Board-CIiDRB3Q.js";
+import { G as startBackgrounds, at as load, ct as app, et as Dialog, g as games, i as About_module_default, lt as h, nt as Overlay, o as icons, ot as remove, st as save, tt as Button } from "./HowToPlay-CPLbgow-.js";
+import { b as stopTick, p as clock } from "./Board-D6qNYYWT.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",

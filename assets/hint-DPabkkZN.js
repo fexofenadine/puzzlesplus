@@ -1,4 +1,4 @@
-import { U as cx, st as h } from "./HowToPlay-CsahZP7Z.js";
+import { U as cx, lt as h } from "./HowToPlay-CPLbgow-.js";
 var Cell_module_default = {
 	root: "Cell_root",
 	pressed: "Cell_pressed Cell_root",

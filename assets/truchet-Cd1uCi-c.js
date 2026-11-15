@@ -1,4 +1,4 @@
-import { Z as truchet } from "./HowToPlay-CsahZP7Z.js";
+import { $ as truchet } from "./HowToPlay-CPLbgow-.js";
 //#region src/shell/backgrounds/truchet.js
 var MAXRATIO = 2;
 var palettes = {

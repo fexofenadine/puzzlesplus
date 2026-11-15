@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-gRew5V_e.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-XiT8PIIG.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
 //#region \0rolldown/runtime.js
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -430,9 +430,11 @@ var BackgroundSettings_module_default = {
 //#endregion
 //#region src/shell/backgrounds/meta.js
 var meta_exports = /* @__PURE__ */ __exportAll({
+	coral: () => coral,
 	hill: () => hill,
 	matrix: () => matrix,
 	phosphor: () => phosphor,
+	pipes: () => pipes,
 	substrate: () => substrate,
 	truchet: () => truchet
 });
@@ -826,6 +828,164 @@ var hill = {
 		}
 	]
 };
+var pipes = {
+	name: "Pipes",
+	credit: "After Pipes by Marcelo F. Vianna, part of xscreensaver, and the Windows 95 screensaver",
+	ratio: (pixels) => Math.min(pixels, 2),
+	options: [
+		{
+			key: "speed",
+			label: "Speed",
+			type: "range",
+			min: 2,
+			max: 60,
+			step: 1,
+			value: 10,
+			format: (v) => `${v} steps a second`
+		},
+		{
+			key: "count",
+			label: "Pipes at once",
+			type: "range",
+			min: 1,
+			max: 6,
+			step: 1,
+			value: 2
+		},
+		{
+			key: "pieces",
+			label: "Restart after",
+			type: "range",
+			min: 100,
+			max: 3e3,
+			step: 100,
+			value: 700,
+			format: (v) => `${v} pieces`
+		},
+		{
+			key: "size",
+			label: "Spacing",
+			type: "range",
+			min: 24,
+			max: 96,
+			step: 4,
+			value: 44
+		},
+		{
+			key: "thickness",
+			label: "Thickness",
+			type: "range",
+			min: 8,
+			max: 34,
+			step: 1,
+			value: 20,
+			format: (v) => `${v}%`
+		},
+		{
+			key: "joints",
+			label: "Ball joints",
+			type: "toggle",
+			value: true
+		},
+		{
+			key: "palette",
+			label: "Colours",
+			type: "select",
+			choices: [
+				["pastel", "Pastels"],
+				["sunset", "Sunset"],
+				["sea", "Sea"]
+			],
+			value: "pastel"
+		},
+		{
+			key: "opacity",
+			label: "Strength",
+			type: "range",
+			min: 30,
+			max: 100,
+			step: 5,
+			value: 80,
+			format: (v) => `${v}%`
+		}
+	]
+};
+var coral = {
+	name: "Coral",
+	credit: "After Coral by Frederick Roeber, part of xscreensaver",
+	ratio: (pixels) => Math.min(pixels, 2),
+	options: [
+		{
+			key: "speed",
+			label: "Speed",
+			type: "range",
+			min: 2,
+			max: 60,
+			step: 1,
+			value: 12,
+			format: (v) => `${v} steps a second`
+		},
+		{
+			key: "seeds",
+			label: "Seeds",
+			type: "range",
+			min: 1,
+			max: 100,
+			step: 1,
+			value: 20
+		},
+		{
+			key: "density",
+			label: "Density",
+			type: "range",
+			min: 5,
+			max: 60,
+			step: 1,
+			value: 25,
+			format: (v) => `${v}%`
+		},
+		{
+			key: "grain",
+			label: "Grain",
+			type: "range",
+			min: 2,
+			max: 8,
+			step: 1,
+			value: 3
+		},
+		{
+			key: "delay",
+			label: "Rest when grown",
+			type: "range",
+			min: 2,
+			max: 120,
+			step: 2,
+			value: 20,
+			format: (v) => `${v} s`
+		},
+		{
+			key: "palette",
+			label: "Colours",
+			type: "select",
+			choices: [
+				["forest", "Greens and aquas"],
+				["autumn", "Autumn"],
+				["all", "All accents"]
+			],
+			value: "forest"
+		},
+		{
+			key: "opacity",
+			label: "Strength",
+			type: "range",
+			min: 20,
+			max: 100,
+			step: 5,
+			value: 60,
+			format: (v) => `${v}%`
+		}
+	]
+};
 //#endregion
 //#region \0vite/preload-helper.js
 var scriptRel = /* @__PURE__ */ (function detectScriptRel() {
@@ -927,18 +1087,22 @@ var __vitePreload = function preload(baseModule, deps, importerUrl) {
 //#endregion
 //#region src/shell/backgrounds/index.js
 var loaders = {
-	matrix: () => __vitePreload(() => import("./matrix-gRew5V_e.js"), __vite__mapDeps([0,1]), import.meta.url),
-	substrate: () => __vitePreload(() => import("./substrate-CQQXtUue.js"), [], import.meta.url),
-	truchet: () => __vitePreload(() => import("./truchet-CmpLiIUZ.js"), [], import.meta.url),
-	phosphor: () => __vitePreload(() => import("./phosphor-BgCOkrlQ.js"), [], import.meta.url),
-	hill: () => __vitePreload(() => import("./hill-WGP_sFxP.js"), [], import.meta.url)
+	matrix: () => __vitePreload(() => import("./matrix-XiT8PIIG.js"), __vite__mapDeps([0,1]), import.meta.url),
+	substrate: () => __vitePreload(() => import("./substrate-DwTwfaI0.js"), [], import.meta.url),
+	truchet: () => __vitePreload(() => import("./truchet-Cd1uCi-c.js"), [], import.meta.url),
+	phosphor: () => __vitePreload(() => import("./phosphor-rf548U3z.js"), [], import.meta.url),
+	hill: () => __vitePreload(() => import("./hill-CsKlfZVD.js"), [], import.meta.url),
+	pipes: () => __vitePreload(() => import("./pipes-CljzWXCC.js"), [], import.meta.url),
+	coral: () => __vitePreload(() => import("./coral-LhV6BuSH.js"), [], import.meta.url)
 };
 var themeBackgrounds = {
 	classic: "hill",
 	matrix: "matrix",
 	nord: "substrate",
 	solarized: "truchet",
-	"solarized-phosphor": "phosphor"
+	"solarized-phosphor": "phosphor",
+	vaporwave: "pipes",
+	everforest: "coral"
 };
 var backgroundFor = (theme) => themeBackgrounds[theme] || null;
 var optionsOf = (id) => [{
@@ -1295,7 +1459,9 @@ var themes = [
 	["solarized", "Solarized Truchet"],
 	["solarized-phosphor", "Solarized Phosphor"],
 	["matrix", "Matrix"],
-	["nord", "Nord"]
+	["nord", "Nord"],
+	["vaporwave", "Vaporwave"],
+	["everforest", "Everforest"]
 ];
 //#endregion
 //#region src/shell/backup.js
@@ -1465,6 +1631,33 @@ var looks = {
 	}
 };
 looks["solarized-phosphor"] = looks.solarized;
+looks.vaporwave = {
+	colors: [
+		"#ff71ce",
+		"#01cdfe",
+		"#05ffa1",
+		"#b967ff",
+		"#fffb96"
+	],
+	shape: square,
+	gravity: 80,
+	size: 3
+};
+looks.everforest = {
+	colors: [
+		"#a7c080",
+		"#83c092",
+		"#7fbbb3",
+		"#dbbc7f",
+		"#e69875",
+		"#e67e80",
+		"#d699b6"
+	],
+	shape: dot,
+	gravity: 50,
+	size: 2.5,
+	glow: 5
+};
 var lookOf = (theme) => looks[theme] || looks.classic;
 var SPARKS = 70;
 var TRAIL = 5;
@@ -2516,7 +2709,7 @@ var About = ({ key, name, actions, credits }, children) => /* @__PURE__ */ h(Ove
 }, /* @__PURE__ */ h(Dialog, {
 	title: `About ${name}`,
 	onClose: actions.toggleAbout
-}, /* @__PURE__ */ h("div", { class: About_module_default.root }, /* @__PURE__ */ h("p", { class: About_module_default.name }, "Puzzles Plus: ", name), /* @__PURE__ */ h("p", { class: About_module_default.author }, "by fexofenadine"), children, /* @__PURE__ */ h("p", null, "Puzzles Plus began as a fork of", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov and has grown far beyond it: five games, hints that explain their reasoning, guides, themes and animated backgrounds, with little of the original left outside the Classic Minesweeper board. Released under the MIT licence."), /* @__PURE__ */ h("p", null, /* @__PURE__ */ h(Link, { href: "https://github.com/fexofenadine/puzzlesplus" }, "github.com/fexofenadine/puzzlesplus")), /* @__PURE__ */ h("details", { class: About_module_default.credits }, /* @__PURE__ */ h("summary", null, "Credits"), /* @__PURE__ */ h("ul", null, credits, /* @__PURE__ */ h("li", null, "The window, Classic theme and Minesweeper board come from", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov (MIT licence)."), /* @__PURE__ */ h("li", null, "Backgrounds are canvas ports of GLMatrix, Substrate, Truchet and Phosphor from xscreensaver, under the xscreensaver licence."), /* @__PURE__ */ h("li", null, "Fonts are under the SIL Open Font License and LGPL 2.1."), /* @__PURE__ */ h("li", null, "Photos are from Unsplash, and CC0 photos from Wikimedia Commons."), /* @__PURE__ */ h("li", null, "Colour schemes: SynthWave '84, Solarized and Nord."), /* @__PURE__ */ h("li", null, "Full credits and licences are in the README."))), /* @__PURE__ */ h("div", { class: About_module_default.footer }, /* @__PURE__ */ h(Button, {
+}, /* @__PURE__ */ h("div", { class: About_module_default.root }, /* @__PURE__ */ h("p", { class: About_module_default.name }, "Puzzles Plus: ", name), /* @__PURE__ */ h("p", { class: About_module_default.author }, "by fexofenadine"), children, /* @__PURE__ */ h("p", null, "Puzzles Plus began as a fork of", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov and has grown far beyond it: five games, hints that explain their reasoning, guides, themes and animated backgrounds, with little of the original left outside the Classic Minesweeper board. Released under the MIT licence."), /* @__PURE__ */ h("p", null, /* @__PURE__ */ h(Link, { href: "https://github.com/fexofenadine/puzzlesplus" }, "github.com/fexofenadine/puzzlesplus")), /* @__PURE__ */ h("details", { class: About_module_default.credits }, /* @__PURE__ */ h("summary", null, "Credits"), /* @__PURE__ */ h("ul", null, credits, /* @__PURE__ */ h("li", null, "The window, Classic theme and Minesweeper board come from", " ", /* @__PURE__ */ h(Link, { href: "https://github.com/frenzzy/minesweeper" }, "Minesweeper"), " by Vladimir Kutepov (MIT licence)."), /* @__PURE__ */ h("li", null, "Backgrounds are canvas ports of GLMatrix, Substrate, Truchet and Phosphor from xscreensaver, under the xscreensaver licence, and Pipes and Coral written after xscreensaver's."), /* @__PURE__ */ h("li", null, "Fonts are under the SIL Open Font License and LGPL 2.1."), /* @__PURE__ */ h("li", null, "Photos are from Unsplash, and CC0 photos from Wikimedia Commons."), /* @__PURE__ */ h("li", null, "Colour schemes: SynthWave '84, Solarized, Nord and Everforest."), /* @__PURE__ */ h("li", null, "Full credits and licences are in the README."))), /* @__PURE__ */ h("div", { class: About_module_default.footer }, /* @__PURE__ */ h(Button, {
 	type: "button",
 	onClick: actions.toggleAbout,
 	onCreate: (el) => el.focus()
@@ -2535,4 +2728,4 @@ var HowToPlay = ({ key, name, actions }, children) => /* @__PURE__ */ h(Overlay,
 	onCreate: (el) => el.focus()
 }, /* @__PURE__ */ h("span", { class: About_module_default.button }, "OK"))))));
 //#endregion
-export { Button as $, shareAction as A, sharedCode as B, resumeItems as C, historyKey as D, gameKey as E, undoKey as F, startBackgrounds as G, Boss as H, windowClear as I, matrix as J, __vitePreload as K, celebrate as L, shellState as M, shortcut as N, listen as O, toggleAction as P, Dialog as Q, codeOf as R, SizeMenu as S, ThemeMenu as T, cx as U, Menu_module_default as V, BackgroundSettings as W, substrate as X, phosphor as Y, truchet as Z, Menu as _, Taskbar as a, save as at, SubMenuItem as b, DAILY_BUDGET as c, __exportAll as ct, finish as d, Overlay as et, readDaily as f, games as g, gameLinks as h, About_module_default as i, remove as it, shellActions as j, prevent as k, clearDaily as l, special as m, About as n, watchWindow as nt, icons as o, app as ot, seedOf as p, hill as q, Link as r, load as rt, help_default as s, h as st, HowToPlay as t, hangBelow as tt, dayOf as u, MenuItem as v, ViewMenu as w, HelpMenu as x, Separator as y, partsOf as z };
+export { truchet as $, shareAction as A, sharedCode as B, resumeItems as C, historyKey as D, gameKey as E, undoKey as F, startBackgrounds as G, Boss as H, windowClear as I, hill as J, __vitePreload as K, celebrate as L, shellState as M, shortcut as N, listen as O, toggleAction as P, substrate as Q, codeOf as R, SizeMenu as S, ThemeMenu as T, cx as U, Menu_module_default as V, BackgroundSettings as W, phosphor as X, matrix as Y, pipes as Z, Menu as _, Taskbar as a, load as at, SubMenuItem as b, DAILY_BUDGET as c, app as ct, finish as d, Dialog as et, readDaily as f, games as g, gameLinks as h, About_module_default as i, watchWindow as it, shellActions as j, prevent as k, clearDaily as l, h as lt, special as m, About as n, Overlay as nt, icons as o, remove as ot, seedOf as p, coral as q, Link as r, hangBelow as rt, help_default as s, save as st, HowToPlay as t, Button as tt, dayOf as u, __exportAll as ut, MenuItem as v, ViewMenu as w, HelpMenu as x, Separator as y, partsOf as z };
