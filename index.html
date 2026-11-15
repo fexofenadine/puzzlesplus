@@ -27,7 +27,7 @@
       var game = 'minesweeper'
       try {
         var last = localStorage.getItem('lastGame')
-        if (/^(minesweeper|takuzu|nonograms|sudoku|2048)$/.test(last)) game = last
+        if (/^(minesweeper|takuzu|nonograms|sudoku|2048|lightup)$/.test(last)) game = last
       } catch (error) {}
       location.replace(game + '/' + location.search + location.hash)
     </script>
