@@ -2,7 +2,7 @@
 
 # Puzzles Plus
 
-Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All seven games share the window, the eight themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
+Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All seven games share the window, the nine themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
 > **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these seven games as an app, offline, with every theme. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
 
@@ -25,10 +25,10 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                             |
 | **Matrix: Sudoku with notes and a hint**                                       | **Solarized Phosphor: 2048 with the hint's advice**                         |
 | ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)           |
-| **Vaporwave: 2048 with a hint, over Pipes**                                    | **Everforest, still: Nonograms with a broken clue outlined, over Coral**    |
-| ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Nonograms on Everforest](docs/screenshots/everforest-nonograms.jpg)       |
 | **Synthwave: Light Up on 14 × 14 with a hint**                                 | **Nord, still: the Light Up guide, its examples drawn by the game**         |
 | ![Light Up on Synthwave](docs/screenshots/synthwave-lightup.jpg)               | ![The Light Up guide](docs/screenshots/lightup-guide.jpg)                   |
+| **Vaporwave: 2048 with a hint, over Qix**                                      | **Terafox Hex Trail: Futoshiki with a hint**                                |
+| ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Futoshiki on Terafox](docs/screenshots/terafox-futoshiki.webp)            |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
 
@@ -79,7 +79,7 @@ Slide the tiles so equal ones merge, and make a 2048.
 Put bulbs on the white cells until every one is lit: a bulb lights its row and column up to the next wall, no bulb may light another, and a numbered wall has that many bulbs beside it.
 
 - Four levels from Easy to Expert on 7 × 7, 10 × 10 and 14 × 14 boards, every board with one solution and graded by the hardest technique it needs.
-- Crosses as notes, keyboard play, Show Errors, undo and redo, a daily puzzle and boards shared as links.
+- Crosses as notes, numbers that count down the bulbs they still need (an option), keyboard play, Show Errors, undo and redo, a daily puzzle and boards shared as links.
 - Hints that find broken rules and wrong marks before the next bulb, and show the crosses that bulb leans on.
 
 ## Futoshiki Plus
@@ -93,7 +93,7 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 ## Every game
 
 - **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the View menu or with + and -.
-- **Eight themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave and Everforest, most over an xscreensaver port with its original options, any of which can be switched to a still picture.
+- **Nine themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave, Terafox Hex Trail and Terafox Coral, each over an xscreensaver port with its original options, any of which can be switched to a still picture.
 - **Hints with a More button** that opens their technique in the game's guide.
 - **Fireworks** in each theme's colours when you win, until you press a key or click, and when 2048 reaches its tile. Switch them off in the Theme menu.
 - **Pause**, automatic when you switch away, and a **boss key** (Esc) that hides everything behind a spreadsheet.
@@ -144,9 +144,11 @@ Classic's hill (`src/shell/backgrounds/hill.webp` and `ridge.json`) is made from
 - Matrix static background [Binary damage code](<https://commons.wikimedia.org/wiki/File:Binary_damage_code_(28227210988).jpg>) by Markus Spiske (CC0).
 - Nord background is a canvas port of [Substrate](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/substrate.c) from xscreensaver, by J. Tarbell ([complexification.net](http://complexification.net)) and Mike Kershaw.
 - Nord colours from [Nord](https://www.nordtheme.com) by Arctic Ice Studio.
-- Vaporwave background is Pipes, written for a canvas after [Pipes](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/pipes.c) from xscreensaver by Marcelo F. Vianna and the Windows 95 screensaver.
-- Everforest background is Coral, written for a canvas after [Coral](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/coral.c) from xscreensaver by Frederick Roeber.
-- Everforest colours from [Everforest](https://github.com/sainnhe/everforest) by Sainnhe Park.
+- Synthwave's optional animated background (Background Settings, off by default since it is heavy on integrated graphics) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing or the device is too slow for it, the photo shows instead.
+- Vaporwave background is Qix, written for a canvas after [Qix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/qix.c) from xscreensaver by Jamie Zawinski and the Mystify screensaver of Windows 95.
+- Terafox Hex Trail background is a canvas port of [HexTrail](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/hextrail.c) from xscreensaver by Jamie Zawinski.
+- Terafox Coral background is Coral, written for a canvas after [Coral](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/coral.c) from xscreensaver by Frederick Roeber.
+- Terafox colours from [Nightfox](https://github.com/EdenEast/nightfox.nvim) by EdenEast.
 - Solarized static background by [Chris Ried](https://unsplash.com/photos/ieic5Tq8YMk) on Unsplash.
 - Solarized Truchet background is a canvas port of [Truchet](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/truchet.c) from xscreensaver by Adrian Likins.
 - Solarized Phosphor background is a canvas port of [Phosphor](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/phosphor.c) from xscreensaver by Jamie Zawinski, with its built-in public domain 6x10 font.
