@@ -28,6 +28,7 @@ import {
 } from './shell/clock'
 import { check, resumable } from './shell/resume'
 import { celebrate } from './shell/fireworks'
+import { dayOf } from './shell/daily'
 import { capital } from './shell/grid'
 import FireworksCanvas from './shell/FireworksCanvas'
 
@@ -228,6 +229,7 @@ const bestTimes = (hinted) =>
     return {
       level,
       name: load(`${key}Name`) || 'Anonymous',
+      date: load(`${key}Date`) || '',
       //an empty slot shows 999 and any time beats it; a record past 999 shows as it is
       time: parseInt(load(key), 10) || 999,
     }
@@ -238,6 +240,7 @@ const clearBestTimes = (hinted) => {
     const key = timeKey(level, hinted)
     remove(key)
     remove(`${key}Name`)
+    remove(`${key}Date`)
   })
   return bestTimes(hinted)
 }
@@ -574,6 +577,7 @@ export const actions = {
       const key = timeKey(winner.level, winner.hinted)
       save(key, winner.time)
       save(`${key}Name`, winner.name.trim())
+      save(`${key}Date`, dayOf())
       actions.toggleBestTime()
       actions.setBestTimeTab(winner.hinted ? 'hinted' : 'clean')
       return { winner: null }
