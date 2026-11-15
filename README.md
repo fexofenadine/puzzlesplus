@@ -2,7 +2,7 @@
 
 # Puzzles Plus
 
-Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All five games share the window, the six themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
+Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All five games share the window, the eight themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
 > **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these five games as an app, offline, with every theme. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
 
@@ -25,6 +25,8 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                             |
 | **Matrix: Sudoku with notes and a hint**                                       | **Solarized Phosphor: 2048 with the hint's advice**                         |
 | ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)           |
+| **Vaporwave: 2048 with a hint, over Pipes**                                    | **Everforest, still: Nonograms with a broken clue outlined, over Coral**    |
+| ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Nonograms on Everforest](docs/screenshots/everforest-nonograms.jpg)       |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
 
@@ -73,7 +75,7 @@ Slide the tiles so equal ones merge, and make a 2048.
 ## Every game
 
 - **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the View menu or with + and -.
-- **Six themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet and Solarized Phosphor, most over an xscreensaver port with its original options, any of which can be switched to a still picture.
+- **Eight themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave and Everforest, most over an xscreensaver port with its original options, any of which can be switched to a still picture.
 - **Hints with a More button** that opens their technique in the game's guide.
 - **Fireworks** in each theme's colours when you win, until you press a key or click, and when 2048 reaches its tile. Switch them off in the Theme menu.
 - **Pause**, automatic when you switch away, and a **boss key** (Esc) that hides everything behind a spreadsheet.
@@ -124,8 +126,11 @@ Classic's hill (`src/shell/backgrounds/hill.webp` and `ridge.json`) is made from
 - Matrix static background [Binary damage code](<https://commons.wikimedia.org/wiki/File:Binary_damage_code_(28227210988).jpg>) by Markus Spiske (CC0).
 - Nord background is a canvas port of [Substrate](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/substrate.c) from xscreensaver, by J. Tarbell ([complexification.net](http://complexification.net)) and Mike Kershaw.
 - Nord colours from [Nord](https://www.nordtheme.com) by Arctic Ice Studio.
+- Vaporwave background is Pipes, written for a canvas after [Pipes](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/pipes.c) from xscreensaver by Marcelo F. Vianna and the Windows 95 screensaver.
+- Everforest background is Coral, written for a canvas after [Coral](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/coral.c) from xscreensaver by Frederick Roeber.
+- Everforest colours from [Everforest](https://github.com/sainnhe/everforest) by Sainnhe Park.
 - Solarized static background by [Chris Ried](https://unsplash.com/photos/ieic5Tq8YMk) on Unsplash.
 - Solarized Truchet background is a canvas port of [Truchet](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/truchet.c) from xscreensaver by Adrian Likins.
 - Solarized Phosphor background is a canvas port of [Phosphor](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/phosphor.c) from xscreensaver by Jamie Zawinski, with its built-in public domain 6x10 font.
-- Theme fonts [Orbitron](https://fonts.google.com/specimen/Orbitron) by Matt McInerney and The League of Moveable Type, [Courier Prime](https://fonts.google.com/specimen/Courier+Prime) by Alan Dague-Greene for Quote-Unquote Apps, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) by JetBrains, [Nunito](https://fonts.google.com/specimen/Nunito) by Vernon Adams, Cyreal and Jacques Le Bailly and [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch) by Cadson Demak, all under the SIL Open Font License (licences in `src/fonts/`). 2048's tiles use [Clear Sans](https://github.com/intel/clear-sans) by Intel, as the original does, under the Apache License 2.0 (cut down here to its digits, the only characters a tile shows).
+- Theme fonts [Orbitron](https://fonts.google.com/specimen/Orbitron) by Matt McInerney and The League of Moveable Type, [Courier Prime](https://fonts.google.com/specimen/Courier+Prime) by Alan Dague-Greene for Quote-Unquote Apps, [JetBrains Mono](https://www.jetbrains.com/lp/mono/) by JetBrains, [Nunito](https://fonts.google.com/specimen/Nunito) by Vernon Adams, Cyreal and Jacques Le Bailly, [Chakra Petch](https://fonts.google.com/specimen/Chakra+Petch) by Cadson Demak and [Figtree](https://github.com/erikdkennedy/figtree) by Erik Kennedy, all under the SIL Open Font License (licences in `src/fonts/`). 2048's tiles use [Clear Sans](https://github.com/intel/clear-sans) by Intel, as the original does, under the Apache License 2.0 (cut down here to its digits, the only characters a tile shows).
 - Classic menu and title bar font is a pixel conversion of [Wine](https://gitlab.winehq.org/wine/wine)'s MS Sans Serif by Huw D M Davies and Dmitry Timoshkov, under the LGPL 2.1 (source, converter and licence in `src/fonts/`).
