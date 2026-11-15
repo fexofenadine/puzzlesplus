@@ -1,4 +1,4 @@
-import { K as __vitePreload, Y as phosphor } from "./HowToPlay-sfgAnlPV.js";
+import { K as __vitePreload, Y as phosphor } from "./HowToPlay-CsahZP7Z.js";
 //#region src/shell/backgrounds/font6x10.js
 var bytes = Uint8Array.from(atob("AAFQAAAAAAAAAIAABAh+AAAAAgQIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAPgAAYcCAAAAAIAACBBgAIBBBIoIAACAQQUIBBBQAKIBBAooAAEAggoEAACAQQKACAAAgEEACAgQAACiAQQKAAABAIIAAAABUAKpHBxAIAJEggAAECAAAAAACBAgAIDMAAIYAACChQQSICAhAAAAAAAIQIOPgj4Y+OHAAAEAIHDgh4cePnxxEcHIkCJEceHHhx8iRIkSJ8cQHBAAIAQAAQAYAQCASAwAAAAAAAAIAAAAAAABhBgkqVKlSpUqVKlSpUqVKlSpUqVKlSpUqVKlSpUqVKgAgAMAIhBwAcHAAAA4AEACQIQAPAABgYAYMBAgQIKLABQecfPnz4QIKAHhQQIKFAAA4IEFAAhAcECChQoUAABAgoUEEChRgUECChQoAACBBQoEAFAAhUkQIEBQQ0SCAAAQIAPwAAAIECAAgwMABCQAAIKFDipQIECEQgAAAAihhECGICAJEiECAgAQiRFCSIkgQIkQgIkQIkSJEiRIhCJEiRIgRBAEKAAABAABACQBAAAIBAAAAAAAAAgAAAAAAAIEBFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBIAiEIACIkAAAEQAoICDAAB0AACCQAgQIADhw4cOHCiJAgQIDhw4cJIjhw4cOAEyJEARIniIAAAAAAgAAAAAAAAAAABgAAAAAAAgAAAAAAhAARHCrxggQCBDQwIAABAgAAAAAAgQIACEAJ8+IAAAgo+UFFAggEKCAAAAERKAQQosQBESY4cEPggRMiJICSBAgRCAihA2ZIkSJEgEIkSIoUCECAREAAHFhw0cIHlhgMiENFhxYaWHHiJEiRInwQQISIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSIAIPEERQQ4AKiwkAAdABAgQCAInQAAIJJCBAQIRIkSJEiSIECBAgECBAgkyRIkSJEiTIkSJEiRJDhw4cOHDxw4cOHDBgwYOLDhw4cOADyJEiRIniIA+VJEBx4AfLCAgAAECAAAAAACBAgAIMDCghwIACABQ4IIACAR8+APgAhEIGDEjJYEOGhAggABCFSI4gJPHiB8ICMECpUieInhwQiKKhAgQQEBAAAACZIkyJ4iZCASQQqZImSZkgIIkSIoiCGBAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhQ4OCACQAyFEjx5kAAPjxwAiNCABwYScumQhEiRIkSJOgePHjwQIECHSpEiRIkRRUiRIkRR4oBAgQIECCokSJEiECBAhEyRIkSJE+TIkSJEiRIkRwqkXHDwAQkPOHA8e/AAH4AAPcP34gMwKPiAAAIAPhRRUAIBCggAAAEEQggCfAmQhECAABD4IIWPiSAkgQJkQgIoQIkyJAiUAhCIoqKCCBAIEAAAB5EgRPiCJEIBOBCpEiRIkBwgiKKhCYQEECACJEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiRIkSJEiACFBAo+EEgCoAkBAGQAAIAAACIUAAAAAkGFDEHz58+fPniBAgQIBAgQIJJkSJEiRCGSJEiRCECQ8ePHjx4+gfPnz4QIECESJEiRIkQBUiRIkSZEmACFR4QSIABBAIAECAAgAAAAAAgQAECAAAoQJAAAAAUOKkgAQIRCBgAQgKCECIIiREEQQQMCABABAiJIiSBAiRCEiRAiRIkCpIiEIijZEIQEAQQAAAImSJMgIHkQgEkEKkSJkmQAiSYoqKGiAgQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIUEjggQOAIjxIAARAAAgAAAMhQAAAPEgoEUiRIkSJEiSIkCBAgECBAgkiRIkSJEUZIkSJEIQIkSJEiRIkiJAgQIBAgQIRIkSJEiRCGSZMmTGkRpUAKhBhw4AfEAgAQIACAAAA/ACBAAQIfPiiBYAACABQQkNAAhAAAEADiAQ+fHAhw4QOGDggEAICDiJ4cePkBxEcMInyJEcQHERwQcEIkQh8cBHAAAAeWHDRwgCRHCSI4iRHFhpA8GGhBRECfBhBgAqVKlSpUqVKlSpUqVKlSpUqVKlSpUqVKlSpUqVKgAg8sRCBAIAcACQAA4AAPgAAAsFAAAAAkHgjxxEiRIkSJOcfPnz44cOHHiI4cOHDiI4cOHDghAsPHjx48ePnDhw4cOHDhw4iOHDhw4AeGjRo0CeAgABUEEEiAAAQCABAgAIAAAAAAIEABAgAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAPgAAAAAAACIAAJAAAAAAQAgAAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAIAHAAAAAAAAAAAAAAACAAACAAAACHBAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAACJAiAACoQQSIAAB4IAECAAgAAAAH4gQAECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAYAAAAABACAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAHEBw="), (c) => c.charCodeAt(0));
 var pixel = (c, x, y) => {
@@ -37,7 +37,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/2048/Game.jsx": () => __vitePreload(() => import("./Game-qRljJflP.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-DRbYD0xL.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/Menu.jsx": () => __vitePreload(() => import("./Menu-Cv5J6wos.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/2048/app.jsx": () => __vitePreload(() => import("./app-DVnUGqLR.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/2048/app.jsx": () => __vitePreload(() => import("./app-BDXvA_pJ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/drag.js": () => __vitePreload(() => import("./drag-nGDPw2x5.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/index.js": () => __vitePreload(() => import("./2048-CMvmZPWf.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/2048/motion.js": () => __vitePreload(() => import("./motion-ByCoJPHM.js").then((m) => m["default"]), [], import.meta.url),
@@ -86,7 +86,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/nonograms/HowToPlay.jsx": () => __vitePreload(() => import("./HowToPlay-Cs1kVZSe.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/Menu.jsx": () => __vitePreload(() => import("./Menu-CeuW86K8.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/Pictures.jsx": () => __vitePreload(() => import("./Pictures-VgLZyUV5.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/nonograms/app.jsx": () => __vitePreload(() => import("./app-A712aH5x.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/nonograms/app.jsx": () => __vitePreload(() => import("./app-BVHPldIJ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/art.js": () => __vitePreload(() => import("./art-BvDoSGMX.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/deal.js": () => __vitePreload(() => import("./deal-DJuJq7Ka.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/nonograms/deal.worker.js": () => __vitePreload(() => import("./deal.worker-BqjaOp6m.js").then((m) => m["default"]), [], import.meta.url),
@@ -120,7 +120,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/ThemeMenu.jsx": () => __vitePreload(() => import("./ThemeMenu-ZLquk35d.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/ViewMenu.jsx": () => __vitePreload(() => import("./ViewMenu-h4XuwPLe.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/WindowControls.jsx": () => __vitePreload(() => import("./WindowControls-Bb2emWpW.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-FAvGDrh-.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/actions.js": () => __vitePreload(() => import("./actions-EhblAhpF.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/glyph.js": () => __vitePreload(() => import("./glyph-C9jad9Wl.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/hill.js": () => __vitePreload(() => import("./hill-4648vmyZ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/backgrounds/index.js": () => __vitePreload(() => import("./backgrounds-Dt2pmn-f.js").then((m) => m["default"]), [], import.meta.url),
@@ -139,7 +139,7 @@ var sources = /* #__PURE__ */ Object.assign({
 	"/src/shell/rain.js": () => __vitePreload(() => import("./rain-DHZx0mvi.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/random.js": () => __vitePreload(() => import("./random-BhJ9jlbQ.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/records.js": () => __vitePreload(() => import("./records-Gu-26K67.js").then((m) => m["default"]), [], import.meta.url),
-	"/src/shell/resume.js": () => __vitePreload(() => import("./resume-BQw_kCzL.js").then((m) => m["default"]), [], import.meta.url),
+	"/src/shell/resume.js": () => __vitePreload(() => import("./resume-DnJUPXou.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/share.js": () => __vitePreload(() => import("./share-D9VIQ3zR.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/start.js": () => __vitePreload(() => import("./start-Bh8rdAaO.js").then((m) => m["default"]), [], import.meta.url),
 	"/src/shell/stats.js": () => __vitePreload(() => import("./stats-BZ3UbgzO.js").then((m) => m["default"]), [], import.meta.url),

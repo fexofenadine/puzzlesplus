@@ -1,5 +1,5 @@
-import { $ as Button, G as startBackgrounds, Q as Dialog, at as save, et as Overlay, g as games, i as About_module_default, it as remove, o as icons, ot as app, rt as load, st as h } from "./HowToPlay-sfgAnlPV.js";
-import { b as stopTick, p as clock } from "./Board-xFGCjAaj.js";
+import { $ as Button, G as startBackgrounds, Q as Dialog, at as save, et as Overlay, g as games, i as About_module_default, it as remove, o as icons, ot as app, rt as load, st as h } from "./HowToPlay-CsahZP7Z.js";
+import { b as stopTick, p as clock } from "./Board-CIiDRB3Q.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",
@@ -116,9 +116,12 @@ var Prompt_module_default = {
 var SHELF = 3;
 var resumable = ({ key, running, pack, unpack, label = () => "", fresh = {} }) => {
 	let last = null;
+	let looked = null;
 	const shelfKey = `${key}.shelf`;
 	const elapsedOf = (game) => Math.max(0, Math.floor((game.paused ? game.pausedAt : clock()) - game.start));
 	const keep = (game, force = false) => {
+		if (game === looked && !force) return;
+		looked = game;
 		if (!running(game)) {
 			if (last !== "") remove(key);
 			last = "";

@@ -1,9 +1,9 @@
-import { $ as Button, E as gameKey, F as undoKey, H as Boss, L as celebrate, M as shellState, N as shortcut, O as listen, Q as Dialog, W as BackgroundSettings, a as Taskbar, at as save, ct as __exportAll, et as Overlay, it as remove, j as shellActions, k as prevent, n as About, r as Link, rt as load, st as h } from "./HowToPlay-sfgAnlPV.js";
-import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, r as Switching, s as lossesOn, t as start, u as StatsList, y as OpenGames } from "./start-DG6zwpFh.js";
-import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-nWOS4Msv.js";
-import { C as timerAction, _ as pauseAction, b as stopTick, g as nextTick, x as tickAction, y as startClock } from "./Board-xFGCjAaj.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-CKUW1JSa.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-Gq_mumiL.js";
+import { $ as Button, E as gameKey, F as undoKey, H as Boss, L as celebrate, M as shellState, N as shortcut, O as listen, Q as Dialog, W as BackgroundSettings, a as Taskbar, at as save, ct as __exportAll, et as Overlay, it as remove, j as shellActions, k as prevent, n as About, r as Link, rt as load, st as h } from "./HowToPlay-CsahZP7Z.js";
+import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, r as Switching, s as lossesOn, t as start, u as StatsList, y as OpenGames } from "./start-Dxt9yBCl.js";
+import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-Cfy6cZ0Y.js";
+import { C as timerAction, _ as pauseAction, b as stopTick, g as nextTick, p as clock, x as tickAction, y as startClock } from "./Board-CIiDRB3Q.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-BJQhleA2.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-DiKMreps.js";
 var keyOf = (n, assisted) => `2048.${n}${assisted ? ".help" : ""}`;
 var clean = (entry) => ({
 	score: parseInt(entry && entry.score, 10) || 0,
@@ -233,7 +233,9 @@ var createGame = (n) => {
 		hinted: false,
 		undone: false,
 		untimed: false,
-		offered: false
+		offered: false,
+		overAt: 0,
+		counted: false
 	};
 };
 var valuesCheck = (values, n) => {
@@ -245,7 +247,7 @@ var saved = resumable({
 	key: "2048.saved",
 	running,
 	label: ({ n, score }) => `${n} × ${n}, ${score} points`,
-	pack: ({ n, tiles, score, tile, history, reached, hinted, undone, untimed }) => ({
+	pack: ({ n, tiles, score, tile, history, reached, hinted, undone, untimed, counted }) => ({
 		n,
 		values: valuesOf(tiles, n),
 		score,
@@ -254,9 +256,10 @@ var saved = resumable({
 		reached,
 		hinted,
 		undone,
-		untimed
+		untimed,
+		counted
 	}),
-	unpack: ({ n, values, score, tile, history, reached, hinted, undone, untimed }) => {
+	unpack: ({ n, values, score, tile, history, reached, hinted, undone, untimed, counted }) => {
 		check(sizes.includes(n) && Number.isInteger(score) && Array.isArray(history));
 		for (const step of history) valuesCheck(step.values, n);
 		check(canMove(valuesCheck(values, n), n));
@@ -271,7 +274,8 @@ var saved = resumable({
 			reached: Boolean(reached),
 			hinted: Boolean(hinted),
 			undone: Boolean(undone),
-			untimed: Boolean(untimed)
+			untimed: Boolean(untimed),
+			counted: Boolean(counted)
 		};
 	}
 });
@@ -370,7 +374,9 @@ var actions = {
 		let winner = null;
 		if (next.over) {
 			stopTick(next.raf);
-			if (!next.reached) tally("2048", { won: false });
+			next.overAt = clock();
+			if (!next.reached && !next.counted) tally("2048", { won: false });
+			next.counted = true;
 			winner = offer(next);
 			next.offered = true;
 		}
@@ -440,7 +446,10 @@ var actions = {
 			undone: true,
 			offered: false
 		};
-		if (game.over && game.start >= 0) next.raf = nextTick(actions.tick, game.start);
+		if (game.over && game.start >= 0) {
+			next.start = game.start + clock() - game.overAt;
+			next.raf = nextTick(actions.tick, next.start);
+		}
 		return {
 			menu: null,
 			hint: null,

@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-DcoV5BSZ.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-gRew5V_e.js","./glyph-DM9oq3hS.js"])))=>i.map(i=>d[i]);
 //#region \0rolldown/runtime.js
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -927,11 +927,11 @@ var __vitePreload = function preload(baseModule, deps, importerUrl) {
 //#endregion
 //#region src/shell/backgrounds/index.js
 var loaders = {
-	matrix: () => __vitePreload(() => import("./matrix-DcoV5BSZ.js"), __vite__mapDeps([0,1]), import.meta.url),
-	substrate: () => __vitePreload(() => import("./substrate-CuOJyPiv.js"), [], import.meta.url),
-	truchet: () => __vitePreload(() => import("./truchet-CTrLzZj0.js"), [], import.meta.url),
-	phosphor: () => __vitePreload(() => import("./phosphor-6qKAmDMW.js"), [], import.meta.url),
-	hill: () => __vitePreload(() => import("./hill-DT1nIm2h.js"), [], import.meta.url)
+	matrix: () => __vitePreload(() => import("./matrix-gRew5V_e.js"), __vite__mapDeps([0,1]), import.meta.url),
+	substrate: () => __vitePreload(() => import("./substrate-CQQXtUue.js"), [], import.meta.url),
+	truchet: () => __vitePreload(() => import("./truchet-CmpLiIUZ.js"), [], import.meta.url),
+	phosphor: () => __vitePreload(() => import("./phosphor-BgCOkrlQ.js"), [], import.meta.url),
+	hill: () => __vitePreload(() => import("./hill-WGP_sFxP.js"), [], import.meta.url)
 };
 var themeBackgrounds = {
 	classic: "hill",
@@ -1685,8 +1685,16 @@ var typing = (event) => [
 	"SELECT",
 	"TEXTAREA"
 ].includes(event.target.tagName);
+var once = [
+	27,
+	113,
+	78,
+	72,
+	80
+];
 var shortcut = (event, state, actions) => {
 	if (typing(event) || event.ctrlKey || event.metaKey || event.altKey) return null;
+	if (event.repeat && once.includes(event.keyCode)) return null;
 	if (event.keyCode === 27) {
 		if (state.menu) actions.closeMenu();
 		else actions.boss();

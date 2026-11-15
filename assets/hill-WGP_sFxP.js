@@ -1,4 +1,4 @@
-import { q as hill } from "./HowToPlay-sfgAnlPV.js";
+import { q as hill } from "./HowToPlay-CsahZP7Z.js";
 //#region src/shell/backgrounds/hill.webp
 var hill_default$1 = new URL("hill.webp", import.meta.url).href;
 //#endregion

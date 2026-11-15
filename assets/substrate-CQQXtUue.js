@@ -1,4 +1,4 @@
-import { X as substrate } from "./HowToPlay-sfgAnlPV.js";
+import { X as substrate } from "./HowToPlay-CsahZP7Z.js";
 //#region src/shell/backgrounds/substrate.js
 var STEP = .42;
 var EMPTY = 10001;
