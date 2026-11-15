@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <title>Light Up</title>
+    <meta
+      name="description"
+      content="Light Up puzzles with hints, every board solvable by logic, free and open source"
+    />
+    <meta
+      name="keywords"
+      content="light up, akari, light bulbs puzzle, logic puzzle, online, free, open source"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#cbcbcb" />
+    <meta property="og:title" content="Light Up" />
+    <meta
+      property="og:description"
+      content="Light Up puzzles with hints, every board solvable by logic, free and open source"
+    />
+    <meta property="og:url" content="https://fexofenadine.github.io/puzzlesplus/lightup/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://fexofenadine.github.io/puzzlesplus/lightup/lightup.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Light Up" />
+    <link rel="manifest" href="../lightup/site.webmanifest" />
+    <link rel="apple-touch-icon" href="../lightup/icon.png" />
+    <link rel="shortcut icon" href="../lightup/favicon.ico" />
+    <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
+//apply the saved theme and window size before first paint
+try {
+  document.documentElement.dataset.theme = localStorage.getItem('theme') || 'classic'
+  //assume animated off classic, the script corrects it
+  if (document.documentElement.dataset.theme !== 'classic') {
+    document.documentElement.dataset.background = 'animated'
+  }
+  document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
+} catch {
+  //blocked storage keeps the defaults
+}
+//if the game fails to start, show why instead of an empty desktop
+addEventListener('error', (event) => {
+  if (document.querySelector('main *')) return
+  const note = document.createElement('pre')
+  note.style.cssText =
+    'position:fixed;left:0;right:0;bottom:0;z-index:9;margin:0;padding:8px;background:#000;color:#fff;font:12px monospace;white-space:pre-wrap'
+  note.textContent = `${document.title} could not start: ${event.message}`
+  document.body.append(note)
+})
+</script>
+    <script type="module" crossorigin src="../assets/lightup.js?v=2aeadc7d"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-OJ0DxZDx.js?v=95b1c61e">
+    <link rel="modulepreload" crossorigin href="../assets/Board-DfH1n9YX.js?v=aa250137">
+    <link rel="modulepreload" crossorigin href="../assets/start-DqdcTAS7.js?v=8801fd90">
+    <link rel="modulepreload" crossorigin href="../assets/grid-BZP-Z9Tf.js?v=163ed17c">
+    <link rel="modulepreload" crossorigin href="../assets/records-B-ET0KxZ.js?v=9cbf7479">
+    <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
+    <link rel="modulepreload" crossorigin href="../assets/cursor-CdrFsOBU.js?v=49504007">
+    <link rel="modulepreload" crossorigin href="../assets/Cell-DE06RbYc.js?v=b6b4568b">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CRbOVm3X.js?v=5ba81abc">
+    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=e557665b">
+    <link rel="stylesheet" crossorigin href="../assets/Board.css?v=9cdfee34">
+    <link rel="stylesheet" crossorigin href="../assets/start.css?v=fc8bf4e5">
+    <link rel="stylesheet" crossorigin href="../assets/records.css?v=7fe0b140">
+    <link rel="stylesheet" crossorigin href="../assets/Game.css?v=d7f3a7ca">
+    <link rel="stylesheet" crossorigin href="../assets/Cell2.css?v=dea223d3">
+  </head>
+  <body>
+    <div id="app">
+      <main></main>
+    </div>
+  </body>
+</html>

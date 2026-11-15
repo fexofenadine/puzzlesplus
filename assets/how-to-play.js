@@ -1,10 +1,11 @@
-import { pt as h, s as help_default } from "./HowToPlay-CczfCeKR.js";
-import { t as Rules } from "./HowToPlay-BfRclIdZ.js";
-import { n as Rules$1 } from "./HowToPlay-B75l5knH.js";
-import { t as Rules$2 } from "./HowToPlay-CKbiIcva.js";
-import { n as Rules$3 } from "./HowToPlay-O-A_Ckfs.js";
-import { t as Rules$4 } from "./HowToPlay-CU9RO19w.js";
-import { n as Page, r as startGuide } from "./Guide-BAr-qxRl.js";
+import { pt as h, s as help_default } from "./HowToPlay-OJ0DxZDx.js";
+import { t as Rules } from "./HowToPlay-BcvcLqqc.js";
+import { n as Rules$1 } from "./HowToPlay-DGfP23Ej.js";
+import { t as Rules$2 } from "./HowToPlay-DrqRoZmG.js";
+import { n as Rules$3 } from "./HowToPlay-CqduL4jW.js";
+import { t as Rules$4 } from "./HowToPlay-GoGhefQQ.js";
+import { n as Rules$5 } from "./HowToPlay-CRbOVm3X.js";
+import { n as Page, r as startGuide } from "./Guide-BLjCZ9Kv.js";
 //#region src/guide/howToPlay.jsx
 var game = (id, title, Rules) => ({
 	id,
@@ -19,6 +20,7 @@ var parts = [{
 		game("nonograms", "Nonograms", Rules$3),
 		game("sudoku", "Sudoku", Rules$4),
 		game("2048", "2048", Rules),
+		game("lightup", "Light Up", Rules$5),
 		{
 			id: "shortcuts",
 			title: "Every game",

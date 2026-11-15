@@ -1,0 +1,4 @@
+//#region src/lightup/About.jsx?raw
+var About_default = "import { h } from 'hyperapp'\nimport About from '../shell/About'\n\nconst LightUpAbout = ({ key, actions }) => (\n  <About key={key} name=\"Light Up Plus\" actions={actions}>\n    <p>\n      Put bulbs on the white cells until every one of them is lit. A bulb lights its row and column\n      as far as the next wall, no bulb may light another, and a numbered wall has exactly that many\n      bulbs in the cells beside it.\n    </p>\n    <p>\n      Boards of 7 × 7, 10 × 10 and 14 × 14 in four levels, each with exactly one solution that logic\n      alone finds, graded by the hardest technique it needs. Hints explain their reasoning and link\n      to the guide.\n    </p>\n    <p>Light Up, also known as Akari, was first published by Nikoli.</p>\n  </About>\n)\n\nexport default LightUpAbout\n";
+//#endregion
+export { About_default as default };
