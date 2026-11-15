@@ -1,12 +1,12 @@
-import { A as shareAction, B as sharedCode, C as resumeItems, D as historyKey, E as gameKey, H as Boss, I as windowClear, L as celebrate, M as shellState, N as shortcut, O as listen, P as toggleAction, R as codeOf, S as SizeMenu, T as ThemeMenu, V as Menu_module_default, W as BackgroundSettings, a as Taskbar, at as load, b as SubMenuItem, c as DAILY_BUDGET, d as finish, et as Dialog, h as gameLinks, it as watchWindow, j as shellActions, k as prevent, lt as h, m as special, n as About, ot as remove, p as seedOf, st as save, u as dayOf, ut as __exportAll, v as MenuItem, w as ViewMenu, x as HelpMenu, y as Separator, z as partsOf } from "./HowToPlay-CPLbgow-.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DCUggz_T.js";
-import { i as Prompt, t as records } from "./records-6Erdu5EP.js";
-import { C as timerAction, _ as pauseAction, b as stopTick, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, x as tickAction, y as startClock } from "./Board-D6qNYYWT.js";
+import { A as listen, C as HelpMenu, D as ThemeMenu, E as ViewMenu, F as shortcut, G as Menu_module_default, I as toggleAction, J as BackgroundSettings, K as Boss, M as shareAction, N as shellActions, O as gameKey, P as shellState, R as windowClear, S as SubMenuItem, T as resumeItems, U as partsOf, V as codeOf, W as sharedCode, _ as gameLinks, a as Taskbar, b as MenuItem, c as DAILY_BUDGET, ct as watchWindow, d as dayOf, dt as save, f as finish, g as special, h as seedOf, it as Dialog, j as prevent, k as historyKey, lt as load, mt as __exportAll, n as About, pt as h, u as dailyNote, ut as remove, w as SizeMenu, x as Separator, z as celebrate } from "./HowToPlay-CczfCeKR.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DhATKfq-.js";
+import { i as Prompt, t as records } from "./records-CIPOg5ft.js";
+import { S as tickAction, _ as pauseAction, b as startClock, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, w as timerAction, x as stopTick } from "./Board-B0rPlua9.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-De7pNOZ2.js";
-import { i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-qslWp0Ry.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-Dpug-1vg.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-CDP1CHWM.js";
 import { t as showRain } from "./rain-D7NoZOvq.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-CKqwc3Ms.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-CKbiIcva.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
@@ -81,6 +81,7 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	onClick: () => actions.newGame()
 }), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Daily Puzzle",
+	hotKey: dailyNote(state.menu, "takuzu"),
 	checked: Boolean(state.game.daily),
 	onClick: () => actions.newGame({ daily: true })
 }), /* @__PURE__ */ h(SubMenuItem, {
@@ -185,6 +186,7 @@ var Game = ({ key, state, actions }) => {
 		given: !paused && givens[i] !== -1,
 		error: errors && errors.has(i),
 		mark: marks[i],
+		cursor: !paused && state.cursor === i,
 		onPress: actions.play
 	})), paused && /* @__PURE__ */ h(PausedCover, { onResume: () => actions.pause(false) })), hint && !paused && /* @__PURE__ */ h(HintPanel, {
 		text: hint.text,
@@ -298,6 +300,7 @@ var createGame = ({ n, level }) => ({
 var saved = resumable({
 	key: "takuzu.saved",
 	running,
+	fresh: { cursor: -1 },
 	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
 	pack: ({ n, level, givens, solution, board, history, future, hinted, untimed, daily, shared }) => ({
 		n,
@@ -395,6 +398,15 @@ var changed = (state, board, history, actions, settled = false) => {
 		game: next
 	};
 };
+var place = (state, actions, i, to, settled) => {
+	const { game } = state;
+	if (game.dealing || game.paused || game.win || game.givens[i] !== -1) return null;
+	const from = game.board[i];
+	if (from === to) return null;
+	const board = game.board.slice();
+	board[i] = to;
+	return changed(state, board, [...game.history, [i, from]], actions, settled);
+};
 var upgradeLadder = () => {
 	if (load("takuzu.ladder") === "5") return;
 	eachSlot((n, level) => {
@@ -413,6 +425,7 @@ var state = {
 	...shellState("takuzu"),
 	hint: null,
 	prompt: false,
+	cursor: -1,
 	errors: Boolean(load("takuzu.errors")),
 	timer: loadTimer("takuzu.timer"),
 	rain: Boolean(load("takuzu.rain")),
@@ -431,7 +444,21 @@ var actions = {
 	},
 	press: (event) => (state, actions) => {
 		if (historyKey(event, state, actions)) return;
-		gameKey(shortcut(event, state, actions), actions);
+		const key = shortcut(event, state, actions);
+		if (key === null || gameKey(key, actions)) return;
+		const typed = {
+			48: 0,
+			96: 0,
+			49: 1,
+			97: 1,
+			8: -1,
+			46: -1,
+			32: "next"
+		}[key];
+		if (arrows[key]) actions.move(arrows[key]);
+		else if (typed !== void 0) actions.type(typed);
+		else return;
+		event.preventDefault();
 	},
 	reset: (payload) => ({ game }, actions) => {
 		stopTick(game.raf);
@@ -453,6 +480,7 @@ var actions = {
 			menu: null,
 			hint: null,
 			prompt: false,
+			cursor: -1,
 			game: {
 				...createGame({
 					n,
@@ -474,15 +502,23 @@ var actions = {
 		} };
 	},
 	play: ({ event, i }) => (state, actions) => {
-		const { game } = state;
 		if (event.button !== 0 && event.button !== 2) return null;
-		if (game.dealing || game.paused || game.win || game.givens[i] !== -1) return null;
 		const back = event.button === 2;
-		const from = game.board[i];
-		const board = game.board.slice();
-		board[i] = cycle[(cycle.indexOf(from) + (back ? 2 : 1)) % 3];
-		const settled = board[i] === (back ? 0 : 1);
-		return changed(state, board, [...game.history, [i, from]], actions, settled);
+		const to = cycle[(cycle.indexOf(state.game.board[i]) + (back ? 2 : 1)) % 3];
+		return {
+			cursor: -1,
+			...place(state, actions, i, to, to === (back ? 0 : 1))
+		};
+	},
+	move: (step) => ({ game, cursor }) => {
+		if (game.dealing || game.paused || game.win) return null;
+		return { cursor: stepCursor(cursor, step, game.n) };
+	},
+	type: (to) => (state, actions) => {
+		const { game, cursor } = state;
+		if (cursor < 0) return null;
+		const next = cycle[(cycle.indexOf(game.board[cursor]) + 1) % 3];
+		return to === "next" ? place(state, actions, cursor, next, next === 1) : place(state, actions, cursor, to, true);
 	},
 	ask: (change) => ({ game }) => {
 		if (game.change !== change || game.win || game.paused || !full(game.board)) return null;

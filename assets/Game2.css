@@ -92,6 +92,54 @@
 .Dialog_clear .Game_rows {
   background: color-mix(in srgb, var(--face) 80%, transparent);
 }
+
+/*the line under the mouse, a band across the field and its clues; classic stays as it was*/
+.Game_rowBand,
+.Game_columnBand {
+  display: none;
+  z-index: 1;
+  background: color-mix(in srgb, var(--highlight) 24%, transparent);
+  pointer-events: none;
+}
+
+.Game_board[data-hover] .Game_rowBand:not([hidden]),
+.Game_board[data-hover] .Game_columnBand:not([hidden]) {
+  display: block;
+}
+
+:root[data-theme='classic'] .Game_board[data-hover] .Game_rowBand,
+:root[data-theme='classic'] .Game_board[data-hover] .Game_columnBand {
+  display: none;
+}
+
+.Game_rowBand {
+  grid-row: var(--hover-row);
+  grid-column: 1 / -1;
+}
+
+.Game_columnBand {
+  grid-column: var(--hover-column);
+  grid-row: 1 / -1;
+}
+
+/*a band shares its clue's cell, so both are placed and neither pushes the other along*/
+.Game_rows .Game_rowBand,
+.Game_rows .Game_clue {
+  grid-column: 1;
+}
+
+.Game_columns .Game_columnBand,
+.Game_columns .Game_clue {
+  grid-row: 1;
+}
+
+.Game_rows .Game_rowBand {
+  justify-self: stretch;
+}
+
+.Game_columns .Game_columnBand {
+  align-self: stretch;
+}
 /*play button over the hidden board*/.Board_paused {
   position: absolute;
   top: 0;
@@ -250,6 +298,14 @@ free for the tile edge and a hint's outline*/
 .Cell_ghostCross {
   --mark: color-mix(in srgb, var(--ng-cross) 70%, transparent);
   box-shadow: none;
+}
+
+/*where the arrow keys are*/
+.Cell_cursor {
+  z-index: 2;
+  outline: 2px solid var(--highlight);
+  outline-offset: -1px;
+  box-shadow: 0 0 0 1px var(--highlight-text);
 }
 
 /*hint outlines, the same colours minesweeper uses*/

@@ -1,12 +1,12 @@
-import { A as shareAction, B as sharedCode, D as historyKey, E as gameKey, H as Boss, L as celebrate, M as shellState, N as shortcut, O as listen, P as toggleAction, R as codeOf, W as BackgroundSettings, a as Taskbar, at as load, c as DAILY_BUDGET, d as finish, et as Dialog, i as About_module_default, j as shellActions, k as prevent, lt as h, m as special, n as About, nt as Overlay, p as seedOf, st as save, tt as Button, u as dayOf, ut as __exportAll, z as partsOf } from "./HowToPlay-CPLbgow-.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DCUggz_T.js";
-import { i as Prompt, t as records } from "./records-6Erdu5EP.js";
-import { C as timerAction, _ as pauseAction, b as stopTick, h as loadTimer, x as tickAction, y as startClock } from "./Board-D6qNYYWT.js";
+import { A as listen, F as shortcut, I as toggleAction, J as BackgroundSettings, K as Boss, M as shareAction, N as shellActions, O as gameKey, P as shellState, U as partsOf, V as codeOf, W as sharedCode, a as Taskbar, at as Button, c as DAILY_BUDGET, d as dayOf, dt as save, f as finish, g as special, h as seedOf, i as About_module_default, it as Dialog, j as prevent, k as historyKey, lt as load, mt as __exportAll, n as About, ot as Overlay, pt as h, z as celebrate } from "./HowToPlay-CczfCeKR.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DhATKfq-.js";
+import { i as Prompt, t as records } from "./records-CIPOg5ft.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-B0rPlua9.js";
 import { n as cellsOf } from "./grid-BZP-Z9Tf.js";
-import { i as BestTimes, r as dealer, t as random } from "./random-qslWp0Ry.js";
+import { a as dealer, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-CDP1CHWM.js";
 import { t as showRain } from "./rain-D7NoZOvq.js";
-import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-CPMn5x08.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-CItEMxTP.js";
+import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-ZAVeVDK9.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-O-A_Ckfs.js";
 //#region src/nonograms/generate.js
 var filled = (cells, n) => {
 	const lines = cellsOf(n);
@@ -299,6 +299,7 @@ var createGame = ({ n, level }) => ({
 var saved = resumable({
 	key: "nonograms.saved",
 	running,
+	fresh: { cursor: -1 },
 	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
 	pack: ({ n, level, clues, solution, board, stroke, history, future, hinted, untimed, art, picked, daily, shared }) => ({
 		n,
@@ -457,6 +458,7 @@ var state = {
 	...shellState("nonograms"),
 	hint: null,
 	prompt: false,
+	cursor: -1,
 	errors: Boolean(load("nonograms.errors")),
 	timer: loadTimer("nonograms.timer"),
 	rain: Boolean(load("nonograms.rain")),
@@ -484,7 +486,18 @@ var actions = {
 	},
 	press: (event) => (state, actions) => {
 		if (historyKey(event, state, actions)) return;
-		gameKey(shortcut(event, state, actions), actions);
+		const key = shortcut(event, state, actions);
+		if (key === null || gameKey(key, actions)) return;
+		const typed = {
+			88: 0,
+			8: -1,
+			46: -1,
+			32: "next"
+		}[key];
+		if (arrows[key]) actions.move(arrows[key]);
+		else if (typed !== void 0) actions.type(typed);
+		else return;
+		event.preventDefault();
 	},
 	reset: (payload) => ({ game, ...state }, actions) => {
 		stopTick(game.raf);
@@ -518,6 +531,7 @@ var actions = {
 			menu: null,
 			hint: null,
 			prompt: false,
+			cursor: -1,
 			procedural,
 			symmetric,
 			game: {
@@ -562,12 +576,30 @@ var actions = {
 		};
 		return {
 			...touch && { touch },
+			cursor: -1,
 			game: {
 				...startClock(game, actions),
 				stroke,
 				board: paint(stroke, i, game.n)
 			}
 		};
+	},
+	move: (step) => ({ game, cursor }) => {
+		if (game.dealing || game.paused || game.win) return null;
+		return { cursor: stepCursor(cursor, step, game.n) };
+	},
+	type: (to) => (state, actions) => {
+		const { game, cursor } = state;
+		if (cursor < 0 || game.dealing || game.paused || game.win || game.stroke) return null;
+		const from = game.board[cursor];
+		const next = cycle[(cycle.indexOf(from) + 1) % 3];
+		const value = to === "next" ? next : to === from ? -1 : to;
+		if (value === from) return null;
+		const board = game.board.slice();
+		board[cursor] = value;
+		const history = [...game.history, [[cursor, from]]];
+		const passing = to === "next" && value === 1;
+		return changed(state, startClock(game, actions), board, history, actions, !passing);
 	},
 	trace: (event) => (state, actions) => {
 		if (!state.game.stroke) return;

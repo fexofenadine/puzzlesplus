@@ -1,10 +1,10 @@
-import { A as shareAction, B as sharedCode, D as historyKey, E as gameKey, H as Boss, L as celebrate, M as shellState, N as shortcut, O as listen, P as toggleAction, R as codeOf, W as BackgroundSettings, a as Taskbar, at as load, c as DAILY_BUDGET, d as finish, j as shellActions, k as prevent, lt as h, m as special, n as About, p as seedOf, st as save, u as dayOf, ut as __exportAll, z as partsOf } from "./HowToPlay-CPLbgow-.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DCUggz_T.js";
-import { i as Prompt, t as records } from "./records-6Erdu5EP.js";
-import { C as timerAction, _ as pauseAction, b as stopTick, h as loadTimer, x as tickAction, y as startClock } from "./Board-D6qNYYWT.js";
-import { i as BestTimes, n as shuffled, r as dealer, t as random } from "./random-qslWp0Ry.js";
-import { A as emptyBoard, C as countSolutions, D as boxShapes, E as bit, F as sizes, I as solved, M as full, N as geometry, O as breaks, T as allowed, _ as rate, c as findHint, f as levels, j as fallback, k as candidatesOf, o as levelNames, r as running, t as Game, w as solve } from "./Game-C5uyvS72.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-DXjYIKF8.js";
+import { A as listen, F as shortcut, I as toggleAction, J as BackgroundSettings, K as Boss, M as shareAction, N as shellActions, O as gameKey, P as shellState, U as partsOf, V as codeOf, W as sharedCode, a as Taskbar, c as DAILY_BUDGET, d as dayOf, dt as save, f as finish, g as special, h as seedOf, j as prevent, k as historyKey, lt as load, mt as __exportAll, n as About, pt as h, z as celebrate } from "./HowToPlay-CczfCeKR.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DhATKfq-.js";
+import { i as Prompt, t as records } from "./records-CIPOg5ft.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-B0rPlua9.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-CDP1CHWM.js";
+import { A as emptyBoard, C as countSolutions, D as boxShapes, E as bit, F as sizes, I as solved, M as full, N as geometry, O as breaks, T as allowed, _ as rate, c as findHint, f as levels, j as fallback, k as candidatesOf, o as levelNames, r as running, t as Game, w as solve } from "./Game-x1xhiqOR.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-CU9RO19w.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,
@@ -276,12 +276,6 @@ var digitOf = (event) => {
 	if (keyCode >= 96 && keyCode <= 105) return keyCode - 96;
 	return -1;
 };
-var arrows = {
-	37: [-1, 0],
-	38: [0, -1],
-	39: [1, 0],
-	40: [0, 1]
-};
 var opened = saved.open(linkedGame());
 var state = {
 	...shellState("sudoku"),
@@ -387,18 +381,10 @@ var actions = {
 			picked: picked === d ? 0 : d
 		};
 	},
-	move: ([dx, dy]) => ({ game, selected }) => {
+	move: (step) => ({ game, selected }) => {
 		if (!playable(game)) return null;
-		const { n } = game;
-		if (selected < 0) return {
-			selected: Math.floor(n * n / 2),
-			picked: 0
-		};
-		const x = selected % n + dx;
-		const y = Math.floor(selected / n) + dy;
-		if (x < 0 || y < 0 || x >= n || y >= n) return null;
 		return {
-			selected: y * n + x,
+			selected: stepCursor(selected, step, game.n),
 			picked: 0
 		};
 	},

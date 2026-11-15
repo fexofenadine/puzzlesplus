@@ -1,14 +1,15 @@
-import { E as gameKey, F as undoKey, H as Boss, L as celebrate, M as shellState, N as shortcut, O as listen, W as BackgroundSettings, a as Taskbar, at as load, et as Dialog, j as shellActions, k as prevent, lt as h, n as About, nt as Overlay, ot as remove, r as Link, st as save, tt as Button, ut as __exportAll } from "./HowToPlay-CPLbgow-.js";
-import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, r as Switching, s as lossesOn, t as start, u as StatsList, y as OpenGames } from "./start-DCUggz_T.js";
-import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-6Erdu5EP.js";
-import { C as timerAction, _ as pauseAction, b as stopTick, g as nextTick, p as clock, x as tickAction, y as startClock } from "./Board-D6qNYYWT.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-B2Dxor-I.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-Bw_fqDl0.js";
+import { A as listen, F as shortcut, J as BackgroundSettings, K as Boss, L as undoKey, N as shellActions, O as gameKey, P as shellState, a as Taskbar, at as Button, d as dayOf, dt as save, it as Dialog, j as prevent, lt as load, mt as __exportAll, n as About, ot as Overlay, pt as h, r as Link, ut as remove, z as celebrate } from "./HowToPlay-CczfCeKR.js";
+import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, r as Switching, s as lossesOn, t as start, u as StatsList, y as OpenGames } from "./start-DhATKfq-.js";
+import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-CIPOg5ft.js";
+import { S as tickAction, _ as pauseAction, b as startClock, g as nextTick, p as clock, w as timerAction, x as stopTick } from "./Board-B0rPlua9.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-SsGE8hJx.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-BfRclIdZ.js";
 var keyOf = (n, assisted) => `2048.${n}${assisted ? ".help" : ""}`;
 var clean = (entry) => ({
 	score: parseInt(entry && entry.score, 10) || 0,
 	tile: parseInt(entry && entry.tile, 10) || 0,
-	name: String(entry && entry.name || "Anonymous")
+	name: String(entry && entry.name || "Anonymous"),
+	date: String(entry && entry.date || "")
 });
 var topOf = (n, assisted) => {
 	const key = keyOf(n, assisted);
@@ -48,10 +49,12 @@ var recordActions = {
 	submitBestTime: (event) => ({ winner }, actions) => {
 		event.preventDefault();
 		const name = winner.name.trim();
-		const list = [...topOf(winner.n, winner.assisted), clean({
+		const entry = clean({
 			...winner,
-			name
-		})].sort((a, b) => b.score - a.score).slice(0, 5);
+			name,
+			date: dayOf()
+		});
+		const list = [...topOf(winner.n, winner.assisted), entry].sort((a, b) => b.score - a.score).slice(0, 5);
 		save(`${winner.key}.top`, JSON.stringify(list));
 		save(winner.key, list[0].score);
 		save(`${winner.key}.tile`, list[0].tile);
@@ -112,7 +115,10 @@ var BestScores = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
 	onSelect: actions.setBestTimeTab
 }), /* @__PURE__ */ h("table", { class: BestTimes_module_default.table }, /* @__PURE__ */ h("thead", null, /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", null), sizes.map((n) => /* @__PURE__ */ h("th", { class: BestTimes_module_default.level }, n, " × ", n)))), /* @__PURE__ */ h("tbody", null, places.map((place) => /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("th", { class: BestTimes_module_default.size }, place + 1), sizes.map((n) => {
 	const best = state[state.tab][n][place];
-	return /* @__PURE__ */ h("td", { class: BestTimes_module_default.slot }, !best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.empty }, "–"), best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.time }, best.score), best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.name }, best.tile, " · ", best.name));
+	return /* @__PURE__ */ h("td", {
+		class: BestTimes_module_default.slot,
+		title: best && best.date ? `Set on ${best.date}` : null
+	}, !best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.empty }, "–"), best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.time }, best.score), best && /* @__PURE__ */ h("span", { class: BestTimes_module_default.name }, best.tile, " · ", best.name));
 }))))), state.stats && /* @__PURE__ */ h(StatsList, {
 	stats: state.stats,
 	wonLabel: "Made the target",

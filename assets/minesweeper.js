@@ -1,10 +1,10 @@
-import { H as Boss, I as windowClear, L as celebrate, M as shellState, N as shortcut, O as listen, W as BackgroundSettings, _ as Menu, a as Taskbar, at as load, et as Dialog, it as watchWindow, j as shellActions, lt as h, n as About, nt as Overlay, ot as remove, st as save, tt as Button, ut as __exportAll } from "./HowToPlay-CPLbgow-.js";
-import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, p as hintTabs, r as Switching, s as lossesOn, t as start, u as StatsList, x as Input, y as OpenGames } from "./start-DCUggz_T.js";
-import { C as timerAction, S as timed, _ as pauseAction, b as stopTick, c as PauseButton, d as Play, f as Digit, g as nextTick, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, p as clock, r as WindowControls, s as HintIcon, t as HintPanel, v as seconds } from "./Board-D6qNYYWT.js";
+import { A as listen, F as shortcut, J as BackgroundSettings, K as Boss, N as shellActions, P as shellState, R as windowClear, a as Taskbar, at as Button, ct as watchWindow, d as dayOf, dt as save, it as Dialog, lt as load, mt as __exportAll, n as About, ot as Overlay, pt as h, ut as remove, y as Menu, z as celebrate } from "./HowToPlay-CczfCeKR.js";
+import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, p as hintTabs, r as Switching, s as lossesOn, t as start, u as StatsList, x as Input, y as OpenGames } from "./start-DhATKfq-.js";
+import { C as timed, _ as pauseAction, c as PauseButton, d as Play, f as Digit, g as nextTick, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, p as clock, r as WindowControls, s as HintIcon, t as HintPanel, v as seconds, w as timerAction, x as stopTick } from "./Board-B0rPlua9.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 import { t as capital } from "./grid-BZP-Z9Tf.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-DPabkkZN.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-CJgLMHvH.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-B8e20xEN.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-B75l5knH.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
@@ -96,7 +96,7 @@ var BestTime = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
 	tabs: hintTabs,
 	active: state.tab,
 	onSelect: actions.setBestTimeTab
-}), /* @__PURE__ */ h("table", { class: BestTime_module_default.table }, /* @__PURE__ */ h("tbody", null, state[state.tab].map((row) => /* @__PURE__ */ h("tr", null, /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.level, ":"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.time, " seconds"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.name))))), state.stats && /* @__PURE__ */ h(StatsList, {
+}), /* @__PURE__ */ h("table", { class: BestTime_module_default.table }, /* @__PURE__ */ h("tbody", null, state[state.tab].map((row) => /* @__PURE__ */ h("tr", { title: row.date ? `Set on ${row.date}` : null }, /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.level, ":"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.time, " seconds"), /* @__PURE__ */ h("td", { class: BestTime_module_default.cell }, row.name))))), state.stats && /* @__PURE__ */ h(StatsList, {
 	stats: state.stats,
 	losses: state.losses
 }), /* @__PURE__ */ h("div", { class: BestTime_module_default.footer }, /* @__PURE__ */ h(Button, {
@@ -355,6 +355,7 @@ var bestTimes = (hinted) => levelNames.map((level) => {
 	return {
 		level,
 		name: load(`${key}Name`) || "Anonymous",
+		date: load(`${key}Date`) || "",
 		time: parseInt(load(key), 10) || 999
 	};
 });
@@ -363,6 +364,7 @@ var clearBestTimes = (hinted) => {
 		const key = timeKey(level, hinted);
 		remove(key);
 		remove(`${key}Name`);
+		remove(`${key}Date`);
 	});
 	return bestTimes(hinted);
 };
@@ -674,6 +676,7 @@ var actions = {
 		const key = timeKey(winner.level, winner.hinted);
 		save(key, winner.time);
 		save(`${key}Name`, winner.name.trim());
+		save(`${key}Date`, dayOf());
 		actions.toggleBestTime();
 		actions.setBestTimeTab(winner.hinted ? "hinted" : "clean");
 		return { winner: null };
