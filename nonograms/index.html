@@ -34,11 +34,22 @@
     <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
 //apply the saved theme and window size before first paint
 try {
-  document.documentElement.dataset.theme = localStorage.getItem('theme') || 'classic'
-  //assume animated off classic, the script corrects it
-  if (document.documentElement.dataset.theme !== 'classic') {
-    document.documentElement.dataset.background = 'animated'
+  //everforest became terafox coral
+  document.documentElement.dataset.theme = (localStorage.getItem('theme') || 'classic').replace(
+    /^everforest$/,
+    'terafox-coral',
+  )
+  //assume animated off classic, the script corrects it; synthwave's is only on when asked for
+  var theme = document.documentElement.dataset.theme
+  var animated = theme !== 'classic' && theme !== 'synthwave'
+  if (theme === 'synthwave') {
+    try {
+      animated = JSON.parse(localStorage.getItem('backgrounds')).neon.animated === true
+    } catch {
+      //nothing saved, the photo stays
+    }
   }
+  if (animated) document.documentElement.dataset.background = 'animated'
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -53,24 +64,24 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/nonograms.js?v=a1850529"></script>
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-C0hyyCJI.js?v=f1b781f0">
-    <link rel="modulepreload" crossorigin href="../assets/Board-C2RPpcv_.js?v=fe0f40db">
-    <link rel="modulepreload" crossorigin href="../assets/start-Zrvth2h-.js?v=bd9253b9">
+    <script type="module" crossorigin src="../assets/nonograms.js?v=ec30b03d"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CJDoAQ5b.js?v=7133c80f">
+    <link rel="modulepreload" crossorigin href="../assets/Board-tKltsp1g.js?v=df721ee6">
+    <link rel="modulepreload" crossorigin href="../assets/start-CS1ZjYpm.js?v=650006da">
     <link rel="modulepreload" crossorigin href="../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../assets/records-CIutaYSt.js?v=c3eab453">
-    <link rel="modulepreload" crossorigin href="../assets/cursor-C-c6YnrS.js?v=90f15e3f">
+    <link rel="modulepreload" crossorigin href="../assets/records-CRBXTMk9.js?v=e99f21b9">
+    <link rel="modulepreload" crossorigin href="../assets/cursor-BpOnQQ2P.js?v=dec305d5">
     <link rel="modulepreload" crossorigin href="../assets/glyph-DM9oq3hS.js?v=5b98df94">
     <link rel="modulepreload" crossorigin href="../assets/rain-D7NoZOvq.js?v=b9e17314">
     <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../assets/Game-DaXED_PR.js?v=03d991b1">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-D_bYi_WH.js?v=38b7e947">
-    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=e557665b">
+    <link rel="modulepreload" crossorigin href="../assets/Game-McXkXsuu.js?v=30f72710">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-D_nlfGwG.js?v=428520cd">
+    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=a3886d29">
     <link rel="stylesheet" crossorigin href="../assets/Board.css?v=9cdfee34">
     <link rel="stylesheet" crossorigin href="../assets/start.css?v=fc8bf4e5">
     <link rel="stylesheet" crossorigin href="../assets/records.css?v=7fe0b140">
     <link rel="stylesheet" crossorigin href="../assets/Game.css?v=d7f3a7ca">
-    <link rel="stylesheet" crossorigin href="../assets/Game2.css?v=7171c8d0">
+    <link rel="stylesheet" crossorigin href="../assets/Game2.css?v=66ff5d3d">
     <link rel="stylesheet" crossorigin href="../assets/nonograms.css?v=63a8fb8a">
   </head>
   <body>

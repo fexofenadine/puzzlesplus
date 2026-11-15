@@ -1,11 +1,11 @@
-import { A as listen, C as HelpMenu, D as ThemeMenu, E as ViewMenu, F as shortcut, G as Menu_module_default, I as toggleAction, J as BackgroundSettings, K as Boss, M as shareAction, N as shellActions, O as gameKey, P as shellState, R as windowClear, S as SubMenuItem, T as resumeItems, U as partsOf, V as codeOf, W as sharedCode, _ as gameLinks, a as Taskbar, b as MenuItem, c as DAILY_BUDGET, ct as watchWindow, d as dayOf, dt as save, f as finish, g as special, h as seedOf, it as Dialog, j as prevent, k as historyKey, lt as load, mt as __exportAll, n as About, pt as h, u as dailyNote, w as SizeMenu, x as Separator, z as celebrate } from "./HowToPlay-C0hyyCJI.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-Zrvth2h-.js";
-import { i as Prompt, t as records } from "./records-CIutaYSt.js";
-import { S as tickAction, _ as pauseAction, b as startClock, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, w as timerAction, x as stopTick } from "./Board-C2RPpcv_.js";
+import { A as listen, C as HelpMenu, D as ThemeMenu, E as ViewMenu, F as shortcut, G as Menu_module_default, I as toggleAction, J as BackgroundSettings, K as Boss, M as shareAction, N as shellActions, O as gameKey, P as shellState, R as windowClear, S as SubMenuItem, T as resumeItems, U as partsOf, V as codeOf, W as sharedCode, _ as gameLinks, a as Taskbar, b as MenuItem, c as DAILY_BUDGET, d as dayOf, dt as load, f as finish, g as special, gt as __exportAll, h as seedOf, ht as h, j as prevent, k as historyKey, n as About, ot as Dialog, pt as save, u as dailyNote, ut as watchWindow, w as SizeMenu, x as Separator, z as celebrate } from "./HowToPlay-CJDoAQ5b.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-CS1ZjYpm.js";
+import { i as Prompt, t as records } from "./records-CRBXTMk9.js";
+import { S as tickAction, _ as pauseAction, b as startClock, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, w as timerAction, x as stopTick } from "./Board-tKltsp1g.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-C-c6YnrS.js";
-import { C as violations, S as solved, _ as darkLeft, a as levels, b as sightsOf, c as nextSteps, g as breaks, h as besideOf, l as rate, m as solve, n as apply, p as countSolutions, t as Cell, v as emptyBoard, w as LightUp_module_default, x as sizes, y as litOf } from "./Cell-Bv0cAULG.js";
-import { t as LightUpHowToPlay } from "./HowToPlay-CXyoKIPo.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BpOnQQ2P.js";
+import { C as violations, S as solved, _ as darkLeft, a as levels, b as sightsOf, c as nextSteps, g as breaks, h as besideOf, l as rate, m as solve, n as apply, p as countSolutions, t as Cell, v as emptyBoard, w as LightUp_module_default, x as sizes, y as litOf } from "./Cell-D_INzHM8.js";
+import { t as LightUpHowToPlay } from "./HowToPlay-BxdleWBp.js";
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
 	wrong: "mistakes",
@@ -128,6 +128,10 @@ var Menu = ({ state, actions }) => /* @__PURE__ */ h("ul", {
 	checked: state.errors,
 	onClick: actions.toggleErrors
 }), /* @__PURE__ */ h(SubMenuItem, {
+	name: "Count Down Numbers",
+	checked: state.countdown,
+	onClick: actions.toggleCountdown
+}), /* @__PURE__ */ h(SubMenuItem, {
 	name: "Timer",
 	checked: state.timer,
 	onClick: actions.toggleTimer
@@ -163,6 +167,10 @@ var Game = ({ key, state, actions }) => {
 	const errors = state.errors && !hidden ? violations(layout, board, n) : null;
 	const marks = !paused && hint && hint.marks || {};
 	const lit = litOf(layout, board, n);
+	const shown = (i) => {
+		if (!state.countdown || layout[i] === -1 || layout[i] === 5) return layout[i];
+		return layout[i] - besideOf(n)[i].filter((c) => board[c] === 1).length;
+	};
 	return /* @__PURE__ */ h(Dialog, {
 		clear: windowClear(state),
 		key,
@@ -202,6 +210,7 @@ var Game = ({ key, state, actions }) => {
 	}, [...board].map((value, i) => /* @__PURE__ */ h(Cell, {
 		i,
 		wall: hidden ? -1 : layout[i],
+		number: hidden ? null : shown(i),
 		value: hidden ? -1 : value,
 		lit: !hidden && lit[i],
 		error: errors && errors.has(i),
@@ -456,6 +465,7 @@ var state = {
 	prompt: false,
 	cursor: -1,
 	errors: Boolean(load("lightup.errors")),
+	countdown: load("lightup.countdown") !== "off",
 	timer: loadTimer("lightup.timer"),
 	shelf: saved.list(),
 	game: opened || createGame(loadChoice()),
@@ -599,6 +609,7 @@ var actions = {
 		return { prompt: false };
 	},
 	toggleErrors: toggleAction("errors", "lightup.errors", "yes"),
+	toggleCountdown: toggleAction("countdown", "lightup.countdown", "", "off"),
 	toggleTimer: timerAction("lightup.timer"),
 	share: shareAction(shareCode),
 	pause: pauseAction(running),
