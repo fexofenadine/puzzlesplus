@@ -17,6 +17,7 @@ import {
   undoKey,
 } from '../shell/actions'
 import {
+  clock,
   nextTick,
   pauseAction,
   startClock,
@@ -80,6 +81,9 @@ export const createGame = (n) => {
     untimed: false,
     //the best score question was asked already
     offered: false,
+    //when the game was lost, and whether that loss was counted
+    overAt: 0,
+    counted: false,
   }
 }
 
@@ -94,7 +98,7 @@ export const saved = resumable({
   key: '2048.saved',
   running,
   label: ({ n, score }) => `${n} × ${n}, ${score} points`,
-  pack: ({ n, tiles, score, tile, history, reached, hinted, undone, untimed }) => ({
+  pack: ({ n, tiles, score, tile, history, reached, hinted, undone, untimed, counted }) => ({
     n,
     values: valuesOf(tiles, n),
     score,
@@ -104,8 +108,9 @@ export const saved = resumable({
     hinted,
     undone,
     untimed,
+    counted,
   }),
-  unpack: ({ n, values, score, tile, history, reached, hinted, undone, untimed }) => {
+  unpack: ({ n, values, score, tile, history, reached, hinted, undone, untimed, counted }) => {
     check(sizes.includes(n) && Number.isInteger(score) && Array.isArray(history))
     for (const step of history) valuesCheck(step.values, n)
     //only games still running are kept, so a board with no move left doesn't fit
@@ -122,6 +127,7 @@ export const saved = resumable({
       hinted: Boolean(hinted),
       undone: Boolean(undone),
       untimed: Boolean(untimed),
+      counted: Boolean(counted),
     }
   },
 })
@@ -229,7 +235,10 @@ export const actions = {
     let winner = null
     if (next.over) {
       stopTick(next.raf)
-      if (!next.reached) tally('2048', { won: false })
+      next.overAt = clock()
+      //a game undone out of a loss and lost again is still one loss
+      if (!next.reached && !next.counted) tally('2048', { won: false })
+      next.counted = true
       winner = offer(next)
       next.offered = true
     }
@@ -298,8 +307,11 @@ export const actions = {
         undone: true,
         offered: false,
       }
-      //a lost game's clock had stopped
-      if (game.over && game.start >= 0) next.raf = nextTick(actions.tick, game.start)
+      //a lost game's clock had stopped, the time since doesn't count
+      if (game.over && game.start >= 0) {
+        next.start = game.start + clock() - game.overAt
+        next.raf = nextTick(actions.tick, next.start)
+      }
       return { menu: null, hint: null, game: next }
     },
   hint:
