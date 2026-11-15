@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Futoshiki Plus Guide</title>
+    <meta
+      name="description"
+      content="How to play Futoshiki Plus, from the rules to every solving technique, with examples"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <link rel="apple-touch-icon" href="../../futoshiki/icon.png" />
+    <link rel="shortcut icon" href="../../futoshiki/favicon.ico" />
+    <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
+//apply the saved theme and window size before first paint
+try {
+  document.documentElement.dataset.theme = localStorage.getItem('theme') || 'classic'
+  //assume animated off classic, the script corrects it
+  if (document.documentElement.dataset.theme !== 'classic') {
+    document.documentElement.dataset.background = 'animated'
+  }
+  document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
+} catch {
+  //blocked storage keeps the defaults
+}
+//if the game fails to start, show why instead of an empty desktop
+addEventListener('error', (event) => {
+  if (document.querySelector('main *')) return
+  const note = document.createElement('pre')
+  note.style.cssText =
+    'position:fixed;left:0;right:0;bottom:0;z-index:9;margin:0;padding:8px;background:#000;color:#fff;font:12px monospace;white-space:pre-wrap'
+  note.textContent = `${document.title} could not start: ${event.message}`
+  document.body.append(note)
+})
+</script>
+    <script type="module" crossorigin src="../../assets/futoshiki-guide.js?v=84b517e9"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-C0hyyCJI.js?v=f1b781f0">
+    <link rel="modulepreload" crossorigin href="../../assets/Board-C2RPpcv_.js?v=fe0f40db">
+    <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
+    <link rel="modulepreload" crossorigin href="../../assets/grid-BZP-Z9Tf.js?v=163ed17c">
+    <link rel="modulepreload" crossorigin href="../../assets/Game-CRBgcRZz.js?v=78accad8">
+    <link rel="modulepreload" crossorigin href="../../assets/Game-BFXiYqZk.js?v=4bd15bb4">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DDnSfLZr.js?v=b81f7c78">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-CCJKPcEt.js?v=77f5d380">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-DxHfUYm4.js?v=b9f5b4d9">
+    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=e557665b">
+    <link rel="stylesheet" crossorigin href="../../assets/Board.css?v=9cdfee34">
+    <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=d7f3a7ca">
+    <link rel="stylesheet" crossorigin href="../../assets/Game3.css?v=b65099d4">
+    <link rel="stylesheet" crossorigin href="../../assets/Game4.css?v=d7375c85">
+    <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">
+  </head>
+  <body>
+    <div id="app">
+      <main></main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+//#region src/futoshiki/About.jsx?raw
+var About_default = "import { h } from 'hyperapp'\nimport About from '../shell/About'\n\nconst FutoshikiAbout = ({ key, actions }) => (\n  <About key={key} name=\"Futoshiki Plus\" actions={actions}>\n    <p>\n      Fill the grid so every row and column holds each digit once, with the signs between cells\n      saying which neighbour is the smaller.\n    </p>\n    <p>\n      Boards from 4 × 4 to 7 × 7 in four levels, each with exactly one solution that logic alone\n      finds, graded by the hardest technique it needs. Notes, hints that explain their reasoning and\n      a guide to every technique.\n    </p>\n    <p>Futoshiki, \"not equal\" in Japanese, was devised by Tamaki Seto.</p>\n  </About>\n)\n\nexport default FutoshikiAbout\n";
+//#endregion
+export { About_default as default };
