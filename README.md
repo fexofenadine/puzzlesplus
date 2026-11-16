@@ -14,21 +14,21 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 
 ## In pictures
 
-| Classic: a hint with its More button, and the Start menu                       | Classic's animated hill: Takuzu with Show Errors                            |
-| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| ![Minesweeper on Classic](docs/screenshots/classic-minesweeper.jpg)            | ![Takuzu over the animated hill](docs/screenshots/classic-hill-takuzu.webp) |
-| **Synthwave: a lost Expert game glitching, and best times**                    | **Matrix: Nonograms with rain glyphs and a hint**                           |
-| ![Minesweeper on Synthwave](docs/screenshots/synthwave-minesweeper.webp)       | ![Nonograms on Matrix](docs/screenshots/matrix-nonograms.webp)              |
-| **Nord: 25 × 25 Expert maximised over Substrate, with the View menu**          | **Solarized Truchet, still: a full Takuzu board with a mistake**            |
-| ![Nonograms on Nord](docs/screenshots/nord-nonograms.webp)                     | ![Takuzu on Solarized Truchet](docs/screenshots/solarized-takuzu.jpg)       |
-| **Solarized Phosphor: Open Games after closing a window**                      | **A guide page, its example drawn by the game's own code**                  |
-| ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                             |
-| **Matrix: Sudoku with notes and a hint**                                       | **Solarized Phosphor: 2048 with the hint's advice**                         |
-| ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)           |
-| **Synthwave: Light Up on 14 × 14 with a hint**                                 | **Nord, still: the Light Up guide, its examples drawn by the game**         |
-| ![Light Up on Synthwave](docs/screenshots/synthwave-lightup.jpg)               | ![The Light Up guide](docs/screenshots/lightup-guide.jpg)                   |
-| **Vaporwave: 2048 with a hint, over Qix**                                      | **Terafox Hex Trail: Futoshiki with a hint**                                |
-| ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Futoshiki on Terafox](docs/screenshots/terafox-futoshiki.webp)            |
+| Classic: a hint with its More button, and the Start menu                       | Classic's Drift Clouds: Takuzu with Show Errors                          |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| ![Minesweeper on Classic](docs/screenshots/classic-minesweeper.jpg)            | ![Takuzu over Drift Clouds](docs/screenshots/classic-clouds-takuzu.webp) |
+| **Synthwave: a lost Expert game glitching, and best times**                    | **Matrix: Nonograms with rain glyphs and a hint**                        |
+| ![Minesweeper on Synthwave](docs/screenshots/synthwave-minesweeper.webp)       | ![Nonograms on Matrix](docs/screenshots/matrix-nonograms.webp)           |
+| **Nord: 25 × 25 Expert maximised over Substrate, with the View menu**          | **Solarized Truchet, still: a full Takuzu board with a mistake**         |
+| ![Nonograms on Nord](docs/screenshots/nord-nonograms.webp)                     | ![Takuzu on Solarized Truchet](docs/screenshots/solarized-takuzu.jpg)    |
+| **Solarized Phosphor: Open Games after closing a window**                      | **A guide page, its example drawn by the game's own code**               |
+| ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                          |
+| **Matrix: Sudoku with notes and a hint**                                       | **Solarized Phosphor: 2048 with the hint's advice**                      |
+| ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)        |
+| **Synthwave: Light Up on 14 × 14 with a hint**                                 | **Nord, still: the Light Up guide, its examples drawn by the game**      |
+| ![Light Up on Synthwave](docs/screenshots/synthwave-lightup.jpg)               | ![The Light Up guide](docs/screenshots/lightup-guide.jpg)                |
+| **Vaporwave: 2048 with a hint, over Qix**                                      | **Terafox Hex Trail: Futoshiki with a hint**                             |
+| ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Futoshiki on Terafox](docs/screenshots/terafox-futoshiki.webp)         |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
 
@@ -126,7 +126,7 @@ yarn lint     #lint
 yarn deploy   #build and publish to github pages
 ```
 
-Classic's hill (`src/shell/backgrounds/hill.webp` and `ridge.json`) is made from the CC0 source photo by `src/shell/backgrounds/hill.py`, which needs Python with Pillow and numpy. The theme fonts are converted by `src/fonts/convert.mjs`.
+The theme fonts are converted by `src/fonts/convert.mjs`.
 
 ## Credits
 
@@ -137,14 +137,14 @@ Classic's hill (`src/shell/backgrounds/hill.webp` and `ridge.json`) is made from
 - Nonograms were devised in 1987 by Non Ishida and, independently, Tetsuya Nishio. This version's pictures, solver and hints are its own.
 - Forked from [frenzzy/minesweeper](https://github.com/frenzzy/minesweeper) by Vladimir Kutepov, bootstrapped with [Hyperapp Starter](https://github.com/kriasoft/hyperapp-starter).
 - Classic background by [Chris Barbalis](https://unsplash.com/photos/green-grass-field-under-blue-sky--nYBR0LFTvQ) on Unsplash, colour matched to resemble Bliss.
-- Classic's animated hill is cut from [Clouds above Cattle Hill, Roedean](<https://commons.wikimedia.org/wiki/File:Clouds_above_Cattle_Hill,_Roedean_(February_2011).JPG>) by Hassocks5489 (CC0), retouched, mirrored and colour matched to Bliss by `src/shell/backgrounds/hill.py`. Its sky and clouds are drawn live.
+- Classic's optional animated background is [2D Clouds](https://www.shadertoy.com/view/4tdSWr) by drift, shipped by xscreensaver as Drift Clouds; drift gives permission to use it in any way, asking only for credit. It is bundled here and drawn with WebGL.
 - Synthwave background by [Neeqolah Creative Works](https://unsplash.com/photos/a-computer-generated-image-of-a-sun-setting-in-the-distance-Tn5gnXGI3hI) on Unsplash.
 - Synthwave colours from [SynthWave '84](https://github.com/robb0wen/synthwave-vscode) by Robb Owen.
 - Matrix code rain is a canvas port of [GLMatrix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/glmatrix.c) from xscreensaver by Jamie Zawinski.
 - Matrix static background [Binary damage code](<https://commons.wikimedia.org/wiki/File:Binary_damage_code_(28227210988).jpg>) by Markus Spiske (CC0).
 - Nord background is a canvas port of [Substrate](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/substrate.c) from xscreensaver, by J. Tarbell ([complexification.net](http://complexification.net)) and Mike Kershaw.
 - Nord colours from [Nord](https://www.nordtheme.com) by Arctic Ice Studio.
-- Synthwave's optional animated background (Background Settings, off by default since it is heavy on integrated graphics) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing or the device is too slow for it, the photo shows instead.
+- Synthwave's animated background (on by default, slowed to 0.2x; Background Settings can switch it off) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing, a draw is too slow or the first frames come at under 10 a second, the photo shows instead.
 - Vaporwave background is Qix, written for a canvas after [Qix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/qix.c) from xscreensaver by Jamie Zawinski and the Mystify screensaver of Windows 95.
 - Terafox Hex Trail background is a canvas port of [HexTrail](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/hextrail.c) from xscreensaver by Jamie Zawinski.
 - Terafox Coral background is Coral, written for a canvas after [Coral](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/coral.c) from xscreensaver by Frederick Roeber.
