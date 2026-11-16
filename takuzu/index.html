@@ -36,14 +36,16 @@ try {
     /^everforest$/,
     'terafox-coral',
   )
-  //assume animated off classic, the script corrects it; synthwave's is only on when asked for
+  //assume animated off classic, the script corrects it; synthwave's is on unless switched off
+  //since its default changed (settings version 1)
   var theme = document.documentElement.dataset.theme
-  var animated = theme !== 'classic' && theme !== 'synthwave'
+  var animated = theme !== 'classic'
   if (theme === 'synthwave') {
     try {
-      animated = JSON.parse(localStorage.getItem('backgrounds')).neon.animated === true
+      var saved = JSON.parse(localStorage.getItem('backgrounds'))
+      animated = !(saved.version >= 1 && saved.neon.animated === false)
     } catch {
-      //nothing saved, the photo stays
+      //nothing saved, the shader is on
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
@@ -61,24 +63,24 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/takuzu.js?v=e9c54231"></script>
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CJDoAQ5b.js?v=7133c80f">
-    <link rel="modulepreload" crossorigin href="../assets/Board-tKltsp1g.js?v=df721ee6">
-    <link rel="modulepreload" crossorigin href="../assets/start-CS1ZjYpm.js?v=650006da">
+    <script type="module" crossorigin src="../assets/takuzu.js?v=1bac30bd"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DjysyF6D.js?v=26f60798">
+    <link rel="modulepreload" crossorigin href="../assets/Board-BKDkSDLh.js?v=755f3c86">
+    <link rel="modulepreload" crossorigin href="../assets/start-BvCne5BX.js?v=4281185d">
     <link rel="modulepreload" crossorigin href="../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../assets/records-CRBXTMk9.js?v=e99f21b9">
+    <link rel="modulepreload" crossorigin href="../assets/records-UJ4tQerb.js?v=b3522c40">
     <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../assets/Cell-ChOzPx7z.js?v=c73a39d5">
-    <link rel="modulepreload" crossorigin href="../assets/cursor-BpOnQQ2P.js?v=dec305d5">
+    <link rel="modulepreload" crossorigin href="../assets/Cell-CbWDmTeV.js?v=51874234">
+    <link rel="modulepreload" crossorigin href="../assets/cursor-DK079s_4.js?v=ea999734">
     <link rel="modulepreload" crossorigin href="../assets/glyph-DM9oq3hS.js?v=5b98df94">
     <link rel="modulepreload" crossorigin href="../assets/rain-D7NoZOvq.js?v=b9e17314">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CpwMwCck.js?v=0432016e">
-    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=a3886d29">
-    <link rel="stylesheet" crossorigin href="../assets/Board.css?v=9cdfee34">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DkwEMDyv.js?v=ed65d6fe">
+    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=304eb062">
+    <link rel="stylesheet" crossorigin href="../assets/Board.css?v=0760ea54">
     <link rel="stylesheet" crossorigin href="../assets/start.css?v=fc8bf4e5">
     <link rel="stylesheet" crossorigin href="../assets/records.css?v=7fe0b140">
     <link rel="stylesheet" crossorigin href="../assets/Game.css?v=d7f3a7ca">
-    <link rel="stylesheet" crossorigin href="../assets/Cell.css?v=7842ae09">
+    <link rel="stylesheet" crossorigin href="../assets/Cell.css?v=f8c0c797">
   </head>
   <body>
     <div id="app">

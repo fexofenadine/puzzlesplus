@@ -110,6 +110,7 @@
   left: 0;
   z-index: 2;
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
 }.Board_paused svg {
