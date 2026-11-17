@@ -39,9 +39,10 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
-  //a motion choice overrules the system's from the first paint
+  //full motion unless reduced or the system's was chosen, from the first paint
   var motion = localStorage.getItem('motion')
-  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
+  if (motion !== 'system')
+    document.documentElement.dataset.motion = motion === 'reduce' ? 'reduce' : 'full'
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -56,16 +57,16 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/how-to-play.js?v=317b09bc"></script>
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CirTAZve.js?v=2b7e670b">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-wg9t2Rfk.js?v=944876d4">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CeIXY3kU.js?v=992773ae">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-xeyU7RnJ.js?v=e20cc705">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BhlfpYVk.js?v=bcfed81b">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BezSbx6n.js?v=f7015f2d">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BBuzfC76.js?v=2ecbf6e9">
-    <link rel="modulepreload" crossorigin href="../assets/Guide-BrMHveYv.js?v=bb46f719">
+    <script type="module" crossorigin src="../assets/how-to-play.js?v=61a007b0"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DghiV_5t.js?v=5daadeb6">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-B5edeLA6.js?v=04153471">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CDTDr7VA.js?v=59eee391">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-D9LN-vei.js?v=9eaf9a68">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BScEsrMq.js?v=f98b8af5">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BFiGOSHi.js?v=feed1cba">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CLrzRaAx.js?v=d955208b">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-9kzF6aEr.js?v=2f491fed">
+    <link rel="modulepreload" crossorigin href="../assets/Guide-nX0gHmjr.js?v=61a87efa">
     <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../assets/Guide.css?v=efb1f487">
   </head>

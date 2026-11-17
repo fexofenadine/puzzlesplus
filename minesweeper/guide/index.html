@@ -42,9 +42,10 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
-  //a motion choice overrules the system's from the first paint
+  //full motion unless reduced or the system's was chosen, from the first paint
   var motion = localStorage.getItem('motion')
-  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
+  if (motion !== 'system')
+    document.documentElement.dataset.motion = motion === 'reduce' ? 'reduce' : 'full'
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -59,13 +60,13 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=402e8f41"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
+    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=824eab9c"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DghiV_5t.js?v=5daadeb6">
     <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../../assets/hint-SeaYW1i5.js?v=ef221596">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-wg9t2Rfk.js?v=944876d4">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-BrMHveYv.js?v=bb46f719">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-C0-AvOKb.js?v=00afe13c">
+    <link rel="modulepreload" crossorigin href="../../assets/hint-Bn5bCS4x.js?v=990f0181">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CDTDr7VA.js?v=59eee391">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-nX0gHmjr.js?v=61a87efa">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-BNAFN34d.js?v=c51442e2">
     <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=d7f3a7ca">
     <link rel="stylesheet" crossorigin href="../../assets/hint.css?v=80da05c8">

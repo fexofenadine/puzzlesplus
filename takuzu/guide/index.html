@@ -42,9 +42,10 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
-  //a motion choice overrules the system's from the first paint
+  //full motion unless reduced or the system's was chosen, from the first paint
   var motion = localStorage.getItem('motion')
-  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
+  if (motion !== 'system')
+    document.documentElement.dataset.motion = motion === 'reduce' ? 'reduce' : 'full'
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -59,13 +60,13 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/takuzu-guide.js?v=cf64bdcd"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
+    <script type="module" crossorigin src="../../assets/takuzu-guide.js?v=3df6f42d"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DghiV_5t.js?v=5daadeb6">
     <link rel="modulepreload" crossorigin href="../../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../../assets/Cell-Bfkhgsr1.js?v=6a191f4e">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CeIXY3kU.js?v=992773ae">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-BrMHveYv.js?v=bb46f719">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-C0-AvOKb.js?v=00afe13c">
+    <link rel="modulepreload" crossorigin href="../../assets/Cell-CrQvfYPR.js?v=04e989ed">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-D9LN-vei.js?v=9eaf9a68">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-nX0gHmjr.js?v=61a87efa">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-BNAFN34d.js?v=c51442e2">
     <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../../assets/Cell.css?v=f8c0c797">
     <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">

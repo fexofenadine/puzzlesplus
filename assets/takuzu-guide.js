@@ -1,8 +1,8 @@
-import { o as icons, vt as h } from "./HowToPlay-Bndc6bdN.js";
-import { c as pairs, d as twins, f as whatIf, i as gaps, n as balance, r as counts, s as oneLeft, t as Cell, u as repeats, x as Game_module_default } from "./Cell-Bfkhgsr1.js";
-import { t as Rules } from "./HowToPlay-CeIXY3kU.js";
-import { r as startGuide, t as Figure } from "./Guide-BrMHveYv.js";
-import { t as desktopSection } from "./desktop-C0-AvOKb.js";
+import { o as icons, vt as h } from "./HowToPlay-DghiV_5t.js";
+import { c as pairs, d as twins, f as whatIf, i as gaps, n as balance, r as counts, s as oneLeft, t as Cell, u as repeats, x as Game_module_default } from "./Cell-CrQvfYPR.js";
+import { t as Rules } from "./HowToPlay-D9LN-vei.js";
+import { r as startGuide, t as Figure } from "./Guide-nX0gHmjr.js";
+import { t as desktopSection } from "./desktop-BNAFN34d.js";
 //#region src/guide/TakuzuExample.jsx
 var finders = {
 	pair: pairs,

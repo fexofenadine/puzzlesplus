@@ -1,11 +1,11 @@
-import { A as listen, B as celebrate, C as HelpMenu, D as ThemeMenu, E as ViewMenu, F as shortcut, I as toggleAction, J as Menu_module_default, K as partsOf, M as shareAction, N as shellActions, O as gameKey, P as shellState, R as windowClear, S as SubMenuItem, T as resumeItems, V as stopFireworks, W as codeOf, Y as Boss, Z as BackgroundSettings, _ as gameLinks, a as Taskbar, b as MenuItem, c as DAILY_BUDGET, d as dayOf, f as finish, g as special, gt as save, h as seedOf, j as prevent, k as historyKey, lt as Dialog, mt as load, n as About, pt as watchWindow, q as sharedCode, u as dailyNote, vt as h, w as SizeMenu, x as Separator, yt as __exportAll } from "./HowToPlay-Bndc6bdN.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-djPJ331p.js";
-import { i as Prompt, t as records } from "./records-BciD_Dfp.js";
-import { S as tickAction, _ as pauseAction, b as startClock, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, w as timerAction, x as stopTick } from "./Board-DiXZycFb.js";
+import { A as listen, B as celebrate, C as HelpMenu, D as ThemeMenu, E as ViewMenu, F as shortcut, I as toggleAction, J as Menu_module_default, K as partsOf, M as shareAction, N as shellActions, O as gameKey, P as shellState, R as windowClear, S as SubMenuItem, T as resumeItems, V as stopFireworks, W as codeOf, Y as Boss, Z as BackgroundSettings, _ as gameLinks, a as Taskbar, b as MenuItem, c as DAILY_BUDGET, d as dayOf, f as finish, g as special, gt as save, h as seedOf, j as prevent, k as historyKey, lt as Dialog, mt as load, n as About, pt as watchWindow, q as sharedCode, u as dailyNote, vt as h, w as SizeMenu, x as Separator, yt as __exportAll } from "./HowToPlay-DghiV_5t.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-BK5HTHVv.js";
+import { i as Prompt, t as records } from "./records-CV0EsYuY.js";
+import { S as tickAction, _ as pauseAction, b as startClock, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, w as timerAction, x as stopTick } from "./Board-Ceq0kt-d.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-Bf5JxYKl.js";
-import { C as violations, S as solved, _ as darkLeft, a as levels, b as sightsOf, c as nextSteps, g as breaks, h as besideOf, l as rate, m as solve, n as apply, p as countSolutions, t as Cell, v as emptyBoard, w as LightUp_module_default, x as sizes, y as litOf } from "./Cell-DE2ZOSkq.js";
-import { t as LightUpHowToPlay } from "./HowToPlay-BezSbx6n.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BghG5l0w.js";
+import { C as violations, S as solved, _ as darkLeft, a as levels, b as sightsOf, c as nextSteps, g as breaks, h as besideOf, l as rate, m as solve, n as apply, p as countSolutions, t as Cell, v as emptyBoard, w as LightUp_module_default, x as sizes, y as litOf } from "./Cell-Vbgjrw86.js";
+import { t as LightUpHowToPlay } from "./HowToPlay-CLrzRaAx.js";
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",
 	wrong: "mistakes",
