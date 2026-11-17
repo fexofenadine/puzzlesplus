@@ -42,6 +42,9 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
+  //a motion choice overrules the system's from the first paint
+  var motion = localStorage.getItem('motion')
+  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -56,12 +59,12 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/lightup-guide.js?v=d0c38b16"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-C3-s11sA.js?v=f63ccc62">
-    <link rel="modulepreload" crossorigin href="../../assets/Cell-DipO7IlD.js?v=f06fc7aa">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-76Qc_vB1.js?v=e7ae013c">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-DZ5xMTHS.js?v=81983ab3">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-BOSQwVJU.js?v=a5060b77">
+    <script type="module" crossorigin src="../../assets/lightup-guide.js?v=f60aa0e3"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
+    <link rel="modulepreload" crossorigin href="../../assets/Cell-DE2ZOSkq.js?v=736ad330">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-BezSbx6n.js?v=f7015f2d">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-BrMHveYv.js?v=bb46f719">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-C0-AvOKb.js?v=00afe13c">
     <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../../assets/Cell2.css?v=fcd52eae">
     <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">

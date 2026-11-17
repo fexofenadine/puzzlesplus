@@ -42,6 +42,9 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
+  //a motion choice overrules the system's from the first paint
+  var motion = localStorage.getItem('motion')
+  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -56,15 +59,15 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/nonograms-guide.js?v=adb5fbe3"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-C3-s11sA.js?v=f63ccc62">
+    <script type="module" crossorigin src="../../assets/nonograms-guide.js?v=a611e9eb"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
     <link rel="modulepreload" crossorigin href="../../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../../assets/Board-9CkhB2np.js?v=e99fe18c">
+    <link rel="modulepreload" crossorigin href="../../assets/Board-DiXZycFb.js?v=46209701">
     <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../../assets/Game-DQI9PrsZ.js?v=70767df2">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-BZ-lZNuN.js?v=6f6a0401">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-DZ5xMTHS.js?v=81983ab3">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-BOSQwVJU.js?v=a5060b77">
+    <link rel="modulepreload" crossorigin href="../../assets/Game-_MbxK8Fk.js?v=95cb4402">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-xeyU7RnJ.js?v=e20cc705">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-BrMHveYv.js?v=bb46f719">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-C0-AvOKb.js?v=00afe13c">
     <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../../assets/Board.css?v=0760ea54">
     <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=d7f3a7ca">

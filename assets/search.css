@@ -358,13 +358,23 @@ theme's --t-glow*/
   }
 }
 
+/*reduced motion as the system asks, unless the theme menu says otherwise*/
 @media (prefers-reduced-motion: reduce) {
-  .Board2048_fresh,
-  .Board2048_merged {
+  :root:not([data-motion]) .Board2048_fresh,
+  :root:not([data-motion]) .Board2048_merged {
     animation: none;
   }
 
-  .Board2048_gone {
+  :root:not([data-motion]) .Board2048_gone {
     animation-delay: 0s;
   }
+}
+
+:root[data-motion='reduce'] .Board2048_fresh,
+:root[data-motion='reduce'] .Board2048_merged {
+  animation: none;
+}
+
+:root[data-motion='reduce'] .Board2048_gone {
+  animation-delay: 0s;
 }

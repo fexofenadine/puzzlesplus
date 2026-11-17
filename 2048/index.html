@@ -60,6 +60,9 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
+  //a motion choice overrules the system's from the first paint
+  var motion = localStorage.getItem('motion')
+  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -74,21 +77,21 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/2048.js?v=1326be47"></script>
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-C3-s11sA.js?v=f63ccc62">
-    <link rel="modulepreload" crossorigin href="../assets/Board-9CkhB2np.js?v=e99fe18c">
-    <link rel="modulepreload" crossorigin href="../assets/start-B1XKqRj7.js?v=77b7a086">
+    <script type="module" crossorigin src="../assets/2048.js?v=9bf91365"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
+    <link rel="modulepreload" crossorigin href="../assets/Board-DiXZycFb.js?v=46209701">
+    <link rel="modulepreload" crossorigin href="../assets/start-djPJ331p.js?v=50b644fb">
     <link rel="modulepreload" crossorigin href="../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../assets/records-D-Tysj5m.js?v=7e9f26da">
+    <link rel="modulepreload" crossorigin href="../assets/records-BciD_Dfp.js?v=1692dacc">
     <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../assets/search-7Evo6MSs.js?v=9a3a654c">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-Cc-ZmXK0.js?v=7dbedc95">
+    <link rel="modulepreload" crossorigin href="../assets/search-txHq5E3l.js?v=4279a083">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CirTAZve.js?v=2b7e670b">
     <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../assets/Board.css?v=0760ea54">
     <link rel="stylesheet" crossorigin href="../assets/start.css?v=fc8bf4e5">
     <link rel="stylesheet" crossorigin href="../assets/records.css?v=7fe0b140">
     <link rel="stylesheet" crossorigin href="../assets/Game.css?v=d7f3a7ca">
-    <link rel="stylesheet" crossorigin href="../assets/search.css?v=3bab88ac">
+    <link rel="stylesheet" crossorigin href="../assets/search.css?v=f9aa9abc">
   </head>
   <body>
     <div id="app">

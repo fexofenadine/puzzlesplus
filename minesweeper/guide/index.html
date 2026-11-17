@@ -42,6 +42,9 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
+  //a motion choice overrules the system's from the first paint
+  var motion = localStorage.getItem('motion')
+  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -56,13 +59,13 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=a3bff1e8"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-C3-s11sA.js?v=f63ccc62">
+    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=402e8f41"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
     <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../../assets/hint-XTkqmSg4.js?v=73701d52">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-44itcvN2.js?v=52e82a09">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-DZ5xMTHS.js?v=81983ab3">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-BOSQwVJU.js?v=a5060b77">
+    <link rel="modulepreload" crossorigin href="../../assets/hint-SeaYW1i5.js?v=ef221596">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-wg9t2Rfk.js?v=944876d4">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-BrMHveYv.js?v=bb46f719">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-C0-AvOKb.js?v=00afe13c">
     <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=d7f3a7ca">
     <link rel="stylesheet" crossorigin href="../../assets/hint.css?v=80da05c8">

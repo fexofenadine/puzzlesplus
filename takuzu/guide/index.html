@@ -42,6 +42,9 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
+  //a motion choice overrules the system's from the first paint
+  var motion = localStorage.getItem('motion')
+  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -56,13 +59,13 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/takuzu-guide.js?v=78a5c2b4"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-C3-s11sA.js?v=f63ccc62">
+    <script type="module" crossorigin src="../../assets/takuzu-guide.js?v=cf64bdcd"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
     <link rel="modulepreload" crossorigin href="../../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../../assets/Cell-oSzoPsW3.js?v=c34364dc">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-BuRKdlRI.js?v=5391bb1f">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-DZ5xMTHS.js?v=81983ab3">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-BOSQwVJU.js?v=a5060b77">
+    <link rel="modulepreload" crossorigin href="../../assets/Cell-Bfkhgsr1.js?v=6a191f4e">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CeIXY3kU.js?v=992773ae">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-BrMHveYv.js?v=bb46f719">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-C0-AvOKb.js?v=00afe13c">
     <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../../assets/Cell.css?v=f8c0c797">
     <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">

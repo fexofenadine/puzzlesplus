@@ -60,6 +60,9 @@ try {
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
+  //a motion choice overrules the system's from the first paint
+  var motion = localStorage.getItem('motion')
+  if (motion === 'reduce' || motion === 'full') document.documentElement.dataset.motion = motion
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
 } catch {
   //blocked storage keeps the defaults
@@ -74,14 +77,14 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/minesweeper.js?v=d22d0fce"></script>
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-C3-s11sA.js?v=f63ccc62">
-    <link rel="modulepreload" crossorigin href="../assets/Board-9CkhB2np.js?v=e99fe18c">
-    <link rel="modulepreload" crossorigin href="../assets/start-B1XKqRj7.js?v=77b7a086">
+    <script type="module" crossorigin src="../assets/minesweeper.js?v=4a07f9ad"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-Bndc6bdN.js?v=6bacdac5">
+    <link rel="modulepreload" crossorigin href="../assets/Board-DiXZycFb.js?v=46209701">
+    <link rel="modulepreload" crossorigin href="../assets/start-djPJ331p.js?v=50b644fb">
     <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
     <link rel="modulepreload" crossorigin href="../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../assets/hint-XTkqmSg4.js?v=73701d52">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-44itcvN2.js?v=52e82a09">
+    <link rel="modulepreload" crossorigin href="../assets/hint-SeaYW1i5.js?v=ef221596">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-wg9t2Rfk.js?v=944876d4">
     <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=08d99edd">
     <link rel="stylesheet" crossorigin href="../assets/Board.css?v=0760ea54">
     <link rel="stylesheet" crossorigin href="../assets/start.css?v=fc8bf4e5">
