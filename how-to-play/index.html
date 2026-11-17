@@ -15,16 +15,27 @@ try {
     /^everforest$/,
     'terafox-coral',
   )
-  //assume animated off classic, the script corrects it; synthwave's is on unless switched off
-  //since its default changed (settings version 1)
+  //animated off classic unless it was switched off, the script corrects the rest
+  //synthwave's only counts as off since its default changed (settings version 1)
   var theme = document.documentElement.dataset.theme
   var animated = theme !== 'classic'
-  if (theme === 'synthwave') {
+  var ids = {
+    synthwave: 'neon',
+    matrix: 'matrix',
+    nord: 'substrate',
+    solarized: 'truchet',
+    'solarized-phosphor': 'phosphor',
+    vaporwave: 'qix',
+    terafox: 'hextrail',
+    'terafox-coral': 'coral',
+  }
+  if (ids[theme]) {
     try {
       var saved = JSON.parse(localStorage.getItem('backgrounds'))
-      animated = !(saved.version >= 1 && saved.neon.animated === false)
+      var off = saved[ids[theme]].animated === false
+      animated = !(off && (theme !== 'synthwave' || saved.version >= 1))
     } catch {
-      //nothing saved, the shader is on
+      //nothing saved, the background moves
     }
   }
   if (animated) document.documentElement.dataset.background = 'animated'
@@ -42,16 +53,16 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/how-to-play.js?v=53fa7397"></script>
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DjysyF6D.js?v=26f60798">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BpqtewWR.js?v=0e9989db">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-LK_nnSi2.js?v=effeda8b">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DkwEMDyv.js?v=ed65d6fe">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BFC83rH9.js?v=a27b534c">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DIiNTuic.js?v=110e0c1b">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-D4_Lv9fo.js?v=c1ddac80">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-C0plpKcn.js?v=da18722c">
-    <link rel="modulepreload" crossorigin href="../assets/Guide-BIe8HtbN.js?v=3e605bbc">
+    <script type="module" crossorigin src="../assets/how-to-play.js?v=89ba7ee8"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BzzntM0_.js?v=71438ba3">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CvDA3wxC.js?v=97fe5774">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-Dy03hu8G.js?v=18910ab7">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DVzIR559.js?v=955186a7">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DWkzNx8a.js?v=3dfa5389">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BJ5xliXI.js?v=15daf01c">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-HmMZ1P0m.js?v=1e13d9cc">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-GQrC75Lf.js?v=ce3d6696">
+    <link rel="modulepreload" crossorigin href="../assets/Guide-Do5-ejb9.js?v=8243544d">
     <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=304eb062">
     <link rel="stylesheet" crossorigin href="../assets/Guide.css?v=efb1f487">
   </head>
