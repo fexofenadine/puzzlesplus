@@ -27,7 +27,7 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)        |
 | **Synthwave: Light Up on 14 × 14 with a hint**                                 | **Nord, still: the Light Up guide, its examples drawn by the game**      |
 | ![Light Up on Synthwave](docs/screenshots/synthwave-lightup.jpg)               | ![The Light Up guide](docs/screenshots/lightup-guide.jpg)                |
-| **Vaporwave: 2048 with a hint, over Qix**                                      | **Terafox Hex Trail: Futoshiki with a hint**                             |
+| **Vaporwave: 2048 with a hint, over its tape and Qix**                         | **Terafox Hex Trail: Futoshiki with a hint**                             |
 | ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Futoshiki on Terafox](docs/screenshots/terafox-futoshiki.webp)         |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
@@ -126,7 +126,7 @@ yarn lint     #lint
 yarn deploy   #build and publish to github pages
 ```
 
-The theme fonts are converted by `src/fonts/convert.mjs`.
+Vaporwave's wallpaper (`src/vaporwave.webp`) is drawn by `src/shell/backgrounds/pastel.py`, which needs Python with Pillow and numpy. The theme fonts are converted by `src/fonts/convert.mjs`.
 
 ## Credits
 
@@ -144,8 +144,8 @@ The theme fonts are converted by `src/fonts/convert.mjs`.
 - Matrix static background [Binary damage code](<https://commons.wikimedia.org/wiki/File:Binary_damage_code_(28227210988).jpg>) by Markus Spiske (CC0).
 - Nord background is a canvas port of [Substrate](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/substrate.c) from xscreensaver, by J. Tarbell ([complexification.net](http://complexification.net)) and Mike Kershaw.
 - Nord colours from [Nord](https://www.nordtheme.com) by Arctic Ice Studio.
-- Synthwave's animated background (on by default, slowed to 0.2x; Background Settings can switch it off) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing, a draw is too slow or the first frames come at under 10 a second, the photo shows instead.
-- Vaporwave background is Qix, written for a canvas after [Qix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/qix.c) from xscreensaver by Jamie Zawinski and the Mystify screensaver of Windows 95.
+- Synthwave's animated background (on by default, slowed to 0.2x; Animated in the Theme menu switches it off) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing, a draw is too slow or the first frames come at under 10 a second, the photo shows instead.
+- Vaporwave background is Qix, written for a canvas after [Qix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/qix.c) from xscreensaver by Jamie Zawinski and the Mystify screensaver of Windows 95. Its lines play over the theme's wallpaper, a picture drawn for this project by `src/shell/backgrounds/pastel.py`.
 - Terafox Hex Trail background is a canvas port of [HexTrail](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/hextrail.c) from xscreensaver by Jamie Zawinski.
 - Terafox Coral background is Coral, written for a canvas after [Coral](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/coral.c) from xscreensaver by Frederick Roeber.
 - Terafox colours from [Nightfox](https://github.com/EdenEast/nightfox.nvim) by EdenEast.
