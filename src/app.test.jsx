@@ -404,6 +404,29 @@ it('puts the background button after pause on the title bar, neither on the orig
   wired.peek()
   expect(titles({})).toEqual(['Pause (P)', 'Show only the background', 'Minimise', 'Maximise'])
   expect(titles({ original: true })).toEqual(['Minimise', null])
+  expect(titles({ narrow: true })).toEqual(['Pause (P)', 'Minimise', 'Maximise'])
+})
+
+it('leaves the background button off boards under 13 columns, which it would widen', () => {
+  const has = (level, portrait = false) => {
+    start({ theme: 'nord', portrait })
+    wired.reset({ level })
+    wired.peek()
+    const titled = (node) =>
+      Boolean(node) &&
+      (typeof node === 'function'
+        ? titled(node(current, wired))
+        : Array.isArray(node)
+          ? node.some(titled)
+          : node.attributes?.title === 'Show only the background' ||
+            (node.children || []).some(titled))
+    return titled(view(current, wired))
+  }
+  expect(has('beginner')).toBe(false)
+  expect(has('intermediate')).toBe(true)
+  expect(has('expert')).toBe(true)
+  //on its side expert shows 16 columns
+  expect(has('expert', true)).toBe(true)
 })
 
 it('has an extreme level at expert density, 30% wider and taller', () => {

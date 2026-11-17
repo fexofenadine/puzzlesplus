@@ -23,6 +23,10 @@ export const transposed = ({ portrait, game }) => portrait && game.width > game.
 
 //columns a board needs before the scoreboard fits a pause button without widening the window
 const ROOMY = 11
+//and before the title bar fits the background button the same way, on the widest font (matrix)
+const WIDE = 13
+
+const shown = (state) => (transposed(state) ? state.game.height : state.game.width)
 
 const rowsOf = (state) => {
   const { field } = state.game
@@ -51,6 +55,7 @@ const Game = ({ key, state, actions }) => (
       <WindowControls
         {...windowProps(state, actions, state.game.paused, running(state.game))}
         original={state.theme === 'classic'}
+        narrow={shown(state) < WIDE}
       />
     }
     onClose={actions.close}
@@ -76,7 +81,7 @@ const Game = ({ key, state, actions }) => (
             >
               <HintIcon />
             </SideButton>
-            {(transposed(state) ? state.game.height : state.game.width) >= ROOMY && (
+            {shown(state) >= ROOMY && (
               <PauseButton
                 {...windowProps(state, actions, state.game.paused, running(state.game))}
               />
