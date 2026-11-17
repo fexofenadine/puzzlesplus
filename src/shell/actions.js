@@ -4,6 +4,7 @@ import { importData } from './backup'
 import { copy, linkOf } from './share'
 import { load, save } from './storage'
 import { fireworksKey, fireworksOn } from './fireworks'
+import { loadMotion, saveMotion } from './motion'
 import { renamed, themes } from './themes'
 import { games } from './GameLinks'
 import { backgroundFor, configure, defaults, loadSettings, saveSettings } from './backgrounds'
@@ -75,6 +76,7 @@ export const shellState = (page, root = '../') => ({
   backgroundSettings: null,
   glass: loadGlass(),
   fireworks: fireworksOn(page, loadTheme()),
+  motion: loadMotion(),
   howTo: false,
   about: false,
   //the copy link and backup dialogs, null while shut
@@ -344,6 +346,10 @@ export const shellActions = {
       save(key, key === 'fireworks' ? (fireworks ? 'off' : '') : fireworks ? '' : 'on')
       return { menu: null, fireworks: !fireworks }
     },
+  setMotion: (motion) => {
+    saveMotion(motion)
+    return { menu: null, motion }
+  },
   //a phone's options sheet sets the opacity straight away, saved as it goes
   setOpacity:
     (opacity) =>
