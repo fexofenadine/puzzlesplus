@@ -9,6 +9,7 @@ import { renamed, themes } from './themes'
 import { games } from './GameLinks'
 import { backgroundFor, configure, defaults, loadSettings, saveSettings } from './backgrounds'
 import { showScreensaver } from './screensaver'
+import { defaultEffects, loadEffects, saveEffects } from './glitches'
 import {
   applyZoom,
   fitZoom,
@@ -82,6 +83,9 @@ export const shellState = (page, root = '../') => ({
   //the copy link and backup dialogs, null while shut
   share: null,
   backup: null,
+  //view, glitches: the dialog, and which screen effects are on
+  glitches: false,
+  effects: loadEffects(),
   zoom: { chosen: loadZoom(), scale: loadZoom(), seen: null, maximised: loadMaximised() },
   portrait: Boolean(window.matchMedia && matchMedia('(orientation: portrait)').matches),
 })
@@ -220,6 +224,22 @@ export const shellActions = {
       else
         return { backup: { ...backup, pending: null, note: 'That is not a Puzzles Plus backup.' } }
     },
+  toggleGlitches:
+    () =>
+    ({ glitches }) => ({ menu: null, glitches: !glitches }),
+  //an effect switched on or off shows and is saved at once
+  setEffect:
+    ([id, on]) =>
+    ({ effects }) => {
+      const next = { ...effects, [id]: on }
+      saveEffects(next)
+      return { effects: next }
+    },
+  resetEffects: () => () => {
+    const next = defaultEffects()
+    saveEffects(next)
+    return { effects: next }
+  },
   closeMenu: () => ({ menu: null }),
   toggleStart:
     () =>
