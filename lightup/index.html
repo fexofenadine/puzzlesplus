@@ -81,6 +81,18 @@ try {
 } catch {
   //blocked storage keeps the defaults
 }
+//scanlines about 3 css pixels apart, but always a whole number of the screen's own pixels, so
+//every line comes out alike; again whenever the pixel ratio changes (zoom, another screen)
+var scanPeriod = function () {
+  var ratio = window.devicePixelRatio || 1
+  var period = Math.max(2, Math.round(3 * ratio)) / ratio
+  document.documentElement.style.setProperty('--scan-period', period + 'px')
+  if (window.matchMedia)
+    matchMedia('(resolution: ' + ratio + 'dppx)').addEventListener('change', scanPeriod, {
+      once: true,
+    })
+}
+scanPeriod()
 //if the game fails to start, show why instead of an empty desktop
 addEventListener('error', (event) => {
   if (document.querySelector('main *')) return
@@ -91,17 +103,17 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/lightup.js?v=c7917b89"></script>
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-DMoFzVxF.js?v=265055d5">
-    <link rel="modulepreload" crossorigin href="../assets/Board-KLLrK3pO.js?v=b8924271">
-    <link rel="modulepreload" crossorigin href="../assets/start-Hd2-zmgX.js?v=88b756b8">
+    <script type="module" crossorigin src="../assets/lightup.js?v=052e2893"></script>
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BoT0kLlt.js?v=3be60992">
+    <link rel="modulepreload" crossorigin href="../assets/Board-CyKGQCPh.js?v=a761ca3e">
+    <link rel="modulepreload" crossorigin href="../assets/start-CjN8yFZL.js?v=ce041298">
     <link rel="modulepreload" crossorigin href="../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../assets/records-xklM0Sn0.js?v=74ecb715">
+    <link rel="modulepreload" crossorigin href="../assets/records-DWKoZBaN.js?v=62ed79bf">
     <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../assets/cursor-F8A5nzoL.js?v=eca40a89">
-    <link rel="modulepreload" crossorigin href="../assets/Cell-Ca4xtIhU.js?v=2a528ba8">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-ffr6HQae.js?v=7c27246c">
-    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=84599f24">
+    <link rel="modulepreload" crossorigin href="../assets/cursor-BJ3S5KCF.js?v=6323dc28">
+    <link rel="modulepreload" crossorigin href="../assets/Cell-D5lyv-Vq.js?v=9d295799">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-Ck6Pc4cW.js?v=7f0279b3">
+    <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=96e2b940">
     <link rel="stylesheet" crossorigin href="../assets/Board.css?v=add134de">
     <link rel="stylesheet" crossorigin href="../assets/start.css?v=f246cdbc">
     <link rel="stylesheet" crossorigin href="../assets/records.css?v=7fe0b140">
