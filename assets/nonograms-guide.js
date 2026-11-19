@@ -1,9 +1,9 @@
-import { Y as cx, o as icons, vt as h } from "./HowToPlay--TlFJb0R.js";
+import { J as cx, _t as h, o as icons } from "./HowToPlay-C6Js2ads.js";
 import { n as cellsOf } from "./grid-BZP-Z9Tf.js";
-import { a as Cell, f as lineSteps, i as tracks, n as place, p as nextSteps, v as cluesOf, w as Game_module_default, x as lineDone } from "./Game-D1JzFpiJ.js";
-import { n as Rules } from "./HowToPlay-C7LQVdVY.js";
-import { r as startGuide, t as Figure } from "./Guide-7d72mSeb.js";
-import { t as desktopSection } from "./desktop-B6y7UaR5.js";
+import { a as Cell, f as lineSteps, i as tracks, n as place, p as nextSteps, v as cluesOf, w as Game_module_default, x as lineDone } from "./Game-DPyphsp1.js";
+import { n as Rules } from "./HowToPlay-Dz7CYGdY.js";
+import { r as startGuide, t as Figure } from "./Guide-B6gKzrOk.js";
+import { t as desktopSection } from "./desktop-D3oYmHte.js";
 //#region src/guide/NonogramsExample.jsx
 var levelOf = {
 	complete: 0,
@@ -191,7 +191,7 @@ var parts = [
 				body: () => [
 					/* @__PURE__ */ h("p", null, /* @__PURE__ */ h("b", null, "Hint"), " (H, the Game menu or the ? button) points out a clue that can't be matched any more first, then a cell that can't fit the only solution, and otherwise the easiest next step. Its clue and the cells it reasons from are outlined in blue, the cells it settles show faintly in green, and a More button under the board opens its section here."),
 					/* @__PURE__ */ h("p", null, /* @__PURE__ */ h("b", null, "Show Errors"), " (Game menu, off by default) turns a clue red once its line can't match. When every fill is placed but the picture is wrong, the game asks whether you want a hint. ", /* @__PURE__ */ h("b", null, "Undo"), " (Ctrl+Z) takes back a whole drag at a time."),
-					/* @__PURE__ */ h("p", null, "Each size and level keeps a best time, with and without hints. On Matrix,", " ", /* @__PURE__ */ h("b", null, "Rain Glyphs"), " in the Theme menu draws filled cells as a glyph from the code rain.")
+					/* @__PURE__ */ h("p", null, "Each size and level keeps a best time, with and without hints. On Matrix,", " ", /* @__PURE__ */ h("b", null, "Rain Glyphs"), " in the Display menu draws filled cells as a glyph from the code rain.")
 				]
 			},
 			desktopSection

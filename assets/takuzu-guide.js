@@ -1,8 +1,8 @@
-import { o as icons, vt as h } from "./HowToPlay--TlFJb0R.js";
-import { c as pairs, d as twins, f as whatIf, i as gaps, n as balance, r as counts, s as oneLeft, t as Cell, u as repeats, x as Game_module_default } from "./Cell-CxRoTMXX.js";
-import { t as Rules } from "./HowToPlay-CEJ6iABM.js";
-import { r as startGuide, t as Figure } from "./Guide-7d72mSeb.js";
-import { t as desktopSection } from "./desktop-B6y7UaR5.js";
+import { _t as h, o as icons } from "./HowToPlay-C6Js2ads.js";
+import { c as pairs, d as twins, f as whatIf, i as gaps, n as balance, r as counts, s as oneLeft, t as Cell, u as repeats, x as Game_module_default } from "./Cell-Dcwbrnom.js";
+import { t as Rules } from "./HowToPlay-Dj-oTq1l.js";
+import { r as startGuide, t as Figure } from "./Guide-B6gKzrOk.js";
+import { t as desktopSection } from "./desktop-D3oYmHte.js";
 //#region src/guide/TakuzuExample.jsx
 var finders = {
 	pair: pairs,
@@ -145,7 +145,7 @@ var parts = [
 				body: () => [
 					/* @__PURE__ */ h("p", null, /* @__PURE__ */ h("b", null, "Hint"), " (H, the Game menu or the ? button) points out a broken rule first, then a cell that can't fit the only solution, and otherwise the easiest next step. The cells it reasons from are outlined in blue, the cell it fills in green, and the reason shows under the board with a More button that opens its section here."),
 					/* @__PURE__ */ h("p", null, /* @__PURE__ */ h("b", null, "Show Errors"), " (Game menu, off by default) stripes cells that break a rule as you go. When every cell is filled but the board isn't solved, the game asks whether you want a hint, or lets you find the mistake yourself. ", /* @__PURE__ */ h("b", null, "Undo"), " (Ctrl+Z or the arrow button) takes back one change at a time."),
-					/* @__PURE__ */ h("p", null, "Each size and level keeps a best time, with and without hints. On Matrix,", " ", /* @__PURE__ */ h("b", null, "Rain Glyphs"), " in the Theme menu draws the two values as glyphs from the code rain.")
+					/* @__PURE__ */ h("p", null, "Each size and level keeps a best time, with and without hints. On Matrix,", " ", /* @__PURE__ */ h("b", null, "Rain Glyphs"), " in the Display menu draws the two values as glyphs from the code rain.")
 				]
 			},
 			desktopSection

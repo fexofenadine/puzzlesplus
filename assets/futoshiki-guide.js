@@ -1,9 +1,9 @@
-import { o as icons, vt as h } from "./HowToPlay--TlFJb0R.js";
-import { s as Cell } from "./Game-BwtV7YZV.js";
-import { T as Futoshiki_module_default, f as nextSteps, i as place, n as Signs, o as tracks, r as noteColumns, u as apply, v as candidatesOf } from "./Game-DImGPO3n.js";
-import { n as Rules } from "./HowToPlay-CaeYnxnk.js";
-import { r as startGuide, t as Figure } from "./Guide-7d72mSeb.js";
-import { t as desktopSection } from "./desktop-B6y7UaR5.js";
+import { _t as h, o as icons } from "./HowToPlay-C6Js2ads.js";
+import { s as Cell } from "./Game-Da__UgKM.js";
+import { T as Futoshiki_module_default, f as nextSteps, i as place, n as Signs, o as tracks, r as noteColumns, u as apply, v as candidatesOf } from "./Game-DOWr-LO7.js";
+import { n as Rules } from "./HowToPlay-CR5lRarI.js";
+import { r as startGuide, t as Figure } from "./Guide-B6gKzrOk.js";
+import { t as desktopSection } from "./desktop-D3oYmHte.js";
 //#region src/guide/FutoshikiExample.jsx
 var puzzleOf = ({ rows, right, down }) => {
 	const n = rows.length;
