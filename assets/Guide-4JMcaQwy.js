@@ -1,4 +1,4 @@
-import { E as DisplayMenu, K as Menu_module_default, M as shellActions, N as shellState, P as shortcut, X as startBackgrounds, Y as BackgroundSettings, _t as h, a as Taskbar, ct as Dialog, gt as app, k as listen, q as Boss } from "./HowToPlay-BoT0kLlt.js";
+import { E as DisplayMenu, K as Menu_module_default, M as shellActions, N as shellState, P as shortcut, X as startBackgrounds, Y as BackgroundSettings, _t as h, a as Taskbar, ct as Dialog, gt as app, k as listen, q as Boss } from "./HowToPlay-B6MhPMZv.js";
 var Guide_module_default = {
 	page: "Guide_page",
 	body: "Guide_body",

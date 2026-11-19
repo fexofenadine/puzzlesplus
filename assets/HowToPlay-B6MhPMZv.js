@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-kD1yL0W7.js","./glyph-DM9oq3hS.js","./driftclouds-DhOQSA_q.js","./shader-CK3GJC2r.js","./neon-DbVauZqi.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./matrix-C8mvvzT3.js","./glyph-DM9oq3hS.js","./driftclouds-KgI-6tju.js","./shader-CK3GJC2r.js","./neon-IhyvQAeI.js"])))=>i.map(i=>d[i]);
 //#region \0rolldown/runtime.js
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
@@ -1636,15 +1636,15 @@ var __vitePreload = function preload(baseModule, deps, importerUrl) {
 //#endregion
 //#region src/shell/backgrounds/index.js
 var loaders = {
-	matrix: () => __vitePreload(() => import("./matrix-kD1yL0W7.js"), __vite__mapDeps([0,1]), import.meta.url),
-	substrate: () => __vitePreload(() => import("./substrate-BaTKSag_.js"), [], import.meta.url),
-	truchet: () => __vitePreload(() => import("./truchet-xSWjAZR_.js"), [], import.meta.url),
-	phosphor: () => __vitePreload(() => import("./phosphor-D-EsSsIt.js"), [], import.meta.url),
-	driftclouds: () => __vitePreload(() => import("./driftclouds-DhOQSA_q.js"), __vite__mapDeps([2,3]), import.meta.url),
-	qix: () => __vitePreload(() => import("./qix-bYl-6bPJ.js"), [], import.meta.url),
-	hextrail: () => __vitePreload(() => import("./hextrail-CGLGYSEf.js"), [], import.meta.url),
-	neon: () => __vitePreload(() => import("./neon-DbVauZqi.js"), __vite__mapDeps([4,3]), import.meta.url),
-	coral: () => __vitePreload(() => import("./coral-mdTiYv7U.js"), [], import.meta.url)
+	matrix: () => __vitePreload(() => import("./matrix-C8mvvzT3.js"), __vite__mapDeps([0,1]), import.meta.url),
+	substrate: () => __vitePreload(() => import("./substrate-BZXTVN4F.js"), [], import.meta.url),
+	truchet: () => __vitePreload(() => import("./truchet-BKWCqxkN.js"), [], import.meta.url),
+	phosphor: () => __vitePreload(() => import("./phosphor-D8L-lMlI.js"), [], import.meta.url),
+	driftclouds: () => __vitePreload(() => import("./driftclouds-KgI-6tju.js"), __vite__mapDeps([2,3]), import.meta.url),
+	qix: () => __vitePreload(() => import("./qix-Ct-rm2Hh.js"), [], import.meta.url),
+	hextrail: () => __vitePreload(() => import("./hextrail-B-vsmBn8.js"), [], import.meta.url),
+	neon: () => __vitePreload(() => import("./neon-IhyvQAeI.js"), __vite__mapDeps([4,3]), import.meta.url),
+	coral: () => __vitePreload(() => import("./coral-BOU1XyWV.js"), [], import.meta.url)
 };
 var themeBackgrounds = {
 	classic: "driftclouds",

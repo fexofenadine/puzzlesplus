@@ -1,5 +1,5 @@
-import { U as copy, V as SITE, _t as h, ct as Dialog, d as dayOf, ht as save, l as clearDaily, lt as Button, m as resultText, mt as remove, p as readDaily, pt as load, ut as Overlay } from "./HowToPlay-BoT0kLlt.js";
-import { c as readStats, i as clearStats, v as Prompt_module_default } from "./start-CjN8yFZL.js";
+import { U as copy, V as SITE, _t as h, ct as Dialog, d as dayOf, ht as save, l as clearDaily, lt as Button, m as resultText, mt as remove, p as readDaily, pt as load, ut as Overlay } from "./HowToPlay-B6MhPMZv.js";
+import { c as readStats, i as clearStats, v as Prompt_module_default } from "./start-DiNVjlIi.js";
 import { t as capital } from "./grid-BZP-Z9Tf.js";
 //#region src/shell/Prompt.jsx
 var Prompt = ({ key, title, text, actions }) => /* @__PURE__ */ h(Overlay, {

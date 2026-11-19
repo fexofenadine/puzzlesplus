@@ -1,5 +1,5 @@
-import { C as HelpMenu, E as DisplayMenu, J as cx, K as Menu_module_default, L as windowClear, S as SubMenuItem, T as resumeItems, _ as gameLinks, _t as h, b as MenuItem, ct as Dialog, ft as watchWindow, u as dailyNote, w as SizeMenu, x as Separator } from "./HowToPlay-BoT0kLlt.js";
-import { a as CrossIcon, c as PauseButton, d as Play, f as Digit, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, o as FillIcon, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon } from "./Board-CyKGQCPh.js";
+import { C as HelpMenu, E as DisplayMenu, J as cx, K as Menu_module_default, L as windowClear, S as SubMenuItem, T as resumeItems, _ as gameLinks, _t as h, b as MenuItem, ct as Dialog, ft as watchWindow, u as dailyNote, w as SizeMenu, x as Separator } from "./HowToPlay-B6MhPMZv.js";
+import { a as CrossIcon, c as PauseButton, d as Play, f as Digit, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, o as FillIcon, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon } from "./Board-CG_BxHC3.js";
 import { t as Game_module_default$1 } from "./Game.module-CghLtUtO.js";
 import { n as cellsOf, r as lineName, t as capital } from "./grid-BZP-Z9Tf.js";
 var Game_module_default = {

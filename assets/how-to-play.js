@@ -1,12 +1,12 @@
-import { _t as h, s as help_default } from "./HowToPlay-BoT0kLlt.js";
-import { t as Rules } from "./HowToPlay-BG5E8Xea.js";
-import { n as Rules$1 } from "./HowToPlay-DyLrD1sP.js";
-import { t as Rules$2 } from "./HowToPlay-_IEC1WMF.js";
-import { n as Rules$3 } from "./HowToPlay-DBvwkE4_.js";
-import { t as Rules$4 } from "./HowToPlay-vqiQcCXg.js";
-import { n as Rules$5 } from "./HowToPlay-Ck6Pc4cW.js";
-import { n as Rules$6 } from "./HowToPlay-5oKgOfZ-.js";
-import { n as Page, r as startGuide } from "./Guide-DOvnOw-U.js";
+import { _t as h, s as help_default } from "./HowToPlay-B6MhPMZv.js";
+import { t as Rules } from "./HowToPlay-BUoPrXEG.js";
+import { n as Rules$1 } from "./HowToPlay-BzqPTwC4.js";
+import { t as Rules$2 } from "./HowToPlay-lh8prvGv.js";
+import { n as Rules$3 } from "./HowToPlay-DFqRENdq.js";
+import { t as Rules$4 } from "./HowToPlay-1eO8qWjk.js";
+import { n as Rules$5 } from "./HowToPlay-va3Z4MI7.js";
+import { n as Rules$6 } from "./HowToPlay-Sq-GeUsv.js";
+import { n as Page, r as startGuide } from "./Guide-4JMcaQwy.js";
 //#region src/guide/howToPlay.jsx
 var game = (id, title, Rules) => ({
 	id,

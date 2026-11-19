@@ -1,4 +1,4 @@
-import { J as cx, _t as h } from "./HowToPlay-BoT0kLlt.js";
+import { J as cx, _t as h } from "./HowToPlay-B6MhPMZv.js";
 var Cell_module_default = {
 	root: "Cell_root",
 	pressed: "Cell_pressed Cell_root",

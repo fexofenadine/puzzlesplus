@@ -1,4 +1,4 @@
-import { ot as substrate } from "./HowToPlay-BoT0kLlt.js";
+import { ot as substrate } from "./HowToPlay-B6MhPMZv.js";
 //#region src/shell/backgrounds/substrate.js
 var STEP = .42;
 var EMPTY = 10001;

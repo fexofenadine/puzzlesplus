@@ -1,10 +1,10 @@
-import { B as stopFireworks, L as windowClear, M as shellActions, N as shellState, P as shortcut, Y as BackgroundSettings, _t as h, a as Taskbar, ct as Dialog, d as dayOf, ft as watchWindow, ht as save, k as listen, lt as Button, mt as remove, n as About, pt as load, q as Boss, ut as Overlay, vt as __exportAll, y as Menu, z as celebrate } from "./HowToPlay-BoT0kLlt.js";
-import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, p as hintTabs, r as Switching, s as lossesOn, t as start, u as StatsList, x as Input, y as OpenGames } from "./start-CjN8yFZL.js";
-import { C as timed, _ as pauseAction, c as PauseButton, d as Play, f as Digit, g as nextTick, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, p as clock, r as WindowControls, s as HintIcon, t as HintPanel, v as seconds, w as timerAction, x as stopTick } from "./Board-CyKGQCPh.js";
+import { B as stopFireworks, L as windowClear, M as shellActions, N as shellState, P as shortcut, Y as BackgroundSettings, _t as h, a as Taskbar, ct as Dialog, d as dayOf, ft as watchWindow, ht as save, k as listen, lt as Button, mt as remove, n as About, pt as load, q as Boss, ut as Overlay, vt as __exportAll, y as Menu, z as celebrate } from "./HowToPlay-B6MhPMZv.js";
+import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, p as hintTabs, r as Switching, s as lossesOn, t as start, u as StatsList, x as Input, y as OpenGames } from "./start-DiNVjlIi.js";
+import { C as timed, _ as pauseAction, c as PauseButton, d as Play, f as Digit, g as nextTick, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, p as clock, r as WindowControls, s as HintIcon, t as HintPanel, v as seconds, w as timerAction, x as stopTick } from "./Board-CG_BxHC3.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 import { t as capital } from "./grid-BZP-Z9Tf.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-mFSAHHo4.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-DyLrD1sP.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-DUZs-u9g.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-BzqPTwC4.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;

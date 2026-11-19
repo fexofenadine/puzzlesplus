@@ -1,4 +1,4 @@
-import { nt as matrix } from "./HowToPlay-BoT0kLlt.js";
+import { nt as matrix } from "./HowToPlay-B6MhPMZv.js";
 import { i as drawGlyph, n as GLYPH, r as PAD, t as BRIGHT } from "./glyph-DM9oq3hS.js";
 //#region src/shell/backgrounds/matrix.js
 var GRID_SIZE = 70;

@@ -1,4 +1,4 @@
-import { tt as hextrail } from "./HowToPlay-BoT0kLlt.js";
+import { tt as hextrail } from "./HowToPlay-B6MhPMZv.js";
 //#region src/shell/backgrounds/hextrail.js
 var EMPTY = 0;
 var IN = 1;

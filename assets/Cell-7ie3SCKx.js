@@ -1,4 +1,4 @@
-import { J as cx, _t as h } from "./HowToPlay-BoT0kLlt.js";
+import { J as cx, _t as h } from "./HowToPlay-B6MhPMZv.js";
 import { n as cellsOf, r as lineName, t as capital } from "./grid-BZP-Z9Tf.js";
 var Game_module_default = {
 	field: "Game_field",

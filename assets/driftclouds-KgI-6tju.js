@@ -1,4 +1,4 @@
-import { et as driftclouds } from "./HowToPlay-BoT0kLlt.js";
+import { et as driftclouds } from "./HowToPlay-B6MhPMZv.js";
 import { n as shaderBackground } from "./shader-CK3GJC2r.js";
 //#endregion
 //#region src/shell/backgrounds/driftclouds.js

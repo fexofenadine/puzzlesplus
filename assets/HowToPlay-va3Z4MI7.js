@@ -1,4 +1,4 @@
-import { _t as h, t as HowToPlay } from "./HowToPlay-BoT0kLlt.js";
+import { _t as h, t as HowToPlay } from "./HowToPlay-B6MhPMZv.js";
 //#region src/lightup/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Put bulbs on the white cells until every white cell is lit. A bulb lights its own cell and its row and column as far as the next wall. No bulb may light another bulb, and a wall with a number has exactly that many bulbs in the cells beside it, above, below, left and right."),

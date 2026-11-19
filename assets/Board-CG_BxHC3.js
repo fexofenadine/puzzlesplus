@@ -1,4 +1,4 @@
-import { J as cx, R as showScreensaver, _t as h, dt as hangBelow, ht as save, lt as Button, pt as load } from "./HowToPlay-BoT0kLlt.js";
+import { J as cx, R as showScreensaver, _t as h, dt as hangBelow, ht as save, lt as Button, pt as load } from "./HowToPlay-B6MhPMZv.js";
 //#region src/shell/clock.js
 var clockDigits = (theme, time) => theme !== "classic" && time > 999 ? 4 : 3;
 var clock = () => performance.timeOrigin + performance.now();

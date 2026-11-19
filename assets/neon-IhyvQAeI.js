@@ -1,4 +1,4 @@
-import { rt as neon } from "./HowToPlay-BoT0kLlt.js";
+import { rt as neon } from "./HowToPlay-B6MhPMZv.js";
 import { n as shaderBackground, t as adapt } from "./shader-CK3GJC2r.js";
 //#endregion
 //#region src/shell/backgrounds/neon.js

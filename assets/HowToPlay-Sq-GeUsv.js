@@ -1,4 +1,4 @@
-import { _t as h, t as HowToPlay } from "./HowToPlay-BoT0kLlt.js";
+import { _t as h, t as HowToPlay } from "./HowToPlay-B6MhPMZv.js";
 //#region src/futoshiki/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Fill the empty cells so every row and every column holds each digit once, 1 to 5 on a 5 × 5 board. A sign between two cells says which of them is the smaller: it opens toward the larger digit, as in 2 < 4. The digits in bold are the puzzle's own and can't be changed."),

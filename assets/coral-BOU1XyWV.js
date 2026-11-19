@@ -1,4 +1,4 @@
-import { $ as coral } from "./HowToPlay-BoT0kLlt.js";
+import { $ as coral } from "./HowToPlay-B6MhPMZv.js";
 //#region src/shell/backgrounds/coral.js
 var GROUND = [
 	15,

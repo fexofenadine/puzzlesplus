@@ -1,5 +1,5 @@
-import { C as HelpMenu, E as DisplayMenu, J as cx, K as Menu_module_default, L as windowClear, Q as reduced, S as SubMenuItem, T as resumeItems, _ as gameLinks, _t as h, b as MenuItem, ct as Dialog, ft as watchWindow, w as SizeMenu, x as Separator } from "./HowToPlay-BoT0kLlt.js";
-import { c as PauseButton, d as Play, f as Digit, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon } from "./Board-CyKGQCPh.js";
+import { C as HelpMenu, E as DisplayMenu, J as cx, K as Menu_module_default, L as windowClear, Q as reduced, S as SubMenuItem, T as resumeItems, _ as gameLinks, _t as h, b as MenuItem, ct as Dialog, ft as watchWindow, w as SizeMenu, x as Separator } from "./HowToPlay-B6MhPMZv.js";
+import { c as PauseButton, d as Play, f as Digit, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon } from "./Board-CG_BxHC3.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 import { i as listOf, t as capital } from "./grid-BZP-Z9Tf.js";
 var Board2048_module_default = {

@@ -1,5 +1,5 @@
-import { B as stopFireworks, X as startBackgrounds, _t as h, ct as Dialog, gt as app, ht as save, i as About_module_default, lt as Button, mt as remove, o as icons, pt as load, ut as Overlay, v as games } from "./HowToPlay-BoT0kLlt.js";
-import { p as clock, x as stopTick, y as showPaused } from "./Board-CyKGQCPh.js";
+import { B as stopFireworks, X as startBackgrounds, _t as h, ct as Dialog, gt as app, ht as save, i as About_module_default, lt as Button, mt as remove, o as icons, pt as load, ut as Overlay, v as games } from "./HowToPlay-B6MhPMZv.js";
+import { p as clock, x as stopTick, y as showPaused } from "./Board-CG_BxHC3.js";
 var Winner_module_default = {
 	root: "Winner_root",
 	text: "Winner_text",
@@ -63,9 +63,15 @@ var keyDown = (state, actions) => (event) => {
 	const at = games.findIndex(([id]) => id === state.openGames);
 	if (event.keyCode === 27) actions.openGame(state.page);
 	else if (event.keyCode === 13) actions.openGame(state.openGames);
-	else if (event.keyCode === 38 || event.keyCode === 40) {
+	else if (event.keyCode >= 37 && event.keyCode <= 40) {
 		event.preventDefault();
-		const next = (at + (event.keyCode === 40 ? 1 : -1) + games.length) % games.length;
+		const step = {
+			37: -1,
+			39: 1,
+			38: -4,
+			40: 4
+		}[event.keyCode];
+		const next = Math.abs(step) === 4 ? Math.min(Math.max(at + step, at % 4), games.length - 1) : (at + step + games.length) % games.length;
 		actions.selectGame(games[next][0]);
 	}
 };

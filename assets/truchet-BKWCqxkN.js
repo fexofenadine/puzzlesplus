@@ -1,4 +1,4 @@
-import { st as truchet } from "./HowToPlay-BoT0kLlt.js";
+import { st as truchet } from "./HowToPlay-B6MhPMZv.js";
 //#region src/shell/backgrounds/truchet.js
 var MAXRATIO = 2;
 var palettes = {

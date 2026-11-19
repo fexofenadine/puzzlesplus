@@ -1,4 +1,4 @@
-import { at as qix } from "./HowToPlay-BoT0kLlt.js";
+import { at as qix } from "./HowToPlay-B6MhPMZv.js";
 //#region src/shell/backgrounds/qix.js
 var palettes = {
 	pastel: [

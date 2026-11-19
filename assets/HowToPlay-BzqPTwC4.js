@@ -1,4 +1,4 @@
-import { _t as h, t as HowToPlay } from "./HowToPlay-BoT0kLlt.js";
+import { _t as h, t as HowToPlay } from "./HowToPlay-B6MhPMZv.js";
 //#region src/HowToPlay.jsx
 var Rules = () => [
 	/* @__PURE__ */ h("p", null, "Open every square that hides no mine. Click a square to open it: a number tells how many of the eight squares around it hide mines. Open a mine and the game is lost."),
