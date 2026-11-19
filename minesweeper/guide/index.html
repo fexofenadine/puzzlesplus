@@ -47,6 +47,19 @@ try {
   if (motion !== 'system')
     document.documentElement.dataset.motion = motion === 'reduce' ? 'reduce' : 'full'
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
+  //screen effects switched off (view, glitches), signal drops start off
+  var effects = { drop: false }
+  try {
+    var chosen = JSON.parse(localStorage.getItem('effects')) || {}
+    for (var id in chosen) effects[id] = chosen[id]
+  } catch {
+    //nothing saved
+  }
+  document.documentElement.dataset.effectsOff = Object.keys(effects)
+    .filter(function (id) {
+      return effects[id] === false
+    })
+    .join(' ')
 } catch {
   //blocked storage keeps the defaults
 }
@@ -60,15 +73,15 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=824eab9c"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DghiV_5t.js?v=5daadeb6">
+    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=e100c879"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay--TlFJb0R.js?v=4601222f">
     <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../../assets/hint-Bn5bCS4x.js?v=990f0181">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CDTDr7VA.js?v=59eee391">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-nX0gHmjr.js?v=61a87efa">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-BNAFN34d.js?v=c51442e2">
-    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
-    <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=d7f3a7ca">
+    <link rel="modulepreload" crossorigin href="../../assets/hint-B60X40iH.js?v=41b96753">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-yWFFq_Qa.js?v=700a86c8">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-7d72mSeb.js?v=caba84a0">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-B6y7UaR5.js?v=5005c183">
+    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=0578030d">
+    <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=467ccbf0">
     <link rel="stylesheet" crossorigin href="../../assets/hint.css?v=80da05c8">
     <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">
   </head>

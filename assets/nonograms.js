@@ -1,12 +1,12 @@
-import { A as listen, B as celebrate, F as shortcut, I as toggleAction, K as partsOf, M as shareAction, N as shellActions, O as gameKey, P as shellState, V as stopFireworks, W as codeOf, Y as Boss, Z as BackgroundSettings, a as Taskbar, c as DAILY_BUDGET, d as dayOf, dt as Overlay, f as finish, g as special, gt as save, h as seedOf, i as About_module_default, j as prevent, k as historyKey, lt as Dialog, mt as load, n as About, q as sharedCode, ut as Button, vt as h, yt as __exportAll } from "./HowToPlay-DghiV_5t.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-BK5HTHVv.js";
-import { i as Prompt, t as records } from "./records-CV0EsYuY.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-Ceq0kt-d.js";
+import { A as listen, B as celebrate, F as shortcut, G as partsOf, I as toggleAction, J as Boss, K as sharedCode, M as shareAction, N as shellActions, O as gameKey, P as shellState, U as codeOf, V as stopFireworks, X as BackgroundSettings, a as Taskbar, c as DAILY_BUDGET, d as dayOf, dt as Overlay, f as finish, g as special, gt as save, h as seedOf, i as About_module_default, j as prevent, k as historyKey, lt as Dialog, mt as load, n as About, ut as Button, vt as h, yt as __exportAll } from "./HowToPlay--TlFJb0R.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-7YU6Efv6.js";
+import { i as Prompt, t as records } from "./records-UCWzioEM.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-s-dVkWxV.js";
 import { n as cellsOf } from "./grid-BZP-Z9Tf.js";
-import { a as dealer, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BghG5l0w.js";
+import { a as dealer, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BMxFV7ir.js";
 import { t as showRain } from "./rain-D7NoZOvq.js";
-import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-BUevNmZr.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-BScEsrMq.js";
+import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-D1JzFpiJ.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-C7LQVdVY.js";
 //#region src/nonograms/generate.js
 var filled = (cells, n) => {
 	const lines = cellsOf(n);

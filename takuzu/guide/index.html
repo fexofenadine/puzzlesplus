@@ -47,6 +47,19 @@ try {
   if (motion !== 'system')
     document.documentElement.dataset.motion = motion === 'reduce' ? 'reduce' : 'full'
   document.documentElement.style.setProperty('--scale', localStorage.getItem('scale') || 1)
+  //screen effects switched off (view, glitches), signal drops start off
+  var effects = { drop: false }
+  try {
+    var chosen = JSON.parse(localStorage.getItem('effects')) || {}
+    for (var id in chosen) effects[id] = chosen[id]
+  } catch {
+    //nothing saved
+  }
+  document.documentElement.dataset.effectsOff = Object.keys(effects)
+    .filter(function (id) {
+      return effects[id] === false
+    })
+    .join(' ')
 } catch {
   //blocked storage keeps the defaults
 }
@@ -60,14 +73,14 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/takuzu-guide.js?v=3df6f42d"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DghiV_5t.js?v=5daadeb6">
+    <script type="module" crossorigin src="../../assets/takuzu-guide.js?v=fef5343a"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay--TlFJb0R.js?v=4601222f">
     <link rel="modulepreload" crossorigin href="../../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../../assets/Cell-CrQvfYPR.js?v=04e989ed">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-D9LN-vei.js?v=9eaf9a68">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-nX0gHmjr.js?v=61a87efa">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-BNAFN34d.js?v=c51442e2">
-    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=08d99edd">
+    <link rel="modulepreload" crossorigin href="../../assets/Cell-CxRoTMXX.js?v=1b43a0b0">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CEJ6iABM.js?v=3f4b3f4d">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-7d72mSeb.js?v=caba84a0">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-B6y7UaR5.js?v=5005c183">
+    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=0578030d">
     <link rel="stylesheet" crossorigin href="../../assets/Cell.css?v=f8c0c797">
     <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">
   </head>
