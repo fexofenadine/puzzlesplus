@@ -4,7 +4,9 @@
 
 Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All seven games share the window, the nine themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
-> **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these seven games as an app, offline, with every theme. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
+> **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these seven games as an app, offline, with every theme, and the themes' backgrounds as a live wallpaper. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
+>
+> **On Windows:** [Puzzles Plus Screensaver](https://github.com/fexofenadine/puzzlesplus-screensaver) shows the themes' backgrounds and effects as a screensaver.
 
 | [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              | [Play 2048 Plus](https://fexofenadine.github.io/puzzlesplus/2048/)                          | [Play Light Up Plus](https://fexofenadine.github.io/puzzlesplus/lightup/)                                | [Play Futoshiki Plus](https://fexofenadine.github.io/puzzlesplus/futoshiki/)                                    |
 | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -19,7 +21,7 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Minesweeper on Classic](docs/screenshots/classic-minesweeper.jpg)            | ![Takuzu over Drift Clouds](docs/screenshots/classic-clouds-takuzu.webp) |
 | **Synthwave: a lost Expert game glitching, and best times**                    | **Matrix: Nonograms with rain glyphs and a hint**                        |
 | ![Minesweeper on Synthwave](docs/screenshots/synthwave-minesweeper.webp)       | ![Nonograms on Matrix](docs/screenshots/matrix-nonograms.webp)           |
-| **Nord: 25 × 25 Expert maximised over Substrate, with the View menu**          | **Solarized Truchet, still: a full Takuzu board with a mistake**         |
+| **Nord: 25 × 25 Expert maximised over Substrate, with the Display menu**       | **Solarized Truchet, still: a full Takuzu board with a mistake**         |
 | ![Nonograms on Nord](docs/screenshots/nord-nonograms.webp)                     | ![Takuzu on Solarized Truchet](docs/screenshots/solarized-takuzu.jpg)    |
 | **Solarized Phosphor: Open Games after closing a window**                      | **A guide page, its example drawn by the game's own code**               |
 | ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                          |
@@ -48,7 +50,7 @@ A fork of [frenzzy/minesweeper](https://github.com/frenzzy/minesweeper), whose C
 Fill the grid with 0s and 1s: no three alike in a row, as many 0s as 1s in every line, and no two rows or columns the same.
 
 - Five levels from Easy to Expert and five sizes from 6 × 6 to 14 × 14, every board with one solution and graded by the reasoning it really needs.
-- Hints that find broken rules and wrong cells before the next step, Show Errors, undo and a question when a full board is wrong.
+- Hints that find broken rules and wrong cells before the next step, Show Errors, undo and redo, keyboard play, a daily puzzle, boards shared as links and a question when a full board is wrong.
 
 ## Nonograms Plus
 
@@ -56,7 +58,7 @@ Fill the cells whose runs match the clues beside each row and above each column,
 
 - Four levels and five sizes from 5 × 5 to 25 × 25, random pictures touched up until logic alone can finish them, symmetric or not as you choose, and always filling the grid.
 - Turn off Procedural to play a pool of pictures drawn for the game, picked at your level or chosen by hand, with their own best times and a name and credit when you solve one. Pictures are plain text files in `src/nonograms/art`, easy to add to.
-- Drag to paint along a line, crosses as notes, a fill or cross mode for touch screens, hints, Show Errors and undo.
+- Drag to paint along a line, crosses as notes, a fill or cross mode for touch screens, the row and column under the mouse marked, keyboard play, hints, Show Errors, undo and redo, a daily puzzle and boards shared as links.
 
 ## Sudoku Plus
 
@@ -65,6 +67,7 @@ Fill the grid so every row, column and box holds 1 to 9 once each, or play a sma
 - Four levels from Easy to Expert, every board with one solution and graded by the hardest technique it needs, from singles to the Swordfish and XYZ-Wing.
 - A number pad under the board for touch screens and mice, the keyboard for everything, notes (with Auto Notes and notes that tidy themselves as digits go in), and a pick-a-digit-then-tap-cells mode.
 - Hints that find repeats, wrong digits and notes that leave out the answer before the next step, and explain any candidate they take away to get there.
+- Show Errors, undo and redo, a daily puzzle and boards shared as links.
 
 ## 2048 Plus
 
@@ -92,15 +95,16 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 
 ## Every game
 
-- **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the Display menu or with + and -.
-- **Nine themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave, Terafox Hex Trail and Terafox Coral, each over an xscreensaver port with its original options, any of which can be switched to a still picture.
+- **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows and dialogs move by their title bars as on Windows 95, minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog.
+- **The Display menu**: zoom (also + and -), the Theme and Motion flyouts, background and window settings, Hide Window, Fireworks, and on Synthwave, Vaporwave and Matrix **Glitches**, which switches each screen effect on or off.
+- **Nine themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave, Terafox Hex Trail and Terafox Coral, each over an animated background with its original options (ports of xscreensaver hacks and shaders, or written after them), any of which can be switched to a still picture. Synthwave, Vaporwave and Matrix lay scanlines, a rolling band and now-and-then glitches over the whole screen but the boards.
 - **Hints with a More button** that opens their technique in the game's guide.
-- **Fireworks** in each theme's colours when you win, until you press a key or click, and when 2048 reaches its tile. Switch them off in the Display menu.
-- **Pause**, automatic when you switch away, and a **boss key** (Esc) that hides everything behind a spreadsheet.
+- **Fireworks** in each theme's colours when you win, until the next game starts, and when 2048 reaches its tile. Switch them off in the Display menu.
+- **Pause**, automatic when you switch away, with a title bar button that shows only the background, like a screensaver, and a **boss key** (Esc) that hides everything behind a spreadsheet.
 - **Resume**: a game in progress survives a reload or a closed tab and comes back paused. A **Timer** option turns the clock off (and best times with it).
-- **Daily Puzzle** in Takuzu, Nonograms and Sudoku: one board a day, the same for everyone, with a streak of days solved. **Copy Link** shares the board in play as a link.
+- **Daily Puzzle** in Takuzu, Nonograms, Sudoku, Light Up and Futoshiki: one board a day, the same for everyone, with a streak of days solved. **Copy Link** shares the board in play as a link.
 - **Backup** in the Start menu carries settings, best times, statistics and saved games to another browser or the app, as a file or as text.
-- Undo everywhere it makes sense, and **redo** in Takuzu, Nonograms and Sudoku.
+- Undo everywhere it makes sense, and **redo** in Takuzu, Nonograms, Sudoku, Light Up and Futoshiki.
 - Best times per level, with and without hints, and an offline-capable service worker.
 
 ## Under the hood
@@ -108,7 +112,7 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 - Rebuilt on [Vite](https://vite.dev) with Vitest, ESLint and Prettier, replacing the abandoned hyperapp-tools webpack 4 setup.
 - A plain static build with readable asset names, versioned links so browsers never mix old and new files, and a simple offline-capable service worker.
 - Settings survive browsers that block site storage, falling back to the defaults.
-- The games and their guides are pages of one build. Code the games share (the taskbar and window, themes, backgrounds, zoom, pause, the boss key, best times, settings storage, dealing in a worker) lives in `src/shell`, Minesweeper keeps the original's file layout in `src`, Takuzu, Nonograms, Sudoku and 2048 have `src/takuzu`, `src/nonograms`, `src/sudoku` and `src/2048`, and the guides `src/guide`.
+- The games and their guides are pages of one build. Code the games share (the taskbar and window, themes, backgrounds, zoom, pause, the boss key, best times, settings storage, dealing in a worker) lives in `src/shell`, Minesweeper keeps the original's file layout in `src`, the other games have their own folders (`src/takuzu`, `src/nonograms`, `src/sudoku`, `src/2048`, `src/lightup`, `src/futoshiki`), the guides `src/guide`, and the Windows screensaver's and Android wallpaper's pages `src/screensaver`.
 - The guides' examples are real positions from dealt boards, drawn with each game's own cells and captioned by its own hint code, and a test checks every one still shows its technique.
 - Takuzu's, Nonograms' and Sudoku's rules, solvers, the technique ladders behind hints and difficulty, and the generators are plain modules with no interface code, and boards are dealt in a web worker. Nonograms solves a line by dynamic programming over every way its clue can fit. Sudoku's grid is built from units (rows, columns, boxes), so other sizes and variants are a few lines. 2048 moves plain values for its expectimax hint and tiles with ids for the view, so each tile keeps its element and slides by CSS transition.
 - Animated backgrounds are canvas ports in `src/shell/backgrounds`, one file each. A port declares its options and the settings dialog builds itself from them, so adding another xscreensaver hack needs no other code. Phosphor's source code text is only downloaded when that theme is used.
@@ -119,7 +123,7 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 
 ```sh
 yarn          #install dependencies
-yarn start    #dev server, the games are at /minesweeper/, /takuzu/, /nonograms/, /sudoku/ and /2048/
+yarn start    #dev server, the games are at /minesweeper/, /takuzu/, /nonograms/, /sudoku/, /2048/, /lightup/ and /futoshiki/
 yarn build    #static site in build/
 yarn test     #run tests
 yarn lint     #lint
