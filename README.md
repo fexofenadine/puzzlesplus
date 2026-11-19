@@ -92,10 +92,10 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 
 ## Every game
 
-- **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the View menu or with + and -.
+- **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog. Zoom from the Display menu or with + and -.
 - **Nine themes**: Classic, Synthwave, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave, Terafox Hex Trail and Terafox Coral, each over an xscreensaver port with its original options, any of which can be switched to a still picture.
 - **Hints with a More button** that opens their technique in the game's guide.
-- **Fireworks** in each theme's colours when you win, until you press a key or click, and when 2048 reaches its tile. Switch them off in the Theme menu.
+- **Fireworks** in each theme's colours when you win, until you press a key or click, and when 2048 reaches its tile. Switch them off in the Display menu.
 - **Pause**, automatic when you switch away, and a **boss key** (Esc) that hides everything behind a spreadsheet.
 - **Resume**: a game in progress survives a reload or a closed tab and comes back paused. A **Timer** option turns the clock off (and best times with it).
 - **Daily Puzzle** in Takuzu, Nonograms and Sudoku: one board a day, the same for everyone, with a streak of days solved. **Copy Link** shares the board in play as a link.
@@ -144,7 +144,7 @@ Vaporwave's wallpaper (`src/vaporwave.webp`) is drawn by `src/shell/backgrounds/
 - Matrix static background [Binary damage code](<https://commons.wikimedia.org/wiki/File:Binary_damage_code_(28227210988).jpg>) by Markus Spiske (CC0).
 - Nord background is a canvas port of [Substrate](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/substrate.c) from xscreensaver, by J. Tarbell ([complexification.net](http://complexification.net)) and Mike Kershaw.
 - Nord colours from [Nord](https://www.nordtheme.com) by Arctic Ice Studio.
-- Synthwave's animated background (on by default, slowed to 0.2x; Animated in the Theme menu switches it off) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing, a draw is too slow or the first frames come at under 10 a second, the photo shows instead.
+- Synthwave's animated background (on by default, slowed to 0.2x; Animated in the Display menu switches it off) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing, a draw is too slow or the first frames come at under 10 a second, the photo shows instead.
 - Vaporwave background is Qix, written for a canvas after [Qix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/qix.c) from xscreensaver by Jamie Zawinski and the Mystify screensaver of Windows 95. Its lines play over the theme's wallpaper, a picture drawn for this project by `src/shell/backgrounds/pastel.py`.
 - Terafox Hex Trail background is a canvas port of [HexTrail](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/hextrail.c) from xscreensaver by Jamie Zawinski.
 - Terafox Coral background is Coral, written for a canvas after [Coral](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/coral.c) from xscreensaver by Frederick Roeber.

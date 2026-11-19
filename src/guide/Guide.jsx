@@ -6,7 +6,7 @@ import Dialog from '../Dialog'
 import BackgroundSettings from '../shell/BackgroundSettings'
 import Boss from '../shell/Boss'
 import Taskbar from '../shell/Taskbar'
-import ThemeMenu from '../shell/ThemeMenu'
+import DisplayMenu from '../shell/DisplayMenu'
 import { listen, shellActions, shellState, shortcut } from '../shell/actions'
 import { startBackgrounds } from '../shell/backgrounds'
 
@@ -86,7 +86,7 @@ export const startGuide = ({ page, root = '../../', home = '../', title, icon, p
           onClose={() => location.assign(home)}
         >
           <ul class={m.root} tabindex={-1} onfocusout={actions.toggleMenu}>
-            <ThemeMenu state={state} actions={actions} />
+            <DisplayMenu state={state} actions={actions} />
           </ul>
           <div class={s.body}>
             <Contents parts={parts} />
