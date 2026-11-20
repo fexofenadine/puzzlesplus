@@ -1,8 +1,8 @@
-import { _t as h, o as icons } from "./HowToPlay-B6MhPMZv.js";
-import { d as starve, f as whatIf, i as full, o as lone, r as boxed, s as need, t as Cell, u as squeeze, w as LightUp_module_default, y as litOf } from "./Cell-V5nsDpW0.js";
-import { n as Rules } from "./HowToPlay-va3Z4MI7.js";
-import { r as startGuide, t as Figure } from "./Guide-4JMcaQwy.js";
-import { t as desktopSection } from "./desktop-C8DcHlmD.js";
+import { _t as h, o as icons } from "./HowToPlay-B1bbVemk.js";
+import { d as starve, f as whatIf, i as full, o as lone, r as boxed, s as need, t as Cell, u as squeeze, w as LightUp_module_default, y as litOf } from "./Cell-DnR1Mz5U.js";
+import { n as Rules } from "./HowToPlay-BSWLgVPc.js";
+import { r as startGuide, t as Figure } from "./Guide-BUnzJog8.js";
+import { t as desktopSection } from "./desktop-xd939JAC.js";
 //#region src/guide/LightUpExample.jsx
 var finders = {
 	need,

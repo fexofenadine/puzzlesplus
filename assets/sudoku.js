@@ -1,10 +1,10 @@
-import { A as prevent, B as stopFireworks, D as gameKey, F as toggleAction, G as sharedCode, H as codeOf, M as shellActions, N as shellState, O as historyKey, P as shortcut, W as partsOf, Y as BackgroundSettings, _t as h, a as Taskbar, c as DAILY_BUDGET, d as dayOf, f as finish, g as special, h as seedOf, ht as save, j as shareAction, k as listen, n as About, pt as load, q as Boss, vt as __exportAll, z as celebrate } from "./HowToPlay-B6MhPMZv.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DiNVjlIi.js";
-import { i as Prompt, t as records } from "./records-DudRZw88.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-CG_BxHC3.js";
-import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-D2-NNzOO.js";
-import { A as boxShapes, E as solve, H as solved, I as emptyBoard, L as fallback, M as candidatesOf, O as allowed, R as full, T as countSolutions, V as sizes, a as running, c as levelNames, j as breaks, k as bit, m as levels, t as Game, u as findHint, y as rate, z as geometry } from "./Game-Bhc1tktR.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-1eO8qWjk.js";
+import { A as prevent, B as stopFireworks, D as gameKey, F as toggleAction, G as sharedCode, H as codeOf, M as shellActions, N as shellState, O as historyKey, P as shortcut, W as partsOf, Y as BackgroundSettings, _t as h, a as Taskbar, c as DAILY_BUDGET, d as dayOf, f as finish, g as special, h as seedOf, ht as save, j as shareAction, k as listen, n as About, pt as load, q as Boss, vt as __exportAll, z as celebrate } from "./HowToPlay-B1bbVemk.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-DzsGLcgX.js";
+import { i as Prompt, t as records } from "./records-CWgjIbGb.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-CKpcwMAY.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-Br4dwdUF.js";
+import { A as boxShapes, E as solve, H as solved, I as emptyBoard, L as fallback, M as candidatesOf, O as allowed, R as full, T as countSolutions, V as sizes, a as running, c as levelNames, j as breaks, k as bit, m as levels, t as Game, u as findHint, y as rate, z as geometry } from "./Game-BYzgThNu.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-BbOwjrHx.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,

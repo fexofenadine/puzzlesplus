@@ -1,8 +1,8 @@
-import { _t as h, o as icons } from "./HowToPlay-B6MhPMZv.js";
-import { n as Board, p as tilesOf, t as suggest } from "./search-0G8Cl3tg.js";
-import { t as Rules } from "./HowToPlay-BUoPrXEG.js";
-import { r as startGuide, t as Figure } from "./Guide-4JMcaQwy.js";
-import { t as desktopSection } from "./desktop-C8DcHlmD.js";
+import { _t as h, o as icons } from "./HowToPlay-B1bbVemk.js";
+import { n as Board, p as tilesOf, t as suggest } from "./search-1WSaxDIs.js";
+import { t as Rules } from "./HowToPlay-CwBtI_sW.js";
+import { r as startGuide, t as Figure } from "./Guide-BUnzJog8.js";
+import { t as desktopSection } from "./desktop-xd939JAC.js";
 //#region src/guide/2048.jsx
 var examples = {
 	corner: {
