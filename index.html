@@ -2,17 +2,16 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <title>Puzzles Plus</title>
     <meta
       name="description"
-      content="Free Windows style puzzle games: Minesweeper, Takuzu, Nonograms, Sudoku and 2048, with hints that explain themselves"
+      content="Free Windows style puzzle games: Minesweeper, Takuzu, Nonograms, Sudoku, 2048, Light Up and Futoshiki, with hints that explain themselves"
     />
-    <!--the games live in their own folders, old links land on the last game or minesweeper-->
-    <meta http-equiv="refresh" content="0; url=minesweeper/" />
     <meta property="og:title" content="Puzzles Plus" />
     <meta
       property="og:description"
-      content="Free Windows style puzzle games: Minesweeper, Takuzu, Nonograms, Sudoku and 2048, with hints that explain themselves"
+      content="Free Windows style puzzle games: Minesweeper, Takuzu, Nonograms, Sudoku, 2048, Light Up and Futoshiki, with hints that explain themselves"
     />
     <meta property="og:url" content="https://fexofenadine.github.io/puzzlesplus/" />
     <meta property="og:image" content="https://fexofenadine.github.io/puzzlesplus/preview.png" />
@@ -22,17 +21,24 @@
     <link rel="canonical" href="https://fexofenadine.github.io/puzzlesplus/" />
     <link rel="apple-touch-icon" href="/icon.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
+    <!--prepaint-->
     <script>
-      //the game played last, else minesweeper
-      var game = 'minesweeper'
+      //old links with a game's own parameters or a shared puzzle land on the game played last
       try {
-        var last = localStorage.getItem('lastGame')
-        if (/^(minesweeper|takuzu|nonograms|sudoku|2048|lightup|futoshiki)$/.test(last)) game = last
+        if (location.search || location.hash) {
+          var game = 'minesweeper'
+          var last = localStorage.getItem('lastGame')
+          if (/^(minesweeper|takuzu|nonograms|sudoku|2048|lightup|futoshiki)$/.test(last))
+            game = last
+          location.replace(game + '/' + location.search + location.hash)
+        }
       } catch (error) {}
-      location.replace(game + '/' + location.search + location.hash)
     </script>
+    <script type="module" src="/src/home/index.js"></script>
   </head>
   <body>
-    <a href="minesweeper/">Puzzles Plus</a>
+    <div id="app">
+      <main></main>
+    </div>
   </body>
 </html>

@@ -95,6 +95,7 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 
 ## Every game
 
+- **A home page**: the site opens on a window of every game, with the game you played last first as Continue, and Home in every Start menu brings it back
 - **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows and dialogs move by their title bars as on Windows 95, minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog.
 - **The Display menu**: zoom (also + and -), the Theme and Motion flyouts, background and window settings, Hide Window, Fireworks, and on Synthwave, Vaporwave and Matrix **Glitches**, which switches each screen effect on or off.
 - **Eight themes**: Synthwave (the default, with its neon shader, glitches and screen look), Classic, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave and Terafox Hex Trail, each over an animated background with its original options (ports of xscreensaver hacks and shaders, or written after them), any of which can be switched to a still picture. Synthwave, Vaporwave and Matrix lay scanlines, a rolling band and now-and-then glitches over the whole screen but the boards.
