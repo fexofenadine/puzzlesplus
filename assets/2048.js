@@ -1,9 +1,9 @@
-import { A as prevent, B as stopFireworks, D as gameKey, I as undoKey, M as shellActions, N as shellState, P as shortcut, Y as BackgroundSettings, _t as h, a as Taskbar, ct as Dialog, d as dayOf, ht as save, k as listen, lt as Button, mt as remove, n as About, pt as load, q as Boss, r as Link, ut as Overlay, vt as __exportAll, z as celebrate } from "./HowToPlay-B1bbVemk.js";
-import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, r as Switching, s as lossesOn, t as start, u as StatsList, y as OpenGames } from "./start-DzsGLcgX.js";
-import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-CWgjIbGb.js";
-import { S as tickAction, _ as pauseAction, b as startClock, g as nextTick, p as clock, w as timerAction, x as stopTick } from "./Board-CKpcwMAY.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-1WSaxDIs.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-CwBtI_sW.js";
+import { A as prevent, B as stopFireworks, D as gameKey, I as undoKey, M as shellActions, N as shellState, P as shortcut, Y as BackgroundSettings, _t as __exportAll, a as Taskbar, ct as Button, d as dayOf, ft as load, gt as h, k as listen, lt as Overlay, mt as save, n as About, pt as remove, q as Boss, r as Link, st as Dialog, z as celebrate } from "./HowToPlay-DBO26GVD.js";
+import { _ as resumable, a as lossActions, b as Winner, c as readStats, f as Tabs, g as check, i as clearStats, l as tally, m as BestTime_module_default, n as FireworksCanvas, o as lossState, r as Switching, s as lossesOn, t as start, u as StatsList, y as OpenGames } from "./start-BnZ4At2N.js";
+import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-BRo_5k88.js";
+import { S as tickAction, _ as pauseAction, b as startClock, g as nextTick, p as clock, w as timerAction, x as stopTick } from "./Board-CMcQQ_Pb.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-DueSMzuT.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-CdddCttA.js";
 var keyOf = (n, assisted) => `2048.${n}${assisted ? ".help" : ""}`;
 var clean = (entry) => ({
 	score: parseInt(entry && entry.score, 10) || 0,

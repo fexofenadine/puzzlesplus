@@ -13,10 +13,10 @@
     <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
 //apply the saved theme and window size before first paint
 try {
-  //everforest became terafox coral
+  //everforest and terafox coral became terafox
   document.documentElement.dataset.theme = (localStorage.getItem('theme') || 'synthwave').replace(
-    /^everforest$/,
-    'terafox-coral',
+    /^(everforest|terafox-coral)$/,
+    'terafox',
   )
   //animated off classic unless it was switched off, the script corrects the rest
   //synthwave's only counts as off since its default changed (settings version 1)
@@ -30,7 +30,6 @@ try {
     'solarized-phosphor': 'phosphor',
     vaporwave: 'qix',
     terafox: 'hextrail',
-    'terafox-coral': 'coral',
   }
   if (ids[theme]) {
     try {
@@ -85,14 +84,14 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/lightup-guide.js?v=4a6be51a"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-B1bbVemk.js?v=cd04ea9a">
-    <link rel="modulepreload" crossorigin href="../../assets/Cell-DnR1Mz5U.js?v=891af73a">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-BSWLgVPc.js?v=9a1e83d5">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-BUnzJog8.js?v=e97f2437">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-xd939JAC.js?v=4b0611f6">
-    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=96e2b940">
-    <link rel="stylesheet" crossorigin href="../../assets/Cell2.css?v=fcd52eae">
+    <script type="module" crossorigin src="../../assets/lightup-guide.js?v=d686a6ae"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DBO26GVD.js?v=f2e2df9f">
+    <link rel="modulepreload" crossorigin href="../../assets/Cell-BIHWCuGo.js?v=5574df76">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CM-uHuFa.js?v=6d64f81d">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-DD9mVpE9.js?v=23f4ee62">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-BJUvojwo.js?v=7bc2d99e">
+    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=6e879839">
+    <link rel="stylesheet" crossorigin href="../../assets/Cell2.css?v=4049de24">
     <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">
   </head>
   <body>

@@ -13,10 +13,10 @@
     <script>//inlined into each game's page head by vite.config.js, so it runs before first paint
 //apply the saved theme and window size before first paint
 try {
-  //everforest became terafox coral
+  //everforest and terafox coral became terafox
   document.documentElement.dataset.theme = (localStorage.getItem('theme') || 'synthwave').replace(
-    /^everforest$/,
-    'terafox-coral',
+    /^(everforest|terafox-coral)$/,
+    'terafox',
   )
   //animated off classic unless it was switched off, the script corrects the rest
   //synthwave's only counts as off since its default changed (settings version 1)
@@ -30,7 +30,6 @@ try {
     'solarized-phosphor': 'phosphor',
     vaporwave: 'qix',
     terafox: 'hextrail',
-    'terafox-coral': 'coral',
   }
   if (ids[theme]) {
     try {
@@ -85,19 +84,19 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/2048-guide.js?v=5d2551dd"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-B1bbVemk.js?v=cd04ea9a">
-    <link rel="modulepreload" crossorigin href="../../assets/Board-CKpcwMAY.js?v=f7faa9cd">
+    <script type="module" crossorigin src="../../assets/2048-guide.js?v=67d8521b"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DBO26GVD.js?v=f2e2df9f">
+    <link rel="modulepreload" crossorigin href="../../assets/Board-CMcQQ_Pb.js?v=07274b42">
     <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
     <link rel="modulepreload" crossorigin href="../../assets/grid-BZP-Z9Tf.js?v=163ed17c">
-    <link rel="modulepreload" crossorigin href="../../assets/search-1WSaxDIs.js?v=458f6b85">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CwBtI_sW.js?v=c87973d6">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-BUnzJog8.js?v=e97f2437">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop-xd939JAC.js?v=4b0611f6">
-    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=96e2b940">
+    <link rel="modulepreload" crossorigin href="../../assets/search-DueSMzuT.js?v=dc89b213">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CdddCttA.js?v=8256b867">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-DD9mVpE9.js?v=23f4ee62">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-BJUvojwo.js?v=7bc2d99e">
+    <link rel="stylesheet" crossorigin href="../../assets/HowToPlay.css?v=6e879839">
     <link rel="stylesheet" crossorigin href="../../assets/Board.css?v=add134de">
     <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=9937410e">
-    <link rel="stylesheet" crossorigin href="../../assets/search.css?v=f9aa9abc">
+    <link rel="stylesheet" crossorigin href="../../assets/search.css?v=b1d00d3d">
     <link rel="stylesheet" crossorigin href="../../assets/Guide.css?v=efb1f487">
   </head>
   <body>

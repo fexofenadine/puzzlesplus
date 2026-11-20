@@ -217,7 +217,7 @@
   --ng-cross: #8f84b0;
 }
 
-:root:is([data-theme='terafox'], [data-theme='terafox-coral']) {
+:root[data-theme='terafox'] {
   --ng-fill: #7aa4a1;
   --ng-cross: #587b7b;
 }
