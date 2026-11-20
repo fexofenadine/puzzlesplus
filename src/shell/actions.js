@@ -5,7 +5,7 @@ import { copy, linkOf } from './share'
 import { load, save } from './storage'
 import { fireworksKey, fireworksOn } from './fireworks'
 import { loadMotion, saveMotion } from './motion'
-import { renamed, themes } from './themes'
+import { defaultTheme, renamed, themes } from './themes'
 import { games } from './GameLinks'
 import { backgroundFor, configure, defaults, loadSettings, saveSettings } from './backgrounds'
 import { showScreensaver } from './screensaver'
@@ -51,7 +51,7 @@ export const isGame = (page) => games.some(([id]) => id === page)
 const loadTheme = () => {
   const saved = load('theme')
   const theme = renamed[saved] || saved
-  return themes.some(([id]) => id === theme) ? theme : 'classic'
+  return themes.some(([id]) => id === theme) ? theme : defaultTheme
 }
 
 //the site's top page opens the game played last
