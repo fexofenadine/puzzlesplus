@@ -25,8 +25,8 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Nonograms on Nord](docs/screenshots/nord-nonograms.webp)                     | ![Takuzu on Solarized Truchet](docs/screenshots/solarized-takuzu.jpg)    |
 | **Solarized Phosphor: Open Games after closing a window**                      | **A guide page, its example drawn by the game's own code**               |
 | ![Open Games on Solarized Phosphor](docs/screenshots/phosphor-open-games.webp) | ![The Takuzu guide](docs/screenshots/guide.jpg)                          |
-| **Matrix: Sudoku with notes and a hint**                                       | **Solarized Phosphor: 2048 with the hint's advice**                      |
-| ![Sudoku on Matrix](docs/screenshots/matrix-sudoku.jpg)                        | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)        |
+| **Matrix: Jigsaw Sudoku with notes and a hint**                                | **Solarized Phosphor: 2048 with the hint's advice**                      |
+| ![Jigsaw Sudoku on Matrix](docs/screenshots/matrix-jigsaw.jpg)                 | ![2048 on Solarized Phosphor](docs/screenshots/phosphor-2048.jpg)        |
 | **Synthwave: Light Up on 14 × 14 with a hint**                                 | **Nord, still: the Light Up guide, its examples drawn by the game**      |
 | ![Light Up on Synthwave](docs/screenshots/synthwave-lightup.jpg)               | ![The Light Up guide](docs/screenshots/lightup-guide.jpg)                |
 | **Vaporwave: 2048 with a hint, over its tape and Qix**                         | **Terafox Hex Trail: Futoshiki with a hint**                             |
@@ -62,9 +62,10 @@ Fill the cells whose runs match the clues beside each row and above each column,
 
 ## Sudoku Plus
 
-Fill the grid so every row, column and box holds 1 to 9 once each, or play a smaller 6×6 or 4×4 board.
+Fill the grid so every row, column and box holds 1 to 9 once each, or play a smaller 6×6 or 4×4 board, or a **Jigsaw**, where nine irregular regions take the place of the boxes.
 
 - Four levels from Easy to Expert, every board with one solution and graded by the hardest technique it needs, from singles to the Swordfish and XYZ-Wing.
+- Jigsaw Regions (Game menu), the first variant: the 3×3 boxes become nine connected regions of nine cells in irregular shapes, drawn with heavier lines, with a new set of regions for every board, its own best times and boards shared as links. It is dealt on 9×9 only.
 - A number pad under the board for touch screens and mice, the keyboard for everything, notes (with Auto Notes and notes that tidy themselves as digits go in), and a pick-a-digit-then-tap-cells mode.
 - Hints that find repeats, wrong digits and notes that leave out the answer before the next step, and explain any candidate they take away to get there.
 - Show Errors, undo and redo, a daily puzzle and boards shared as links.
@@ -115,7 +116,7 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 - Settings survive browsers that block site storage, falling back to the defaults.
 - The games and their guides are pages of one build. Code the games share (the taskbar and window, themes, backgrounds, zoom, pause, the boss key, best times, settings storage, dealing in a worker) lives in `src/shell`, Minesweeper keeps the original's file layout in `src`, the other games have their own folders (`src/takuzu`, `src/nonograms`, `src/sudoku`, `src/2048`, `src/lightup`, `src/futoshiki`), the guides `src/guide`, and the Windows screensaver's and Android wallpaper's pages `src/screensaver`.
 - The guides' examples are real positions from dealt boards, drawn with each game's own cells and captioned by its own hint code, and a test checks every one still shows its technique.
-- Takuzu's, Nonograms' and Sudoku's rules, solvers, the technique ladders behind hints and difficulty, and the generators are plain modules with no interface code, and boards are dealt in a web worker. Nonograms solves a line by dynamic programming over every way its clue can fit. Sudoku's grid is built from units (rows, columns, boxes), so other sizes and variants are a few lines. 2048 moves plain values for its expectimax hint and tiles with ids for the view, so each tile keeps its element and slides by CSS transition.
+- Takuzu's, Nonograms' and Sudoku's rules, solvers, the technique ladders behind hints and difficulty, and the generators are plain modules with no interface code, and boards are dealt in a web worker. Nonograms solves a line by dynamic programming over every way its clue can fit. Sudoku's grid is built from units (rows, columns, boxes or a jigsaw's regions), so other sizes and variants are a few lines: Jigsaw was a layout passed to the same solver, techniques and hints. 2048 moves plain values for its expectimax hint and tiles with ids for the view, so each tile keeps its element and slides by CSS transition.
 - Animated backgrounds are canvas ports in `src/shell/backgrounds`, one file each. A port declares its options and the settings dialog builds itself from them, so adding another xscreensaver hack needs no other code. Phosphor's source code text is only downloaded when that theme is used.
 - Google Analytics removed.
 - Tests for mine placement and the no-guessing solver, chording and its explanations, hints, best times, zoom and fitting, portrait boards and every background and its settings, and for Takuzu's rules, solver (checked against a brute force search), every technique, difficulty rating, generation at every size and level, hints that always agree with the solution, and playing, and the same for Nonograms, whose line solver is checked against a brute force search and whose boards are played to the end by following hints, and for Sudoku, whose every technique is checked against the solution at every step of dozens of dealt boards.
