@@ -1,0 +1,4 @@
+//#region src/sudoku/regions.js?raw
+var regions_default = "//the edges a jigsaw board draws: a cell's top and left sides, where the cell above or to the\n//left is in another region (the other sides are those cells' own), as the css variables\n//SudokuCell.module.css reads\nconst line = 'var(--grid-line, var(--dark-shadow))'\nconst sides = [\n  ['--et', 'inset 0 2px 0 0', (i, n) => i - n],\n  ['--el', 'inset 2px 0 0 0', (i, n) => (i % n ? i - 1 : -1)],\n]\n\nexport const regionEdges = (layout, n) =>\n  Array.from({ length: n * n }, (_, i) =>\n    Object.fromEntries(\n      sides.flatMap(([name, shadow, next]) => {\n        const j = next(i, n)\n        return j >= 0 && layout[j] !== layout[i] ? [[name, `${shadow} ${line}`]] : []\n      }),\n    ),\n  )\n";
+//#endregion
+export { regions_default as default };

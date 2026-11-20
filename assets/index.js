@@ -1,4 +1,4 @@
-import { A as shellActions, C as DisplayMenu, D as listen, E as isGame, G as Boss, J as startBackgrounds, M as shortcut, W as Menu_module_default, at as Dialog, h as games, j as shellState, mt as h, n as icons, pt as app, q as BackgroundSettings, r as home_default, t as Taskbar, ut as load } from "./Taskbar-C1_Zl4td.js";
+import { A as shellActions, C as DisplayMenu, D as listen, E as isGame, K as Menu_module_default, M as shortcut, X as startBackgrounds, Y as BackgroundSettings, ft as load, gt as h, h as games, ht as app, j as shellState, n as icons, q as Boss, r as home_default, st as Dialog, t as Taskbar } from "./Taskbar-CoMVUW-1.js";
 import { t as Guide_module_default } from "./Guide.module-Ih_jRsKN.js";
 var Home_module_default = {
 	body: "Home_body",
@@ -20,7 +20,7 @@ var about = {
 	minesweeper: "Clear the board without touching a mine. Hints explain themselves, and No Guessing boards never need a guess.",
 	takuzu: "Fill the grid with zeros and ones: never three alike in a row, equal counts, no repeated line.",
 	nonograms: "Fill in a hidden picture from the number clues beside every row and column.",
-	sudoku: "Every row, column and box holds each digit once, on 4x4, 6x6 and 9x9 boards.",
+	sudoku: "Every row, column and box holds each digit once, on 4x4, 6x6 and 9x9 boards, or as a Jigsaw.",
 	2048: "Slide the tiles and merge equal ones to make 2048, and go on from there.",
 	lightup: "Place bulbs to light every square, never two bulbs lighting each other.",
 	futoshiki: "A Latin square with greater and less than signs between some of its cells."

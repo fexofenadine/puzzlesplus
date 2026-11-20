@@ -1,8 +1,8 @@
-import { mt as h, n as icons } from "./Taskbar-C1_Zl4td.js";
-import { B as onlyDigit, C as xyWing, M as candidatesOf, S as xWing, U as Sudoku_module_default, _ as nakedSingles, b as swordfish, d as hiddenPairs, f as hiddenSingles, g as nakedPairs, h as lockedCandidates, i as place, k as bit, o as tracks, p as hiddenTriples, s as Cell, v as nakedTriples, w as xyzWing, x as whatIf, z as geometry } from "./Game-LoBdOFRb.js";
-import { t as Rules } from "./HowToPlay-CD7qd02n.js";
-import { r as startGuide, t as Figure } from "./Guide-CA28j-za.js";
-import { t as desktopSection } from "./desktop-DmbjaOrT.js";
+import { gt as h, n as icons } from "./Taskbar-CoMVUW-1.js";
+import { A as bit, C as xWing, N as candidatesOf, S as whatIf, T as xyzWing, U as onlyDigit, V as geometry, _ as nakedPairs, c as Cell, f as hiddenPairs, g as lockedCandidates, i as place, m as hiddenTriples, o as tracks, p as hiddenSingles, q as Sudoku_module_default, s as regionEdges, v as nakedSingles, w as xyWing, x as swordfish, y as nakedTriples } from "./Game-hgzx4lgC.js";
+import { t as Rules } from "./HowToPlay-BwQCHe8I.js";
+import { r as startGuide, t as Figure } from "./Guide-BeD91Sfc.js";
+import { t as desktopSection } from "./desktop-CP6zB_6b.js";
 //#region src/guide/SudokuExample.jsx
 var finders = {
 	"hidden-single": hiddenSingles,
@@ -19,20 +19,21 @@ var finders = {
 	"xyz-wing": xyzWing,
 	"what-if": whatIf
 };
-var positionOf = ({ rows, removed = [] }) => {
+var positionOf = ({ rows, layout, removed = [] }) => {
 	const n = rows.length;
 	const board = Int8Array.from(rows.join(""), (c) => c === "." ? 0 : Number(c));
-	const cands = candidatesOf(board, n);
+	const cands = candidatesOf(board, n, layout);
 	for (const [i, digits] of removed) for (const d of digits) cands[i] &= ~bit(Number(d));
 	return {
 		board,
 		cands,
-		n
+		n,
+		layout
 	};
 };
 var exampleStep = (example, technique) => {
-	const { board, cands, n } = positionOf(example);
-	return finders[technique](board, cands, n).find((step) => step.technique === technique);
+	const { board, cands, n, layout } = positionOf(example);
+	return finders[technique](board, cands, n, layout).find((step) => step.technique === technique);
 };
 var marksOf = (step) => step ? Object.fromEntries([
 	...step.remove.map(([i]) => [i, "remove"]),
@@ -47,8 +48,10 @@ var focusOf = (step) => {
 };
 var SudokuExample = (example) => {
 	const { technique } = example;
-	const { board, cands, n } = positionOf(example);
-	const { bw, bh } = geometry(n);
+	const { board, cands, n, layout } = positionOf(example);
+	const { bw, bh } = geometry(n, layout);
+	const edges = layout ? regionEdges(layout, n) : null;
+	const gaps = layout ? n : null;
 	const step = technique && exampleStep(example, technique);
 	const marks = marksOf(step);
 	const ghosts = step ? Object.fromEntries(step.place) : {};
@@ -56,8 +59,8 @@ var SudokuExample = (example) => {
 	return /* @__PURE__ */ h(Figure, { caption: step && step.text }, /* @__PURE__ */ h("div", { class: Sudoku_module_default.board }, /* @__PURE__ */ h("div", {
 		class: Sudoku_module_default.inactive,
 		style: {
-			"--tracks": tracks(n, bw),
-			"--rows": tracks(n, bh)
+			"--tracks": tracks(n, gaps || bw),
+			"--rows": tracks(n, gaps || bh)
 		}
 	}, [...board].map((digit, i) => /* @__PURE__ */ h(Cell, {
 		i,
@@ -69,9 +72,11 @@ var SudokuExample = (example) => {
 		focus: focusOf(step),
 		mark: marks[i],
 		ghost: ghosts[i],
+		region: Boolean(edges),
 		style: {
 			gridColumn: place(i % n),
-			gridRow: place(Math.floor(i / n))
+			gridRow: place(Math.floor(i / n)),
+			...edges && edges[i]
 		},
 		onPress: noop
 	})))));
@@ -252,6 +257,21 @@ var technique = (id, title, text) => ({
 	title,
 	body: () => [/* @__PURE__ */ h("p", null, text), /* @__PURE__ */ h(Example, { technique: id })]
 });
+var jigsawExample = {
+	rows: [
+		"...7...3.",
+		"1...23854",
+		"8...49.2.",
+		".462.....",
+		"9.34.25.1",
+		".....128.",
+		".5.31...6",
+		"76215...8",
+		".1...5..."
+	],
+	layout: "000022222001024452011144452031111452333177458366674458366675558366677588337778888",
+	technique: "hidden-single"
+};
 var parts = [
 	{
 		title: "How to Play",
@@ -263,6 +283,15 @@ var parts = [
 					/* @__PURE__ */ h(Rules, null),
 					/* @__PURE__ */ h("p", null, "A finished board: every row, column and box holds 1 to 9 once each."),
 					/* @__PURE__ */ h(SudokuExample, { rows: solved })
+				]
+			},
+			{
+				id: "variants",
+				title: "Variants",
+				body: () => [
+					/* @__PURE__ */ h("p", null, /* @__PURE__ */ h("b", null, "Jigsaw"), " (Game menu, Jigsaw Regions) replaces the nine 3×3 boxes with nine regions of nine cells in irregular shapes, drawn with heavier lines. The rules are the same: every row, column and region holds 1 to 9 once each. Only the regions change, so a digit can be ruled out by a cell far from the one you are looking at, and pointing and claiming work with whatever shape a region has. It is dealt on the 9×9 board only, with a new set of regions for every board, and keeps its own best times."),
+					/* @__PURE__ */ h("p", null, "The techniques below all work with regions where they say boxes. A hidden single in one:"),
+					/* @__PURE__ */ h(SudokuExample, jigsawExample)
 				]
 			},
 			{

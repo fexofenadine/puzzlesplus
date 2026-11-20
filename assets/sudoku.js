@@ -1,11 +1,11 @@
-import { A as shellActions, B as codeOf, D as listen, G as Boss, H as partsOf, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as sharedCode, a as DAILY_BUDGET, c as dayOf, f as seedOf, ft as save, ht as __exportAll, j as shellState, k as shareAction, l as finish, mt as h, p as special, q as BackgroundSettings, t as Taskbar, ut as load, w as gameKey } from "./Taskbar-C1_Zl4td.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-Cyl3xbyG.js";
-import { n as About } from "./HowToPlay-DCog5Ydc.js";
-import { i as Prompt, t as records } from "./records-CBKETYg1.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-BVvY5ndp.js";
-import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BkYMxgGS.js";
-import { A as boxShapes, E as solve, H as solved, I as emptyBoard, L as fallback, M as candidatesOf, O as allowed, R as full, T as countSolutions, V as sizes, a as running, c as levelNames, j as breaks, k as bit, m as levels, t as Game, u as findHint, y as rate, z as geometry } from "./Game-LoBdOFRb.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-CD7qd02n.js";
+import { A as shellActions, B as codeOf, D as listen, G as unpack, H as pack, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _t as __exportAll, a as DAILY_BUDGET, c as dayOf, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, mt as save, p as special, q as Boss, t as Taskbar, w as gameKey } from "./Taskbar-CoMVUW-1.js";
+import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-Bxo9hulR.js";
+import { n as About } from "./HowToPlay-CgS68CKZ.js";
+import { i as Prompt, t as records } from "./records-DERLP5gk.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-BozP1c33.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-J-JRHQz2.js";
+import { A as bit, B as full, D as solve, E as countSolutions, G as solved, H as jigsaw, K as validLayout, M as breaks, N as candidatesOf, P as connected, R as emptyBoard, V as geometry, W as sizes, a as running, b as rate, d as findHint, h as levels, j as boxShapes, k as allowed, l as levelNames, t as Game, z as fallback } from "./Game-hgzx4lgC.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-BwQCHe8I.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,
@@ -14,14 +14,44 @@ var fewest = [
 	20
 ];
 var minGivens = (n, level) => Math.round(fewest[level] / 81 * n * n);
-var makeSolution = (n, rng) => {
-	for (;;) {
-		const board = solve(emptyBoard(n), n, (list) => shuffled(list, rng), 50 * n);
+var makeLayout = (rng, n = 9, swaps = 300) => {
+	const regions = Array.from({ length: n * n }, (_, i) => Math.floor(i / n / 3) * 3 + Math.floor(i % n / 3));
+	const near = (i) => [
+		i - n,
+		i + n,
+		i % n ? i - 1 : -1,
+		i % n < n - 1 ? i + 1 : -1
+	].filter((j) => j >= 0 && j < n * n);
+	const piece = (r) => regions.flatMap((v, i) => v === r ? [i] : []);
+	const pick = (list) => list[Math.floor(rng() * list.length)];
+	for (let done = 0, tries = 0; done < swaps && tries < swaps * 40; tries++) {
+		const a = Math.floor(rng() * n * n);
+		const x = regions[a];
+		const y = regions[pick(near(a))];
+		if (x === y) continue;
+		const back = piece(y).filter((c) => c !== a && near(c).some((j) => regions[j] === x));
+		if (!back.length) continue;
+		const c = pick(back);
+		regions[a] = y;
+		regions[c] = x;
+		if (connected(piece(x), n) && connected(piece(y), n)) done++;
+		else {
+			regions[a] = x;
+			regions[c] = y;
+		}
+	}
+	return regions.join("");
+};
+var makeSolution = (n, rng, layout, tries = Infinity) => {
+	for (let k = 0; k < tries; k++) {
+		const board = solve(emptyBoard(n), n, (list) => shuffled(list, rng), 50 * n, layout);
 		if (board) return board;
 	}
+	return null;
 };
-var makePuzzle = (n, rng, keep, least = 0) => {
-	const solution = makeSolution(n, rng);
+var makePuzzle = (n, rng, keep, least = 0, layout) => {
+	const solution = makeSolution(n, rng, layout, layout ? 10 : Infinity);
+	if (!solution) return null;
 	const givens = solution.slice();
 	let count = n * n;
 	const last = n * n - 1;
@@ -35,16 +65,19 @@ var makePuzzle = (n, rng, keep, least = 0) => {
 	}
 	return {
 		givens,
-		solution
+		solution,
+		layout
 	};
 };
-var makeGame = (n, level, rng, budget = 1500) => {
+var makeGame = (n, level, rng, budget = 1500, regions = false) => {
 	const start = performance.now();
-	const keep = level === levels.length - 1 ? (board) => countSolutions(board, n, 2) === 1 : (board) => rate(board, n, level) !== null;
+	const top = level === levels.length - 1;
 	let best = null;
 	do {
-		const puzzle = makePuzzle(n, rng, keep, minGivens(n, level));
-		const rated = rate(puzzle.givens, n, level)?.level;
+		const layout = regions ? makeLayout(rng, n) : void 0;
+		const puzzle = makePuzzle(n, rng, top ? (board) => countSolutions(board, n, 2, layout) === 1 : (board) => rate(board, n, level, layout) !== null, minGivens(n, level), layout);
+		if (!puzzle) continue;
+		const rated = rate(puzzle.givens, n, level, layout)?.level;
 		if (rated === void 0) continue;
 		if (rated === level) return {
 			...puzzle,
@@ -61,14 +94,15 @@ var makeGame = (n, level, rng, budget = 1500) => {
 //#region src/sudoku/deal.js
 var dealOne = dealer(() => new Worker(new URL(
 	/* @vite-ignore */
-	new URL("deal.worker-D5yl7rUA.js", import.meta.url).href,
+	new URL("deal.worker-BH0BxfI1.js", import.meta.url).href,
 	"" + import.meta.url
-), { type: "module" }), ({ n, level, seed, budget }) => makeGame(n, level, random(seed), budget));
-var deal = (n, level, seed, budget) => dealOne({
+), { type: "module" }), ({ n, level, seed, budget, regions }) => makeGame(n, level, random(seed), budget, regions));
+var deal = (n, level, seed, budget, regions) => dealOne({
 	n,
 	level,
 	seed,
-	budget
+	budget,
+	regions
 });
 //#endregion
 //#region src/sudoku/About.jsx
@@ -76,7 +110,7 @@ var SudokuAbout = ({ key, actions }) => /* @__PURE__ */ h(About, {
 	key,
 	name: "Sudoku Plus",
 	actions
-}, /* @__PURE__ */ h("p", null, "Number placement puzzles: fill the grid so every row, column and box holds each digit exactly once, on the classic 9×9 board or a smaller 6×6 or 4×4."), /* @__PURE__ */ h("p", null, "Four levels, each board with exactly one solution that logic alone finds, graded by the hardest technique it needs, from singles to swordfish. Notes, Auto Notes and hints that explain their reasoning and link to the guide."), /* @__PURE__ */ h("p", null, "The puzzle was devised by Howard Garns as Number Place in 1979 and named Sudoku by Nikoli in 1984."));
+}, /* @__PURE__ */ h("p", null, "Number placement puzzles: fill the grid so every row, column and box holds each digit exactly once, on the classic 9×9 board or a smaller 6×6 or 4×4, or as a Jigsaw, where irregular regions take the place of the boxes."), /* @__PURE__ */ h("p", null, "Four levels, each board with exactly one solution that logic alone finds, graded by the hardest technique it needs, from singles to swordfish. Notes, Auto Notes and hints that explain their reasoning and link to the guide."), /* @__PURE__ */ h("p", null, "The puzzle was devised by Howard Garns as Number Place in 1979 and named Sudoku by Nikoli in 1984."));
 //#endregion
 //#region src/sudoku/app.jsx
 var app_exports = /* @__PURE__ */ __exportAll({
@@ -89,20 +123,25 @@ var app_exports = /* @__PURE__ */ __exportAll({
 });
 var loadChoice = () => {
 	const saved = parseInt(load("sudoku.size"), 10);
-	const n = sizes.includes(saved) ? saved : 9;
+	const variant = load("sudoku.variant") === jigsaw;
+	const n = variant ? 9 : sizes.includes(saved) ? saved : 9;
 	const level = parseInt(load("sudoku.level"), 10);
 	if (!(level >= 0 && level < levelNames.length)) return {
 		n,
-		level: 0
+		level: 0,
+		jigsaw: variant
 	};
 	return {
 		n,
-		level: fallback(n, level)
+		level: fallback(n, level),
+		jigsaw: variant
 	};
 };
-var createGame = ({ n, level }) => ({
+var createGame = ({ n, level, jigsaw: regions = false }) => ({
 	n,
 	level,
+	jigsaw: regions,
+	layout: null,
 	givens: emptyBoard(n),
 	solution: null,
 	board: emptyBoard(n),
@@ -125,14 +164,15 @@ var createGame = ({ n, level }) => ({
 var saved = resumable({
 	key: "sudoku.saved",
 	running,
-	label: ({ n, level }) => `${n} × ${n} ${levelNames[level]}`,
+	label: ({ n, level, layout }) => `${layout ? "Jigsaw " : ""}${n} × ${n} ${levelNames[level]}`,
 	fresh: {
 		selected: -1,
 		picked: 0
 	},
-	pack: ({ n, level, givens, solution, board, notes, history, future, hinted, untimed, daily, shared }) => ({
+	pack: ({ n, level, layout, givens, solution, board, notes, history, future, hinted, untimed, daily, shared }) => ({
 		n,
 		level,
+		layout,
 		givens: Array.from(givens),
 		solution: Array.from(solution),
 		board: Array.from(board),
@@ -144,14 +184,17 @@ var saved = resumable({
 		daily,
 		shared
 	}),
-	unpack: ({ n, level, givens, solution, board, notes, history, future, hinted, untimed, daily, shared }) => {
+	unpack: ({ n, level, layout, givens, solution, board, notes, history, future, hinted, untimed, daily, shared }) => {
 		check(sizes.includes(n) && boxShapes[n] && level >= 0 && level < levels.length);
 		check(Array.isArray(notes) && notes.length === n * n && Array.isArray(history));
+		check(!layout || n === 9 && validLayout(layout, n));
 		return {
 			...createGame({
 				n,
-				level
+				level,
+				jigsaw: Boolean(layout)
 			}),
+			layout: layout || null,
 			givens: boardOf(givens, n, 0, n),
 			solution: boardOf(solution, n, 0, n),
 			board: boardOf(board, n, 0, n),
@@ -166,26 +209,44 @@ var saved = resumable({
 		};
 	}
 });
-var { actions: recordActions } = records("sudoku", sizes, levelNames);
+var { actions: recordActions } = records("sudoku", [...sizes, jigsaw], levelNames);
 var DAILY = {
 	n: 9,
 	level: 1
 };
-var shareCode = ({ n, level, givens }) => codeOf(n, level, givens, n + 1);
-var gameOf = (code) => {
-	const base = Number(code.split(".")[0]) + 1;
+var shareCode = ({ n, level, givens, layout }) => {
+	const code = codeOf(n, level, givens, n + 1);
+	return layout ? `${code}.${pack(Array.from(layout, Number), n)}` : code;
+};
+var gameOf = (whole) => {
+	const [size, grade, data, region, ...rest] = whole.split(".");
+	if (rest.length) return null;
+	const code = [
+		size,
+		grade,
+		data
+	].join(".");
+	const base = Number(size) + 1;
 	const parts = partsOf(code, base, (n, level) => sizes.includes(n) && allowed(n, level));
 	if (!parts) return null;
 	const { n, level, values } = parts;
+	let layout;
+	if (region !== void 0) {
+		const regions = unpack(region, n * n, n);
+		layout = regions && regions.join("");
+		if (n !== 9 || !validLayout(layout, n)) return null;
+	}
 	const givens = Int8Array.from(values);
-	if (breaks(givens, n).length || countSolutions(givens, n, 2) !== 1) return null;
+	if (breaks(givens, n, layout).length || countSolutions(givens, n, 2, layout) !== 1) return null;
 	return {
 		...createGame({
 			n,
-			level
+			level,
+			jigsaw: Boolean(layout)
 		}),
+		layout: layout || null,
 		givens,
-		solution: solve(givens, n),
+		solution: solve(givens, n, void 0, void 0, layout),
 		board: givens.slice(),
 		dealing: false,
 		shared: true
@@ -206,7 +267,7 @@ var changed = (state, board, notes, history, actions) => {
 		history,
 		future: []
 	};
-	next.win = solved(board, next.n);
+	next.win = solved(board, next.n, next.layout);
 	if (next.win) {
 		stopTick(next.raf);
 		celebrate();
@@ -214,7 +275,10 @@ var changed = (state, board, notes, history, actions) => {
 			won: true,
 			clean: !next.hinted
 		});
-		finish("sudoku", state, next, actions);
+		finish("sudoku", state, next, actions, (won) => actions.win({
+			...won,
+			n: won.layout ? jigsaw : won.n
+		}));
 	}
 	return {
 		hint: null,
@@ -253,7 +317,7 @@ var placeDigit = (state, actions, i, d) => {
 		game.notes[i]
 	]];
 	if (tidy) {
-		for (const p of geometry(game.n).peers[i]) if (game.notes[p] & bit(d)) changes.push([
+		for (const p of geometry(game.n, game.layout).peers[i]) if (game.notes[p] & bit(d)) changes.push([
 			p,
 			game.board[p],
 			game.notes[p] & ~bit(d)
@@ -325,16 +389,19 @@ var actions = {
 		stopFireworks();
 		const day = payload && payload.daily ? dayOf() : null;
 		const base = day ? DAILY : special(game) ? loadChoice() : game;
-		const n = payload && payload.n || base.n;
+		const size = payload && payload.n;
+		const regions = payload && payload.jigsaw !== void 0 ? payload.jigsaw : Boolean(base.jigsaw) && !(size && size !== 9);
+		const n = regions ? 9 : size || base.n;
 		const asked = payload && payload.level !== void 0 ? payload.level : base.level;
 		const level = fallback(n, asked);
 		const seed = day ? seedOf(day, "sudoku") : Math.floor(Math.random() * 2 ** 32);
 		if (!day) {
 			save("sudoku.size", n);
 			save("sudoku.level", level);
+			save("sudoku.variant", regions ? jigsaw : "classic");
 		}
 		const id = ++deals;
-		deal(n, level, seed, day ? DAILY_BUDGET : void 0).then((dealt) => actions.dealt({
+		deal(n, level, seed, day ? DAILY_BUDGET : void 0, regions).then((dealt) => actions.dealt({
 			id,
 			...dealt
 		}));
@@ -347,19 +414,21 @@ var actions = {
 			game: {
 				...createGame({
 					n,
-					level
+					level,
+					jigsaw: regions
 				}),
 				deal: id,
 				daily: day
 			}
 		};
 	},
-	dealt: ({ id, givens, solution }) => ({ game }) => {
+	dealt: ({ id, givens, solution, layout }) => ({ game }) => {
 		if (game.deal !== id) return null;
 		return { game: {
 			...game,
 			givens,
 			solution,
+			layout: layout || null,
 			board: givens.slice(),
 			dealing: false
 		} };
@@ -407,7 +476,7 @@ var actions = {
 	autoNotes: () => (state, actions) => {
 		const { game } = state;
 		if (!playable(game)) return { menu: null };
-		const cands = candidatesOf(game.board, game.n);
+		const cands = candidatesOf(game.board, game.n, game.layout);
 		return {
 			menu: null,
 			...edit(state, actions, [...game.board.keys()].filter((i) => game.board[i] === 0).map((i) => [
@@ -461,7 +530,7 @@ var actions = {
 	},
 	hint: () => ({ game }, actions) => {
 		if (!playable(game)) return { menu: null };
-		const { board, notes, solution, n } = game;
+		const { board, notes, solution, n, layout } = game;
 		return {
 			menu: null,
 			prompt: false,
@@ -469,7 +538,8 @@ var actions = {
 				board,
 				notes,
 				solution,
-				n
+				n,
+				layout
 			}),
 			game: {
 				...startClock(game, actions),
@@ -512,7 +582,7 @@ var view = (state, actions) => /* @__PURE__ */ h("main", {
 }), state.bestTime && /* @__PURE__ */ h(BestTimes, {
 	key: "c",
 	title: "Fastest Sudoku Solvers",
-	sizes,
+	sizes: [...sizes, "jigsaw"],
 	levelNames,
 	allowed,
 	state: state.bestTime,
