@@ -1,0 +1,15 @@
+import { mt as h } from "./Taskbar-C1_Zl4td.js";
+import { t as HowToPlay } from "./HowToPlay-DCog5Ydc.js";
+//#region src/lightup/HowToPlay.jsx
+var Rules = () => [
+	/* @__PURE__ */ h("p", null, "Put bulbs on the white cells until every white cell is lit. A bulb lights its own cell and its row and column as far as the next wall. No bulb may light another bulb, and a wall with a number has exactly that many bulbs in the cells beside it, above, below, left and right."),
+	/* @__PURE__ */ h("p", null, "Click a cell for a bulb, again for a cross and again to clear it, right click to step back. Crosses are notes for yourself that no bulb goes there, and the win never needs them. On a keyboard the arrow keys move a cursor, Space steps its cell, B puts a bulb, X a cross and Backspace clears it."),
+	/* @__PURE__ */ h("p", null, "The left counter shows the cells still dark, Ctrl+Z undoes and Ctrl+Y redoes. With Count Down Numbers on (Game menu), a wall shows the bulbs it still needs instead of its number, down to 0. Show Errors marks bulbs that light each other and walls with too many bulbs or too little room, and Hint explains the next step logic gives. Every board has one solution that needs no guessing.")
+];
+var LightUpHowToPlay = ({ key, actions }) => /* @__PURE__ */ h(HowToPlay, {
+	key,
+	name: "Light Up",
+	actions
+}, /* @__PURE__ */ h(Rules, null));
+//#endregion
+export { Rules as n, LightUpHowToPlay as t };
