@@ -31,6 +31,8 @@ Each game has a guide, from the rules to every solving technique (or, for 2048, 
 | ![Light Up on Synthwave](docs/screenshots/synthwave-lightup.jpg)               | ![The Light Up guide](docs/screenshots/lightup-guide.jpg)                |
 | **Vaporwave: 2048 with a hint, over its tape and Qix**                         | **Terafox Hex Trail: Futoshiki with a hint**                             |
 | ![2048 on Vaporwave](docs/screenshots/vaporwave-2048.webp)                     | ![Futoshiki on Terafox](docs/screenshots/terafox-futoshiki.webp)         |
+| **Solarized Truchet: Bridges on 10 × 10 with a hint**                          | **Vaporwave, still: the Bridges guide, its examples drawn by the game**  |
+| ![Bridges on Solarized Truchet](docs/screenshots/solarized-bridges.webp)       | ![The Bridges guide](docs/screenshots/bridges-guide.jpg)                 |
 
 **Expert turned on its side on a phone, over Matrix's still wallpaper**
 
