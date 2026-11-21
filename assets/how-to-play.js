@@ -1,13 +1,13 @@
-import { gt as h, i as help_default } from "./Taskbar-Dz9Nw-2m.js";
-import { t as Rules } from "./HowToPlay-DjvtGHSD.js";
-import { n as Rules$1 } from "./HowToPlay-DdfUNlIP.js";
-import { t as Rules$2 } from "./HowToPlay-CB3OSx6_.js";
-import { n as Rules$3 } from "./HowToPlay-BlelnwAr.js";
-import { t as Rules$4 } from "./HowToPlay-C-TK4j2G.js";
-import { n as Rules$5 } from "./HowToPlay-o2FUannU.js";
-import { n as Rules$6 } from "./HowToPlay-CDPs9ER-.js";
-import { n as Rules$7 } from "./HowToPlay-Y2F43JWS.js";
-import { i as startGuide, n as Page } from "./Guide-DGBxnsD9.js";
+import { gt as h, i as help_default } from "./Taskbar-DNGZckNK.js";
+import { t as Rules } from "./HowToPlay-B2ll-DNj.js";
+import { n as Rules$1 } from "./HowToPlay-DxnVn5wS.js";
+import { t as Rules$2 } from "./HowToPlay-DaSXS7Y6.js";
+import { n as Rules$3 } from "./HowToPlay-B4S0NxJU.js";
+import { t as Rules$4 } from "./HowToPlay-CRKhGEFP.js";
+import { n as Rules$5 } from "./HowToPlay-CpaW1Yjv.js";
+import { n as Rules$6 } from "./HowToPlay-CPKPwmHB.js";
+import { n as Rules$7 } from "./HowToPlay-DhWEpv6W.js";
+import { i as startGuide, n as Page } from "./Guide-8DFuIkUt.js";
 //#region src/guide/howToPlay.jsx
 var game = (id, title, Rules) => ({
 	id,

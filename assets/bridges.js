@@ -1,11 +1,11 @@
-import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _t as __exportAll, a as DAILY_BUDGET, c as dayOf, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, mt as save, p as special, q as Boss, t as Taskbar, w as gameKey } from "./Taskbar-Dz9Nw-2m.js";
-import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-BsmzXG8a.js";
-import { n as About } from "./HowToPlay-sY4y4fKz.js";
-import { i as Prompt, t as records } from "./records-DJnCKEs6.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-C3X6kkCM.js";
-import { a as dealer, i as shuffled, o as BestTimes, r as random, t as arrows } from "./cursor-wgkaEAGW.js";
-import { C as solved, S as sizes, T as unfinished, a as allowed, b as linkBetween, d as levels, h as solve, l as findHint, m as countSolutions, o as fallback, p as rate, r as running, s as levelNames, t as Game, v as emptyBoard, w as stepLink, x as linksOf, y as islandCells } from "./Game-CEnUBA3V.js";
-import { t as BridgesHowToPlay } from "./HowToPlay-Y2F43JWS.js";
+import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _t as __exportAll, a as DAILY_BUDGET, c as dayOf, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, mt as save, p as special, q as Boss, t as Taskbar, w as gameKey } from "./Taskbar-DNGZckNK.js";
+import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-DSDzDprH.js";
+import { n as About } from "./HowToPlay-CWk78UqX.js";
+import { i as Prompt, t as records } from "./records-gVeLf6EY.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-BTWz6K4y.js";
+import { a as dealer, i as shuffled, o as BestTimes, r as random, t as arrows } from "./cursor-CWPvnyUc.js";
+import { C as solved, S as sizes, T as unfinished, a as allowed, b as linkBetween, d as levels, h as solve, l as findHint, m as countSolutions, o as fallback, p as rate, r as running, s as levelNames, t as Game, v as emptyBoard, w as stepLink, x as linksOf, y as islandCells } from "./Game-DX8HFyOI.js";
+import { t as BridgesHowToPlay } from "./HowToPlay-DhWEpv6W.js";
 //#region src/bridges/generate.js
 var steps = [
 	[1, 0],

@@ -1,11 +1,11 @@
-import { A as shellActions, D as listen, F as windowClear, L as celebrate, M as shortcut, R as stopFireworks, Y as BackgroundSettings, _t as __exportAll, c as dayOf, ct as Button, dt as watchWindow, ft as load, g as Menu, gt as h, j as shellState, lt as Overlay, mt as save, pt as remove, q as Boss, st as Dialog, t as Taskbar } from "./Taskbar-Dz9Nw-2m.js";
-import { S as Input, _ as check, a as clearStats, b as OpenGames, c as lossesOn, d as timeOf, h as BestTime_module_default, i as StatsList, l as readStats, m as hintTabs, n as FireworksCanvas, o as lossActions, p as Tabs, r as Switching, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-BsmzXG8a.js";
-import { n as About } from "./HowToPlay-sY4y4fKz.js";
-import { C as timed, _ as pauseAction, c as PauseButton, d as Play, f as Digit, g as nextTick, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, p as clock, r as WindowControls, s as HintIcon, t as HintPanel, v as seconds, w as timerAction, x as stopTick } from "./Board-C3X6kkCM.js";
+import { A as shellActions, D as listen, F as windowClear, L as celebrate, M as shortcut, R as stopFireworks, Y as BackgroundSettings, _t as __exportAll, c as dayOf, ct as Button, dt as watchWindow, ft as load, g as Menu, gt as h, j as shellState, lt as Overlay, mt as save, pt as remove, q as Boss, st as Dialog, t as Taskbar } from "./Taskbar-DNGZckNK.js";
+import { S as Input, _ as check, a as clearStats, b as OpenGames, c as lossesOn, d as timeOf, h as BestTime_module_default, i as StatsList, l as readStats, m as hintTabs, n as FireworksCanvas, o as lossActions, p as Tabs, r as Switching, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-DSDzDprH.js";
+import { n as About } from "./HowToPlay-CWk78UqX.js";
+import { C as timed, _ as pauseAction, c as PauseButton, d as Play, f as Digit, g as nextTick, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, p as clock, r as WindowControls, s as HintIcon, t as HintPanel, v as seconds, w as timerAction, x as stopTick } from "./Board-BTWz6K4y.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
 import { t as capital } from "./grid-BF72XPNL.js";
-import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-Zf0LsVB9.js";
-import { t as MinesweeperHowToPlay } from "./HowToPlay-DdfUNlIP.js";
+import { i as noHint, n as findHint, o as placeMines, r as guideTopic, s as Cell, t as explainChord } from "./hint-Wn7jJVDe.js";
+import { t as MinesweeperHowToPlay } from "./HowToPlay-DxnVn5wS.js";
 //#region src/Game.jsx
 var more = (hint) => guideTopic(hint) && `guide/#${guideTopic(hint)}`;
 var running = ({ start, win, lose }) => start >= 0 && !win && !lose;
