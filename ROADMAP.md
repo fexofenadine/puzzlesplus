@@ -13,7 +13,7 @@ What is planned for Puzzles Plus, the website and the [Android app](https://gith
 - [x] Remove Terafox Coral, keeping Terafox Hex Trail under that full name
 - [x] Statistics for every game: wins, losses (when tracked), streaks, and average times overall and by board
 - ~~A calendar of past daily puzzles to go back and play~~ _won't do_
-- [ ] Bridges (Hashi), an eighth game, offered before Futoshiki and not picked then
+- [x] Bridges (Hashi), an eighth game: 7 × 7, 10 × 10 and 14 × 14 in four levels, hints, guide, daily and shared links
 - ~~Accessibility: colour-blind friendly palettes, a high contrast option and screen reader labels for boards and cells~~ _postponed, out of scope for 2.0.0_
 
 ### To review

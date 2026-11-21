@@ -2,17 +2,17 @@
 
 # Puzzles Plus
 
-Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All seven games share the window, the nine themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
+Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All eight games share the window, the nine themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
-> **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these seven games as an app, offline, with every theme, and the themes' backgrounds as a live wallpaper. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
+> **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these eight games as an app, offline, with every theme, and the themes' backgrounds as a live wallpaper. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
 >
 > **On Windows:** [Puzzles Plus Screensaver](https://github.com/fexofenadine/puzzlesplus-screensaver) shows the themes' backgrounds and effects as a screensaver.
 
-| [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              | [Play 2048 Plus](https://fexofenadine.github.io/puzzlesplus/2048/)                          | [Play Light Up Plus](https://fexofenadine.github.io/puzzlesplus/lightup/)                                | [Play Futoshiki Plus](https://fexofenadine.github.io/puzzlesplus/futoshiki/)                                    |
-| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) | [![Play Sudoku Plus](public/sudoku/sudoku.jpg)](https://fexofenadine.github.io/puzzlesplus/sudoku/) | [![Play 2048 Plus](public/2048/2048.jpg)](https://fexofenadine.github.io/puzzlesplus/2048/) | [![Play Light Up Plus](public/lightup/lightup.jpg)](https://fexofenadine.github.io/puzzlesplus/lightup/) | [![Play Futoshiki Plus](public/futoshiki/futoshiki.jpg)](https://fexofenadine.github.io/puzzlesplus/futoshiki/) |
+| [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              | [Play 2048 Plus](https://fexofenadine.github.io/puzzlesplus/2048/)                          | [Play Light Up Plus](https://fexofenadine.github.io/puzzlesplus/lightup/)                                | [Play Futoshiki Plus](https://fexofenadine.github.io/puzzlesplus/futoshiki/)                                    | [Play Bridges Plus](https://fexofenadine.github.io/puzzlesplus/bridges/)                                |
+| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) | [![Play Sudoku Plus](public/sudoku/sudoku.jpg)](https://fexofenadine.github.io/puzzlesplus/sudoku/) | [![Play 2048 Plus](public/2048/2048.jpg)](https://fexofenadine.github.io/puzzlesplus/2048/) | [![Play Light Up Plus](public/lightup/lightup.jpg)](https://fexofenadine.github.io/puzzlesplus/lightup/) | [![Play Futoshiki Plus](public/futoshiki/futoshiki.jpg)](https://fexofenadine.github.io/puzzlesplus/futoshiki/) | [![Play Bridges Plus](public/bridges/bridges.jpg)](https://fexofenadine.github.io/puzzlesplus/bridges/) |
 
-Each game has a guide, from the rules to every solving technique (or, for 2048, strategy) with worked examples: the [Minesweeper](https://fexofenadine.github.io/puzzlesplus/minesweeper/guide/), [Takuzu](https://fexofenadine.github.io/puzzlesplus/takuzu/guide/), [Nonograms](https://fexofenadine.github.io/puzzlesplus/nonograms/guide/), [Sudoku](https://fexofenadine.github.io/puzzlesplus/sudoku/guide/), [2048](https://fexofenadine.github.io/puzzlesplus/2048/guide/), [Light Up](https://fexofenadine.github.io/puzzlesplus/lightup/guide/) and [Futoshiki](https://fexofenadine.github.io/puzzlesplus/futoshiki/guide/) guides. [How to Play](https://fexofenadine.github.io/puzzlesplus/how-to-play/) has every game's rules in short.
+Each game has a guide, from the rules to every solving technique (or, for 2048, strategy) with worked examples: the [Minesweeper](https://fexofenadine.github.io/puzzlesplus/minesweeper/guide/), [Takuzu](https://fexofenadine.github.io/puzzlesplus/takuzu/guide/), [Nonograms](https://fexofenadine.github.io/puzzlesplus/nonograms/guide/), [Sudoku](https://fexofenadine.github.io/puzzlesplus/sudoku/guide/), [2048](https://fexofenadine.github.io/puzzlesplus/2048/guide/), [Light Up](https://fexofenadine.github.io/puzzlesplus/lightup/guide/), [Futoshiki](https://fexofenadine.github.io/puzzlesplus/futoshiki/guide/) and [Bridges](https://fexofenadine.github.io/puzzlesplus/bridges/guide/) guides. [How to Play](https://fexofenadine.github.io/puzzlesplus/how-to-play/) has every game's rules in short.
 
 ## In pictures
 
@@ -94,6 +94,14 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 - Sudoku's number pad, notes, Auto Notes and keyboard play, with Show Errors, undo and redo, a daily puzzle and boards shared as links.
 - Hints that find broken signs and wrong digits before the next step, and explain any candidate they take away to get there.
 
+## Bridges Plus
+
+Join the islands with bridges: an island's number is how many it has, a pair takes one or two, bridges run straight and never cross, and every island must end up joined to every other.
+
+- Four levels from Easy to Expert on 7 × 7, 10 × 10 and 14 × 14 boards, every board with one solution and graded by the hardest technique it needs, from islands that need every neighbour to cut-off groups and what-if.
+- Click an island and then another, or drag between them, or click the water between; right click steps back. Keyboard play with the arrows and Shift, Show Errors, undo and redo, a daily puzzle and boards shared as links.
+- Hints that find broken rules and wrong bridges before the next one, and show the links a bridge leans on as ruled out.
+
 ## Every game
 
 - **A home page**: the site opens on a window of every game, with the game you played last first as Continue, and Home in every Start menu brings it back
@@ -104,10 +112,10 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 - **Fireworks** in each theme's colours when you win, until the next game starts, and when 2048 reaches its tile. Switch them off in the Display menu.
 - **Pause**, automatic when you switch away, with a title bar button that shows only the background, like a screensaver, and a **boss key** (Esc) that hides everything behind a spreadsheet.
 - **Resume**: a game in progress survives a reload or a closed tab and comes back paused. A **Timer** option turns the clock off (and best times with it).
-- **Daily Puzzle** in Takuzu, Nonograms, Sudoku, Light Up and Futoshiki: one board a day, the same for everyone, with a streak of days solved. **Copy Link** shares the board in play as a link.
+- **Daily Puzzle** in Takuzu, Nonograms, Sudoku, Light Up, Futoshiki and Bridges: one board a day, the same for everyone, with a streak of days solved. **Copy Link** shares the board in play as a link.
 - **Statistics** in Best Times: wins, streaks and average times, overall and by board.
 - **Backup** in the Start menu carries settings, best times, statistics and saved games to another browser or the app, as a file or as text.
-- Undo everywhere it makes sense, and **redo** in Takuzu, Nonograms, Sudoku, Light Up and Futoshiki.
+- Undo everywhere it makes sense, and **redo** in Takuzu, Nonograms, Sudoku, Light Up, Futoshiki and Bridges.
 - Best times per level, with and without hints, and an offline-capable service worker.
 
 ## Under the hood
@@ -126,7 +134,7 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 
 ```sh
 yarn          #install dependencies
-yarn start    #dev server, the games are at /minesweeper/, /takuzu/, /nonograms/, /sudoku/, /2048/, /lightup/ and /futoshiki/
+yarn start    #dev server, the games are at /minesweeper/, /takuzu/, /nonograms/, /sudoku/, /2048/, /lightup/, /futoshiki/ and /bridges/
 yarn build    #static site in build/
 yarn test     #run tests
 yarn lint     #lint
