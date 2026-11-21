@@ -105,6 +105,7 @@ Fill the grid so every row and column holds each digit once, with the signs betw
 - **Pause**, automatic when you switch away, with a title bar button that shows only the background, like a screensaver, and a **boss key** (Esc) that hides everything behind a spreadsheet.
 - **Resume**: a game in progress survives a reload or a closed tab and comes back paused. A **Timer** option turns the clock off (and best times with it).
 - **Daily Puzzle** in Takuzu, Nonograms, Sudoku, Light Up and Futoshiki: one board a day, the same for everyone, with a streak of days solved. **Copy Link** shares the board in play as a link.
+- **Statistics** in Best Times: wins, streaks and average times, overall and by board.
 - **Backup** in the Start menu carries settings, best times, statistics and saved games to another browser or the app, as a file or as text.
 - Undo everywhere it makes sense, and **redo** in Takuzu, Nonograms, Sudoku, Light Up and Futoshiki.
 - Best times per level, with and without hints, and an offline-capable service worker.
