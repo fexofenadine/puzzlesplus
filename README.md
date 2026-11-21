@@ -2,7 +2,7 @@
 
 # Puzzles Plus
 
-Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All eight games share the window, the nine themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
+Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All eight games share the window, the eight themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
 > **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these eight games as an app, offline, with every theme, and the themes' backgrounds as a live wallpaper. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
 >
