@@ -1,8 +1,8 @@
-import { gt as h, n as icons } from "./Taskbar-CoMVUW-1.js";
-import { c as pairs, d as twins, f as whatIf, i as gaps, n as balance, r as counts, s as oneLeft, t as Cell, u as repeats, x as Game_module_default } from "./Cell-BVjSX7u-.js";
-import { t as Rules } from "./HowToPlay-CjptWU-T.js";
-import { r as startGuide, t as Figure } from "./Guide-BeD91Sfc.js";
-import { t as desktopSection } from "./desktop-CP6zB_6b.js";
+import { gt as h, n as icons } from "./Taskbar-Dz9Nw-2m.js";
+import { c as pairs, d as twins, f as whatIf, i as gaps, n as balance, r as counts, s as oneLeft, t as Cell, u as repeats, x as Game_module_default } from "./Cell-B8--uBnQ.js";
+import { t as Rules } from "./HowToPlay-CB3OSx6_.js";
+import { i as startGuide, r as noop, t as Figure } from "./Guide-DGBxnsD9.js";
+import { t as desktopSection } from "./desktop-BMX7bPOI.js";
 //#region src/guide/TakuzuExample.jsx
 var finders = {
 	pair: pairs,
@@ -17,7 +17,6 @@ var finders = {
 var boardOf = (rows) => Int8Array.from(rows.join(""), (c) => c === "." ? -1 : Number(c));
 var exampleStep = (rows, technique) => finders[technique](boardOf(rows), rows.length).find((step) => step.technique === technique);
 var marksOf = (step) => step ? Object.fromEntries([...step.sources.map((i) => [i, "source"]), ...step.place.map(([i, v]) => [i, v ? "one" : "zero"])]) : {};
-var noop = () => null;
 var TakuzuExample = ({ rows, technique }) => {
 	const board = boardOf(rows);
 	const step = technique && exampleStep(rows, technique);

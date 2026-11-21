@@ -1,12 +1,13 @@
-import { gt as h, i as help_default } from "./Taskbar-CoMVUW-1.js";
-import { t as Rules } from "./HowToPlay-BAh1LAeH.js";
-import { n as Rules$1 } from "./HowToPlay-DeZQsZL1.js";
-import { t as Rules$2 } from "./HowToPlay-CjptWU-T.js";
-import { n as Rules$3 } from "./HowToPlay-X7LUUX4G.js";
-import { t as Rules$4 } from "./HowToPlay-BwQCHe8I.js";
-import { n as Rules$5 } from "./HowToPlay-Bj9vaQjr.js";
-import { n as Rules$6 } from "./HowToPlay-DvRAZ0Bm.js";
-import { n as Page, r as startGuide } from "./Guide-BeD91Sfc.js";
+import { gt as h, i as help_default } from "./Taskbar-Dz9Nw-2m.js";
+import { t as Rules } from "./HowToPlay-DjvtGHSD.js";
+import { n as Rules$1 } from "./HowToPlay-DdfUNlIP.js";
+import { t as Rules$2 } from "./HowToPlay-CB3OSx6_.js";
+import { n as Rules$3 } from "./HowToPlay-BlelnwAr.js";
+import { t as Rules$4 } from "./HowToPlay-C-TK4j2G.js";
+import { n as Rules$5 } from "./HowToPlay-o2FUannU.js";
+import { n as Rules$6 } from "./HowToPlay-CDPs9ER-.js";
+import { n as Rules$7 } from "./HowToPlay-Y2F43JWS.js";
+import { i as startGuide, n as Page } from "./Guide-DGBxnsD9.js";
 //#region src/guide/howToPlay.jsx
 var game = (id, title, Rules) => ({
 	id,
@@ -23,6 +24,7 @@ var parts = [{
 		game("2048", "2048", Rules),
 		game("lightup", "Light Up", Rules$5),
 		game("futoshiki", "Futoshiki", Rules$6),
+		game("bridges", "Bridges", Rules$7),
 		{
 			id: "shortcuts",
 			title: "Every game",

@@ -1,0 +1,4 @@
+//#region src/bridges/About.jsx?raw
+var About_default = "import { h } from 'hyperapp'\nimport About from '../shell/About'\n\nconst BridgesAbout = ({ key, actions }) => (\n  <About key={key} name=\"Bridges Plus\" actions={actions}>\n    <p>\n      Join the islands with bridges. Each island's number is how many bridges it has, a pair of\n      islands takes one or two, bridges run straight and never cross, and every island must be\n      reachable from every other.\n    </p>\n    <p>\n      Boards of 7 × 7, 10 × 10 and 14 × 14 in four levels, each with exactly one solution that logic\n      alone finds, graded by the hardest technique it needs. Hints explain their reasoning and link\n      to the guide.\n    </p>\n    <p>Bridges, also known as Hashi or Hashiwokakero, was first published by Nikoli.</p>\n  </About>\n)\n\nexport default BridgesAbout\n";
+//#endregion
+export { About_default as default };

@@ -1,9 +1,9 @@
-import { gt as h, n as icons } from "./Taskbar-CoMVUW-1.js";
+import { gt as h, n as icons } from "./Taskbar-Dz9Nw-2m.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { a as neighboursOf, n as findHint, s as Cell, t as explainChord } from "./hint-VMtd5aAF.js";
-import { n as Rules } from "./HowToPlay-DeZQsZL1.js";
-import { r as startGuide, t as Figure } from "./Guide-BeD91Sfc.js";
-import { t as desktopSection } from "./desktop-CP6zB_6b.js";
+import { a as neighboursOf, n as findHint, s as Cell, t as explainChord } from "./hint-Zf0LsVB9.js";
+import { n as Rules } from "./HowToPlay-DdfUNlIP.js";
+import { i as startGuide, r as noop, t as Figure } from "./Guide-DGBxnsD9.js";
+import { t as desktopSection } from "./desktop-BMX7bPOI.js";
 //#region src/guide/MinesExample.jsx
 var fieldOf = (rows) => {
 	const width = rows[0].length;
@@ -39,7 +39,6 @@ var exampleHint = ({ rows, mines, chord }) => {
 		minesLeft: mines - flags
 	});
 };
-var noop = () => null;
 var MinesExample = ({ rows, mines, chord }) => {
 	const field = fieldOf(rows);
 	const hint = exampleHint({

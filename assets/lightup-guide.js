@@ -1,8 +1,8 @@
-import { gt as h, n as icons } from "./Taskbar-CoMVUW-1.js";
-import { d as starve, f as whatIf, i as full, o as lone, r as boxed, s as need, t as Cell, u as squeeze, w as LightUp_module_default, y as litOf } from "./Cell-BIh4BMw5.js";
-import { n as Rules } from "./HowToPlay-Bj9vaQjr.js";
-import { r as startGuide, t as Figure } from "./Guide-BeD91Sfc.js";
-import { t as desktopSection } from "./desktop-CP6zB_6b.js";
+import { gt as h, n as icons } from "./Taskbar-Dz9Nw-2m.js";
+import { d as starve, f as whatIf, i as full, o as lone, r as boxed, s as need, t as Cell, u as squeeze, w as LightUp_module_default, y as litOf } from "./Cell-D6ogs7eq.js";
+import { n as Rules } from "./HowToPlay-o2FUannU.js";
+import { i as startGuide, r as noop, t as Figure } from "./Guide-DGBxnsD9.js";
+import { t as desktopSection } from "./desktop-BMX7bPOI.js";
 //#region src/guide/LightUpExample.jsx
 var finders = {
 	need,
@@ -26,7 +26,6 @@ var exampleStep = (rows, technique) => {
 	return finders[technique](layout, board, n)[0];
 };
 var marksOf = (step) => step ? Object.fromEntries([...step.sources.map((i) => [i, "source"]), ...step.place.map(([i, value]) => [i, value === 1 ? "bulb" : "cross"])]) : {};
-var noop = () => null;
 var LightUpExample = ({ rows, technique }) => {
 	const { layout, board, n } = boardOf(rows);
 	const step = technique && exampleStep(rows, technique);

@@ -1,9 +1,9 @@
-import { J as cx, gt as h, n as icons } from "./Taskbar-CoMVUW-1.js";
-import { n as cellsOf } from "./grid-Dwf3El3F.js";
-import { a as Cell, f as lineSteps, i as tracks, n as place, p as nextSteps, v as cluesOf, w as Game_module_default, x as lineDone } from "./Game-CWTW1o9R.js";
-import { n as Rules } from "./HowToPlay-X7LUUX4G.js";
-import { r as startGuide, t as Figure } from "./Guide-BeD91Sfc.js";
-import { t as desktopSection } from "./desktop-CP6zB_6b.js";
+import { J as cx, gt as h, n as icons } from "./Taskbar-Dz9Nw-2m.js";
+import { r as cellsOf } from "./grid-BF72XPNL.js";
+import { a as Cell, f as lineSteps, i as tracks, n as place, p as nextSteps, v as cluesOf, w as Game_module_default, x as lineDone } from "./Game-lfsnNYvK.js";
+import { n as Rules } from "./HowToPlay-BlelnwAr.js";
+import { i as startGuide, r as noop, t as Figure } from "./Guide-DGBxnsD9.js";
+import { t as desktopSection } from "./desktop-BMX7bPOI.js";
 //#region src/guide/NonogramsExample.jsx
 var levelOf = {
 	complete: 0,
@@ -25,7 +25,6 @@ var lineStep = (clue, text, technique) => {
 };
 var boardStep = (clues, rows, technique) => nextSteps(boardOf(rows), rows.length, clues).steps.find((step) => step.technique === technique);
 var marksOf = (step) => step ? Object.fromEntries([...step.sources.map((i) => [i, "source"]), ...step.place.map(([i, v]) => [i, v === 1 ? "fill" : "cross"])]) : {};
-var noop = () => null;
 var Clue = ({ clue, done, hinted, style }) => /* @__PURE__ */ h("div", {
 	class: cx(Game_module_default.clue, done && Game_module_default.done, hinted && Game_module_default.hinted),
 	style

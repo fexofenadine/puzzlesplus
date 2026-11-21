@@ -226,6 +226,25 @@
   font-size: 0.85em;
   opacity: 0.7;
 }
+
+/*average time by board, scrolling when many are played*/
+.StatsList_boards {
+  display: grid;
+  gap: 1px 16px;
+  max-height: 7.5em;
+  margin: 8px 0 0;
+  overflow-y: auto;
+}
+
+.StatsList_board {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+}
+
+.StatsList_board span:not(:first-child) {
+  text-align: right;
+}
 /*over the wallpaper, the game window, its board (7), the taskbar and the screen look (6), under dialogs and menus*/
 .FireworksCanvas_canvas {
   position: fixed;

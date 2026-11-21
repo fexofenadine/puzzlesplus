@@ -1,9 +1,9 @@
-import { gt as h, n as icons } from "./Taskbar-CoMVUW-1.js";
-import { c as Cell } from "./Game-hgzx4lgC.js";
-import { T as Futoshiki_module_default, f as nextSteps, i as place, n as Signs, o as tracks, r as noteColumns, u as apply, v as candidatesOf } from "./Game-vNUOglx8.js";
-import { n as Rules } from "./HowToPlay-DvRAZ0Bm.js";
-import { r as startGuide, t as Figure } from "./Guide-BeD91Sfc.js";
-import { t as desktopSection } from "./desktop-CP6zB_6b.js";
+import { gt as h, n as icons } from "./Taskbar-Dz9Nw-2m.js";
+import { c as Cell } from "./Game-CBPaJCSP.js";
+import { T as Futoshiki_module_default, f as nextSteps, i as place, n as Signs, o as tracks, r as noteColumns, u as apply, v as candidatesOf } from "./Game-CHoSaWx1.js";
+import { n as Rules } from "./HowToPlay-CDPs9ER-.js";
+import { i as startGuide, r as noop, t as Figure } from "./Guide-DGBxnsD9.js";
+import { t as desktopSection } from "./desktop-BMX7bPOI.js";
 //#region src/guide/FutoshikiExample.jsx
 var puzzleOf = ({ rows, right, down }) => {
 	const n = rows.length;
@@ -32,7 +32,6 @@ var exampleStep = (example, technique) => {
 	}
 	return null;
 };
-var noop = () => null;
 var FutoshikiExample = ({ example, technique }) => {
 	const puzzle = puzzleOf(example);
 	const { n, givens } = puzzle;

@@ -1,13 +1,13 @@
-import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _t as __exportAll, a as DAILY_BUDGET, c as dayOf, ct as Button, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, lt as Overlay, mt as save, p as special, q as Boss, st as Dialog, t as Taskbar, w as gameKey } from "./Taskbar-CoMVUW-1.js";
-import { _ as resumable, b as Winner, g as check, h as boardOf, l as tally, n as FireworksCanvas, r as Switching, t as start, y as OpenGames } from "./start-Bxo9hulR.js";
-import { i as About_module_default, n as About } from "./HowToPlay-CgS68CKZ.js";
-import { i as Prompt, t as records } from "./records-DERLP5gk.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-BozP1c33.js";
-import { n as cellsOf } from "./grid-Dwf3El3F.js";
-import { a as dealer, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-J-JRHQz2.js";
+import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _t as __exportAll, a as DAILY_BUDGET, c as dayOf, ct as Button, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, lt as Overlay, mt as save, p as special, q as Boss, st as Dialog, t as Taskbar, w as gameKey } from "./Taskbar-Dz9Nw-2m.js";
+import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-BsmzXG8a.js";
+import { i as About_module_default, n as About } from "./HowToPlay-sY4y4fKz.js";
+import { i as Prompt, t as records } from "./records-DJnCKEs6.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-C3X6kkCM.js";
+import { r as cellsOf } from "./grid-BF72XPNL.js";
+import { a as dealer, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-wgkaEAGW.js";
 import { t as showRain } from "./rain-D7NoZOvq.js";
-import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-CWTW1o9R.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-X7LUUX4G.js";
+import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-lfsnNYvK.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-BlelnwAr.js";
 //#region src/nonograms/generate.js
 var filled = (cells, n) => {
 	const lines = cellsOf(n);
@@ -365,7 +365,9 @@ var changed = (state, game, board, history, actions, settled = false) => {
 		celebrate();
 		if (!state.game.win) tally("nonograms", {
 			won: true,
-			clean: !next.hinted
+			clean: !next.hinted,
+			time: timeOf(state.timer, next),
+			level: saved.label(next)
 		});
 		finish("nonograms", state, next, actions, record);
 	}

@@ -1,8 +1,8 @@
-import { gt as h, n as icons } from "./Taskbar-CoMVUW-1.js";
-import { n as Board, p as tilesOf, t as suggest } from "./search-DFY_5g2d.js";
-import { t as Rules } from "./HowToPlay-BAh1LAeH.js";
-import { r as startGuide, t as Figure } from "./Guide-BeD91Sfc.js";
-import { t as desktopSection } from "./desktop-CP6zB_6b.js";
+import { gt as h, n as icons } from "./Taskbar-Dz9Nw-2m.js";
+import { n as Board, p as tilesOf, t as suggest } from "./search-D_zclqdH.js";
+import { t as Rules } from "./HowToPlay-DjvtGHSD.js";
+import { i as startGuide, r as noop, t as Figure } from "./Guide-DGBxnsD9.js";
+import { t as desktopSection } from "./desktop-BMX7bPOI.js";
 //#region src/guide/2048.jsx
 var examples = {
 	corner: {
@@ -87,7 +87,6 @@ var start = [
 	2,
 	0
 ];
-var noop = () => null;
 var TwentyExample = ({ values, hint }) => {
 	const n = Math.sqrt(values.length);
 	const caption = hint && suggest(values, n).text;
