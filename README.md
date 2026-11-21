@@ -8,11 +8,11 @@ Windows style puzzle games with hints that explain their reasoning, boards you c
 >
 > **On Windows:** [Puzzles Plus Screensaver](https://github.com/fexofenadine/puzzlesplus-screensaver) shows the themes' backgrounds and effects as a screensaver.
 
-| [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              | [Play 2048 Plus](https://fexofenadine.github.io/puzzlesplus/2048/)                          | [Play Light Up Plus](https://fexofenadine.github.io/puzzlesplus/lightup/)                                | [Play Futoshiki Plus](https://fexofenadine.github.io/puzzlesplus/futoshiki/)                                    | [Play Bridges Plus](https://fexofenadine.github.io/puzzlesplus/bridges/)                                |
-| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) | [![Play Sudoku Plus](public/sudoku/sudoku.jpg)](https://fexofenadine.github.io/puzzlesplus/sudoku/) | [![Play 2048 Plus](public/2048/2048.jpg)](https://fexofenadine.github.io/puzzlesplus/2048/) | [![Play Light Up Plus](public/lightup/lightup.jpg)](https://fexofenadine.github.io/puzzlesplus/lightup/) | [![Play Futoshiki Plus](public/futoshiki/futoshiki.jpg)](https://fexofenadine.github.io/puzzlesplus/futoshiki/) | [![Play Bridges Plus](public/bridges/bridges.jpg)](https://fexofenadine.github.io/puzzlesplus/bridges/) |
+| [Play Minesweeper Plus](https://fexofenadine.github.io/puzzlesplus/minesweeper/)                                        | [Play Takuzu Plus](https://fexofenadine.github.io/puzzlesplus/takuzu/)                              | [Play Sudoku Plus](https://fexofenadine.github.io/puzzlesplus/sudoku/)                              | [Play Futoshiki Plus](https://fexofenadine.github.io/puzzlesplus/futoshiki/)                                    | [Play Nonograms Plus](https://fexofenadine.github.io/puzzlesplus/nonograms/)                                    | [Play Light Up Plus](https://fexofenadine.github.io/puzzlesplus/lightup/)                                | [Play Bridges Plus](https://fexofenadine.github.io/puzzlesplus/bridges/)                                | [Play 2048 Plus](https://fexofenadine.github.io/puzzlesplus/2048/)                          |
+| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [![Play Minesweeper Plus](public/minesweeper/minesweeper.jpg)](https://fexofenadine.github.io/puzzlesplus/minesweeper/) | [![Play Takuzu Plus](public/takuzu/takuzu.jpg)](https://fexofenadine.github.io/puzzlesplus/takuzu/) | [![Play Sudoku Plus](public/sudoku/sudoku.jpg)](https://fexofenadine.github.io/puzzlesplus/sudoku/) | [![Play Futoshiki Plus](public/futoshiki/futoshiki.jpg)](https://fexofenadine.github.io/puzzlesplus/futoshiki/) | [![Play Nonograms Plus](public/nonograms/nonograms.jpg)](https://fexofenadine.github.io/puzzlesplus/nonograms/) | [![Play Light Up Plus](public/lightup/lightup.jpg)](https://fexofenadine.github.io/puzzlesplus/lightup/) | [![Play Bridges Plus](public/bridges/bridges.jpg)](https://fexofenadine.github.io/puzzlesplus/bridges/) | [![Play 2048 Plus](public/2048/2048.jpg)](https://fexofenadine.github.io/puzzlesplus/2048/) |
 
-Each game has a guide, from the rules to every solving technique (or, for 2048, strategy) with worked examples: the [Minesweeper](https://fexofenadine.github.io/puzzlesplus/minesweeper/guide/), [Takuzu](https://fexofenadine.github.io/puzzlesplus/takuzu/guide/), [Nonograms](https://fexofenadine.github.io/puzzlesplus/nonograms/guide/), [Sudoku](https://fexofenadine.github.io/puzzlesplus/sudoku/guide/), [2048](https://fexofenadine.github.io/puzzlesplus/2048/guide/), [Light Up](https://fexofenadine.github.io/puzzlesplus/lightup/guide/), [Futoshiki](https://fexofenadine.github.io/puzzlesplus/futoshiki/guide/) and [Bridges](https://fexofenadine.github.io/puzzlesplus/bridges/guide/) guides. [How to Play](https://fexofenadine.github.io/puzzlesplus/how-to-play/) has every game's rules in short.
+Each game has a guide, from the rules to every solving technique (or, for 2048, strategy) with worked examples: the [Minesweeper](https://fexofenadine.github.io/puzzlesplus/minesweeper/guide/), [Takuzu](https://fexofenadine.github.io/puzzlesplus/takuzu/guide/), [Sudoku](https://fexofenadine.github.io/puzzlesplus/sudoku/guide/), [Futoshiki](https://fexofenadine.github.io/puzzlesplus/futoshiki/guide/), [Nonograms](https://fexofenadine.github.io/puzzlesplus/nonograms/guide/), [Light Up](https://fexofenadine.github.io/puzzlesplus/lightup/guide/), [Bridges](https://fexofenadine.github.io/puzzlesplus/bridges/guide/) and [2048](https://fexofenadine.github.io/puzzlesplus/2048/guide/).
 
 ## In pictures
 
@@ -54,14 +54,6 @@ Fill the grid with 0s and 1s: no three alike in a row, as many 0s as 1s in every
 - Five levels from Easy to Expert and five sizes from 6 × 6 to 14 × 14, every board with one solution and graded by the reasoning it really needs.
 - Hints that find broken rules and wrong cells before the next step, Show Errors, undo and redo, keyboard play, a daily puzzle, boards shared as links and a question when a full board is wrong.
 
-## Nonograms Plus
-
-Fill the cells whose runs match the clues beside each row and above each column, and a picture appears.
-
-- Four levels and five sizes from 5 × 5 to 25 × 25, random pictures touched up until logic alone can finish them, symmetric or not as you choose, and always filling the grid.
-- Turn off Procedural to play a pool of pictures drawn for the game, picked at your level or chosen by hand, with their own best times and a name and credit when you solve one. Pictures are plain text files in `src/nonograms/art`, easy to add to.
-- Drag to paint along a line, crosses as notes, a fill or cross mode for touch screens, the row and column under the mouse marked, keyboard play, hints, Show Errors, undo and redo, a daily puzzle and boards shared as links.
-
 ## Sudoku Plus
 
 Fill the grid so every row, column and box holds 1 to 9 once each, or play a smaller 6×6 or 4×4 board, or a **Jigsaw**, where nine irregular regions take the place of the boxes.
@@ -72,13 +64,21 @@ Fill the grid so every row, column and box holds 1 to 9 once each, or play a sma
 - Hints that find repeats, wrong digits and notes that leave out the answer before the next step, and explain any candidate they take away to get there.
 - Show Errors, undo and redo, a daily puzzle and boards shared as links.
 
-## 2048 Plus
+## Futoshiki Plus
 
-Slide the tiles so equal ones merge, and make a 2048.
+Fill the grid so every row and column holds each digit once, with the signs between cells saying which neighbour is the smaller.
 
-- Three board sizes from 3 × 3 to 5 × 5, best scores with the highest tile per size, kept apart for games that used help.
-- Arrow keys or WASD, or swipe and drag on the board, with tiles that slide, merge and pop.
-- Unlimited undo, and a hint that looks two moves ahead over the tiles that might appear and says why it picks its move.
+- Four levels from Easy to Expert on boards from 4 × 4 to 7 × 7, every board with one solution and graded by the hardest technique it needs, from singles and chains of signs to pairs.
+- Sudoku's number pad, notes, Auto Notes and keyboard play, with Show Errors, undo and redo, a daily puzzle and boards shared as links.
+- Hints that find broken signs and wrong digits before the next step, and explain any candidate they take away to get there.
+
+## Nonograms Plus
+
+Fill the cells whose runs match the clues beside each row and above each column, and a picture appears.
+
+- Four levels and five sizes from 5 × 5 to 25 × 25, random pictures touched up until logic alone can finish them, symmetric or not as you choose, and always filling the grid.
+- Turn off Procedural to play a pool of pictures drawn for the game, picked at your level or chosen by hand, with their own best times and a name and credit when you solve one. Pictures are plain text files in `src/nonograms/art`, easy to add to.
+- Drag to paint along a line, crosses as notes, a fill or cross mode for touch screens, the row and column under the mouse marked, keyboard play, hints, Show Errors, undo and redo, a daily puzzle and boards shared as links.
 
 ## Light Up Plus
 
@@ -88,14 +88,6 @@ Put bulbs on the white cells until every one is lit: a bulb lights its row and c
 - Crosses as notes, numbers that count down the bulbs they still need (an option), keyboard play, Show Errors, undo and redo, a daily puzzle and boards shared as links.
 - Hints that find broken rules and wrong marks before the next bulb, and show the crosses that bulb leans on.
 
-## Futoshiki Plus
-
-Fill the grid so every row and column holds each digit once, with the signs between cells saying which neighbour is the smaller.
-
-- Four levels from Easy to Expert on boards from 4 × 4 to 7 × 7, every board with one solution and graded by the hardest technique it needs, from singles and chains of signs to pairs.
-- Sudoku's number pad, notes, Auto Notes and keyboard play, with Show Errors, undo and redo, a daily puzzle and boards shared as links.
-- Hints that find broken signs and wrong digits before the next step, and explain any candidate they take away to get there.
-
 ## Bridges Plus
 
 Join the islands with bridges: an island's number is how many it has, a pair takes one or two, bridges run straight and never cross, and every island must end up joined to every other.
@@ -103,6 +95,14 @@ Join the islands with bridges: an island's number is how many it has, a pair tak
 - Four levels from Easy to Expert on 7 × 7, 10 × 10 and 14 × 14 boards, every board with one solution and graded by the hardest technique it needs, from islands that need every neighbour to cut-off groups and what-if.
 - Click an island and then another, or drag between them, or click the water between; right click steps back. Keyboard play with the arrows and Shift, Show Errors, undo and redo, a daily puzzle and boards shared as links.
 - Hints that find broken rules and wrong bridges before the next one, and show the links a bridge leans on as ruled out.
+
+## 2048 Plus
+
+Slide the tiles so equal ones merge, and make a 2048.
+
+- Three board sizes from 3 × 3 to 5 × 5, best scores with the highest tile per size, kept apart for games that used help.
+- Arrow keys or WASD, or swipe and drag on the board, with tiles that slide, merge and pop.
+- Unlimited undo, and a hint that looks two moves ahead over the tiles that might appear and says why it picks its move.
 
 ## Every game
 

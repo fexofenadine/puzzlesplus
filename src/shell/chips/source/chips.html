@@ -1,0 +1,217 @@
+<!doctype html>
+<!--the theme picker's icons: a piece of each theme's background with a glyph in the theme's look-->
+<!--chips.py renders each one to ../<theme>.webp-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: 'Pixel';
+        src: url(../../../fonts/ms_sans_serif_bold.woff2);
+      }
+      @font-face {
+        font-family: 'Nunito';
+        src: url(../../../fonts/nunito.woff2);
+        font-weight: 200 1000;
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        src: url(../../../fonts/jetbrains-mono-bold.woff2);
+      }
+      body {
+        margin: 0;
+        background: #000;
+      }
+      .chip {
+        position: relative;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+        background-position: center;
+      }
+      .chip span {
+        position: relative;
+        line-height: 1;
+      }
+      .chip::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      /*the hill with a 1 from the minesweeper board*/
+      #classic {
+        background-image: url(../../../background.jpg);
+        background-size: 420%;
+        background-position: 30% 62%;
+      }
+      #classic span {
+        font: 22px Pixel;
+        color: #0000ff;
+      }
+
+      /*a striped neon sun over a horizon and a grid floor, glowing against black, under vhs scanlines*/
+      #synthwave {
+        background: #000;
+      }
+      #synthwave svg {
+        width: 40px;
+        height: 40px;
+      }
+      #synthwave::after {
+        background: repeating-linear-gradient(rgba(0, 0, 0, 0.35) 0 1px, transparent 1px 3px);
+      }
+
+      /*a rain glyph, mirrored and glowing like the rain's own, under crt scanlines*/
+      #matrix {
+        background-image: url(still-matrix.jpg);
+        background-color: #000;
+      }
+      #matrix span {
+        font:
+          24px 'MS Gothic',
+          monospace;
+        color: #d4ffe0;
+        transform: scaleX(-1);
+        text-shadow:
+          0 0 3px #2cff6e,
+          0 0 8px #2cff6e;
+      }
+      #matrix::after {
+        background:
+          repeating-linear-gradient(rgba(0, 0, 0, 0.5) 0 1px, transparent 1px 3px),
+          radial-gradient(transparent 40%, rgba(0, 0, 0, 0.6));
+      }
+
+      /*the n rune in frost over substrate's cracks*/
+      #nord {
+        background-image: url(still-nord.jpg);
+        background-size: 160%;
+      }
+      #nord span {
+        font:
+          800 24px Nunito,
+          'Segoe UI Historic';
+        color: #88c0d0;
+        text-shadow: 0 1px 2px rgba(46, 52, 64, 0.8);
+      }
+
+      /*a sun over truchet's arcs*/
+      #solarized {
+        background-image: url(still-solarized.jpg);
+        background-size: 200%;
+      }
+      #solarized span {
+        font:
+          24px 'JetBrains Mono',
+          'Segoe UI Symbol';
+        color: #fdf6e3;
+        text-shadow: 0 1px 0 #002b36;
+      }
+
+      /*a prompt in glowing phosphor under scanlines*/
+      #solarized-phosphor {
+        background-image: url(still-solarized-phosphor.jpg);
+        background-size: 230%;
+        background-position: 0 0;
+      }
+      #solarized-phosphor span {
+        font: 20px 'JetBrains Mono';
+        color: #93e0d6;
+        text-shadow:
+          0 0 4px #2aa198,
+          0 0 9px #2aa198;
+        letter-spacing: -1px;
+      }
+      #solarized-phosphor::after {
+        background: repeating-linear-gradient(rgba(0, 43, 54, 0.45) 0 1px, transparent 1px 3px);
+      }
+
+      /*windows 95 in wide pastel letters over the theme's pastel day, under scanlines*/
+      #vaporwave {
+        background-image: url(../../../vaporwave.webp);
+        background-size: 300%;
+        background-position: 16% 62%;
+      }
+      #vaporwave span {
+        font: 15px Pixel;
+        color: #fff;
+        text-shadow:
+          1px 1px 0 #b967ff,
+          -1px 0 0 #01cdfe,
+          1px 0 0 #ff71ce;
+      }
+      #vaporwave::after {
+        background: repeating-linear-gradient(rgba(28, 16, 56, 0.28) 0 1px, transparent 1px 3px);
+      }
+
+      /*a hexagon in terafox's sea green over the hex trail*/
+      #terafox {
+        background-image: url(still-terafox.jpg);
+        background-size: 240%;
+      }
+      #terafox::after {
+        background: radial-gradient(rgba(15, 28, 30, 0.6) 30%, transparent 75%);
+      }
+      #terafox svg {
+        position: relative;
+        z-index: 1;
+        filter: drop-shadow(0 1px 1px rgba(6, 13, 14, 0.9));
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chip" id="classic"><span>1</span></div>
+    <svg width="0" height="0">
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.1" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ff9a3c" />
+          <stop offset=".55" stop-color="#ff2e97" />
+          <stop offset="1" stop-color="#8a1fff" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="chip" id="synthwave">
+      <svg viewBox="0 0 40 40">
+        <g filter="url(#glow)">
+          <path d="M8 24 A12 12 0 0 1 32 24 Z" fill="url(#sun)" opacity=".92" />
+          <path d="M6 20 H34 M6 22.2 H34 M6 24 H34" stroke="#000" stroke-width="1.1" />
+          <path d="M2 24 H38" stroke="#25f4ee" stroke-width="1.5" />
+          <path
+            d="M1 29 H39 M0 34 H40 M20 24 V40 M20 24 L10 40 M20 24 L30 40 M20 24 L0 38 M20 24 L40 38"
+            stroke="#a45cff"
+            stroke-width=".9"
+          />
+        </g>
+      </svg>
+    </div>
+    <div class="chip" id="matrix"><span>ｼ</span></div>
+    <div class="chip" id="nord"><span>ᚾ</span></div>
+    <div class="chip" id="solarized"><span>☼</span></div>
+    <div class="chip" id="solarized-phosphor"><span>&gt;_</span></div>
+    <div class="chip" id="vaporwave"><span>９５</span></div>
+    <div class="chip" id="terafox">
+      <svg width="26" height="28" viewBox="0 0 26 28">
+        <path
+          fill="none"
+          stroke="#a1cdd8"
+          stroke-width="3"
+          stroke-linejoin="round"
+          d="M13 3l9.5 5.5v11L13 25l-9.5-5.5v-11z"
+        />
+      </svg>
+    </div>
+  </body>
+</html>
