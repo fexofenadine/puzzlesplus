@@ -1,10 +1,10 @@
-import { A as shellActions, D as listen, L as celebrate, M as shortcut, O as prevent, P as undoKey, R as stopFireworks, Y as BackgroundSettings, _t as __exportAll, c as dayOf, ct as Button, ft as load, gt as h, j as shellState, lt as Overlay, mt as save, pt as remove, q as Boss, st as Dialog, t as Taskbar, w as gameKey } from "./Taskbar-DNGZckNK.js";
-import { _ as check, a as clearStats, b as OpenGames, c as lossesOn, h as BestTime_module_default, i as StatsList, l as readStats, n as FireworksCanvas, o as lossActions, p as Tabs, r as Switching, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-DSDzDprH.js";
-import { n as About, r as Link } from "./HowToPlay-CWk78UqX.js";
-import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-gVeLf6EY.js";
-import { S as tickAction, _ as pauseAction, b as startClock, g as nextTick, p as clock, w as timerAction, x as stopTick } from "./Board-BTWz6K4y.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-BfrABwFZ.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-B2ll-DNj.js";
+import { A as shellActions, D as listen, L as celebrate, M as shortcut, O as prevent, P as undoKey, R as stopFireworks, Y as BackgroundSettings, _t as __exportAll, c as dayOf, ct as Button, ft as load, gt as h, j as shellState, lt as Overlay, mt as save, pt as remove, q as Boss, st as Dialog, t as Taskbar, w as gameKey } from "./Taskbar-CGVrYhy9.js";
+import { _ as check, a as clearStats, b as OpenGames, c as lossesOn, h as BestTime_module_default, i as StatsList, l as readStats, n as FireworksCanvas, o as lossActions, p as Tabs, r as Switching, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-NN7CkIcG.js";
+import { n as About, r as Link } from "./HowToPlay-B48XL82e.js";
+import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-kPz-UY4b.js";
+import { S as tickAction, _ as pauseAction, b as startClock, g as nextTick, p as clock, w as timerAction, x as stopTick } from "./Board-DYXlugXU.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-C2vc6ksU.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-Qg5xIPw8.js";
 var keyOf = (n, assisted) => `2048.${n}${assisted ? ".help" : ""}`;
 var clean = (entry) => ({
 	score: parseInt(entry && entry.score, 10) || 0,

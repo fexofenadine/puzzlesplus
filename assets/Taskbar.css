@@ -633,7 +633,7 @@ main::before {
 
 /*vaporwave is a worn tape: a pastel day under the bouncing lines, with a vcr's marks over it*/
 :root[data-theme='vaporwave'] body {
-  background: url(./vaporwave.webp) 50% 60% / cover fixed var(--desktop);
+  background: url(./vaporwave2.webp) 50% 60% / cover fixed var(--desktop);
 }
 
 /*the picture and its lines jolt sideways together now and then*/
@@ -1673,6 +1673,14 @@ main::before {
   color: var(--shadow);
   background: none;
   cursor: default;
+}
+
+/*a small picture before an item's name, the themes' in the display menu*/
+.Menu_icon {
+  display: inline-block;
+  margin: -4px 6px -4px 0;
+  vertical-align: middle;
+  border: 1px solid var(--shadow);
 }
 
 .Menu_hotKey {

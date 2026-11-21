@@ -1,4 +1,4 @@
-import { A as shellActions, C as DisplayMenu, D as listen, E as isGame, K as Menu_module_default, M as shortcut, X as startBackgrounds, Y as BackgroundSettings, ft as load, gt as h, h as games, ht as app, j as shellState, n as icons, q as Boss, r as home_default, st as Dialog, t as Taskbar } from "./Taskbar-DNGZckNK.js";
+import { A as shellActions, C as DisplayMenu, D as listen, E as isGame, K as Menu_module_default, M as shortcut, X as startBackgrounds, Y as BackgroundSettings, ft as load, gt as h, h as games, ht as app, j as shellState, n as icons, q as Boss, r as home_default, st as Dialog, t as Taskbar } from "./Taskbar-CGVrYhy9.js";
 import { t as Guide_module_default } from "./Guide.module-Ih_jRsKN.js";
 var Home_module_default = {
 	body: "Home_body",
