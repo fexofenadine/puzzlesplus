@@ -4,10 +4,11 @@ import Overlay from '../Overlay'
 import Dialog from '../Dialog'
 import Button from '../Button'
 import { Link } from './About'
+import { keys } from './keys'
 
 //a short rules summary in the about box's style, each game gives its own paragraphs
 const HowToPlay = ({ key, name, actions }, children) => (
-  <Overlay key={key} onKeyDown={(event) => event.keyCode === 27 && actions.toggleHowTo()}>
+  <Overlay key={key} onKeyDown={(event) => event.keyCode === keys.esc && actions.toggleHowTo()}>
     <Dialog title={`How to Play ${name}`} onClose={actions.toggleHowTo}>
       <div class={s.wide}>
         {children}

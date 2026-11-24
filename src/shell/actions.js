@@ -29,6 +29,7 @@ import {
   saveZoom,
   stepZoom,
 } from './zoom'
+import { keys } from './keys'
 
 //state and actions every game window shares, spread into each game's own
 //games provide pause(paused), press(event) and reset(), the shell calls them
@@ -117,8 +118,7 @@ export const listen = (actions) => {
 //keys typed into a dialog's fields are not shortcuts
 export const typing = (event) => ['INPUT', 'SELECT', 'TEXTAREA'].includes(event.target.tagName)
 
-//esc, f2, n, h and p
-const once = [27, 113, 78, 72, 80]
+const once = [keys.esc, keys.f2, keys.n, keys.h, keys.p]
 
 //the key code a game should act on, or null once the shell has handled it
 export const shortcut = (event, state, actions) => {
@@ -126,7 +126,7 @@ export const shortcut = (event, state, actions) => {
   if (typing(event) || event.ctrlKey || event.metaKey || event.altKey) return null
   //a held key acts once: esc, new game, hint and pause would flicker or deal again and again
   if (event.repeat && once.includes(event.keyCode)) return null
-  if (event.keyCode === 27) {
+  if (event.keyCode === keys.esc) {
     //an open menu closes first, as in windows
     if (state.menu) actions.closeMenu()
     else actions.boss()
@@ -144,9 +144,9 @@ export const shortcut = (event, state, actions) => {
 
 //the keys every game shares once the shell has had its turn, true when it was one of them
 export const gameKey = (key, actions) => {
-  if (key === 113 || key === 78) actions.newGame()
-  else if (key === 72) actions.hint()
-  else if (key === 80) actions.pause()
+  if (key === keys.f2 || key === keys.n) actions.newGame()
+  else if (key === keys.h) actions.hint()
+  else if (key === keys.p) actions.pause()
   else return false
   return true
 }
@@ -163,11 +163,12 @@ const modified = (event, state) =>
 
 //ctrl z
 export const undoKey = (event, state) =>
-  modified(event, state) && event.keyCode === 90 && !event.shiftKey
+  modified(event, state) && event.keyCode === keys.z && !event.shiftKey
 
 //ctrl y, or ctrl shift z
 const redoKey = (event, state) =>
-  modified(event, state) && (event.keyCode === 89 || (event.keyCode === 90 && event.shiftKey))
+  modified(event, state) &&
+  (event.keyCode === keys.y || (event.keyCode === keys.z && event.shiftKey))
 
 //undo and redo for a game that has both, true when the key was one of them
 export const historyKey = (event, state, actions) => {
