@@ -1,10 +1,10 @@
-import { A as shellActions, D as listen, L as celebrate, M as shortcut, O as prevent, P as undoKey, R as stopFireworks, Y as BackgroundSettings, _t as __exportAll, c as dayOf, ct as Button, ft as load, gt as h, j as shellState, lt as Overlay, mt as save, pt as remove, q as Boss, st as Dialog, t as Taskbar, w as gameKey } from "./Taskbar-CGVrYhy9.js";
-import { _ as check, a as clearStats, b as OpenGames, c as lossesOn, h as BestTime_module_default, i as StatsList, l as readStats, n as FireworksCanvas, o as lossActions, p as Tabs, r as Switching, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-NN7CkIcG.js";
-import { n as About, r as Link } from "./HowToPlay-B48XL82e.js";
-import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-kPz-UY4b.js";
-import { S as tickAction, _ as pauseAction, b as startClock, g as nextTick, p as clock, w as timerAction, x as stopTick } from "./Board-DYXlugXU.js";
-import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-C2vc6ksU.js";
-import { n as TwentyHowToPlay } from "./HowToPlay-Qg5xIPw8.js";
+import { A as shellActions, D as listen, L as celebrate, M as shortcut, O as prevent, P as undoKey, R as stopFireworks, X as keys, Y as BackgroundSettings, c as dayOf, dt as Overlay, gt as save, ht as remove, j as shellState, lt as Dialog, mt as load, q as Boss, t as Taskbar, ut as Button, vt as h, w as gameKey, yt as __exportAll } from "./Taskbar-9d9Z-Iik.js";
+import { _ as check, a as clearStats, b as OpenGames, c as lossesOn, h as BestTime_module_default, i as StatsList, l as readStats, n as FireworksCanvas, o as lossActions, p as Tabs, r as Switching, s as lossState, t as start, u as tally, v as resumable, x as Winner } from "./start-C6VESaRx.js";
+import { n as About, r as Link } from "./HowToPlay-CtC_gqff.js";
+import { i as Prompt, n as winnerActions, r as BestTimes_module_default } from "./records-shVlsnNW.js";
+import { S as tickAction, _ as pauseAction, b as startClock, g as nextTick, p as clock, w as timerAction, x as stopTick } from "./Board-CGBjkUJ1.js";
+import { a as hold, c as highest, d as spawn, f as targets, i as running, l as move, m as valuesOf, o as letGo, p as tilesOf, r as Game, s as canMove, t as suggest, u as sizes } from "./search-D3kLTUi5.js";
+import { n as TwentyHowToPlay } from "./HowToPlay-BjiaKn_8.js";
 var keyOf = (n, assisted) => `2048.${n}${assisted ? ".help" : ""}`;
 var clean = (entry) => ({
 	score: parseInt(entry && entry.score, 10) || 0,
@@ -106,7 +106,7 @@ var tabs = [{
 var places = Array.from({ length: 5 }, (_, place) => place);
 var BestScores = ({ key, state, actions }) => /* @__PURE__ */ h(Overlay, {
 	key,
-	onKeyDown: (event) => event.keyCode === 27 && actions.toggleBestTime()
+	onKeyDown: (event) => event.keyCode === keys.esc && actions.toggleBestTime()
 }, /* @__PURE__ */ h(Dialog, {
 	title: "Best 2048 Scores",
 	onClose: actions.toggleBestTime
@@ -290,14 +290,14 @@ var saved = resumable({
 	}
 });
 var keyDirs = {
-	37: "left",
-	65: "left",
-	38: "up",
-	87: "up",
-	39: "right",
-	68: "right",
-	40: "down",
-	83: "down"
+	[keys.left]: "left",
+	[keys.a]: "left",
+	[keys.up]: "up",
+	[keys.w]: "up",
+	[keys.right]: "right",
+	[keys.d]: "right",
+	[keys.down]: "down",
+	[keys.s]: "down"
 };
 var swipe = null;
 var state = {

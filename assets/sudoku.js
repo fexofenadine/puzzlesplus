@@ -1,11 +1,11 @@
-import { A as shellActions, B as codeOf, D as listen, G as unpack, H as pack, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _t as __exportAll, a as DAILY_BUDGET, c as dayOf, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, mt as save, p as special, q as Boss, t as Taskbar, w as gameKey } from "./Taskbar-CGVrYhy9.js";
-import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-NN7CkIcG.js";
-import { n as About } from "./HowToPlay-B48XL82e.js";
-import { i as Prompt, t as records } from "./records-kPz-UY4b.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-DYXlugXU.js";
-import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BQOU-cbh.js";
-import { A as bit, B as full, D as solve, E as countSolutions, G as solved, H as jigsaw, K as validLayout, M as breaks, N as candidatesOf, P as connected, R as emptyBoard, V as geometry, W as sizes, a as running, b as rate, d as findHint, h as levels, j as boxShapes, k as allowed, l as levelNames, t as Game, z as fallback } from "./Game-Dk8l8_Si.js";
-import { n as SudokuHowToPlay } from "./HowToPlay-DV3QG3h1.js";
+import { A as shellActions, B as codeOf, D as listen, G as unpack, H as pack, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, X as keys, Y as BackgroundSettings, a as DAILY_BUDGET, c as dayOf, f as seedOf, gt as save, j as shellState, k as shareAction, l as finish, mt as load, p as special, q as Boss, t as Taskbar, vt as h, w as gameKey, yt as __exportAll } from "./Taskbar-9d9Z-Iik.js";
+import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-C6VESaRx.js";
+import { n as About } from "./HowToPlay-CtC_gqff.js";
+import { i as Prompt, t as records } from "./records-shVlsnNW.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-CGBjkUJ1.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BzIkV30l.js";
+import { A as bit, B as full, D as solve, E as countSolutions, G as solved, H as jigsaw, K as validLayout, M as breaks, N as candidatesOf, P as connected, R as emptyBoard, V as geometry, W as sizes, a as running, b as rate, d as findHint, h as levels, j as boxShapes, k as allowed, l as levelNames, t as Game, z as fallback } from "./Game-B4rf6L2L.js";
+import { n as SudokuHowToPlay } from "./HowToPlay-BHbHY7hw.js";
 //#region src/sudoku/generate.js
 var fewest = [
 	36,
@@ -339,8 +339,8 @@ var toggleNote = (state, actions, i, d) => {
 var enter = (state, actions, i, d, note) => note ? toggleNote(state, actions, i, d) : placeDigit(state, actions, i, d);
 var digitOf = (event) => {
 	const { keyCode } = event;
-	if (keyCode >= 48 && keyCode <= 57) return keyCode - 48;
-	if (keyCode >= 96 && keyCode <= 105) return keyCode - 96;
+	if (keyCode >= keys.zero && keyCode <= keys.nine) return keyCode - keys.zero;
+	if (keyCode >= keys.pad0 && keyCode <= keys.pad9) return keyCode - keys.pad0;
 	return -1;
 };
 var opened = saved.open(linkedGame());
@@ -375,10 +375,10 @@ var actions = {
 		if (arrows[key]) {
 			event.preventDefault();
 			actions.move(arrows[key]);
-		} else if (key === 32) {
+		} else if (key === keys.space) {
 			event.preventDefault();
 			actions.toggleNoting();
-		} else if (key === 8 || key === 46 || digit === 0) {
+		} else if (key === keys.backspace || key === keys.del || digit === 0) {
 			event.preventDefault();
 			actions.erase();
 		} else if (digit > 0 && digit <= state.game.n) actions.pad({

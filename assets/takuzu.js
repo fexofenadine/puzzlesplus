@@ -1,13 +1,13 @@
-import { A as shellActions, B as codeOf, C as DisplayMenu, D as listen, F as windowClear, K as Menu_module_default, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, S as resumeItems, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _ as MenuItem, _t as __exportAll, a as DAILY_BUDGET, b as HelpMenu, c as dayOf, dt as watchWindow, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, m as gameLinks, mt as save, p as special, pt as remove, q as Boss, s as dailyNote, st as Dialog, t as Taskbar, v as Separator, w as gameKey, x as SizeMenu, y as SubMenuItem } from "./Taskbar-CGVrYhy9.js";
-import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-NN7CkIcG.js";
-import { n as About } from "./HowToPlay-B48XL82e.js";
-import { i as Prompt, t as records } from "./records-kPz-UY4b.js";
-import { S as tickAction, _ as pauseAction, b as startClock, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, w as timerAction, x as stopTick } from "./Board-DYXlugXU.js";
+import { A as shellActions, B as codeOf, C as DisplayMenu, D as listen, F as windowClear, K as Menu_module_default, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, S as resumeItems, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _ as MenuItem, a as DAILY_BUDGET, b as HelpMenu, c as dayOf, f as seedOf, gt as save, ht as remove, j as shellState, k as shareAction, l as finish, lt as Dialog, m as gameLinks, mt as load, p as special, pt as watchWindow, q as Boss, s as dailyNote, t as Taskbar, v as Separator, vt as h, w as gameKey, x as SizeMenu, y as SubMenuItem, yt as __exportAll } from "./Taskbar-9d9Z-Iik.js";
+import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-C6VESaRx.js";
+import { n as About } from "./HowToPlay-CtC_gqff.js";
+import { i as Prompt, t as records } from "./records-shVlsnNW.js";
+import { S as tickAction, _ as pauseAction, b as startClock, c as PauseButton, d as Play, f as Digit, h as loadTimer, i as windowProps, l as SideButton, m as clockDigits, n as PausedCover, r as WindowControls, s as HintIcon, t as HintPanel, u as UndoIcon, w as timerAction, x as stopTick } from "./Board-CGBjkUJ1.js";
 import { t as Game_module_default } from "./Game.module-CghLtUtO.js";
-import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-C31z0YIY.js";
-import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BQOU-cbh.js";
+import { _ as full, a as levels, b as violations, g as emptyBoard, h as breaks, l as rate, m as solve, o as nextSteps, p as countSolutions, t as Cell, v as sizes, x as Game_module_default$1, y as solved } from "./Cell-B5rk5tbk.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BzIkV30l.js";
 import { t as showRain } from "./rain-D7NoZOvq.js";
-import { n as TakuzuHowToPlay } from "./HowToPlay-BJ7spUL7.js";
+import { n as TakuzuHowToPlay } from "./HowToPlay-Drm4sZ3g.js";
 var marked = (entries) => Object.fromEntries(entries);
 var guideTopic = ({ kind }) => ({
 	break: "mistakes",

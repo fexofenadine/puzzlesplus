@@ -1,0 +1,4 @@
+//#region src/shell/backgrounds/tape.js?raw
+var tape_default = "//vaporwave's tape counter, kept by whichever of its backgrounds is playing\n\n//the counter's text, from seconds played\nexport const tape = (seconds) => {\n  const two = (value) => String(value).padStart(2, '0')\n  return `${Math.floor(seconds / 3600)}:${two(Math.floor(seconds / 60) % 60)}:${two(seconds % 60)}`\n}\n\n//adds milliseconds played and shows the counter through the theme's styles, once a second\nexport const tapeCounter = () => {\n  let played = 0\n  let shown = -1\n  return (passed) => {\n    played += passed\n    const seconds = Math.floor(played / 1000)\n    if (seconds === shown) return\n    shown = seconds\n    document.documentElement.style.setProperty('--tape', `'SP  ${tape(seconds)}'`)\n  }\n}\n";
+//#endregion
+export { tape_default as default };

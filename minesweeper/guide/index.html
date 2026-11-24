@@ -31,6 +31,9 @@ try {
     vaporwave: 'qix',
     terafox: 'hextrail',
   }
+  //a theme may show a background picked in place of its own, with that background's switch
+  var picked = localStorage.getItem('background.' + theme)
+  if (ids[theme] && picked) ids[theme] = picked
   if (ids[theme]) {
     try {
       var saved = JSON.parse(localStorage.getItem('backgrounds'))
@@ -84,15 +87,15 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=f323b662"></script>
-    <link rel="modulepreload" crossorigin href="../../assets/Taskbar-CGVrYhy9.js?v=8e139f47">
+    <script type="module" crossorigin src="../../assets/minesweeper-guide.js?v=e1c33d00"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/Taskbar-9d9Z-Iik.js?v=012767d7">
     <link rel="modulepreload" crossorigin href="../../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../../assets/hint-DP9IZKw0.js?v=d77b31aa">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-B48XL82e.js?v=7a4b9c29">
-    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-DH8rYZX6.js?v=911943e6">
+    <link rel="modulepreload" crossorigin href="../../assets/hint-DqNYq3U_.js?v=d50a3716">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-CtC_gqff.js?v=3f327b07">
+    <link rel="modulepreload" crossorigin href="../../assets/HowToPlay-Df5X3Ozc.js?v=d0791a3f">
     <link rel="modulepreload" crossorigin href="../../assets/Guide.module-Ih_jRsKN.js?v=8585770f">
-    <link rel="modulepreload" crossorigin href="../../assets/Guide-CExn2CLO.js?v=5a8f2001">
-    <link rel="modulepreload" crossorigin href="../../assets/desktop--i4A8p8t.js?v=966efaad">
+    <link rel="modulepreload" crossorigin href="../../assets/Guide-C0ixFVSH.js?v=d0cad306">
+    <link rel="modulepreload" crossorigin href="../../assets/desktop-Dt7DKokT.js?v=85b5805f">
     <link rel="stylesheet" crossorigin href="../../assets/Taskbar.css?v=693727a4">
     <link rel="stylesheet" crossorigin href="../../assets/Game.css?v=9937410e">
     <link rel="stylesheet" crossorigin href="../../assets/hint.css?v=80da05c8">

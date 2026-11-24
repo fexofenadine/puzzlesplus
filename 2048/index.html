@@ -49,6 +49,9 @@ try {
     vaporwave: 'qix',
     terafox: 'hextrail',
   }
+  //a theme may show a background picked in place of its own, with that background's switch
+  var picked = localStorage.getItem('background.' + theme)
+  if (ids[theme] && picked) ids[theme] = picked
   if (ids[theme]) {
     try {
       var saved = JSON.parse(localStorage.getItem('backgrounds'))
@@ -102,16 +105,16 @@ addEventListener('error', (event) => {
   document.body.append(note)
 })
 </script>
-    <script type="module" crossorigin src="../assets/2048.js?v=5493a337"></script>
-    <link rel="modulepreload" crossorigin href="../assets/Taskbar-CGVrYhy9.js?v=8e139f47">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-B48XL82e.js?v=7a4b9c29">
-    <link rel="modulepreload" crossorigin href="../assets/Board-DYXlugXU.js?v=254792e7">
-    <link rel="modulepreload" crossorigin href="../assets/start-NN7CkIcG.js?v=3ee1162c">
+    <script type="module" crossorigin src="../assets/2048.js?v=73f2e82a"></script>
+    <link rel="modulepreload" crossorigin href="../assets/Taskbar-9d9Z-Iik.js?v=012767d7">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-CtC_gqff.js?v=3f327b07">
+    <link rel="modulepreload" crossorigin href="../assets/Board-CGBjkUJ1.js?v=79214021">
+    <link rel="modulepreload" crossorigin href="../assets/start-C6VESaRx.js?v=ccc4ea1e">
     <link rel="modulepreload" crossorigin href="../assets/grid-BF72XPNL.js?v=d2e7b8f5">
-    <link rel="modulepreload" crossorigin href="../assets/records-kPz-UY4b.js?v=d2a070c6">
+    <link rel="modulepreload" crossorigin href="../assets/records-shVlsnNW.js?v=cff9a4be">
     <link rel="modulepreload" crossorigin href="../assets/Game.module-CghLtUtO.js?v=d5ab2835">
-    <link rel="modulepreload" crossorigin href="../assets/search-C2vc6ksU.js?v=10c8a4f9">
-    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-Qg5xIPw8.js?v=c03f75e7">
+    <link rel="modulepreload" crossorigin href="../assets/search-D3kLTUi5.js?v=19d092df">
+    <link rel="modulepreload" crossorigin href="../assets/HowToPlay-BjiaKn_8.js?v=5cb8020a">
     <link rel="stylesheet" crossorigin href="../assets/Taskbar.css?v=693727a4">
     <link rel="stylesheet" crossorigin href="../assets/HowToPlay.css?v=3a4426fa">
     <link rel="stylesheet" crossorigin href="../assets/Board.css?v=add134de">

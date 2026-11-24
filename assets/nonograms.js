@@ -1,13 +1,13 @@
-import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, Y as BackgroundSettings, _t as __exportAll, a as DAILY_BUDGET, c as dayOf, ct as Button, f as seedOf, ft as load, gt as h, j as shellState, k as shareAction, l as finish, lt as Overlay, mt as save, p as special, q as Boss, st as Dialog, t as Taskbar, w as gameKey } from "./Taskbar-CGVrYhy9.js";
-import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-NN7CkIcG.js";
-import { i as About_module_default, n as About } from "./HowToPlay-B48XL82e.js";
-import { i as Prompt, t as records } from "./records-kPz-UY4b.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-DYXlugXU.js";
+import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, X as keys, Y as BackgroundSettings, a as DAILY_BUDGET, c as dayOf, dt as Overlay, f as seedOf, gt as save, j as shellState, k as shareAction, l as finish, lt as Dialog, mt as load, p as special, q as Boss, t as Taskbar, ut as Button, vt as h, w as gameKey, yt as __exportAll } from "./Taskbar-9d9Z-Iik.js";
+import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-C6VESaRx.js";
+import { i as About_module_default, n as About } from "./HowToPlay-CtC_gqff.js";
+import { i as Prompt, t as records } from "./records-shVlsnNW.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-CGBjkUJ1.js";
 import { r as cellsOf } from "./grid-BF72XPNL.js";
-import { a as dealer, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BQOU-cbh.js";
+import { a as dealer, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BzIkV30l.js";
 import { t as showRain } from "./rain-D7NoZOvq.js";
-import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-d8DlcsHA.js";
-import { t as NonogramsHowToPlay } from "./HowToPlay-BWzuPqSo.js";
+import { C as solved, S as sizes, _ as deduce, b as fillsLeft, c as levelNames, d as levels$1, g as countSolutions, h as solveAt, m as rate, o as allowed, r as running, s as fallback, t as Game, u as findHint, v as cluesOf, y as emptyBoard } from "./Game-CL2u4jYO.js";
+import { t as NonogramsHowToPlay } from "./HowToPlay-BxB4OH-S.js";
 //#region src/nonograms/generate.js
 var filled = (cells, n) => {
 	const lines = cellsOf(n);
@@ -221,7 +221,7 @@ var Pictures = ({ key, state, actions }) => {
 	const pool = artFor(n);
 	return /* @__PURE__ */ h(Overlay, {
 		key,
-		onKeyDown: (event) => event.keyCode === 27 && actions.togglePictures()
+		onKeyDown: (event) => event.keyCode === keys.esc && actions.togglePictures()
 	}, /* @__PURE__ */ h(Dialog, {
 		title: "Choose Picture",
 		onClose: actions.togglePictures
@@ -386,13 +386,14 @@ var DAILY = {
 	level: 1
 };
 var shareCode = ({ n, level, solution }) => codeOf(n, level, Array.from(solution, (v) => v === 1 ? 1 : 0), 2);
+var SHARED_STEPS = 1e3;
 var gameOf = (code) => {
 	const parts = partsOf(code, 2, (n, level) => sizes.includes(n) && allowed(n, level));
 	if (!parts) return null;
 	const { n, level, values } = parts;
 	const solution = Int8Array.from(values, (v) => v ? 1 : 0);
 	const clues = cluesOf(solution, n);
-	if (!filled(values, n) || countSolutions(clues, n, 2) !== 1) return null;
+	if (!filled(values, n) || countSolutions(clues, n, 2, void 0, SHARED_STEPS) !== 1) return null;
 	return {
 		...createGame({
 			n,

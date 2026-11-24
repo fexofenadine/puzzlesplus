@@ -1,4 +1,4 @@
-import { A as shellActions, C as DisplayMenu, D as listen, E as isGame, K as Menu_module_default, M as shortcut, X as startBackgrounds, Y as BackgroundSettings, ft as load, gt as h, h as games, ht as app, j as shellState, n as icons, q as Boss, r as home_default, st as Dialog, t as Taskbar } from "./Taskbar-CGVrYhy9.js";
+import { A as shellActions, C as DisplayMenu, D as listen, E as isGame, K as Menu_module_default, M as shortcut, X as keys, Y as BackgroundSettings, Z as startBackgrounds, _t as app, h as games, j as shellState, lt as Dialog, mt as load, n as icons, q as Boss, r as home_default, t as Taskbar, vt as h } from "./Taskbar-9d9Z-Iik.js";
 import { t as Guide_module_default } from "./Guide.module-Ih_jRsKN.js";
 var Home_module_default = {
 	body: "Home_body",
@@ -49,7 +49,7 @@ var startHome = () => {
 			listen(actions);
 		},
 		press: (event) => (state, actions) => {
-			if (event.keyCode === 27) shortcut(event, state, actions);
+			if (event.keyCode === keys.esc) shortcut(event, state, actions);
 		},
 		pause: () => null,
 		reset: () => null,
