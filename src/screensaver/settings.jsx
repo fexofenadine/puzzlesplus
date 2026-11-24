@@ -10,6 +10,8 @@ import { Control } from '../shell/BackgroundSettings'
 import {
   backgroundFor,
   backgrounds,
+  chooseBackground,
+  choicesOf,
   configure,
   defaults,
   loadSettings,
@@ -63,6 +65,11 @@ const actions = {
   setMotion: (motion) => {
     saveMotion(motion)
     return { motion }
+  },
+  //the theme's background when it has two, the state's copy only redraws the page
+  pickBackground: (id) => (state) => {
+    chooseBackground(state.theme, id)
+    return { picked: id }
   },
   setBackground:
     ([id, key, value]) =>
@@ -168,8 +175,18 @@ const ThemePart = ({ state, actions }) => [
 const BackgroundPart = ({ state, actions }) => {
   const id = backgroundFor(state.theme)
   if (!id) return null
+  const choices = choicesOf(state.theme)
   return [
     <p class={s.group}>{backgrounds[id].name}</p>,
+    choices.length > 1 && (
+      <Row name="Background:">
+        <Choice
+          value={id}
+          choices={choices.map((choice) => [choice, backgrounds[choice].name])}
+          onChange={actions.pickBackground}
+        />
+      </Row>
+    ),
     optionsOf(id).map((option) => (
       <Row name={`${option.label}:`}>
         <Control

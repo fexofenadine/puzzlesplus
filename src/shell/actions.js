@@ -7,7 +7,14 @@ import { fireworksKey, fireworksOn } from './fireworks'
 import { loadMotion, saveMotion } from './motion'
 import { defaultTheme, renamed, themes } from './themes'
 import { games } from './GameLinks'
-import { backgroundFor, configure, defaults, loadSettings, saveSettings } from './backgrounds'
+import {
+  backgroundFor,
+  chooseBackground,
+  configure,
+  defaults,
+  loadSettings,
+  saveSettings,
+} from './backgrounds'
 import { showScreensaver } from './screensaver'
 import { defaultEffects, loadEffects, saveEffects } from './glitches'
 import {
@@ -320,6 +327,13 @@ export const shellActions = {
     if (opacity !== undefined) actions.changeOpacity(100)
     if (id) actions.changeBackgroundSettings({ ...defaults(id), animated: draft.animated })
   },
+  //a theme with two backgrounds shows the one picked, saved at once
+  pickBackground:
+    (id) =>
+    ({ theme }) => {
+      chooseBackground(theme, id)
+      return { menu: null }
+    },
   //the theme menu's switch between the moving background and its still picture, saved at once
   toggleAnimated:
     () =>
