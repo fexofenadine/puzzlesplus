@@ -4,7 +4,7 @@
 
 Windows style puzzle games with hints that explain their reasoning, boards you can solve by logic alone and animated themes ported from xscreensaver, on a little Windows 95 desktop with a taskbar and Start menu. All eight games share the window, the eight themes and their backgrounds, pause, resume and the boss key, and your theme and zoom carry over between them.
 
-> **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these eight games as an app, offline, with every theme, and the themes' backgrounds as a live wallpaper. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
+> **Play on your phone:** [Puzzles Plus for Android](https://github.com/fexofenadine/puzzlesplus-android) is these eight games as an app, offline, with every theme, and the themes' backgrounds as a live wallpaper and screen saver. **[Download the latest release](https://github.com/fexofenadine/puzzlesplus-android/releases/latest)** (a signed APK).
 >
 > **On Windows:** [Puzzles Plus Screensaver](https://github.com/fexofenadine/puzzlesplus-screensaver) shows the themes' backgrounds and effects as a screensaver.
 
@@ -93,7 +93,7 @@ Put bulbs on the white cells until every one is lit: a bulb lights its row and c
 Join the islands with bridges: an island's number is how many it has, a pair takes one or two, bridges run straight and never cross, and every island must end up joined to every other.
 
 - Four levels from Easy to Expert on 7 × 7, 10 × 10 and 14 × 14 boards, every board with one solution and graded by the hardest technique it needs, from islands that need every neighbour to cut-off groups and what-if.
-- Click an island and then another, or drag between them, or click the water between; right click steps back. Keyboard play with the arrows and Shift, Show Errors, undo and redo, a daily puzzle and boards shared as links.
+- Click an island and then another, or drag between them, or click the water between; right click steps back. Numbers that count down the bridges an island still needs (an option, red when it has too many), keyboard play with the arrows and Shift, Show Errors, undo and redo, a daily puzzle and boards shared as links.
 - Hints that find broken rules and wrong bridges before the next one, and show the links a bridge leans on as ruled out.
 
 ## 2048 Plus
@@ -109,7 +109,7 @@ Slide the tiles so equal ones merge, and make a 2048.
 - **A home page**: the site opens on a window of every game, with the game you played last first as Continue, and Home in every Start menu brings it back
 - **A desktop**: a taskbar with a Start menu, a button per game and a clock. Windows and dialogs move by their title bars as on Windows 95, minimise to the taskbar, maximise to fill the page, and close to an Open Games dialog.
 - **The Display menu**: zoom (also + and -), the Theme and Motion flyouts, background and window settings, Hide Window, Fireworks, and on Synthwave, Vaporwave and Matrix **Glitches**, which switches each screen effect on or off.
-- **Eight themes**: Synthwave (the default, with its neon shader, glitches and screen look), Classic, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave and Terafox Hex Trail, each over an animated background with its original options (ports of xscreensaver hacks and shaders, or written after them), any of which can be switched to a still picture. Synthwave, Vaporwave and Matrix lay scanlines, a rolling band and now-and-then glitches over the whole screen but the boards.
+- **Eight themes**: Synthwave (the default, with its neon shader, glitches and screen look), Classic, Matrix, Nord, Solarized Truchet, Solarized Phosphor, Vaporwave and Terafox Hex Trail, each over its own animated background (Display, Background picks any other) with its original options (ports of xscreensaver hacks and shaders, or written after them), any of which can be switched to a still picture. Synthwave, Vaporwave and Matrix lay scanlines, a rolling band and now-and-then glitches over the whole screen but the boards.
 - **Hints with a More button** that opens their technique in the game's guide.
 - **Fireworks** in each theme's colours when you win, until the next game starts, and when 2048 reaches its tile. Switch them off in the Display menu.
 - **Pause**, automatic when you switch away, with a title bar button that shows only the background, like a screensaver, and a **boss key** (Esc) that hides everything behind a spreadsheet.
@@ -162,7 +162,7 @@ Vaporwave's wallpaper (`src/vaporwave.webp`) is drawn by `src/shell/backgrounds/
 - Nord background is a canvas port of [Substrate](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/substrate.c) from xscreensaver, by J. Tarbell ([complexification.net](http://complexification.net)) and Mike Kershaw.
 - Nord colours from [Nord](https://www.nordtheme.com) by Arctic Ice Studio.
 - Synthwave's animated background (on by default, slowed to 0.2x; Animated in the Display menu switches it off) is [Neon Triangulator](https://www.shadertoy.com/view/tXGGRD) by mrange (CC0), the shader xscreensaver also ships, bundled here and drawn with WebGL at reduced size. Where WebGL is missing, a draw is too slow or the first frames come at under 10 a second, the photo shows instead.
-- Vaporwave background is Qix, written for a canvas after [Qix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/qix.c) from xscreensaver by Jamie Zawinski and the Mystify screensaver of Windows 95. Its lines play over the theme's wallpaper, a picture drawn for this project by `src/shell/backgrounds/pastel.py`.
+- Vaporwave background is Qix, written for a canvas after [Qix](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/qix.c) from xscreensaver by Jamie Zawinski and the Mystify screensaver of Windows 95. Its lines play over the theme's wallpaper, a picture drawn for this project by `src/shell/backgrounds/pastel.py`. Pastel Clouds, drift's 2D Clouds (below) in Vaporwave's pastels, is a background any theme can pick.
 - Terafox Hex Trail background is a canvas port of [HexTrail](https://github.com/xscreensaver/xscreensaver/blob/master/hacks/glx/hextrail.c) from xscreensaver by Jamie Zawinski.
 - Terafox colours from [Nightfox](https://github.com/EdenEast/nightfox.nvim) by EdenEast.
 - Solarized static background by [Chris Ried](https://unsplash.com/photos/ieic5Tq8YMk) on Unsplash.

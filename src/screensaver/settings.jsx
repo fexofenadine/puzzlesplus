@@ -30,7 +30,7 @@ import { MINUTES, loadOptions, rates, saveOptions } from './options'
 //each change shows at once on the background behind and is saved straight away
 
 const tauri = () => window.__TAURI__?.core
-//the android app's wallpaper settings screen gives the page close() and apply()
+//the android app's wallpaper settings screen gives the page close(), apply(), and dream() where dreams()
 const android = () => window.PuzzlesWallpaper
 
 const close = () => {
@@ -55,11 +55,11 @@ const actions = {
     document.documentElement.dataset.theme = theme
     return { theme }
   },
-  //random, minutes, fps or drift
+  //random, minutes, fps, drift or saver
   setOption:
     (change) =>
-    ({ random, minutes, fps, drift }) => {
-      saveOptions({ random, minutes, fps, drift, ...change })
+    ({ random, minutes, fps, drift, saver }) => {
+      saveOptions({ random, minutes, fps, drift, saver, ...change })
       return change
     },
   setMotion: (motion) => {
@@ -165,6 +165,11 @@ const ThemePart = ({ state, actions }) => [
     </Row>
   ),
   android() && (
+    <Row name="Slow down in battery saver:">
+      <Check checked={state.saver} onChange={(saver) => actions.setOption({ saver })} />
+    </Row>
+  ),
+  android() && (
     <Row name="Drift with the home screens:">
       <Check checked={state.drift} onChange={(drift) => actions.setOption({ drift })} />
     </Row>
@@ -258,7 +263,11 @@ const view = (state, actions) => (
     <div id="looks" />
     <div class={s.room} oncreate={grow}>
       <Dialog
-        title={android() ? 'Puzzles Plus Wallpaper' : 'Puzzles Plus Screensaver'}
+        title={
+          !android() || new URLSearchParams(location.search).has('dream')
+            ? 'Puzzles Plus Screensaver'
+            : 'Puzzles Plus Wallpaper'
+        }
         onClose={close}
       >
         <form class={`${b.root} ${s.form}`} autocomplete="off" onsubmit={(e) => e.preventDefault()}>
@@ -268,7 +277,12 @@ const view = (state, actions) => (
           <div class={b.footer}>
             {android() && (
               <Button type="button" onClick={() => android().apply()}>
-                <span class={b.button}>Apply</span>
+                <span class={b.button}>Set Wallpaper</span>
+              </Button>
+            )}
+            {android()?.dreams?.() && (
+              <Button type="button" onClick={() => android().dream()}>
+                <span class={b.button}>Screen Saver</span>
               </Button>
             )}
             {tauri() && (
