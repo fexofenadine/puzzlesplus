@@ -20,6 +20,7 @@ export const desktopSection = {
         <b>Display</b> zooms the window in steps from 50% to 400%, also with + and -.
         Double-clicking the title bar goes back to 100%. When a board is too big for the screen the
         window shrinks to fit, but not below about 10 pixel cells, where the page scrolls instead.
+        <b>Full Screen</b> (or F11) fills the whole screen with the page, and F11 or Esc leaves it.
       </li>
       <li>
         <b>Moving</b>: drag a window or dialog by its title bar with the mouse. As in Windows 95, an
@@ -56,10 +57,10 @@ export const desktopSection = {
         come back.
       </li>
       <li>
-        <b>Shortcuts</b>: F2 or N starts a new game, H asks for a hint, P pauses, + and - zoom and
-        Esc is the boss key. They are ignored while typing in a dialog or with Ctrl, Alt or Cmd
-        held, except Ctrl+Z for undo and Ctrl+Y for redo. While a dialog is open the keys are its
-        own.
+        <b>Shortcuts</b>: F2 or N starts a new game, H asks for a hint, P pauses, + and - zoom, F11
+        is full screen and Esc is the boss key (or leaves full screen). They are ignored while
+        typing in a dialog or with Ctrl, Alt or Cmd held, except Ctrl+Z for undo and Ctrl+Y for
+        redo. While a dialog is open the keys are its own.
       </li>
     </ul>,
     <p>

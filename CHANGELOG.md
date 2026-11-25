@@ -8,6 +8,8 @@ Every version has its release date under it, as DD/MM/YYYY (Sydney time). Newest
 
 A version's date is added when it ships.
 
+- **Full Screen** in the Display menu, or F11, fills the whole screen with the page; F11 or Esc leaves it (not in the Android app, nor on iPhones, whose browser has no full screen for pages)
+
 ## 2.2.0
 
 25/11/2026

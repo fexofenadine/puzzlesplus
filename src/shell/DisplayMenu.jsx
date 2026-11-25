@@ -6,6 +6,7 @@ import { isGame } from './actions'
 import { motions } from './motion'
 import { steps } from './zoom'
 import { effectsOf } from './glitches'
+import { canFullscreen } from './fullscreen'
 import classic from './chips/classic.webp'
 import matrix from './chips/matrix.webp'
 import nord from './chips/nord.webp'
@@ -49,7 +50,6 @@ const zoomItems = (state, actions) => {
       onClick={() => actions.zoom(0)}
     />,
     <SubMenuItem name="Maximise" checked={maximised} onClick={() => actions.maximise()} />,
-    <Separator />,
   ]
 }
 
@@ -58,6 +58,15 @@ const zoomItems = (state, actions) => {
 const DisplayMenu = ({ state, actions }, children) => (
   <MenuItem name="Display" type="display" active={state.menu} onChange={actions.toggleMenu}>
     {isGame(state.page) && zoomItems(state, actions)}
+    {canFullscreen() && (
+      <SubMenuItem
+        name="Full Screen"
+        hotKey="F11"
+        checked={state.fullscreen}
+        onClick={actions.toggleFullscreen}
+      />
+    )}
+    {(isGame(state.page) || canFullscreen()) && <Separator />}
     {themes.map(([theme, name]) => (
       <SubMenuItem
         name={name}

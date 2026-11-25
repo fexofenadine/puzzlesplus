@@ -31,6 +31,7 @@ Files that exist upstream stay flat in `src/` where upstream has them (Button, D
 - `src/shell/BackgroundSettings.jsx` builds its controls from a background's `options` (range, toggle, select), so new backgrounds need no UI code
 - `src/shell/Boss.jsx` the boss key spreadsheet (`makeSheet` random figures kept in `state.boss` so rerenders don't reshuffle), opened from the taskbar tray too. It sets `data-boss` on the root, which the background host watches to stop drawing
 - `src/shell/zoom.js` zoom steps, fit maths and the game window watcher used by the `fit` and `zoom` actions
+- `src/shell/fullscreen.js` the page's own full screen (Display → Full Screen, F11 caught in `listen` so Esc can leave it); `state.fullscreen` follows `fullscreenchange`. Hidden where `document.fullscreenEnabled` is false (iPhone Safari, the Android WebView). Not saved: browsers only allow it after a click or key
 - `src/shell/themes.js` the theme list (id, menu name) shared by the Theme menu and saved-theme validation
 - `src/shell/storage.js` localStorage wrapper that survives blocked storage, always use it instead of `localStorage`
 - `src/app.css` themes are `:root[data-theme=...]` variable sets, fonts live in `src/fonts` (all freely licensed)

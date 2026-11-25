@@ -30,6 +30,7 @@ import {
   stepZoom,
 } from './zoom'
 import { keys } from './keys'
+import { fullscreenKey, isFullscreen, toggleFullscreen } from './fullscreen'
 
 //state and actions every game window shares, spread into each game's own
 //games provide pause(paused), press(event) and reset(), the shell calls them
@@ -96,6 +97,7 @@ export const shellState = (page, root = '../') => ({
   effects: loadEffects(),
   zoom: { chosen: loadZoom(), scale: loadZoom(), seen: null, maximised: loadMaximised() },
   portrait: Boolean(window.matchMedia && matchMedia('(orientation: portrait)').matches),
+  fullscreen: isFullscreen(),
 })
 
 export const listen = (actions) => {
@@ -113,6 +115,14 @@ export const listen = (actions) => {
       actions.setPortrait(event.matches),
     )
   }
+  //the menu's tick follows the browser, which also leaves full screen on esc
+  document.addEventListener('fullscreenchange', () => actions.setFullscreen(isFullscreen()))
+  window.addEventListener('keydown', (event) => {
+    if (!fullscreenKey(event)) return
+    //instead of the browser's own f11, which esc cannot leave
+    event.preventDefault()
+    actions.toggleFullscreen()
+  })
 }
 
 //keys typed into a dialog's fields are not shortcuts
@@ -280,6 +290,11 @@ export const shellActions = {
     return actions.openGame(id)
   },
   setPortrait: (portrait) => ({ portrait }),
+  setFullscreen: (fullscreen) => ({ fullscreen }),
+  toggleFullscreen: () => {
+    toggleFullscreen()
+    return { menu: null }
+  },
   toggleHowTo:
     () =>
     ({ howTo }) => ({ menu: null, howTo: !howTo }),

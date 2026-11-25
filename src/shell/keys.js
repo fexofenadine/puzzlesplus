@@ -23,4 +23,5 @@ export const keys = {
   pad0: 96,
   pad9: 105,
   f2: 113,
+  f11: 122,
 }
