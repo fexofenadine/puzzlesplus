@@ -1,12 +1,12 @@
-import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, X as keys, Y as BackgroundSettings, a as DAILY_BUDGET, c as dayOf, f as seedOf, gt as save, j as shellState, k as shareAction, l as finish, mt as load, p as special, q as Boss, t as Taskbar, vt as h, w as gameKey, yt as __exportAll } from "./Taskbar-9d9Z-Iik.js";
-import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-C6VESaRx.js";
-import { n as About } from "./HowToPlay-CtC_gqff.js";
-import { i as Prompt, t as records } from "./records-shVlsnNW.js";
-import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-CGBjkUJ1.js";
-import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-BzIkV30l.js";
-import { A as bit } from "./Game-B4rf6L2L.js";
-import { C as sizes, S as geometry, _ as breaks, a as running, b as fallback, d as levels, g as allowed, h as solve, l as findHint, m as countSolutions, p as rate, s as levelNames, t as Game, v as candidatesOf, w as solved, x as full, y as emptyBoard } from "./Game-CMuRWjDs.js";
-import { t as FutoshikiHowToPlay } from "./HowToPlay-D-G3Oa_F.js";
+import { A as shellActions, B as codeOf, D as listen, L as celebrate, M as shortcut, N as toggleAction, O as prevent, R as stopFireworks, T as historyKey, U as partsOf, W as sharedCode, X as keys, Y as BackgroundSettings, a as DAILY_BUDGET, c as dayOf, f as seedOf, gt as save, j as shellState, k as shareAction, l as finish, mt as load, p as special, q as Boss, t as Taskbar, vt as h, w as gameKey, yt as __exportAll } from "./Taskbar-CoR5e2rF.js";
+import { _ as check, b as OpenGames, d as timeOf, g as boardOf, n as FireworksCanvas, r as Switching, t as start, u as tally, v as resumable, x as Winner } from "./start-KCAKdMy7.js";
+import { n as About } from "./HowToPlay-BgElZGFG.js";
+import { i as Prompt, t as records } from "./records-DJpM9gKS.js";
+import { S as tickAction, _ as pauseAction, b as startClock, h as loadTimer, w as timerAction, x as stopTick } from "./Board-CUHQmMKg.js";
+import { a as dealer, i as shuffled, n as stepCursor, o as BestTimes, r as random, t as arrows } from "./cursor-CPZQt8n8.js";
+import { A as bit } from "./Game-Ca8KTm2l.js";
+import { C as sizes, S as geometry, _ as breaks, a as running, b as fallback, d as levels, g as allowed, h as solve, l as findHint, m as countSolutions, p as rate, s as levelNames, t as Game, v as candidatesOf, w as solved, x as full, y as emptyBoard } from "./Game-CZitvOfH.js";
+import { t as FutoshikiHowToPlay } from "./HowToPlay-DRMdZp2k.js";
 //#region src/futoshiki/generate.js
 var makeSolution = (n, rng) => {
 	const order = [...Array(n).keys()];
